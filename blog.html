@@ -71,11 +71,11 @@ footer a:hover{color:var(--blue-bright);}
 </header>
 
 <main>
-  <h1 class="page-title">Wissenswertes</h1>
-  <p class="page-sub">Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr — verständlich erklärt.</p>
+  <h1 class="page-title" data-i18n="blog_title">Wissenswertes</h1>
+  <p class="page-sub" data-i18n="blog_sub">Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr — verständlich erklärt.</p>
 
   <div class="search-bar">
-    <input id="blog-search" type="text" placeholder="Artikel suchen …" oninput="renderArticles()">
+    <input id="blog-search" type="text" placeholder="Artikel suchen …" data-i18n-placeholder="blog_search" id="blog-search-input" oninput="renderArticles()">
   </div>
   <div class="filters" id="blog-filters"></div>
   <div class="article-grid" id="article-grid"></div>
@@ -207,12 +207,31 @@ const ARTICLES = [
   },
 ];
 
-const CATS = ['Alle', ...new Set(ARTICLES.map(a=>a.cat))];
+const CATS_DE = ['Alle', 'Finanzen', 'Mathematik', 'Gesundheit', 'Datum & Zeit', 'Einheiten', 'Physik', 'Sonstiges'];
+const CATS = CATS_DE;
+function getCatLabel(catDe) {
+  const lang = localStorage.getItem('lang') || 'de';
+  const bi = window._blogI18n && window._blogI18n[lang];
+  if (!bi) return catDe;
+  if (catDe === 'Alle') return bi.cat_all || catDe;
+  const key = 'cat_' + catDe.replace(' & Zeit','').replace(' & Stunden','').replace('Datum & Zeit','Datum');
+  return bi[key] || catDe;
+}
+function getReadLabel() {
+  const lang = localStorage.getItem('lang') || 'de';
+  const bi = window._blogI18n && window._blogI18n[lang];
+  return (bi && bi.blog_read) || 'Artikel lesen →';
+}
+function getMinLabel() {
+  const lang = localStorage.getItem('lang') || 'de';
+  const bi = window._blogI18n && window._blogI18n[lang];
+  return (bi && bi.blog_read_time) || 'Min';
+}
 let activeCat = 'Alle';
 
 function renderFilters() {
   document.getElementById('blog-filters').innerHTML = CATS.map(c =>
-    `<button class="filter-btn${c===activeCat?' active':''}" onclick="setCat('${c}')">${c}</button>`
+    `<button class="filter-btn${c===activeCat?' active':''}" onclick="setCat('${c}')">${getCatLabel(c)}</button>`
   ).join('');
 }
 
@@ -241,11 +260,11 @@ function renderArticles() {
   }
   grid.innerHTML = filtered.map(a => `
     <a class="article-card" href="${a.slug}.html">
-      <span class="read-time">⏱ ${a.readTime}</span>
+      <span class="read-time">⏱ ${a.readTime.replace('Min', getMinLabel())}</span>
       <span class="cat-badge ${catClass(a.cat)}">${a.cat}</span>
       <h3>${a.title}</h3>
       <p>${a.desc}</p>
-      <span class="read-link">Artikel lesen →</span>
+      <span class="read-link">${getReadLabel()}</span>
     </a>
   `).join('');
 }
@@ -362,6 +381,29 @@ function setLang(l){
   });
   const sel=document.getElementById('lang-select');
   if(sel) sel.value=l;
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    const k = el.getAttribute('data-i18n-placeholder');
+    const bi = window._blogI18n && window._blogI18n[l];
+    if (bi && bi[k]) el.placeholder = bi[k];
+  });
+  // Re-render filters with translated category names
+  if (typeof renderFilters === 'function') renderFilters();
+})();
+</script>
+
+
+<script>
+// Blog i18n patch — merge blog-specific keys into I18N_PAGES
+(function() {
+  var blogI18n = {"de": {"blog_title": "Wissenswertes", "blog_sub": "Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr — verständlich erklärt.", "blog_search": "Artikel suchen …", "blog_read": "Artikel lesen →", "blog_read_time": "Min", "cat_all": "Alle", "cat_Finanzen": "Finanzen", "cat_Mathematik": "Mathematik", "cat_Gesundheit": "Gesundheit", "cat_Datum": "Datum & Zeit", "cat_Einheiten": "Einheiten", "cat_Physik": "Physik", "cat_Sonstiges": "Sonstiges"}, "en": {"blog_title": "Knowledge Base", "blog_sub": "Background knowledge on mathematics, finance, health and more — explained clearly.", "blog_search": "Search articles …", "blog_read": "Read article →", "blog_read_time": "min", "cat_all": "All", "cat_Finanzen": "Finance", "cat_Mathematik": "Mathematics", "cat_Gesundheit": "Health", "cat_Datum": "Date & Time", "cat_Einheiten": "Units", "cat_Physik": "Physics", "cat_Sonstiges": "Misc"}, "fr": {"blog_title": "Base de connaissances", "blog_sub": "Connaissances générales sur les mathématiques, la finance, la santé et plus encore.", "blog_search": "Rechercher des articles …", "blog_read": "Lire l'article →", "blog_read_time": "min", "cat_all": "Tout", "cat_Finanzen": "Finance", "cat_Mathematik": "Mathématiques", "cat_Gesundheit": "Santé", "cat_Datum": "Date & Heure", "cat_Einheiten": "Unités", "cat_Physik": "Physique", "cat_Sonstiges": "Divers"}, "es": {"blog_title": "Base de conocimiento", "blog_sub": "Conocimiento de fondo sobre matemáticas, finanzas, salud y más — explicado claramente.", "blog_search": "Buscar artículos …", "blog_read": "Leer artículo →", "blog_read_time": "min", "cat_all": "Todo", "cat_Finanzen": "Finanzas", "cat_Mathematik": "Matemáticas", "cat_Gesundheit": "Salud", "cat_Datum": "Fecha y hora", "cat_Einheiten": "Unidades", "cat_Physik": "Física", "cat_Sonstiges": "Varios"}, "it": {"blog_title": "Base di conoscenza", "blog_sub": "Conoscenze di sfondo su matematica, finanza, salute e altro — spiegate chiaramente.", "blog_search": "Cerca articoli …", "blog_read": "Leggi articolo →", "blog_read_time": "min", "cat_all": "Tutti", "cat_Finanzen": "Finanza", "cat_Mathematik": "Matematica", "cat_Gesundheit": "Salute", "cat_Datum": "Data & Ora", "cat_Einheiten": "Unità", "cat_Physik": "Fisica", "cat_Sonstiges": "Varie"}, "pt": {"blog_title": "Base de conhecimento", "blog_sub": "Conhecimento de fundo sobre matemática, finanças, saúde e mais — explicado claramente.", "blog_search": "Pesquisar artigos …", "blog_read": "Ler artigo →", "blog_read_time": "min", "cat_all": "Tudo", "cat_Finanzen": "Finanças", "cat_Mathematik": "Matemática", "cat_Gesundheit": "Saúde", "cat_Datum": "Data & Hora", "cat_Einheiten": "Unidades", "cat_Physik": "Física", "cat_Sonstiges": "Outros"}, "nl": {"blog_title": "Kennisbank", "blog_sub": "Achtergrondkennis over wiskunde, financiën, gezondheid en meer — duidelijk uitgelegd.", "blog_search": "Artikelen zoeken …", "blog_read": "Artikel lezen →", "blog_read_time": "min", "cat_all": "Alle", "cat_Finanzen": "Financiën", "cat_Mathematik": "Wiskunde", "cat_Gesundheit": "Gezondheid", "cat_Datum": "Datum & Tijd", "cat_Einheiten": "Eenheden", "cat_Physik": "Fysica", "cat_Sonstiges": "Overige"}, "pl": {"blog_title": "Baza wiedzy", "blog_sub": "Wiedza ogólna z matematyki, finansów, zdrowia i innych dziedzin — wyjaśniona przystępnie.", "blog_search": "Szukaj artykułów …", "blog_read": "Czytaj artykuł →", "blog_read_time": "min", "cat_all": "Wszystkie", "cat_Finanzen": "Finanse", "cat_Mathematik": "Matematyka", "cat_Gesundheit": "Zdrowie", "cat_Datum": "Data & Czas", "cat_Einheiten": "Jednostki", "cat_Physik": "Fizyka", "cat_Sonstiges": "Inne"}, "tr": {"blog_title": "Bilgi Tabanı", "blog_sub": "Matematik, finans, sağlık ve daha fazlası hakkında arka plan bilgisi — açık bir şekilde anlatıldı.", "blog_search": "Makale ara …", "blog_read": "Makaleyi oku →", "blog_read_time": "dak", "cat_all": "Tümü", "cat_Finanzen": "Finans", "cat_Mathematik": "Matematik", "cat_Gesundheit": "Sağlık", "cat_Datum": "Tarih & Saat", "cat_Einheiten": "Birimler", "cat_Physik": "Fizik", "cat_Sonstiges": "Diğer"}, "ar": {"blog_title": "قاعدة المعرفة", "blog_sub": "معرفة خلفية حول الرياضيات والمالية والصحة والمزيد — شرح واضح.", "blog_search": "ابحث عن مقالات …", "blog_read": "اقرأ المقال →", "blog_read_time": "دقيقة", "cat_all": "الكل", "cat_Finanzen": "المالية", "cat_Mathematik": "الرياضيات", "cat_Gesundheit": "الصحة", "cat_Datum": "التاريخ والوقت", "cat_Einheiten": "الوحدات", "cat_Physik": "الفيزياء", "cat_Sonstiges": "متفرقات"}, "zh": {"blog_title": "知识库", "blog_sub": "关于数学、金融、健康等领域的背景知识 — 清晰易懂。", "blog_search": "搜索文章 …", "blog_read": "阅读文章 →", "blog_read_time": "分钟", "cat_all": "全部", "cat_Finanzen": "金融", "cat_Mathematik": "数学", "cat_Gesundheit": "健康", "cat_Datum": "日期与时间", "cat_Einheiten": "单位", "cat_Physik": "物理", "cat_Sonstiges": "其他"}};
+  if (typeof I18N_PAGES !== 'undefined') {
+    Object.keys(blogI18n).forEach(function(lang) {
+      if (I18N_PAGES[lang]) Object.assign(I18N_PAGES[lang], blogI18n[lang]);
+      else I18N_PAGES[lang] = blogI18n[lang];
+    });
+  }
+  window._blogI18n = blogI18n;
 })();
 </script>
 
