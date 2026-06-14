@@ -2,140 +2,87 @@
 <html lang="de" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Zinseszins: Die achte Weltwunder – Universal Calculator</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
-h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif;}
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
-.logo span{color:var(--copper);}
-main{max-width:800px;margin:32px auto;padding:0 20px;}
-.breadcrumb{font-size:0.75rem;color:var(--muted);margin-bottom:20px;}
-.breadcrumb a{color:var(--blue-bright);text-decoration:none;}
-.article-header{margin-bottom:28px;}
-.article-header .cat{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--blue-soft);color:var(--blue-bright);display:inline-block;margin-bottom:10px;}
-.article-header h1{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.article-header .meta{font-size:0.78rem;color:var(--muted);}
-.prose{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
-.prose h2{font-size:1.15rem;font-weight:700;margin:24px 0 10px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:6px;}
-.prose h3{font-size:0.98rem;font-weight:600;margin:16px 0 6px;color:var(--blue-bright);}
-.prose p{font-size:0.87rem;line-height:1.8;margin-bottom:12px;color:var(--text);}
-.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
-.prose li{font-size:0.87rem;line-height:1.7;margin-bottom:4px;}
-.prose strong{color:var(--text);font-weight:600;}
-.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
-.warn-box{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
-/* Comparison table */
-.table-wrap{overflow-x:auto;margin:16px 0;}
-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
-th{background:var(--blue-soft);color:var(--blue-bright);font-family:'Space Grotesk',sans-serif;font-weight:600;padding:9px 12px;text-align:left;border:1px solid var(--border);}
-td{padding:8px 12px;border:1px solid var(--border);line-height:1.5;}
-tr:nth-child(even) td{background:#F9FAFB;}
-/* Quiz */
-.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;}
-.quiz-card h2{font-size:1.1rem;margin-bottom:16px;}
-.quiz-q{margin-bottom:18px;}
-.quiz-q p{font-size:0.88rem;font-weight:600;margin-bottom:8px;}
-.quiz-opt{display:flex;flex-direction:column;gap:6px;}
-.quiz-opt label{display:flex;align-items:center;gap:8px;font-size:0.84rem;cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:6px;transition:0.12s;}
-.quiz-opt label:hover{background:var(--blue-soft);}
-.quiz-opt input[type=radio]{accent-color:var(--blue-bright);}
-.quiz-submit{margin-top:16px;padding:9px 22px;background:var(--blue-bright);color:#fff;border:none;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;}
-.quiz-result{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;display:none;}
-.quiz-result.show{display:block;}
-.quiz-result.pass{background:#D1FAE5;color:#065f46;}
-.quiz-result.fail{background:#FEE2E2;color:#991b1b;}
-/* Sources */
-.sources{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 28px;margin-bottom:20px;}
-.sources h2{font-size:1rem;margin-bottom:10px;}
-.sources ol{padding-left:18px;}
-.sources li{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:4px;}
-.sources a{color:var(--blue-bright);}
-/* CTA */
-.cta-box{background:var(--blue-soft);border:1px solid var(--blue-bright);border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
-.cta-box p{font-size:0.88rem;color:var(--text);margin:0;}
-.cta-box a{background:var(--blue-bright);color:#fff;padding:9px 18px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;white-space:nowrap;}
-footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
-footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
-footer a:hover{color:var(--blue-bright);}
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 90px}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none}
+.logo span{color:var(--copper)}
+main{max-width:800px;margin:32px auto;padding:0 20px}
+.bc{font-size:.75rem;color:var(--muted);margin-bottom:20px}
+.bc a{color:var(--blue-bright);text-decoration:none}
+.article-hdr{margin-bottom:28px}
+.cat-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--blue-soft);color:var(--blue-bright);display:inline-block;margin-bottom:10px}
+.article-hdr h1{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:8px}
+.meta{font-size:.78rem;color:var(--muted)}
+.prose{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px}
+.prose h2{font-size:1.15rem;font-weight:700;margin:24px 0 10px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.prose h3{font-size:.98rem;font-weight:600;margin:16px 0 6px;color:var(--blue-bright)}
+.prose p{font-size:.87rem;line-height:1.8;margin-bottom:12px}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px}
+.prose li{font-size:.87rem;line-height:1.7;margin-bottom:4px}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:.84rem;line-height:1.6}
+.warn-box{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:.84rem;line-height:1.6}
+.table-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{background:var(--blue-soft);color:var(--blue-bright);font-family:'Space Grotesk',sans-serif;font-weight:600;padding:9px 12px;text-align:left;border:1px solid var(--border)}
+td{padding:8px 12px;border:1px solid var(--border);line-height:1.5}
+tr:nth-child(even) td{background:#F9FAFB}
+.quiz-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px}
+.quiz-card h2{font-size:1.1rem;margin-bottom:16px}
+.quiz-q{margin-bottom:18px}
+.quiz-q p{font-size:.88rem;font-weight:600;margin-bottom:8px}
+.quiz-opt{display:flex;flex-direction:column;gap:6px}
+.quiz-opt label{display:flex;align-items:center;gap:8px;font-size:.84rem;cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:6px;transition:.12s}
+.quiz-opt label:hover{background:var(--blue-soft)}
+.quiz-opt input[type=radio]{accent-color:var(--blue-bright)}
+.quiz-submit{margin-top:16px;padding:9px 22px;background:var(--blue-bright);color:#fff;border:none;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer}
+.quiz-result{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:.85rem;display:none}
+.quiz-result.show{display:block}
+.quiz-result.pass{background:#D1FAE5;color:#065f46}
+.quiz-result.fail{background:#FEE2E2;color:#991b1b}
+.sources{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 28px;margin-bottom:20px}
+.sources h2{font-size:1rem;margin-bottom:10px}
+.sources ol{padding-left:18px}
+.sources li{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:4px}
+.cta-box{background:var(--blue-soft);border:1px solid var(--blue-bright);border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.cta-box p{font-size:.88rem;margin:0}
+.cta-box a{background:var(--blue-bright);color:#fff;padding:9px 18px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.85rem;text-decoration:none;white-space:nowrap}
 </style>
 </head>
 <body>
 <header>
   <a href="index.html" class="logo">Universal<span>Calculator</span></a>
-  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
-    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
-    <a href="blog.html" style="color:var(--muted);text-decoration:none">Wissenswertes</a>
-  </nav>
-  <div style="margin-left:auto"><select id="lang-select" onchange="setLang(this.value)" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;">
-      <option value="de">🇩🇪 DE</option>
-      <option value="en">🇬🇧 EN</option>
-      <option value="fr">🇫🇷 FR</option>
-      <option value="es">🇪🇸 ES</option>
-      <option value="it">🇮🇹 IT</option>
-      <option value="pt">🇵🇹 PT</option>
-      <option value="nl">🇳🇱 NL</option>
-      <option value="pl">🇵🇱 PL</option>
-      <option value="tr">🇹🇷 TR</option>
-      <option value="ar">🇸🇦 AR</option>
-      <option value="zh">🇨🇳 ZH</option>
-    </select>
-  </div>
+  <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;margin-left:auto">
+    <option value="de">🇩🇪 DE</option>
+    <option value="en">🇬🇧 EN</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option>
+    <option value="pt">🇵🇹 PT</option>
+    <option value="nl">🇳🇱 NL</option>
+    <option value="pl">🇵🇱 PL</option>
+    <option value="tr">🇹🇷 TR</option>
+    <option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
 </header>
-<main>
-  <div class="breadcrumb"><a href="blog.html">← Wissenswertes</a> / Zinseszins: Die achte Weltwunder</div>
-
-  <div class="article-header">
-    <span class="cat">Finanzen</span>
-    <h1>Zinseszins: Die achte Weltwunder</h1>
-    <div class="meta">Lesezeit ca. 5 Min · Kategorie: Finanzen · Stand: 2026</div>
+<main id="wiki-main"><!-- rendered by JS --></main>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:12px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+  <p id="ck-text" style="font-size:0.8rem;flex:1 1 260px;margin:0">Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="ck-accept" onclick="localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+    <button id="ck-reject" onclick="localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
   </div>
-  <div class="cta-box">
-    <p>Direkt zum Rechner: <strong>Zinseszinsrechner</strong></p>
-    <a href="universal-calculator.html#zinseszins">Rechner öffnen →</a>
-  </div>
-  <div class="prose">
-
-    <h2>Was ist Zinseszins?</h2>
-    <p>Der <strong>Zinseszins</strong> (englisch: <em>compound interest</em>) bezeichnet das Phänomen, dass erzielte Zinsen in der nächsten Periode selbst wieder verzinst werden. Im Gegensatz zum einfachen Zins – bei dem nur das ursprüngliche Kapital verzinst wird – führt der Zinseszins zu einem <strong>exponentiellen Wachstum</strong> des Kapitals über die Zeit.</p>
-    <p>Die Grundformel lautet: <strong>K(t) = K₀ × (1 + p/100)^t</strong>, wobei K₀ das Anfangskapital, p der jährliche Zinssatz in Prozent und t die Laufzeit in Jahren ist.</p>
-    <div class="info-box">💡 Bei einem Zinssatz von 7 % verdoppelt sich das Kapital nach etwa 10 Jahren (Faustregel: 72 ÷ Zinssatz = Verdopplungsjahre).</div>
-    <h2>Die Kraft der Zeit</h2>
-    <p>Der entscheidende Faktor beim Zinseszins ist die <strong>Zeit</strong>. Wer mit 25 Jahren anfängt, 100 € monatlich bei 6 % Rendite zu sparen, hat mit 65 Jahren rund 200.000 €. Wer erst mit 35 anfängt, kommt nur auf ca. 100.000 € – obwohl er nur 10 Jahre früher gestartet ist und nicht die doppelte Zeit investiert hat.</p>
-    <h2>Zinseszins gegen Sie: Schulden</h2>
-    <p>Der Zinseszins wirkt genauso bei Schulden. Kreditkartenschulden mit 20 % Zinsen verdoppeln sich ohne Tilgung in etwa 3,6 Jahren. Deshalb ist das frühe Tilgen von Hochzinsschulden oft die beste „Investition".</p>
-    <div class="warn-box">⚠️ Berechnungen enthalten keine Abgeltungssteuer (25 % + Soli) oder Inflation. Reale Renditen sind oft geringer als nominale.</div>
-    <h2>Monatliche Sparrate</h2>
-    <p>Bei regelmäßigen Einzahlungen (Sparplan) gilt eine erweiterte Formel: Das Endkapital ergibt sich aus dem Anfangskapital multipliziert mit dem Wachstumsfaktor plus der Summe der aufgezinsten Raten. Unser Rechner berücksichtigt beide Komponenten automatisch.</p>
-
-    <h2>Vergleichsübersicht</h2>
-<div class="table-wrap"><table><tr><th>Laufzeit</th><th>Ohne Zinseszins (5%)</th><th>Mit Zinseszins (5%)</th><th>Unterschied</th></tr><tr><td>10 Jahre</td><td>15.000 €</td><td>16.289 €</td><td>+1.289 €</td></tr><tr><td>20 Jahre</td><td>20.000 €</td><td>26.533 €</td><td>+6.533 €</td></tr><tr><td>30 Jahre</td><td>25.000 €</td><td>43.219 €</td><td>+18.219 €</td></tr><tr><td>40 Jahre</td><td>30.000 €</td><td>70.400 €</td><td>+40.400 €</td></tr></table></div>
-  </div>
-<div class="quiz-card"><h2>🧠 Wissenstest</h2><form id="wiki-zinseszins-quiz"><div class="quiz-q"><p>Frage 1: Was ist die Formel für den Zinseszins?</p><div class="quiz-opt"><label><input type="radio" name="q0" value="a"> K₀ × p × t</label><label><input type="radio" name="q0" value="b"> K₀ × (1 + p/100)^t</label><label><input type="radio" name="q0" value="c"> K₀ + p × t</label><label><input type="radio" name="q0" value="d"> K₀ / (1 - p/100)^t</label></div></div><div class="quiz-q"><p>Frage 2: Wie viele Jahre dauert es, ein Kapital bei 6 % zu verdoppeln (Faustregel 72)?</p><div class="quiz-opt"><label><input type="radio" name="q1" value="a"> 6 Jahre</label><label><input type="radio" name="q1" value="b"> 10 Jahre</label><label><input type="radio" name="q1" value="c"> 12 Jahre</label><label><input type="radio" name="q1" value="d"> 18 Jahre</label></div></div><div class="quiz-q"><p>Frage 3: Was verdoppelt sich beim Zinseszins, aber nicht beim einfachen Zins?</p><div class="quiz-opt"><label><input type="radio" name="q2" value="a"> Der Zinssatz</label><label><input type="radio" name="q2" value="b"> Die Laufzeit</label><label><input type="radio" name="q2" value="c"> Die Zinsen selbst werden mitverzinst</label><label><input type="radio" name="q2" value="d"> Das Anfangskapital</label></div></div><div class="quiz-q"><p>Frage 4: Welche Steuer wird in Deutschland auf Kapitalerträge erhoben?</p><div class="quiz-opt"><label><input type="radio" name="q3" value="a"> Einkommensteuer 42 %</label><label><input type="radio" name="q3" value="b"> Abgeltungssteuer 25 % + Soli</label><label><input type="radio" name="q3" value="c"> Körperschaftsteuer 15 %</label><label><input type="radio" name="q3" value="d"> Keine</label></div></div><div class="quiz-q"><p>Frage 5: Bei welchem Zinssatz verdoppelt sich Kapital in ca. 7,2 Jahren?</p><div class="quiz-opt"><label><input type="radio" name="q4" value="a"> 5 %</label><label><input type="radio" name="q4" value="b"> 8 %</label><label><input type="radio" name="q4" value="c"> 10 %</label><label><input type="radio" name="q4" value="d"> 12 %</label></div></div><button type="button" class="quiz-submit" onclick="checkQuiz('wiki-zinseszins-quiz', ['b', 'c', 'c', 'b', 'c'])">Auswerten</button><div class="quiz-result" id="wiki-zinseszins-quiz-result"></div></form></div>
-<script>
-function checkQuiz(quizId, answers) {
-  const form = document.getElementById(quizId);
-  let correct = 0;
-  const total = answers.length;
-  answers.forEach((ans, i) => {
-    const sel = form.querySelector(`input[name="q${i}"]:checked`);
-    if (sel && sel.value === ans) correct++;
-  });
-  const res = document.getElementById(quizId + '-result');
-  res.className = 'quiz-result show ' + (correct >= Math.ceil(total/2) ? 'pass' : 'fail');
-  res.innerHTML = `Sie haben <strong>${correct} von ${total}</strong> Fragen richtig beantwortet. ` +
-    (correct === total ? '🎉 Ausgezeichnet!' : correct >= Math.ceil(total/2) ? '👍 Gut gemacht!' : '📚 Lesen Sie den Artikel noch einmal.');
-}
-</script>
-<div class="sources"><h2>📚 Quellen</h2><ol><li>Deutsche Bundesbank: Erläuterungen zum Zinseszinseffekt. bundesbank.de</li><li>Verbraucherzentrale: Zinseszins und Sparplan-Rechner. verbraucherzentrale.de</li><li>Bundesministerium der Finanzen: Abgeltungssteuer. bundesfinanzministerium.de</li><li>Bogle, J. (2021). Das kleine Buch des gesunden Menschenverstands beim Investieren. Börsenbuch Verlag.</li></ol></div>
-</main>
-
+</div>
+<script>if(!localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='flex';</script>
 <footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
   <div>
     <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
@@ -147,116 +94,151 @@ function checkQuiz(quizId, answers) {
   </div>
   <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
 </footer>
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:14px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
-<p data-i18n="cookie_text" style="font-size:0.8rem;flex:1 1 280px;margin:0">🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
-<div style="display:flex;gap:8px;">
-<button onclick="(function(){localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_accept" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
-<button onclick="(function(){localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_reject" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
-</div>
-</div>
-<script>if(!localStorage.getItem('cookie-consent')){document.getElementById('cookie-banner').style.display='flex';}</script>
-
 
 <script>
-// ── i18n ──
-const I18N_PAGES = {
-de:{
-  nav_calc:'Rechner',nav_blog:'Wissenswertes',nav_faq:'FAQ',nav_help:'Hilfe',
-  nav_imprint:'Impressum',nav_privacy:'Datenschutz',
-  footer_copy:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit',
-  cookie_text:'🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.',
-  cookie_accept:'Alle akzeptieren',cookie_reject:'Nur notwendige',
-},
-en:{
-  nav_calc:'Calculator',nav_blog:'Knowledge',nav_faq:'FAQ',nav_help:'Help',
-  nav_imprint:'Imprint',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · All calculations run locally in your browser · No guarantee of accuracy',
-  cookie_text:'🍪 We use cookies for advertising (Google AdSense) and to improve our service.',
-  cookie_accept:'Accept all',cookie_reject:'Necessary only',
-},
-fr:{
-  nav_calc:'Calculateurs',nav_blog:'Savoir',nav_faq:'FAQ',nav_help:'Aide',
-  nav_imprint:'Mentions légales',nav_privacy:'Confidentialité',
-  footer_copy:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude",
-  cookie_text:"🍪 Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",
-  cookie_accept:'Tout accepter',cookie_reject:'Nécessaires seulement',
-},
-es:{
-  nav_calc:'Calculadoras',nav_blog:'Conocimiento',nav_faq:'FAQ',nav_help:'Ayuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidad',
-  footer_copy:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud',
-  cookie_text:'🍪 Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.',
-  cookie_accept:'Aceptar todo',cookie_reject:'Solo necesarias',
-},
-it:{
-  nav_calc:'Calcolatori',nav_blog:'Conoscenza',nav_faq:'FAQ',nav_help:'Aiuto',
-  nav_imprint:'Note legali',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia di precisione',
-  cookie_text:'🍪 Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.',
-  cookie_accept:'Accetta tutto',cookie_reject:'Solo necessari',
-},
-pt:{
-  nav_calc:'Calculadoras',nav_blog:'Conhecimento',nav_faq:'FAQ',nav_help:'Ajuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidade',
-  footer_copy:"© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia de precisão",
-  cookie_text:'🍪 Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.',
-  cookie_accept:'Aceitar tudo',cookie_reject:'Somente necessários',
-},
-nl:{
-  nav_calc:'Rekenmachines',nav_blog:'Kennis',nav_faq:'FAQ',nav_help:'Hulp',
-  nav_imprint:'Impressum',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie op juistheid',
-  cookie_text:'🍪 We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.',
-  cookie_accept:'Alles accepteren',cookie_reject:'Alleen noodzakelijk',
-},
-pl:{
-  nav_calc:'Kalkulatory',nav_blog:'Wiedza',nav_faq:'FAQ',nav_help:'Pomoc',
-  nav_imprint:'Informacje prawne',nav_privacy:'Prywatność',
-  footer_copy:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane są lokalnie · Bez gwarancji dokładności',
-  cookie_text:'🍪 Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.',
-  cookie_accept:'Akceptuj wszystkie',cookie_reject:'Tylko niezbędne',
-},
-tr:{
-  nav_calc:'Hesap Makineleri',nav_blog:'Bilgi',nav_faq:'SSS',nav_help:'Yardım',
-  nav_imprint:'Künye',nav_privacy:'Gizlilik',
-  footer_copy:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Doğruluk garantisi yoktur',
-  cookie_text:'🍪 Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.',
-  cookie_accept:'Tümünü kabul et',cookie_reject:'Yalnızca gerekli',
-},
-ar:{
-  nav_calc:'الآلات الحاسبة',nav_blog:'المعرفة',nav_faq:'الأسئلة الشائعة',nav_help:'المساعدة',
-  nav_imprint:'بيانات المشغّل',nav_privacy:'الخصوصية',
-  footer_copy:'© 2026 Universal-Calculator · تتم جميع العمليات الحسابية محلياً · لا ضمان على الدقة',
-  cookie_text:'🍪 نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.',
-  cookie_accept:'قبول الكل',cookie_reject:'الضرورية فقط',
-},
-zh:{
-  nav_calc:'计算器',nav_blog:'知识库',nav_faq:'常见问题',nav_help:'帮助',
-  nav_imprint:'版权信息',nav_privacy:'隐私政策',
-  footer_copy:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性',
-  cookie_text:'🍪 我们使用Cookie用于广告（Google AdSense）和改善服务。',
-  cookie_accept:'全部接受',cookie_reject:'仅必要',
-},
-};
-function setLang(l){
-  localStorage.setItem('lang',l);
-  const u=new URL(window.location.href);
-  u.searchParams.set('lang',l);
-  window.location.href=u.toString();
+window.PAGE_TITLES = {};
+const WIKI = {"calc_anchor": "zinseszins", "de": {"title": "Zinseszins: Die achte Weltwunder", "cat": "Finanzen", "meta": "Lesezeit ca. 5 Min · Finanzen · 2026", "calc_label": "Zinseszinsrechner", "bc_blog": "Wissenswertes", "body": "<h2>Was ist Zinseszins?</h2><p>Der <strong>Zinseszins</strong> bezeichnet das Phänomen, dass erzielte Zinsen in der nächsten Periode selbst wieder verzinst werden. Im Gegensatz zum einfachen Zins führt der Zinseszins zu einem <strong>exponentiellen Wachstum</strong> des Kapitals.</p><p>Die Grundformel lautet: <strong>K(t) = K₀ × (1 + p/100)^t</strong></p><div class=\"info-box\">💡 Bei einem Zinssatz von 7 % verdoppelt sich das Kapital nach etwa 10 Jahren (Faustregel: 72 ÷ Zinssatz = Verdopplungsjahre).</div><h2>Die Kraft der Zeit</h2><p>Der entscheidende Faktor beim Zinseszins ist die <strong>Zeit</strong>. Wer mit 25 Jahren anfängt, 100 € monatlich bei 6 % Rendite zu sparen, hat mit 65 Jahren rund 200.000 €. Wer erst mit 35 anfängt, kommt nur auf ca. 100.000 €.</p><h2>Zinseszins gegen Sie: Schulden</h2><p>Der Zinseszins wirkt genauso bei Schulden. Kreditkartenschulden mit 20 % Zinsen verdoppeln sich ohne Tilgung in etwa 3,6 Jahren.</p><div class=\"warn-box\">⚠️ Berechnungen enthalten keine Abgeltungssteuer (25 % + Soli) oder Inflation.</div>", "table_h": ["Laufzeit", "Ohne Zinseszins (5%)", "Mit Zinseszins (5%)", "Unterschied"], "table_r": [["10 Jahre", "15.000 €", "16.289 €", "+1.289 €"], ["20 Jahre", "20.000 €", "26.533 €", "+6.533 €"], ["30 Jahre", "25.000 €", "43.219 €", "+18.219 €"]], "quiz_title": "🧠 Wissenstest", "submit": "Auswerten", "pass_msg": "Ausgezeichnet! Alle Antworten richtig.", "fail_msg": "Lesen Sie den Artikel noch einmal.", "quiz": [{"q": "Was ist die Formel für den Zinseszins?", "opts": ["K₀ × p × t", "K₀ × (1 + p/100)^t", "K₀ + p × t", "K₀ / (1 - p/100)^t"], "ans": 1}, {"q": "Bei 6 % Zinsen: nach wie vielen Jahren verdoppelt sich das Kapital (Faustregel 72)?", "opts": ["6 Jahre", "10 Jahre", "12 Jahre", "18 Jahre"], "ans": 2}, {"q": "Was verdoppelt sich beim Zinseszins?", "opts": ["Der Zinssatz", "Die Laufzeit", "Die Zinsen selbst werden mitverzinst", "Das Anfangskapital"], "ans": 2}], "sources_title": "📚 Quellen", "sources": ["Deutsche Bundesbank: Erläuterungen zum Zinseszinseffekt. bundesbank.de", "Verbraucherzentrale: Zinseszins und Sparplan-Rechner. verbraucherzentrale.de"]}, "en": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "fr": {"title": "Intérêts composés : la huitième merveille", "cat": "Finance", "meta": "Lecture ~5 min · Finance · 2026", "calc_label": "Calculateur d'intérêts composés", "bc_blog": "Savoir", "body": "<h2>Qu'est-ce que l'intérêt composé ?</h2><p>L'<strong>intérêt composé</strong> désigne le phénomène par lequel les intérêts gagnés sont eux-mêmes réinvestis et génèrent des intérêts supplémentaires à la période suivante. Contrairement à l'intérêt simple, l'intérêt composé conduit à une <strong>croissance exponentielle</strong> du capital.</p><p>La formule de base est : <strong>A = P × (1 + r/100)^t</strong></p><div class=\"info-box\">💡 À un taux de 7 %, le capital double en environ 10 ans (règle des 72 : 72 ÷ taux = années pour doubler).</div><h2>La puissance du temps</h2><p>Le facteur décisif dans l'intérêt composé est le <strong>temps</strong>. Quelqu'un qui commence à épargner 100 € par mois à 6 % de rendement à 25 ans aura environ 200 000 € à 65 ans.</p><div class=\"warn-box\">⚠️ Les calculs n'incluent pas l'impôt sur les plus-values ni l'inflation.</div>", "table_h": ["Durée", "Sans intérêts composés (5%)", "Avec intérêts composés (5%)", "Différence"], "table_r": [["10 ans", "15 000 €", "16 289 €", "+1 289 €"], ["20 ans", "20 000 €", "26 533 €", "+6 533 €"], ["30 ans", "25 000 €", "43 219 €", "+18 219 €"]], "quiz_title": "🧠 Quiz", "submit": "Évaluer", "pass_msg": "Excellent ! Toutes les réponses sont correctes.", "fail_msg": "Veuillez relire l'article.", "quiz": [{"q": "Quelle est la formule des intérêts composés ?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "À 6 % d'intérêt, combien d'années pour doubler (règle des 72) ?", "opts": ["6 ans", "10 ans", "12 ans", "18 ans"], "ans": 2}, {"q": "Qu'est-ce que l'intérêt composé réinvestit ?", "opts": ["Le taux d'intérêt", "La durée", "Les intérêts gagnés eux-mêmes", "Le capital initial"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank : Explication des intérêts composés. bundesbank.de"]}, "es": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "it": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "pt": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "nl": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "pl": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "tr": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "ar": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}, "zh": {"title": "Compound Interest: The Eighth Wonder", "cat": "Finance", "meta": "Reading time approx. 5 min · Finance · 2026", "calc_label": "Compound interest calculator", "bc_blog": "Knowledge", "body": "<h2>What is Compound Interest?</h2><p><strong>Compound interest</strong> refers to the phenomenon where earned interest is itself re-invested and earns further interest in the next period. Unlike simple interest, compound interest leads to <strong>exponential growth</strong> of capital over time.</p><p>The basic formula is: <strong>A = P × (1 + r/100)^t</strong> where P is the principal, r the annual rate and t the time in years.</p><div class=\"info-box\">💡 At a 7% interest rate, capital doubles in about 10 years (rule of thumb: 72 ÷ interest rate = doubling years).</div><h2>The Power of Time</h2><p>The decisive factor in compound interest is <strong>time</strong>. Someone who starts saving €100 a month at 6% return at age 25 will have around €200,000 at 65. Someone who starts at 35 will only reach about €100,000.</p><h2>Compound Interest Against You: Debt</h2><p>Compound interest works the same with debt. Credit card debt at 20% interest doubles in about 3.6 years without repayment.</p><div class=\"warn-box\">⚠️ Calculations do not include capital gains tax or inflation.</div>", "table_h": ["Period", "Without compound (5%)", "With compound (5%)", "Difference"], "table_r": [["10 years", "€15,000", "€16,289", "+€1,289"], ["20 years", "€20,000", "€26,533", "+€6,533"], ["30 years", "€25,000", "€43,219", "+€18,219"]], "quiz_title": "🧠 Knowledge Test", "submit": "Submit", "pass_msg": "Excellent! All answers correct.", "fail_msg": "Please re-read the article.", "quiz": [{"q": "What is the compound interest formula?", "opts": ["P × r × t", "P × (1 + r/100)^t", "P + r × t", "P / (1 - r/100)^t"], "ans": 1}, {"q": "At 6% interest, how many years to double (rule of 72)?", "opts": ["6 years", "10 years", "12 years", "18 years"], "ans": 2}, {"q": "What does compound interest reinvest?", "opts": ["The interest rate", "The duration", "The earned interest itself", "The principal"], "ans": 2}], "sources_title": "📚 Sources", "sources": ["Deutsche Bundesbank: Compound Interest Explained. bundesbank.de", "Bogle, J. (2021). The Little Book of Common Sense Investing. Wiley."]}};
+const CALC_ANCHOR = 'zinseszins';
+Object.keys(WIKI).forEach(function(l) {
+  if(WIKI[l] && WIKI[l].title) window.PAGE_TITLES[l] = WIKI[l].title + ' – Universal Calculator';
+});
+
+function renderPage(lang) {
+  const d = WIKI[lang] || WIKI['en'] || WIKI['de'];
+  if (!d) return;
+  const main = document.getElementById('wiki-main');
+  
+  const blogLink = `<a href="blog.html?lang=${lang}">${d.bc_blog || 'Blog'}</a>`;
+  const calcBtn = d.calc_label && CALC_ANCHOR ?
+    `<div class="cta-box"><p>${d.calc_label}</p><a href="universal-calculator.html#${CALC_ANCHOR}?lang=${lang}">${d.calc_label} →</a></div>` : '';
+  
+  // Build table
+  let tableHtml = '';
+  if (d.table_h && d.table_r) {
+    const ths = d.table_h.map(function(h){return `<th>${h}</th>`;}).join('');
+    const trs = d.table_r.map(function(r){
+      return '<tr>' + r.map(function(c){return `<td>${c}</td>`;}).join('') + '</tr>';
+    }).join('');
+    tableHtml = `<h2>Vergleichsübersicht</h2><div class="table-wrap"><table><tr>${ths}</tr>${trs}</table></div>`;
+  }
+  
+  // Build quiz
+  let quizHtml = '';
+  if (d.quiz && d.quiz.length) {
+    const answers = d.quiz.map(function(q){return q.ans;});
+    const qItems = d.quiz.map(function(q, i) {
+      const opts = q.opts.map(function(o, j) {
+        return `<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`;
+      }).join('');
+      return `<div class="quiz-q"><p>${i+1}. ${q.q}</p><div class="quiz-opt">${opts}</div></div>`;
+    }).join('');
+    quizHtml = `<div class="quiz-card"><h2>${d.quiz_title || '🧠 Quiz'}</h2>
+      <form id="wiki-quiz">
+        ${qItems}
+        <button type="button" class="quiz-submit" onclick="checkWikiQuiz(${JSON.stringify(answers)}, '${(d.pass_msg||'').replace(/'/g,'\'')}',' ${(d.fail_msg||'').replace(/'/g,'\'')}')">${d.submit || 'Submit'}</button>
+        <div class="quiz-result" id="wiki-quiz-res"></div>
+      </form>
+    </div>`;
+  }
+  
+  // Sources
+  let sourcesHtml = '';
+  if (d.sources && d.sources.length) {
+    const lis = d.sources.map(function(s){return `<li>${s}</li>`;}).join('');
+    sourcesHtml = `<div class="sources"><h2>${d.sources_title || '📚 Sources'}</h2><ol>${lis}</ol></div>`;
+  }
+  
+  main.innerHTML = `
+    <div class="bc">${blogLink} / ${d.title}</div>
+    <div class="article-hdr">
+      <span class="cat-badge">${d.cat}</span>
+      <h1>${d.title}</h1>
+      <div class="meta">${d.meta || ''}</div>
+    </div>
+    ${calcBtn}
+    <div class="prose">${d.body}${tableHtml}</div>
+    ${quizHtml}
+    ${sourcesHtml}
+  `;
 }
-(function(){
-  const p=new URLSearchParams(window.location.search);
-  const l=p.get('lang')||localStorage.getItem('lang')||'de';
-  const t=I18N_PAGES[l]||I18N_PAGES['de'];
-  const root=document.documentElement;
-  root.lang=l; root.dir=(l==='ar')?'rtl':'ltr';
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(t[k]!==undefined) el.textContent=t[k];
+
+function checkWikiQuiz(answers, passMsg, failMsg) {
+  const form = document.getElementById('wiki-quiz');
+  let correct = 0;
+  answers.forEach(function(ans, i) {
+    const sel = form.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && parseInt(sel.value) === ans) correct++;
   });
-  const sel=document.getElementById('lang-select');
-  if(sel) sel.value=l;
-})();
+  const res = document.getElementById('wiki-quiz-res');
+  res.className = 'quiz-result show ' + (correct === answers.length ? 'pass' : 'fail');
+  res.textContent = correct + '/' + answers.length + ' — ' + (correct === answers.length ? passMsg : failMsg);
+}
+</script>
+
+<script>
+// ── Core i18n engine ──────────────────────────────────────────
+const NAV_I18N = {
+  de:{calc:'Rechner',blog:'Wissenswertes',faq:'FAQ',help:'Hilfe',imprint:'Impressum',privacy:'Datenschutz',footer:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit'},
+  en:{calc:'Calculator',blog:'Knowledge',faq:'FAQ',help:'Help',imprint:'Imprint',privacy:'Privacy',footer:'© 2026 Universal-Calculator · All calculations run locally · No guarantee of accuracy'},
+  fr:{calc:'Calculateurs',blog:'Savoir',faq:'FAQ',help:'Aide',imprint:'Mentions légales',privacy:'Confidentialité',footer:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude"},
+  es:{calc:'Calculadoras',blog:'Conocimiento',faq:'FAQ',help:'Ayuda',imprint:'Aviso legal',privacy:'Privacidad',footer:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud'},
+  it:{calc:'Calcolatori',blog:'Conoscenza',faq:'FAQ',help:'Aiuto',imprint:'Note legali',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia'},
+  pt:{calc:'Calculadoras',blog:'Conhecimento',faq:'FAQ',help:'Ajuda',imprint:'Aviso legal',privacy:'Privacidade',footer:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia'},
+  nl:{calc:'Rekenmachines',blog:'Kennis',faq:'FAQ',help:'Hulp',imprint:'Impressum',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie'},
+  pl:{calc:'Kalkulatory',blog:'Wiedza',faq:'FAQ',help:'Pomoc',imprint:'Informacje prawne',privacy:'Prywatność',footer:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane lokalnie · Bez gwarancji'},
+  tr:{calc:'Hesap Makineleri',blog:'Bilgi',faq:'SSS',help:'Yardım',imprint:'Künye',privacy:'Gizlilik',footer:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Garanti yoktur'},
+  ar:{calc:'الآلات الحاسبة',blog:'المعرفة',faq:'الأسئلة الشائعة',help:'المساعدة',imprint:'بيانات المشغّل',privacy:'الخصوصية',footer:'© 2026 Universal-Calculator · تتم العمليات الحسابية محلياً · لا ضمان على الدقة'},
+  zh:{calc:'计算器',blog:'知识库',faq:'常见问题',help:'帮助',imprint:'版权信息',privacy:'隐私政策',footer:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性'},
+};
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', l);
+    history.replaceState(null, '', u.toString());
+  } catch(e) {}
+  applyNav(l);
+  if (typeof renderPage === 'function') renderPage(l);
+}
+
+function getLang() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('lang')) return p.get('lang');
+  } catch(e) {}
+  return localStorage.getItem('lang') || 'de';
+}
+
+function applyNav(lang) {
+  const t = NAV_I18N[lang] || NAV_I18N.de;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // nav links
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+  // footer nav links via data-i18n
+  const map = {nav_calc:'calc',nav_blog:'blog',nav_faq:'faq',nav_help:'help',nav_imprint:'imprint',nav_privacy:'privacy',footer_copy:'footer'};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (map[key] && t[map[key]]) el.textContent = t[map[key]];
+  });
+  // cookie banner
+  const ck = {de:['Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.','Alle akzeptieren','Nur notwendige'],en:['We use cookies for advertising (Google AdSense) and to improve our service.','Accept all','Necessary only'],fr:["Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",'Tout accepter','Nécessaires seulement'],es:['Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.','Aceptar todo','Solo necesarias'],it:['Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.','Accetta tutto','Solo necessari'],pt:['Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.','Aceitar tudo','Somente necessários'],nl:['We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.','Alles accepteren','Alleen noodzakelijk'],pl:['Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.','Akceptuj wszystkie','Tylko niezbędne'],tr:['Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.','Tümünü kabul et','Yalnızca gerekli'],ar:['نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.','قبول الكل','الضرورية فقط'],zh:['我们使用Cookie用于广告（Google AdSense）和改善服务。','全部接受','仅必要']};
+  const c = ck[lang] || ck.de;
+  const ct = document.getElementById('ck-text'); if(ct) ct.textContent = c[0];
+  const ca = document.getElementById('ck-accept'); if(ca) ca.textContent = c[1];
+  const cr = document.getElementById('ck-reject'); if(cr) cr.textContent = c[2];
+  // page title
+  if (window.PAGE_TITLES && window.PAGE_TITLES[lang]) document.title = window.PAGE_TITLES[lang];
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', function() {
+  const lang = getLang();
+  applyNav(lang);
+  if (typeof renderPage === 'function') renderPage(lang);
+});
 </script>
 
 </body>

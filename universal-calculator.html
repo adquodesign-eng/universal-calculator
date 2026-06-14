@@ -255,9 +255,12 @@ let LANG = 'de';
 
 function setLang(l) {
   localStorage.setItem('lang', l);
-  const u = new URL(window.location.href);
-  u.searchParams.set('lang', l);
-  window.location.href = u.toString();
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', l);
+    history.replaceState(null, '', u.toString());
+  } catch(e) {}
+  applyLang(l);
 }
 
 function applyLang(lang) {

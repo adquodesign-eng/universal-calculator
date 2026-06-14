@@ -2,85 +2,71 @@
 <html lang="de" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wissenswertes – Universal Calculator</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
-h1,h2,h3,button{font-family:'Space Grotesk',sans-serif;}
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
-.logo span{color:var(--copper);}
-main{max-width:1060px;margin:32px auto;padding:0 20px;}
-.page-title{font-size:1.8rem;font-weight:700;margin-bottom:6px;}
-.page-sub{color:var(--muted);font-size:0.85rem;margin-bottom:24px;}
-.search-bar{display:flex;gap:10px;margin-bottom:16px;}
-.search-bar input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;background:var(--surface);color:var(--text);outline:none;max-width:500px;}
-.search-bar input:focus{border-color:var(--blue-bright);}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-.filter-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-family:'Space Grotesk',sans-serif;font-size:0.78rem;cursor:pointer;color:var(--muted);transition:0.15s;}
-.filter-btn.active{background:var(--blue-bright);color:#fff;border-color:var(--blue-bright);}
-.article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.article-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;display:block;transition:0.15s;position:relative;overflow:hidden;}
-.article-card:hover{border-color:var(--blue-bright);box-shadow:0 4px 16px rgba(27,166,255,0.12);transform:translateY(-2px);}
-.article-card .cat-badge{font-size:0.68rem;font-weight:600;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:10px;}
-.cat-finanzen{background:#E8F4FF;color:#1BA6FF;}
-.cat-mathe{background:#F0FDF4;color:#16a34a;}
-.cat-gesundheit{background:#FEF9C3;color:#a16207;}
-.cat-datum{background:#F3E8FF;color:#7c3aed;}
-.cat-einheiten{background:#FEE2E2;color:#dc2626;}
-.cat-physik{background:#FFF7ED;color:#ea580c;}
-.cat-sonstiges{background:var(--copper-soft);color:var(--copper);}
-.article-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.4;}
-.article-card p{font-size:0.8rem;color:var(--muted);line-height:1.6;margin-bottom:12px;}
-.article-card .read-link{font-family:'Space Grotesk',sans-serif;font-size:0.78rem;color:var(--blue-bright);font-weight:600;}
-.article-card .read-time{position:absolute;top:16px;right:16px;font-size:0.65rem;color:var(--muted);}
-.no-results{text-align:center;padding:60px;color:var(--muted);}
-footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
-footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
-footer a:hover{color:var(--blue-bright);}
-@media(max-width:600px){.article-grid{grid-template-columns:1fr;}}
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 90px}
+h1,h2,h3,button{font-family:'Space Grotesk',sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none}
+.logo span{color:var(--copper)}
+main{max-width:1060px;margin:32px auto;padding:0 20px}
+.page-title{font-size:1.8rem;font-weight:700;margin-bottom:6px}
+.page-sub{color:var(--muted);font-size:.85rem;margin-bottom:20px}
+#blog-search{padding:9px 14px;border:1px solid var(--border);border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:.88rem;background:#fff;color:var(--text);width:100%;max-width:440px;margin-bottom:14px}
+#blog-search:focus{outline:none;border-color:var(--blue-bright)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filter-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:#fff;font-family:'Space Grotesk',sans-serif;font-size:.78rem;cursor:pointer;color:var(--muted);transition:.15s}
+.filter-btn.active{background:var(--blue-bright);color:#fff;border-color:var(--blue-bright)}
+.article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.article-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;display:block;transition:.15s;position:relative}
+.article-card:hover{border-color:var(--blue-bright);box-shadow:0 4px 16px rgba(27,166,255,.12);transform:translateY(-2px)}
+.cat-badge{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:10px}
+.article-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.4}
+.article-card p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.read-link{font-family:'Space Grotesk',sans-serif;font-size:.78rem;color:var(--blue-bright);font-weight:600}
+.read-time{position:absolute;top:16px;right:16px;font-size:.65rem;color:var(--muted)}
+.no-results{text-align:center;padding:60px;color:var(--muted);grid-column:1/-1}
+@media(max-width:600px){.article-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
   <a href="index.html" class="logo">Universal<span>Calculator</span></a>
-  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
-    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
-    <a href="faq.html" style="color:var(--muted);text-decoration:none">FAQ</a>
-    <a href="hilfe.html" style="color:var(--muted);text-decoration:none">Hilfe</a>
-  </nav>
-  <div style="margin-left:auto"><select id="lang-select" onchange="setLang(this.value)" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;">
-      <option value="de">🇩🇪 DE</option>
-      <option value="en">🇬🇧 EN</option>
-      <option value="fr">🇫🇷 FR</option>
-      <option value="es">🇪🇸 ES</option>
-      <option value="it">🇮🇹 IT</option>
-      <option value="pt">🇵🇹 PT</option>
-      <option value="nl">🇳🇱 NL</option>
-      <option value="pl">🇵🇱 PL</option>
-      <option value="tr">🇹🇷 TR</option>
-      <option value="ar">🇸🇦 AR</option>
-      <option value="zh">🇨🇳 ZH</option>
-    </select>
-  </div>
+  <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;margin-left:auto">
+    <option value="de">🇩🇪 DE</option>
+    <option value="en">🇬🇧 EN</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option>
+    <option value="pt">🇵🇹 PT</option>
+    <option value="nl">🇳🇱 NL</option>
+    <option value="pl">🇵🇱 PL</option>
+    <option value="tr">🇹🇷 TR</option>
+    <option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
 </header>
-
 <main>
-  <h1 class="page-title" data-i18n="blog_title">Wissenswertes</h1>
-  <p class="page-sub" data-i18n="blog_sub">Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr — verständlich erklärt.</p>
-
-  <div class="search-bar">
-    <input id="blog-search" type="text" placeholder="Artikel suchen …" data-i18n-placeholder="blog_search" id="blog-search-input" oninput="renderArticles()">
-  </div>
+  <h1 class="page-title" id="blog-title">Wissenswertes</h1>
+  <p class="page-sub" id="blog-sub">Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr.</p>
+  <input id="blog-search" type="text" placeholder="Artikel suchen …" oninput="renderBlog()">
   <div class="filters" id="blog-filters"></div>
-  <div class="article-grid" id="article-grid"></div>
+  <div class="article-grid" id="blog-grid"></div>
 </main>
-
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:12px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+  <p id="ck-text" style="font-size:0.8rem;flex:1 1 260px;margin:0">Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="ck-accept" onclick="localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+    <button id="ck-reject" onclick="localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
+  </div>
+</div>
+<script>if(!localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='flex';</script>
 <footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
   <div>
     <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
@@ -92,319 +78,151 @@ footer a:hover{color:var(--blue-bright);}
   </div>
   <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
 </footer>
-
 <script>
-const ARTICLES = [
-  {
-    cat:'Finanzen', slug:'wiki-zinseszins', readTime:'5 Min',
-    title:'Zinseszins: Die achte Weltwunder – wie Geld wirklich wächst',
-    desc:'Warum Albert Einstein den Zinseszins als mächtigste Kraft im Universum bezeichnete – und wie Sie ihn für sich nutzen.',
-  },
-  {
-    cat:'Finanzen', slug:'wiki-kredit', readTime:'6 Min',
-    title:'Kredit & Tilgung: Was Banken Ihnen nicht freiwillig erklären',
-    desc:'Effektivzins, Nominalzins, Restschuld – verstehen Sie, wie ein Darlehen wirklich funktioniert, bevor Sie unterschreiben.',
-  },
-  {
-    cat:'Finanzen', slug:'wiki-inflation', readTime:'4 Min',
-    title:'Inflation verstehen: Kaufkraft, Warenkorb und reale Rendite',
-    desc:'Was Inflation bedeutet, wie sie gemessen wird und warum Ihr Erspartes ohne Investition schleichend weniger wert wird.',
-  },
-  {
-    cat:'Finanzen', slug:'wiki-rente', readTime:'5 Min',
-    title:'Altersvorsorge: Wann muss ich anfangen zu sparen?',
-    desc:'Die Rentenlücke in Deutschland – wie groß sie ist, wie Sie sie berechnen und welche Strategien Experten empfehlen.',
-  },
-  {
-    cat:'Finanzen', slug:'wiki-waehrung', readTime:'4 Min',
-    title:'Wechselkurse: Wie entstehen Devisenkurse und wer legt sie fest?',
-    desc:'Angebot, Nachfrage, Zentralbanken – ein Überblick über die Mechanismen hinter den täglichen Wechselkursen.',
-  },
-  {
-    cat:'Mathematik', slug:'wiki-primzahlen', readTime:'4 Min',
-    title:'Primzahlen: Die Bausteine der Mathematik',
-    desc:'Warum Primzahlen in der Kryptographie unverzichtbar sind – und wie man große Primzahlen effizient findet.',
-  },
-  {
-    cat:'Mathematik', slug:'wiki-fibonacci', readTime:'5 Min',
-    title:'Fibonacci & der Goldene Schnitt in Natur und Kunst',
-    desc:'Muscheln, Blütenblätter, AktienCharts – die Fibonacci-Folge taucht überall auf. Ein Überblick mit Beispielen.',
-  },
-  {
-    cat:'Mathematik', slug:'wiki-geometrie', readTime:'6 Min',
-    title:'Geometrie im Alltag: Flächen, Volumen und warum das wichtig ist',
-    desc:'Von Tapeten bis Poolbefüllung – geometrische Formeln haben praktische Anwendungen in jedem Haushalt.',
-  },
-  {
-    cat:'Mathematik', slug:'wiki-statistik', readTime:'5 Min',
-    title:'Statistik verstehen: Mittelwert, Median und warum Lügen mit Zahlen so einfach ist',
-    desc:'Warum der Durchschnitt täuscht – und wann Sie unbedingt auf den Median schauen sollten.',
-  },
-  {
-    cat:'Gesundheit', slug:'wiki-bmi', readTime:'4 Min',
-    title:'BMI: Sinnvolles Maß oder überholtes Konzept?',
-    desc:'Geschichte, Berechnung und Grenzen des Body-Mass-Index – und welche alternativen Methoden Experten heute bevorzugen.',
-  },
-  {
-    cat:'Gesundheit', slug:'wiki-kalorien', readTime:'5 Min',
-    title:'Kalorien zählen: Grundumsatz, Aktivität und Energiebilanz erklärt',
-    desc:'Wie viele Kalorien brauchen Sie wirklich? Die Harris-Benedict-Formel und moderne TDEE-Berechnung im Vergleich.',
-  },
-  {
-    cat:'Gesundheit', slug:'wiki-herzfrequenz', readTime:'4 Min',
-    title:'Herzfrequenz-Zonen: Training nach Puls für maximalen Effekt',
-    desc:'Fettverbrennungszone, aerobe Zone, VO₂max – wie Sie mit der richtigen Herzfrequenz Ihre Fitnessziele erreichen.',
-  },
-  {
-    cat:'Gesundheit', slug:'wiki-koerperfett', readTime:'5 Min',
-    title:'Körperfettanteil: Messmethoden im Vergleich',
-    desc:'DEXA, Kalipper, BIA, US-Navy-Methode – welche Messung ist am genauesten und was sind gesunde Richtwerte?',
-  },
-  {
-    cat:'Datum & Zeit', slug:'wiki-zeitzonen', readTime:'4 Min',
-    title:'Zeitzonen: Wie die Welt ihre Uhren synchronisiert',
-    desc:'UTC, GMT, Sommerzeit – die Geschichte der Zeitzonen und warum es Orte gibt, die eine halbe Stunde abweichen.',
-  },
-  {
-    cat:'Datum & Zeit', slug:'wiki-kalender', readTime:'5 Min',
-    title:'Julianischer vs. Gregorianischer Kalender: Warum der Oktober 1582 fehlende Tage hatte',
-    desc:'Die spannende Geschichte der Kalenderreform und wie Schaltjahre dafür sorgen, dass unsere Uhr mit der Sonne übereinstimmt.',
-  },
-  {
-    cat:'Einheiten', slug:'wiki-si-einheiten', readTime:'5 Min',
-    title:'Das SI-Einheitensystem: Warum die Welt sieben Grundeinheiten braucht',
-    desc:'Meter, Kilogramm, Sekunde, Ampere – wie das internationale Einheitensystem entstanden ist und 2019 neu definiert wurde.',
-  },
-  {
-    cat:'Einheiten', slug:'wiki-temperatur', readTime:'4 Min',
-    title:'Temperaturskalen: Celsius, Fahrenheit, Kelvin und Rankine im Vergleich',
-    desc:'Woher kommen die verschiedenen Temperaturskalen – und warum messen Amerikaner in Fahrenheit?',
-  },
-  {
-    cat:'Physik', slug:'wiki-ohm', readTime:'5 Min',
-    title:'Das Ohmsche Gesetz: Grundlage der Elektrotechnik',
-    desc:'U = R × I – wie Georg Simon Ohm den Zusammenhang zwischen Spannung, Strom und Widerstand entdeckte.',
-  },
-  {
-    cat:'Physik', slug:'wiki-freifall', readTime:'4 Min',
-    title:'Freier Fall und Gravitation: Von Galileo bis zur Raumfahrt',
-    desc:'Warum fallen eine Feder und ein Hammer im Vakuum gleichzeitig? Die Physik des freien Falls anschaulich erklärt.',
-  },
-  {
-    cat:'Sonstiges', slug:'wiki-passwort', readTime:'4 Min',
-    title:'Sichere Passwörter: Wie lang muss ein Passwort sein?',
-    desc:'Entropie, Brute-Force-Angriffe und die Mathematik hinter sicheren Passwörtern – inklusive konkreter Empfehlungen.',
-  },
-  {
-    cat:'Sonstiges', slug:'wiki-co2', readTime:'5 Min',
-    title:'CO₂-Fußabdruck: Was Ihre alltäglichen Entscheidungen wirklich kosten',
-    desc:'Fliegen, Autofahren, Ernährung – die größten Hebel zur Reduktion Ihres persönlichen CO₂-Ausstoßes im Vergleich.',
-  },
-  {
-    cat:'Sonstiges', slug:'wiki-reifen', readTime:'3 Min',
-    title:'Reifenbezeichnungen entschlüsselt: Was 205/55 R16 bedeutet',
-    desc:'Breite, Querschnitt, Reifentyp, Felgengröße – so lesen Sie die Zahlen auf Ihrem Autoreifen richtig.',
-  },
-];
+window.PAGE_TITLES = {};
+const BLOG_DATA = {"de": {"title": "Wissenswertes", "sub": "Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr — verständlich erklärt.", "search": "Artikel suchen …", "all": "Alle", "read": "Artikel lesen →", "min": "Min", "cats": ["Finanzen", "Mathematik", "Gesundheit", "Datum & Zeit", "Einheiten", "Physik", "Sonstiges"], "articles": [{"cat": "Finanzen", "slug": "wiki-zinseszins", "title": "Zinseszins: Die achte Weltwunder", "desc": "Warum der Zinseszins als mächtigste Kraft im Universum gilt und wie Sie ihn für sich nutzen.", "min": 5}, {"cat": "Finanzen", "slug": "wiki-kredit", "title": "Kredit & Tilgung: Was Banken nicht erklären", "desc": "Effektivzins, Nominalzins, Restschuld – verstehen Sie, wie ein Darlehen wirklich funktioniert.", "min": 6}, {"cat": "Finanzen", "slug": "wiki-inflation", "title": "Inflation verstehen: Kaufkraft und reale Rendite", "desc": "Was Inflation bedeutet, wie sie gemessen wird und warum Ihr Erspartes schleichend weniger wert wird.", "min": 4}, {"cat": "Finanzen", "slug": "wiki-rente", "title": "Altersvorsorge: Wann muss ich anfangen zu sparen?", "desc": "Die Rentenlücke in Deutschland und welche Strategien Experten empfehlen.", "min": 5}, {"cat": "Finanzen", "slug": "wiki-waehrung", "title": "Wechselkurse: Wie entstehen Devisenkurse?", "desc": "Angebot, Nachfrage, Zentralbanken – ein Überblick über die Mechanismen hinter den Wechselkursen.", "min": 4}, {"cat": "Mathematik", "slug": "wiki-primzahlen", "title": "Primzahlen: Die Bausteine der Mathematik", "desc": "Warum Primzahlen in der Kryptographie unverzichtbar sind und wie man sie effizient findet.", "min": 4}, {"cat": "Mathematik", "slug": "wiki-fibonacci", "title": "Fibonacci & der Goldene Schnitt in Natur und Kunst", "desc": "Muscheln, Blütenblätter, Aktiencharts – die Fibonacci-Folge taucht überall auf.", "min": 5}, {"cat": "Mathematik", "slug": "wiki-geometrie", "title": "Geometrie im Alltag: Flächen, Volumen und mehr", "desc": "Von Tapeten bis Poolbefüllung – geometrische Formeln haben praktische Anwendungen.", "min": 6}, {"cat": "Mathematik", "slug": "wiki-statistik", "title": "Statistik: Mittelwert, Median und Lügen mit Zahlen", "desc": "Warum der Durchschnitt täuscht – und wann Sie unbedingt auf den Median schauen sollten.", "min": 5}, {"cat": "Gesundheit", "slug": "wiki-bmi", "title": "BMI: Sinnvolles Maß oder überholtes Konzept?", "desc": "Geschichte, Berechnung und Grenzen des Body-Mass-Index – und welche Alternativen Experten bevorzugen.", "min": 4}, {"cat": "Gesundheit", "slug": "wiki-kalorien", "title": "Kalorien zählen: Grundumsatz und Energiebilanz", "desc": "Wie viele Kalorien brauchen Sie wirklich? Die Harris-Benedict-Formel erklärt.", "min": 5}, {"cat": "Gesundheit", "slug": "wiki-herzfrequenz", "title": "Herzfrequenz-Zonen: Training nach Puls", "desc": "Fettverbrennungszone, aerobe Zone, VO₂max – mit der richtigen Herzfrequenz zum Ziel.", "min": 4}, {"cat": "Gesundheit", "slug": "wiki-koerperfett", "title": "Körperfettanteil: Messmethoden im Vergleich", "desc": "DEXA, Kalipper, BIA, US-Navy-Methode – welche Messung ist am genauesten?", "min": 5}, {"cat": "Datum & Zeit", "slug": "wiki-zeitzonen", "title": "Zeitzonen: Wie die Welt ihre Uhren synchronisiert", "desc": "UTC, GMT, Sommerzeit – die Geschichte der Zeitzonen und warum manche eine halbe Stunde abweichen.", "min": 4}, {"cat": "Datum & Zeit", "slug": "wiki-kalender", "title": "Julianischer vs. Gregorianischer Kalender", "desc": "Die spannende Geschichte der Kalenderreform und wie Schaltjahre die Uhr mit der Sonne synchronisieren.", "min": 5}, {"cat": "Einheiten", "slug": "wiki-si-einheiten", "title": "Das SI-Einheitensystem: Sieben Grundeinheiten", "desc": "Meter, Kilogramm, Sekunde, Ampere – wie das internationale Einheitensystem entstanden ist.", "min": 5}, {"cat": "Einheiten", "slug": "wiki-temperatur", "title": "Temperaturskalen: Celsius, Fahrenheit, Kelvin", "desc": "Woher kommen die verschiedenen Temperaturskalen – und warum messen Amerikaner in Fahrenheit?", "min": 4}, {"cat": "Physik", "slug": "wiki-ohm", "title": "Das Ohmsche Gesetz: Grundlage der Elektrotechnik", "desc": "U = R × I – wie Georg Simon Ohm den Zusammenhang zwischen Spannung, Strom und Widerstand entdeckte.", "min": 5}, {"cat": "Physik", "slug": "wiki-freifall", "title": "Freier Fall und Gravitation: Von Galileo bis Raumfahrt", "desc": "Warum fallen eine Feder und ein Hammer im Vakuum gleichzeitig? Die Physik des freien Falls.", "min": 4}, {"cat": "Sonstiges", "slug": "wiki-passwort", "title": "Sichere Passwörter: Wie lang muss ein Passwort sein?", "desc": "Entropie, Brute-Force-Angriffe und die Mathematik hinter sicheren Passwörtern.", "min": 4}, {"cat": "Sonstiges", "slug": "wiki-co2", "title": "CO₂-Fußabdruck: Was Ihre Entscheidungen kosten", "desc": "Fliegen, Autofahren, Ernährung – die größten Hebel zur Reduktion Ihres CO₂-Ausstoßes.", "min": 5}, {"cat": "Sonstiges", "slug": "wiki-reifen", "title": "Reifenbezeichnungen entschlüsselt: 205/55 R16", "desc": "Breite, Querschnitt, Reifentyp, Felgengröße – so lesen Sie die Zahlen auf Ihrem Autoreifen.", "min": 3}]}, "en": {"title": "Knowledge Base", "sub": "Background knowledge on mathematics, finance, health and more — explained clearly.", "search": "Search articles …", "all": "All", "read": "Read article →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "fr": {"title": "Base de connaissances", "sub": "Connaissances générales sur les mathématiques, la finance, la santé et plus encore.", "search": "Rechercher des articles …", "all": "Tout", "read": "Lire l'article →", "min": "min", "cats": ["Finance", "Mathématiques", "Santé", "Date & Heure", "Unités", "Physique", "Divers"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Intérêts composés : la huitième merveille du monde", "desc": "Pourquoi les intérêts composés sont la force la plus puissante de l'univers et comment les utiliser.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Prêts et remboursement : ce que les banques ne disent pas", "desc": "Taux effectif, taux nominal, solde restant – comment fonctionne vraiment un crédit.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Comprendre l'inflation : pouvoir d'achat et rendement réel", "desc": "Ce que signifie l'inflation, comment elle est mesurée et pourquoi vos économies perdent de la valeur.", "min": 4}, {"cat": "Mathématiques", "slug": "wiki-primzahlen", "title": "Nombres premiers : les blocs de construction des mathématiques", "desc": "Pourquoi les nombres premiers sont indispensables en cryptographie.", "min": 4}, {"cat": "Mathématiques", "slug": "wiki-fibonacci", "title": "Fibonacci & le nombre d'or dans la nature et l'art", "desc": "Coquillages, pétales, graphiques boursiers – la suite de Fibonacci apparaît partout.", "min": 5}, {"cat": "Santé", "slug": "wiki-bmi", "title": "IMC : mesure utile ou concept dépassé ?", "desc": "Histoire, calcul et limites de l'indice de masse corporelle – et quelles alternatives les experts préfèrent.", "min": 4}, {"cat": "Santé", "slug": "wiki-kalorien", "title": "Compter les calories : métabolisme de base et bilan énergétique", "desc": "Combien de calories avez-vous vraiment besoin ? La formule Harris-Benedict expliquée.", "min": 5}, {"cat": "Date & Heure", "slug": "wiki-zeitzonen", "title": "Fuseaux horaires : comment le monde synchronise ses horloges", "desc": "UTC, GMT, heure d'été – l'histoire des fuseaux horaires.", "min": 4}, {"cat": "Unités", "slug": "wiki-si-einheiten", "title": "Le système SI : sept unités de base", "desc": "Mètre, kilogramme, seconde, ampère – comment le système international d'unités est né.", "min": 5}, {"cat": "Physique", "slug": "wiki-ohm", "title": "La loi d'Ohm : base de l'électrotechnique", "desc": "U = R × I – comment Georg Simon Ohm a découvert la relation entre tension, courant et résistance.", "min": 5}, {"cat": "Divers", "slug": "wiki-passwort", "title": "Mots de passe sécurisés : quelle longueur ?", "desc": "Entropie, attaques par force brute et mathématiques derrière les mots de passe sécurisés.", "min": 4}, {"cat": "Divers", "slug": "wiki-co2", "title": "Empreinte CO₂ : ce que vos décisions coûtent vraiment", "desc": "Voler, conduire, alimentation – les principaux leviers pour réduire vos émissions.", "min": 5}]}, "es": {"title": "Base de conocimiento", "sub": "Conocimiento de fondo sobre matemáticas, finanzas, salud y más — explicado claramente.", "search": "Buscar artículos …", "all": "Todo", "read": "Leer artículo →", "min": "min", "cats": ["Finanzas", "Matemáticas", "Salud", "Fecha y hora", "Unidades", "Física", "Varios"], "articles": [{"cat": "Finanzas", "slug": "wiki-zinseszins", "title": "Interés compuesto: la octava maravilla del mundo", "desc": "Por qué el interés compuesto es la fuerza más poderosa del universo y cómo aprovecharlo.", "min": 5}, {"cat": "Finanzas", "slug": "wiki-inflation", "title": "Entender la inflación: poder adquisitivo y rentabilidad real", "desc": "Qué significa la inflación, cómo se mide y por qué tus ahorros pierden valor lentamente.", "min": 4}, {"cat": "Matemáticas", "slug": "wiki-primzahlen", "title": "Números primos: los bloques de construcción de las matemáticas", "desc": "Por qué los números primos son indispensables en criptografía.", "min": 4}, {"cat": "Matemáticas", "slug": "wiki-fibonacci", "title": "Fibonacci y la proporción áurea en la naturaleza y el arte", "desc": "Caracolas, pétalos, gráficos bursátiles – la secuencia de Fibonacci aparece en todas partes.", "min": 5}, {"cat": "Salud", "slug": "wiki-bmi", "title": "IMC: ¿medida útil o concepto obsoleto?", "desc": "Historia, cálculo y límites del índice de masa corporal – y qué alternativas prefieren los expertos.", "min": 4}, {"cat": "Salud", "slug": "wiki-kalorien", "title": "Contar calorías: metabolismo basal y balance energético", "desc": "¿Cuántas calorías necesitas realmente? La fórmula de Harris-Benedict explicada.", "min": 5}, {"cat": "Física", "slug": "wiki-ohm", "title": "La ley de Ohm: base de la electrotecnia", "desc": "U = R × I – cómo Georg Simon Ohm descubrió la relación entre tensión, corriente y resistencia.", "min": 5}, {"cat": "Varios", "slug": "wiki-passwort", "title": "Contraseñas seguras: ¿qué longitud debe tener?", "desc": "Entropía, ataques de fuerza bruta y las matemáticas detrás de las contraseñas seguras.", "min": 4}, {"cat": "Varios", "slug": "wiki-co2", "title": "Huella de CO₂: lo que cuestan tus decisiones", "desc": "Volar, conducir, alimentación – las principales palancas para reducir tus emisiones de CO₂.", "min": 5}]}, "it": {"title": "Conoscenza", "sub": "Conoscenze generali su matematica, finanza, salute e altro.", "search": "Cerca articoli …", "all": "Tutti", "read": "Leggi articolo →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "pt": {"title": "Conhecimento", "sub": "Conhecimento de fundo sobre matemática, finanças, saúde e mais.", "search": "Pesquisar artigos …", "all": "Tudo", "read": "Ler artigo →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "nl": {"title": "Kennisbank", "sub": "Achtergrondkennis over wiskunde, financiën, gezondheid en meer.", "search": "Artikelen zoeken …", "all": "Alle", "read": "Artikel lezen →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "pl": {"title": "Wiedza", "sub": "Wiedza ogólna z matematyki, finansów, zdrowia i innych dziedzin.", "search": "Szukaj artykułów …", "all": "Wszystkie", "read": "Czytaj artykuł →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "tr": {"title": "Bilgi Tabanı", "sub": "Matematik, finans, sağlık ve daha fazlası hakkında arka plan bilgisi.", "search": "Makale ara …", "all": "Tümü", "read": "Makaleyi oku →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "ar": {"title": "قاعدة المعرفة", "sub": "معرفة خلفية حول الرياضيات والمالية والصحة والمزيد.", "search": "ابحث عن مقالات …", "all": "الكل", "read": "اقرأ المقال →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}, "zh": {"title": "知识库", "sub": "关于数学、金融、健康等领域的背景知识 — 清晰易懂。", "search": "搜索文章 …", "all": "全部", "read": "阅读文章 →", "min": "min", "cats": ["Finance", "Mathematics", "Health", "Date & Time", "Units", "Physics", "Misc"], "articles": [{"cat": "Finance", "slug": "wiki-zinseszins", "title": "Compound Interest: The Eighth Wonder of the World", "desc": "Why compound interest is called the most powerful force in the universe and how to use it for yourself.", "min": 5}, {"cat": "Finance", "slug": "wiki-kredit", "title": "Loans & Repayment: What Banks Don't Tell You", "desc": "Effective rate, nominal rate, remaining debt – understand how a loan really works.", "min": 6}, {"cat": "Finance", "slug": "wiki-inflation", "title": "Understanding Inflation: Purchasing Power and Real Returns", "desc": "What inflation means, how it's measured and why your savings slowly lose value.", "min": 4}, {"cat": "Finance", "slug": "wiki-rente", "title": "Retirement Savings: When Should I Start?", "desc": "The pension gap and which strategies experts recommend.", "min": 5}, {"cat": "Finance", "slug": "wiki-waehrung", "title": "Exchange Rates: How Are Currency Rates Set?", "desc": "Supply, demand, central banks – an overview of the mechanisms behind exchange rates.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-primzahlen", "title": "Prime Numbers: The Building Blocks of Mathematics", "desc": "Why prime numbers are indispensable in cryptography and how to find them efficiently.", "min": 4}, {"cat": "Mathematics", "slug": "wiki-fibonacci", "title": "Fibonacci & the Golden Ratio in Nature and Art", "desc": "Shells, petals, stock charts – the Fibonacci sequence appears everywhere.", "min": 5}, {"cat": "Mathematics", "slug": "wiki-geometrie", "title": "Everyday Geometry: Areas, Volumes and More", "desc": "From wallpaper to pool filling – geometric formulas have practical applications everywhere.", "min": 6}, {"cat": "Mathematics", "slug": "wiki-statistik", "title": "Statistics: Mean, Median and Lying with Numbers", "desc": "Why the average deceives – and when you absolutely need to look at the median.", "min": 5}, {"cat": "Health", "slug": "wiki-bmi", "title": "BMI: Useful Measure or Outdated Concept?", "desc": "History, calculation and limits of the Body Mass Index – and which alternatives experts prefer.", "min": 4}, {"cat": "Health", "slug": "wiki-kalorien", "title": "Counting Calories: Basal Metabolic Rate and Energy Balance", "desc": "How many calories do you really need? The Harris-Benedict formula explained.", "min": 5}, {"cat": "Health", "slug": "wiki-herzfrequenz", "title": "Heart Rate Zones: Training by Pulse", "desc": "Fat-burning zone, aerobic zone, VO₂max – achieve your goals with the right heart rate.", "min": 4}, {"cat": "Health", "slug": "wiki-koerperfett", "title": "Body Fat Percentage: Measuring Methods Compared", "desc": "DEXA, caliper, BIA, US Navy method – which measurement is most accurate?", "min": 5}, {"cat": "Date & Time", "slug": "wiki-zeitzonen", "title": "Time Zones: How the World Synchronises Its Clocks", "desc": "UTC, GMT, daylight saving – the history of time zones and why some differ by half an hour.", "min": 4}, {"cat": "Date & Time", "slug": "wiki-kalender", "title": "Julian vs. Gregorian Calendar", "desc": "The fascinating history of calendar reform and how leap years keep clocks in sync with the sun.", "min": 5}, {"cat": "Units", "slug": "wiki-si-einheiten", "title": "The SI Unit System: Seven Base Units", "desc": "Metre, kilogram, second, ampere – how the international system of units came to be.", "min": 5}, {"cat": "Units", "slug": "wiki-temperatur", "title": "Temperature Scales: Celsius, Fahrenheit, Kelvin", "desc": "Where do the different temperature scales come from – and why do Americans use Fahrenheit?", "min": 4}, {"cat": "Physics", "slug": "wiki-ohm", "title": "Ohm's Law: Foundation of Electrical Engineering", "desc": "U = R × I – how Georg Simon Ohm discovered the relationship between voltage, current and resistance.", "min": 5}, {"cat": "Physics", "slug": "wiki-freifall", "title": "Free Fall and Gravity: From Galileo to Spaceflight", "desc": "Why a feather and a hammer fall simultaneously in a vacuum – the physics of free fall.", "min": 4}, {"cat": "Misc", "slug": "wiki-passwort", "title": "Secure Passwords: How Long Should a Password Be?", "desc": "Entropy, brute-force attacks and the mathematics behind secure passwords.", "min": 4}, {"cat": "Misc", "slug": "wiki-co2", "title": "CO₂ Footprint: What Your Daily Decisions Really Cost", "desc": "Flying, driving, diet – the biggest levers to reduce your personal CO₂ emissions.", "min": 5}, {"cat": "Misc", "slug": "wiki-reifen", "title": "Tyre Markings Decoded: 205/55 R16", "desc": "Width, aspect ratio, tyre type, rim size – how to read the numbers on your tyre.", "min": 3}]}};
+Object.keys(BLOG_DATA).forEach(function(l) { window.PAGE_TITLES[l] = BLOG_DATA[l].title + ' – Universal Calculator'; });
 
-const CATS_DE = ['Alle', 'Finanzen', 'Mathematik', 'Gesundheit', 'Datum & Zeit', 'Einheiten', 'Physik', 'Sonstiges'];
-const CATS = CATS_DE;
-function getCatLabel(catDe) {
-  const lang = localStorage.getItem('lang') || 'de';
-  const bi = window._blogI18n && window._blogI18n[lang];
-  if (!bi) return catDe;
-  if (catDe === 'Alle') return bi.cat_all || catDe;
-  const key = 'cat_' + catDe.replace(' & Zeit','').replace(' & Stunden','').replace('Datum & Zeit','Datum');
-  return bi[key] || catDe;
-}
-function getReadLabel() {
-  const lang = localStorage.getItem('lang') || 'de';
-  const bi = window._blogI18n && window._blogI18n[lang];
-  return (bi && bi.blog_read) || 'Artikel lesen →';
-}
-function getMinLabel() {
-  const lang = localStorage.getItem('lang') || 'de';
-  const bi = window._blogI18n && window._blogI18n[lang];
-  return (bi && bi.blog_read_time) || 'Min';
-}
-let activeCat = 'Alle';
+const CAT_CLASS_MAP = function(cat) {
+  const l = cat.toLowerCase();
+  if (/finan|finanz/.test(l)) return 'cat-finance';
+  if (/math|matem|wiskun|fizyk|matematik|رياض|数学/.test(l)) return 'cat-math';
+  if (/gesund|health|sant|salud|salut|saúde|gezond|zdrow|sağlık|صح|健康/.test(l)) return 'cat-health';
+  if (/datum|date|fecha|data|tarih|تاريخ|日期/.test(l)) return 'cat-date';
+  if (/einheit|unit|unité|unidad|unità|eenheden|jednostk|birim|وحدة|单位/.test(l)) return 'cat-units';
+  if (/physik|physics|physique|física|fisica|fysica|fizyk|fizik|فيزي|物理/.test(l)) return 'cat-physics';
+  return 'cat-misc';
+};
 
-function renderFilters() {
-  document.getElementById('blog-filters').innerHTML = CATS.map(c =>
-    `<button class="filter-btn${c===activeCat?' active':''}" onclick="setCat('${c}')">${getCatLabel(c)}</button>`
-  ).join('');
+let activeBlogCat = '__all__';
+
+function renderPage(lang) {
+  const d = BLOG_DATA[lang] || BLOG_DATA.de;
+  document.getElementById('blog-title').textContent = d.title;
+  document.getElementById('blog-sub').textContent = d.sub;
+  document.getElementById('blog-search').placeholder = d.search;
+  
+  const cats = ['__all__', ...d.cats];
+  document.getElementById('blog-filters').innerHTML = cats.map(function(c) {
+    const label = c === '__all__' ? d.all : c;
+    return `<button class="filter-btn${c===activeBlogCat?' active':''}" onclick="setBlogCat('${c}','${lang}')">${label}</button>`;
+  }).join('');
+  
+  renderBlog(lang);
 }
 
-function setCat(c) {
-  activeCat = c;
-  renderFilters();
-  renderArticles();
+function setBlogCat(cat, lang) {
+  activeBlogCat = cat;
+  renderPage(lang || getLang());
 }
 
-function catClass(cat) {
-  const map = {'Finanzen':'cat-finanzen','Mathematik':'cat-mathe','Gesundheit':'cat-gesundheit','Datum & Zeit':'cat-datum','Einheiten':'cat-einheiten','Physik':'cat-physik','Sonstiges':'cat-sonstiges'};
-  return map[cat] || 'cat-sonstiges';
-}
-
-function renderArticles() {
-  const q = document.getElementById('blog-search').value.toLowerCase();
-  const grid = document.getElementById('article-grid');
-  const filtered = ARTICLES.filter(a => {
-    const catMatch = activeCat === 'Alle' || a.cat === activeCat;
-    const textMatch = !q || a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.cat.toLowerCase().includes(q);
-    return catMatch && textMatch;
+function renderBlog(lang) {
+  lang = lang || getLang();
+  const d = BLOG_DATA[lang] || BLOG_DATA.de;
+  const q = (document.getElementById('blog-search').value || '').toLowerCase();
+  const grid = document.getElementById('blog-grid');
+  
+  const items = d.articles.filter(function(a) {
+    const catOk = activeBlogCat === '__all__' || a.cat === activeBlogCat;
+    const textOk = !q || a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q);
+    return catOk && textOk;
   });
-  if (!filtered.length) {
-    grid.innerHTML = '<div class="no-results" style="grid-column:1/-1">Keine Artikel gefunden. Bitte andere Suchbegriffe versuchen.</div>';
+  
+  if (!items.length) {
+    grid.innerHTML = '<div class="no-results">No results / Keine Ergebnisse</div>';
     return;
   }
-  grid.innerHTML = filtered.map(a => `
-    <a class="article-card" href="${a.slug}.html">
-      <span class="read-time">⏱ ${a.readTime.replace('Min', getMinLabel())}</span>
-      <span class="cat-badge ${catClass(a.cat)}">${a.cat}</span>
+  
+  grid.innerHTML = items.map(function(a) {
+    const cls = CAT_CLASS_MAP(a.cat);
+    return `<a class="article-card" href="${a.slug}.html?lang=${lang}">
+      <span class="read-time">⏱ ${a.min} ${d.min}</span>
+      <span class="cat-badge ${cls}">${a.cat}</span>
       <h3>${a.title}</h3>
       <p>${a.desc}</p>
-      <span class="read-link">${getReadLabel()}</span>
-    </a>
-  `).join('');
+      <span class="read-link">${d.read}</span>
+    </a>`;
+  }).join('');
 }
 
-renderFilters();
-renderArticles();
+document.addEventListener('input', function(e) {
+  if (e.target.id === 'blog-search') renderBlog();
+});
 </script>
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:14px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
-<p data-i18n="cookie_text" style="font-size:0.8rem;flex:1 1 280px;margin:0">🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
-<div style="display:flex;gap:8px;">
-<button onclick="(function(){localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_accept" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
-<button onclick="(function(){localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_reject" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
-</div>
-</div>
-<script>if(!localStorage.getItem('cookie-consent')){document.getElementById('cookie-banner').style.display='flex';}</script>
-
+<style>
+.cat-finance{background:#E8F4FF;color:#1BA6FF}
+.cat-math{background:#F0FDF4;color:#16a34a}
+.cat-health{background:#FEF9C3;color:#a16207}
+.cat-date{background:#F3E8FF;color:#7c3aed}
+.cat-units{background:#FEE2E2;color:#dc2626}
+.cat-physics{background:#FFF7ED;color:#ea580c}
+.cat-misc{background:#F3E3DA;color:#C77A4A}
+</style>
 
 <script>
-// ── i18n ──
-const I18N_PAGES = {
-de:{
-  nav_calc:'Rechner',nav_blog:'Wissenswertes',nav_faq:'FAQ',nav_help:'Hilfe',
-  nav_imprint:'Impressum',nav_privacy:'Datenschutz',
-  footer_copy:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit',
-  cookie_text:'🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.',
-  cookie_accept:'Alle akzeptieren',cookie_reject:'Nur notwendige',
-},
-en:{
-  nav_calc:'Calculator',nav_blog:'Knowledge',nav_faq:'FAQ',nav_help:'Help',
-  nav_imprint:'Imprint',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · All calculations run locally in your browser · No guarantee of accuracy',
-  cookie_text:'🍪 We use cookies for advertising (Google AdSense) and to improve our service.',
-  cookie_accept:'Accept all',cookie_reject:'Necessary only',
-},
-fr:{
-  nav_calc:'Calculateurs',nav_blog:'Savoir',nav_faq:'FAQ',nav_help:'Aide',
-  nav_imprint:'Mentions légales',nav_privacy:'Confidentialité',
-  footer_copy:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude",
-  cookie_text:"🍪 Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",
-  cookie_accept:'Tout accepter',cookie_reject:'Nécessaires seulement',
-},
-es:{
-  nav_calc:'Calculadoras',nav_blog:'Conocimiento',nav_faq:'FAQ',nav_help:'Ayuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidad',
-  footer_copy:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud',
-  cookie_text:'🍪 Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.',
-  cookie_accept:'Aceptar todo',cookie_reject:'Solo necesarias',
-},
-it:{
-  nav_calc:'Calcolatori',nav_blog:'Conoscenza',nav_faq:'FAQ',nav_help:'Aiuto',
-  nav_imprint:'Note legali',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia di precisione',
-  cookie_text:'🍪 Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.',
-  cookie_accept:'Accetta tutto',cookie_reject:'Solo necessari',
-},
-pt:{
-  nav_calc:'Calculadoras',nav_blog:'Conhecimento',nav_faq:'FAQ',nav_help:'Ajuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidade',
-  footer_copy:"© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia de precisão",
-  cookie_text:'🍪 Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.',
-  cookie_accept:'Aceitar tudo',cookie_reject:'Somente necessários',
-},
-nl:{
-  nav_calc:'Rekenmachines',nav_blog:'Kennis',nav_faq:'FAQ',nav_help:'Hulp',
-  nav_imprint:'Impressum',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie op juistheid',
-  cookie_text:'🍪 We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.',
-  cookie_accept:'Alles accepteren',cookie_reject:'Alleen noodzakelijk',
-},
-pl:{
-  nav_calc:'Kalkulatory',nav_blog:'Wiedza',nav_faq:'FAQ',nav_help:'Pomoc',
-  nav_imprint:'Informacje prawne',nav_privacy:'Prywatność',
-  footer_copy:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane są lokalnie · Bez gwarancji dokładności',
-  cookie_text:'🍪 Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.',
-  cookie_accept:'Akceptuj wszystkie',cookie_reject:'Tylko niezbędne',
-},
-tr:{
-  nav_calc:'Hesap Makineleri',nav_blog:'Bilgi',nav_faq:'SSS',nav_help:'Yardım',
-  nav_imprint:'Künye',nav_privacy:'Gizlilik',
-  footer_copy:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Doğruluk garantisi yoktur',
-  cookie_text:'🍪 Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.',
-  cookie_accept:'Tümünü kabul et',cookie_reject:'Yalnızca gerekli',
-},
-ar:{
-  nav_calc:'الآلات الحاسبة',nav_blog:'المعرفة',nav_faq:'الأسئلة الشائعة',nav_help:'المساعدة',
-  nav_imprint:'بيانات المشغّل',nav_privacy:'الخصوصية',
-  footer_copy:'© 2026 Universal-Calculator · تتم جميع العمليات الحسابية محلياً · لا ضمان على الدقة',
-  cookie_text:'🍪 نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.',
-  cookie_accept:'قبول الكل',cookie_reject:'الضرورية فقط',
-},
-zh:{
-  nav_calc:'计算器',nav_blog:'知识库',nav_faq:'常见问题',nav_help:'帮助',
-  nav_imprint:'版权信息',nav_privacy:'隐私政策',
-  footer_copy:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性',
-  cookie_text:'🍪 我们使用Cookie用于广告（Google AdSense）和改善服务。',
-  cookie_accept:'全部接受',cookie_reject:'仅必要',
-},
+// ── Core i18n engine ──────────────────────────────────────────
+const NAV_I18N = {
+  de:{calc:'Rechner',blog:'Wissenswertes',faq:'FAQ',help:'Hilfe',imprint:'Impressum',privacy:'Datenschutz',footer:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit'},
+  en:{calc:'Calculator',blog:'Knowledge',faq:'FAQ',help:'Help',imprint:'Imprint',privacy:'Privacy',footer:'© 2026 Universal-Calculator · All calculations run locally · No guarantee of accuracy'},
+  fr:{calc:'Calculateurs',blog:'Savoir',faq:'FAQ',help:'Aide',imprint:'Mentions légales',privacy:'Confidentialité',footer:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude"},
+  es:{calc:'Calculadoras',blog:'Conocimiento',faq:'FAQ',help:'Ayuda',imprint:'Aviso legal',privacy:'Privacidad',footer:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud'},
+  it:{calc:'Calcolatori',blog:'Conoscenza',faq:'FAQ',help:'Aiuto',imprint:'Note legali',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia'},
+  pt:{calc:'Calculadoras',blog:'Conhecimento',faq:'FAQ',help:'Ajuda',imprint:'Aviso legal',privacy:'Privacidade',footer:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia'},
+  nl:{calc:'Rekenmachines',blog:'Kennis',faq:'FAQ',help:'Hulp',imprint:'Impressum',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie'},
+  pl:{calc:'Kalkulatory',blog:'Wiedza',faq:'FAQ',help:'Pomoc',imprint:'Informacje prawne',privacy:'Prywatność',footer:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane lokalnie · Bez gwarancji'},
+  tr:{calc:'Hesap Makineleri',blog:'Bilgi',faq:'SSS',help:'Yardım',imprint:'Künye',privacy:'Gizlilik',footer:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Garanti yoktur'},
+  ar:{calc:'الآلات الحاسبة',blog:'المعرفة',faq:'الأسئلة الشائعة',help:'المساعدة',imprint:'بيانات المشغّل',privacy:'الخصوصية',footer:'© 2026 Universal-Calculator · تتم العمليات الحسابية محلياً · لا ضمان على الدقة'},
+  zh:{calc:'计算器',blog:'知识库',faq:'常见问题',help:'帮助',imprint:'版权信息',privacy:'隐私政策',footer:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性'},
 };
-function setLang(l){
-  localStorage.setItem('lang',l);
-  const u=new URL(window.location.href);
-  u.searchParams.set('lang',l);
-  window.location.href=u.toString();
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', l);
+    history.replaceState(null, '', u.toString());
+  } catch(e) {}
+  applyNav(l);
+  if (typeof renderPage === 'function') renderPage(l);
 }
-(function(){
-  const p=new URLSearchParams(window.location.search);
-  const l=p.get('lang')||localStorage.getItem('lang')||'de';
-  const t=I18N_PAGES[l]||I18N_PAGES['de'];
-  const root=document.documentElement;
-  root.lang=l; root.dir=(l==='ar')?'rtl':'ltr';
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(t[k]!==undefined) el.textContent=t[k];
-  });
-  const sel=document.getElementById('lang-select');
-  if(sel) sel.value=l;
-  // Translate placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
-    const k = el.getAttribute('data-i18n-placeholder');
-    const bi = window._blogI18n && window._blogI18n[l];
-    if (bi && bi[k]) el.placeholder = bi[k];
-  });
-  // Re-render filters with translated category names
-  if (typeof renderFilters === 'function') renderFilters();
-})();
-</script>
 
+function getLang() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('lang')) return p.get('lang');
+  } catch(e) {}
+  return localStorage.getItem('lang') || 'de';
+}
 
-<script>
-// Blog i18n patch — merge blog-specific keys into I18N_PAGES
-(function() {
-  var blogI18n = {"de": {"blog_title": "Wissenswertes", "blog_sub": "Hintergrundwissen zu Mathematik, Finanzen, Gesundheit und mehr — verständlich erklärt.", "blog_search": "Artikel suchen …", "blog_read": "Artikel lesen →", "blog_read_time": "Min", "cat_all": "Alle", "cat_Finanzen": "Finanzen", "cat_Mathematik": "Mathematik", "cat_Gesundheit": "Gesundheit", "cat_Datum": "Datum & Zeit", "cat_Einheiten": "Einheiten", "cat_Physik": "Physik", "cat_Sonstiges": "Sonstiges"}, "en": {"blog_title": "Knowledge Base", "blog_sub": "Background knowledge on mathematics, finance, health and more — explained clearly.", "blog_search": "Search articles …", "blog_read": "Read article →", "blog_read_time": "min", "cat_all": "All", "cat_Finanzen": "Finance", "cat_Mathematik": "Mathematics", "cat_Gesundheit": "Health", "cat_Datum": "Date & Time", "cat_Einheiten": "Units", "cat_Physik": "Physics", "cat_Sonstiges": "Misc"}, "fr": {"blog_title": "Base de connaissances", "blog_sub": "Connaissances générales sur les mathématiques, la finance, la santé et plus encore.", "blog_search": "Rechercher des articles …", "blog_read": "Lire l'article →", "blog_read_time": "min", "cat_all": "Tout", "cat_Finanzen": "Finance", "cat_Mathematik": "Mathématiques", "cat_Gesundheit": "Santé", "cat_Datum": "Date & Heure", "cat_Einheiten": "Unités", "cat_Physik": "Physique", "cat_Sonstiges": "Divers"}, "es": {"blog_title": "Base de conocimiento", "blog_sub": "Conocimiento de fondo sobre matemáticas, finanzas, salud y más — explicado claramente.", "blog_search": "Buscar artículos …", "blog_read": "Leer artículo →", "blog_read_time": "min", "cat_all": "Todo", "cat_Finanzen": "Finanzas", "cat_Mathematik": "Matemáticas", "cat_Gesundheit": "Salud", "cat_Datum": "Fecha y hora", "cat_Einheiten": "Unidades", "cat_Physik": "Física", "cat_Sonstiges": "Varios"}, "it": {"blog_title": "Base di conoscenza", "blog_sub": "Conoscenze di sfondo su matematica, finanza, salute e altro — spiegate chiaramente.", "blog_search": "Cerca articoli …", "blog_read": "Leggi articolo →", "blog_read_time": "min", "cat_all": "Tutti", "cat_Finanzen": "Finanza", "cat_Mathematik": "Matematica", "cat_Gesundheit": "Salute", "cat_Datum": "Data & Ora", "cat_Einheiten": "Unità", "cat_Physik": "Fisica", "cat_Sonstiges": "Varie"}, "pt": {"blog_title": "Base de conhecimento", "blog_sub": "Conhecimento de fundo sobre matemática, finanças, saúde e mais — explicado claramente.", "blog_search": "Pesquisar artigos …", "blog_read": "Ler artigo →", "blog_read_time": "min", "cat_all": "Tudo", "cat_Finanzen": "Finanças", "cat_Mathematik": "Matemática", "cat_Gesundheit": "Saúde", "cat_Datum": "Data & Hora", "cat_Einheiten": "Unidades", "cat_Physik": "Física", "cat_Sonstiges": "Outros"}, "nl": {"blog_title": "Kennisbank", "blog_sub": "Achtergrondkennis over wiskunde, financiën, gezondheid en meer — duidelijk uitgelegd.", "blog_search": "Artikelen zoeken …", "blog_read": "Artikel lezen →", "blog_read_time": "min", "cat_all": "Alle", "cat_Finanzen": "Financiën", "cat_Mathematik": "Wiskunde", "cat_Gesundheit": "Gezondheid", "cat_Datum": "Datum & Tijd", "cat_Einheiten": "Eenheden", "cat_Physik": "Fysica", "cat_Sonstiges": "Overige"}, "pl": {"blog_title": "Baza wiedzy", "blog_sub": "Wiedza ogólna z matematyki, finansów, zdrowia i innych dziedzin — wyjaśniona przystępnie.", "blog_search": "Szukaj artykułów …", "blog_read": "Czytaj artykuł →", "blog_read_time": "min", "cat_all": "Wszystkie", "cat_Finanzen": "Finanse", "cat_Mathematik": "Matematyka", "cat_Gesundheit": "Zdrowie", "cat_Datum": "Data & Czas", "cat_Einheiten": "Jednostki", "cat_Physik": "Fizyka", "cat_Sonstiges": "Inne"}, "tr": {"blog_title": "Bilgi Tabanı", "blog_sub": "Matematik, finans, sağlık ve daha fazlası hakkında arka plan bilgisi — açık bir şekilde anlatıldı.", "blog_search": "Makale ara …", "blog_read": "Makaleyi oku →", "blog_read_time": "dak", "cat_all": "Tümü", "cat_Finanzen": "Finans", "cat_Mathematik": "Matematik", "cat_Gesundheit": "Sağlık", "cat_Datum": "Tarih & Saat", "cat_Einheiten": "Birimler", "cat_Physik": "Fizik", "cat_Sonstiges": "Diğer"}, "ar": {"blog_title": "قاعدة المعرفة", "blog_sub": "معرفة خلفية حول الرياضيات والمالية والصحة والمزيد — شرح واضح.", "blog_search": "ابحث عن مقالات …", "blog_read": "اقرأ المقال →", "blog_read_time": "دقيقة", "cat_all": "الكل", "cat_Finanzen": "المالية", "cat_Mathematik": "الرياضيات", "cat_Gesundheit": "الصحة", "cat_Datum": "التاريخ والوقت", "cat_Einheiten": "الوحدات", "cat_Physik": "الفيزياء", "cat_Sonstiges": "متفرقات"}, "zh": {"blog_title": "知识库", "blog_sub": "关于数学、金融、健康等领域的背景知识 — 清晰易懂。", "blog_search": "搜索文章 …", "blog_read": "阅读文章 →", "blog_read_time": "分钟", "cat_all": "全部", "cat_Finanzen": "金融", "cat_Mathematik": "数学", "cat_Gesundheit": "健康", "cat_Datum": "日期与时间", "cat_Einheiten": "单位", "cat_Physik": "物理", "cat_Sonstiges": "其他"}};
-  if (typeof I18N_PAGES !== 'undefined') {
-    Object.keys(blogI18n).forEach(function(lang) {
-      if (I18N_PAGES[lang]) Object.assign(I18N_PAGES[lang], blogI18n[lang]);
-      else I18N_PAGES[lang] = blogI18n[lang];
-    });
-  }
-  window._blogI18n = blogI18n;
-})();
+function applyNav(lang) {
+  const t = NAV_I18N[lang] || NAV_I18N.de;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // nav links
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+  // footer nav links via data-i18n
+  const map = {nav_calc:'calc',nav_blog:'blog',nav_faq:'faq',nav_help:'help',nav_imprint:'imprint',nav_privacy:'privacy',footer_copy:'footer'};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (map[key] && t[map[key]]) el.textContent = t[map[key]];
+  });
+  // cookie banner
+  const ck = {de:['Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.','Alle akzeptieren','Nur notwendige'],en:['We use cookies for advertising (Google AdSense) and to improve our service.','Accept all','Necessary only'],fr:["Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",'Tout accepter','Nécessaires seulement'],es:['Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.','Aceptar todo','Solo necesarias'],it:['Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.','Accetta tutto','Solo necessari'],pt:['Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.','Aceitar tudo','Somente necessários'],nl:['We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.','Alles accepteren','Alleen noodzakelijk'],pl:['Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.','Akceptuj wszystkie','Tylko niezbędne'],tr:['Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.','Tümünü kabul et','Yalnızca gerekli'],ar:['نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.','قبول الكل','الضرورية فقط'],zh:['我们使用Cookie用于广告（Google AdSense）和改善服务。','全部接受','仅必要']};
+  const c = ck[lang] || ck.de;
+  const ct = document.getElementById('ck-text'); if(ct) ct.textContent = c[0];
+  const ca = document.getElementById('ck-accept'); if(ca) ca.textContent = c[1];
+  const cr = document.getElementById('ck-reject'); if(cr) cr.textContent = c[2];
+  // page title
+  if (window.PAGE_TITLES && window.PAGE_TITLES[lang]) document.title = window.PAGE_TITLES[lang];
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', function() {
+  const lang = getLang();
+  applyNav(lang);
+  if (typeof renderPage === 'function') renderPage(lang);
+});
 </script>
 
 </body>
