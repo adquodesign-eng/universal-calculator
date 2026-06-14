@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Zinseszins: Die achte Weltwunder – Universal Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif;}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
+.logo span{color:var(--copper);}
+main{max-width:800px;margin:32px auto;padding:0 20px;}
+.breadcrumb{font-size:0.75rem;color:var(--muted);margin-bottom:20px;}
+.breadcrumb a{color:var(--blue-bright);text-decoration:none;}
+.article-header{margin-bottom:28px;}
+.article-header .cat{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--blue-soft);color:var(--blue-bright);display:inline-block;margin-bottom:10px;}
+.article-header h1{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.article-header .meta{font-size:0.78rem;color:var(--muted);}
+.prose{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
+.prose h2{font-size:1.15rem;font-weight:700;margin:24px 0 10px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:6px;}
+.prose h3{font-size:0.98rem;font-weight:600;margin:16px 0 6px;color:var(--blue-bright);}
+.prose p{font-size:0.87rem;line-height:1.8;margin-bottom:12px;color:var(--text);}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:0.87rem;line-height:1.7;margin-bottom:4px;}
+.prose strong{color:var(--text);font-weight:600;}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+.warn-box{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+/* Comparison table */
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+th{background:var(--blue-soft);color:var(--blue-bright);font-family:'Space Grotesk',sans-serif;font-weight:600;padding:9px 12px;text-align:left;border:1px solid var(--border);}
+td{padding:8px 12px;border:1px solid var(--border);line-height:1.5;}
+tr:nth-child(even) td{background:#F9FAFB;}
+/* Quiz */
+.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;}
+.quiz-card h2{font-size:1.1rem;margin-bottom:16px;}
+.quiz-q{margin-bottom:18px;}
+.quiz-q p{font-size:0.88rem;font-weight:600;margin-bottom:8px;}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt label{display:flex;align-items:center;gap:8px;font-size:0.84rem;cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:6px;transition:0.12s;}
+.quiz-opt label:hover{background:var(--blue-soft);}
+.quiz-opt input[type=radio]{accent-color:var(--blue-bright);}
+.quiz-submit{margin-top:16px;padding:9px 22px;background:var(--blue-bright);color:#fff;border:none;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;}
+.quiz-result{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;display:none;}
+.quiz-result.show{display:block;}
+.quiz-result.pass{background:#D1FAE5;color:#065f46;}
+.quiz-result.fail{background:#FEE2E2;color:#991b1b;}
+/* Sources */
+.sources{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 28px;margin-bottom:20px;}
+.sources h2{font-size:1rem;margin-bottom:10px;}
+.sources ol{padding-left:18px;}
+.sources li{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:4px;}
+.sources a{color:var(--blue-bright);}
+/* CTA */
+.cta-box{background:var(--blue-soft);border:1px solid var(--blue-bright);border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.cta-box p{font-size:0.88rem;color:var(--text);margin:0;}
+.cta-box a{background:var(--blue-bright);color:#fff;padding:9px 18px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;white-space:nowrap;}
+footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
+footer a:hover{color:var(--blue-bright);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
+    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
+    <a href="blog.html" style="color:var(--muted);text-decoration:none">Wissenswertes</a>
+  </nav>
+</header>
+<main>
+  <div class="breadcrumb"><a href="blog.html">← Wissenswertes</a> / Zinseszins: Die achte Weltwunder</div>
+
+  <div class="article-header">
+    <span class="cat">Finanzen</span>
+    <h1>Zinseszins: Die achte Weltwunder</h1>
+    <div class="meta">Lesezeit ca. 5 Min · Kategorie: Finanzen · Stand: 2026</div>
+  </div>
+  <div class="cta-box">
+    <p>Direkt zum Rechner: <strong>Zinseszinsrechner</strong></p>
+    <a href="universal-calculator.html#zinseszins">Rechner öffnen →</a>
+  </div>
+  <div class="prose">
+
+    <h2>Was ist Zinseszins?</h2>
+    <p>Der <strong>Zinseszins</strong> (englisch: <em>compound interest</em>) bezeichnet das Phänomen, dass erzielte Zinsen in der nächsten Periode selbst wieder verzinst werden. Im Gegensatz zum einfachen Zins – bei dem nur das ursprüngliche Kapital verzinst wird – führt der Zinseszins zu einem <strong>exponentiellen Wachstum</strong> des Kapitals über die Zeit.</p>
+    <p>Die Grundformel lautet: <strong>K(t) = K₀ × (1 + p/100)^t</strong>, wobei K₀ das Anfangskapital, p der jährliche Zinssatz in Prozent und t die Laufzeit in Jahren ist.</p>
+    <div class="info-box">💡 Bei einem Zinssatz von 7 % verdoppelt sich das Kapital nach etwa 10 Jahren (Faustregel: 72 ÷ Zinssatz = Verdopplungsjahre).</div>
+    <h2>Die Kraft der Zeit</h2>
+    <p>Der entscheidende Faktor beim Zinseszins ist die <strong>Zeit</strong>. Wer mit 25 Jahren anfängt, 100 € monatlich bei 6 % Rendite zu sparen, hat mit 65 Jahren rund 200.000 €. Wer erst mit 35 anfängt, kommt nur auf ca. 100.000 € – obwohl er nur 10 Jahre früher gestartet ist und nicht die doppelte Zeit investiert hat.</p>
+    <h2>Zinseszins gegen Sie: Schulden</h2>
+    <p>Der Zinseszins wirkt genauso bei Schulden. Kreditkartenschulden mit 20 % Zinsen verdoppeln sich ohne Tilgung in etwa 3,6 Jahren. Deshalb ist das frühe Tilgen von Hochzinsschulden oft die beste „Investition".</p>
+    <div class="warn-box">⚠️ Berechnungen enthalten keine Abgeltungssteuer (25 % + Soli) oder Inflation. Reale Renditen sind oft geringer als nominale.</div>
+    <h2>Monatliche Sparrate</h2>
+    <p>Bei regelmäßigen Einzahlungen (Sparplan) gilt eine erweiterte Formel: Das Endkapital ergibt sich aus dem Anfangskapital multipliziert mit dem Wachstumsfaktor plus der Summe der aufgezinsten Raten. Unser Rechner berücksichtigt beide Komponenten automatisch.</p>
+
+    <h2>Vergleichsübersicht</h2>
+<div class="table-wrap"><table><tr><th>Laufzeit</th><th>Ohne Zinseszins (5%)</th><th>Mit Zinseszins (5%)</th><th>Unterschied</th></tr><tr><td>10 Jahre</td><td>15.000 €</td><td>16.289 €</td><td>+1.289 €</td></tr><tr><td>20 Jahre</td><td>20.000 €</td><td>26.533 €</td><td>+6.533 €</td></tr><tr><td>30 Jahre</td><td>25.000 €</td><td>43.219 €</td><td>+18.219 €</td></tr><tr><td>40 Jahre</td><td>30.000 €</td><td>70.400 €</td><td>+40.400 €</td></tr></table></div>
+  </div>
+<div class="quiz-card"><h2>🧠 Wissenstest</h2><form id="wiki-zinseszins-quiz"><div class="quiz-q"><p>Frage 1: Was ist die Formel für den Zinseszins?</p><div class="quiz-opt"><label><input type="radio" name="q0" value="a"> K₀ × p × t</label><label><input type="radio" name="q0" value="b"> K₀ × (1 + p/100)^t</label><label><input type="radio" name="q0" value="c"> K₀ + p × t</label><label><input type="radio" name="q0" value="d"> K₀ / (1 - p/100)^t</label></div></div><div class="quiz-q"><p>Frage 2: Wie viele Jahre dauert es, ein Kapital bei 6 % zu verdoppeln (Faustregel 72)?</p><div class="quiz-opt"><label><input type="radio" name="q1" value="a"> 6 Jahre</label><label><input type="radio" name="q1" value="b"> 10 Jahre</label><label><input type="radio" name="q1" value="c"> 12 Jahre</label><label><input type="radio" name="q1" value="d"> 18 Jahre</label></div></div><div class="quiz-q"><p>Frage 3: Was verdoppelt sich beim Zinseszins, aber nicht beim einfachen Zins?</p><div class="quiz-opt"><label><input type="radio" name="q2" value="a"> Der Zinssatz</label><label><input type="radio" name="q2" value="b"> Die Laufzeit</label><label><input type="radio" name="q2" value="c"> Die Zinsen selbst werden mitverzinst</label><label><input type="radio" name="q2" value="d"> Das Anfangskapital</label></div></div><div class="quiz-q"><p>Frage 4: Welche Steuer wird in Deutschland auf Kapitalerträge erhoben?</p><div class="quiz-opt"><label><input type="radio" name="q3" value="a"> Einkommensteuer 42 %</label><label><input type="radio" name="q3" value="b"> Abgeltungssteuer 25 % + Soli</label><label><input type="radio" name="q3" value="c"> Körperschaftsteuer 15 %</label><label><input type="radio" name="q3" value="d"> Keine</label></div></div><div class="quiz-q"><p>Frage 5: Bei welchem Zinssatz verdoppelt sich Kapital in ca. 7,2 Jahren?</p><div class="quiz-opt"><label><input type="radio" name="q4" value="a"> 5 %</label><label><input type="radio" name="q4" value="b"> 8 %</label><label><input type="radio" name="q4" value="c"> 10 %</label><label><input type="radio" name="q4" value="d"> 12 %</label></div></div><button type="button" class="quiz-submit" onclick="checkQuiz('wiki-zinseszins-quiz', ['b', 'c', 'c', 'b', 'c'])">Auswerten</button><div class="quiz-result" id="wiki-zinseszins-quiz-result"></div></form></div>
+<script>
+function checkQuiz(quizId, answers) {
+  const form = document.getElementById(quizId);
+  let correct = 0;
+  const total = answers.length;
+  answers.forEach((ans, i) => {
+    const sel = form.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === ans) correct++;
+  });
+  const res = document.getElementById(quizId + '-result');
+  res.className = 'quiz-result show ' + (correct >= Math.ceil(total/2) ? 'pass' : 'fail');
+  res.innerHTML = `Sie haben <strong>${correct} von ${total}</strong> Fragen richtig beantwortet. ` +
+    (correct === total ? '🎉 Ausgezeichnet!' : correct >= Math.ceil(total/2) ? '👍 Gut gemacht!' : '📚 Lesen Sie den Artikel noch einmal.');
+}
+</script>
+<div class="sources"><h2>📚 Quellen</h2><ol><li>Deutsche Bundesbank: Erläuterungen zum Zinseszinseffekt. bundesbank.de</li><li>Verbraucherzentrale: Zinseszins und Sparplan-Rechner. verbraucherzentrale.de</li><li>Bundesministerium der Finanzen: Abgeltungssteuer. bundesfinanzministerium.de</li><li>Bogle, J. (2021). Das kleine Buch des gesunden Menschenverstands beim Investieren. Börsenbuch Verlag.</li></ol></div>
+</main>
+
+<footer>
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+</body>
+</html>

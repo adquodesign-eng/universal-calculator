@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fibonacci & der Goldene Schnitt in Natur und Kunst – Universal Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif;}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
+.logo span{color:var(--copper);}
+main{max-width:800px;margin:32px auto;padding:0 20px;}
+.breadcrumb{font-size:0.75rem;color:var(--muted);margin-bottom:20px;}
+.breadcrumb a{color:var(--blue-bright);text-decoration:none;}
+.article-header{margin-bottom:28px;}
+.article-header .cat{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--blue-soft);color:var(--blue-bright);display:inline-block;margin-bottom:10px;}
+.article-header h1{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.article-header .meta{font-size:0.78rem;color:var(--muted);}
+.prose{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
+.prose h2{font-size:1.15rem;font-weight:700;margin:24px 0 10px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:6px;}
+.prose h3{font-size:0.98rem;font-weight:600;margin:16px 0 6px;color:var(--blue-bright);}
+.prose p{font-size:0.87rem;line-height:1.8;margin-bottom:12px;color:var(--text);}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:0.87rem;line-height:1.7;margin-bottom:4px;}
+.prose strong{color:var(--text);font-weight:600;}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+.warn-box{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+/* Comparison table */
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+th{background:var(--blue-soft);color:var(--blue-bright);font-family:'Space Grotesk',sans-serif;font-weight:600;padding:9px 12px;text-align:left;border:1px solid var(--border);}
+td{padding:8px 12px;border:1px solid var(--border);line-height:1.5;}
+tr:nth-child(even) td{background:#F9FAFB;}
+/* Quiz */
+.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;}
+.quiz-card h2{font-size:1.1rem;margin-bottom:16px;}
+.quiz-q{margin-bottom:18px;}
+.quiz-q p{font-size:0.88rem;font-weight:600;margin-bottom:8px;}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt label{display:flex;align-items:center;gap:8px;font-size:0.84rem;cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:6px;transition:0.12s;}
+.quiz-opt label:hover{background:var(--blue-soft);}
+.quiz-opt input[type=radio]{accent-color:var(--blue-bright);}
+.quiz-submit{margin-top:16px;padding:9px 22px;background:var(--blue-bright);color:#fff;border:none;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;}
+.quiz-result{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;display:none;}
+.quiz-result.show{display:block;}
+.quiz-result.pass{background:#D1FAE5;color:#065f46;}
+.quiz-result.fail{background:#FEE2E2;color:#991b1b;}
+/* Sources */
+.sources{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 28px;margin-bottom:20px;}
+.sources h2{font-size:1rem;margin-bottom:10px;}
+.sources ol{padding-left:18px;}
+.sources li{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:4px;}
+.sources a{color:var(--blue-bright);}
+/* CTA */
+.cta-box{background:var(--blue-soft);border:1px solid var(--blue-bright);border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.cta-box p{font-size:0.88rem;color:var(--text);margin:0;}
+.cta-box a{background:var(--blue-bright);color:#fff;padding:9px 18px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;white-space:nowrap;}
+footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
+footer a:hover{color:var(--blue-bright);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
+    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
+    <a href="blog.html" style="color:var(--muted);text-decoration:none">Wissenswertes</a>
+  </nav>
+</header>
+<main>
+  <div class="breadcrumb"><a href="blog.html">← Wissenswertes</a> / Fibonacci & der Goldene Schnitt in Natur und Kunst</div>
+
+  <div class="article-header">
+    <span class="cat">Mathematik</span>
+    <h1>Fibonacci & der Goldene Schnitt in Natur und Kunst</h1>
+    <div class="meta">Lesezeit ca. 5 Min · Kategorie: Mathematik · Stand: 2026</div>
+  </div>
+  <div class="cta-box">
+    <p>Direkt zum Rechner: <strong>Fibonacci-Rechner</strong></p>
+    <a href="universal-calculator.html#fibonacci">Rechner öffnen →</a>
+  </div>
+  <div class="prose">
+
+    <h2>Die Fibonacci-Folge</h2>
+    <p>Die <strong>Fibonacci-Folge</strong> ist eine Zahlenreihe, bei der jede Zahl die Summe der beiden vorherigen ist: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …</p>
+    <p>Benannt nach dem italienischen Mathematiker Leonardo Fibonacci (ca. 1170–1250), der die Folge in Europa bekannt machte – obwohl sie in der indischen Mathematik bereits früher bekannt war.</p>
+    <div class="info-box">💡 Der Quotient aufeinanderfolgender Fibonacci-Zahlen nähert sich dem Goldenen Schnitt φ ≈ 1,618033… an: 89/55 = 1,6181…, 144/89 = 1,6179…</div>
+    <h2>Der Goldene Schnitt (φ)</h2>
+    <p>Das <strong>Goldene Schnitt</strong> (griechischer Buchstabe Phi, φ) ist das Verhältnis, bei dem der größere Teil zum kleineren im selben Verhältnis steht wie das Ganze zum größeren Teil. φ = (1 + √5) / 2 ≈ 1,6180339887…</p>
+    <h2>Fibonacci in der Natur</h2>
+    <p>Fibonacci-Zahlen erscheinen überraschend häufig in der Natur: Blütenblätter (Rosen haben 5, 8 oder 13), Kiefernnadelspiralen (8 und 13), Sonnenblumenkerne (55 und 89 Spiralen), Ananas-Schuppen und Schneckenhäuser (logarithmische Spirale).</p>
+    <h2>Fibonacci in Finanzmärkten</h2>
+    <p>In der Technischen Analyse werden <strong>Fibonacci-Retracements</strong> eingesetzt: Die Niveaus 23,6 %, 38,2 %, 50 %, 61,8 % und 78,6 % basieren auf dem Goldenen Schnitt und seinen Quotienten. Viele Trader beobachten diese Marken als potenzielle Unterstützungs- und Widerstandszonen.</p>
+
+    <h2>Vergleichsübersicht</h2>
+<div class="table-wrap"><table><tr><th>n</th><th>F(n)</th><th>F(n)/F(n-1)</th><th>Näherung an φ</th></tr><tr><td>5</td><td>5</td><td>5/3 = 1,667</td><td>Grob</td></tr><tr><td>8</td><td>21</td><td>21/13 = 1,615</td><td>Gut</td></tr><tr><td>10</td><td>55</td><td>55/34 = 1,617</td><td>Besser</td></tr><tr><td>12</td><td>144</td><td>144/89 = 1,618</td><td>Sehr gut</td></tr><tr><td>15</td><td>610</td><td>610/377 = 1,6180</td><td>Exzellent</td></tr></table></div>
+  </div>
+<div class="quiz-card"><h2>🧠 Wissenstest</h2><form id="wiki-fibonacci-quiz"><div class="quiz-q"><p>Frage 1: Wie lautet die Fibonacci-Folge (erste 6 Glieder)?</p><div class="quiz-opt"><label><input type="radio" name="q0" value="a"> 1,2,3,4,5,6</label><label><input type="radio" name="q0" value="b"> 0,1,1,2,3,5</label><label><input type="radio" name="q0" value="c"> 1,1,2,4,8,16</label><label><input type="radio" name="q0" value="d"> 0,2,4,6,8,10</label></div></div><div class="quiz-q"><p>Frage 2: Gegen welchen Wert strebt der Quotient aufeinanderfolgender Fibonacci-Zahlen?</p><div class="quiz-opt"><label><input type="radio" name="q1" value="a"> π ≈ 3,14</label><label><input type="radio" name="q1" value="b"> e ≈ 2,71</label><label><input type="radio" name="q1" value="c"> φ ≈ 1,618</label><label><input type="radio" name="q1" value="d"> √2 ≈ 1,414</label></div></div><div class="quiz-q"><p>Frage 3: Wie viele Spiralen hat eine typische Sonnenblume (zwei Richtungen zusammen)?</p><div class="quiz-opt"><label><input type="radio" name="q2" value="a"> 10 und 20</label><label><input type="radio" name="q2" value="b"> 21 und 34</label><label><input type="radio" name="q2" value="c"> 55 und 89</label><label><input type="radio" name="q2" value="d"> 100 und 150</label></div></div><div class="quiz-q"><p>Frage 4: Was sind Fibonacci-Retracements?</p><div class="quiz-opt"><label><input type="radio" name="q3" value="a"> Finanzprodukte</label><label><input type="radio" name="q3" value="b"> Technische Analyse-Niveaus basierend auf dem Goldenen Schnitt</label><label><input type="radio" name="q3" value="c"> Mathematische Beweise</label><label><input type="radio" name="q3" value="d"> Börsenindizes</label></div></div><div class="quiz-q"><p>Frage 5: Wer brachte die Fibonacci-Folge nach Europa?</p><div class="quiz-opt"><label><input type="radio" name="q4" value="a"> Euklid</label><label><input type="radio" name="q4" value="b"> Leonardo da Vinci</label><label><input type="radio" name="q4" value="c"> Leonardo Fibonacci</label><label><input type="radio" name="q4" value="d"> Carl Friedrich Gauss</label></div></div><button type="button" class="quiz-submit" onclick="checkQuiz('wiki-fibonacci-quiz', ['b', 'c', 'c', 'b', 'c'])">Auswerten</button><div class="quiz-result" id="wiki-fibonacci-quiz-result"></div></form></div>
+<script>
+function checkQuiz(quizId, answers) {
+  const form = document.getElementById(quizId);
+  let correct = 0;
+  const total = answers.length;
+  answers.forEach((ans, i) => {
+    const sel = form.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === ans) correct++;
+  });
+  const res = document.getElementById(quizId + '-result');
+  res.className = 'quiz-result show ' + (correct >= Math.ceil(total/2) ? 'pass' : 'fail');
+  res.innerHTML = `Sie haben <strong>${correct} von ${total}</strong> Fragen richtig beantwortet. ` +
+    (correct === total ? '🎉 Ausgezeichnet!' : correct >= Math.ceil(total/2) ? '👍 Gut gemacht!' : '📚 Lesen Sie den Artikel noch einmal.');
+}
+</script>
+<div class="sources"><h2>📚 Quellen</h2><ol><li>Fibonacci, L. (1202): Liber Abaci.</li><li>Livio, M. (2002): The Golden Ratio: The Story of Phi, the World's Most Astonishing Number. Broadway Books.</li><li>Meisner, G. (2018): The Golden Ratio: The Divine Beauty of Mathematics. Race Point Publishing.</li><li>Dunlap, R.A. (1997): The Golden Ratio and Fibonacci Numbers. World Scientific.</li></ol></div>
+</main>
+
+<footer>
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+</body>
+</html>

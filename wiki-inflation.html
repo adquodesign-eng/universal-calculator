@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Inflation verstehen: Kaufkraft, Warenkorb und reale Rendite – Universal Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif;}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
+.logo span{color:var(--copper);}
+main{max-width:800px;margin:32px auto;padding:0 20px;}
+.breadcrumb{font-size:0.75rem;color:var(--muted);margin-bottom:20px;}
+.breadcrumb a{color:var(--blue-bright);text-decoration:none;}
+.article-header{margin-bottom:28px;}
+.article-header .cat{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--blue-soft);color:var(--blue-bright);display:inline-block;margin-bottom:10px;}
+.article-header h1{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.article-header .meta{font-size:0.78rem;color:var(--muted);}
+.prose{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
+.prose h2{font-size:1.15rem;font-weight:700;margin:24px 0 10px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:6px;}
+.prose h3{font-size:0.98rem;font-weight:600;margin:16px 0 6px;color:var(--blue-bright);}
+.prose p{font-size:0.87rem;line-height:1.8;margin-bottom:12px;color:var(--text);}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:0.87rem;line-height:1.7;margin-bottom:4px;}
+.prose strong{color:var(--text);font-weight:600;}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+.warn-box{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+/* Comparison table */
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+th{background:var(--blue-soft);color:var(--blue-bright);font-family:'Space Grotesk',sans-serif;font-weight:600;padding:9px 12px;text-align:left;border:1px solid var(--border);}
+td{padding:8px 12px;border:1px solid var(--border);line-height:1.5;}
+tr:nth-child(even) td{background:#F9FAFB;}
+/* Quiz */
+.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;}
+.quiz-card h2{font-size:1.1rem;margin-bottom:16px;}
+.quiz-q{margin-bottom:18px;}
+.quiz-q p{font-size:0.88rem;font-weight:600;margin-bottom:8px;}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt label{display:flex;align-items:center;gap:8px;font-size:0.84rem;cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:6px;transition:0.12s;}
+.quiz-opt label:hover{background:var(--blue-soft);}
+.quiz-opt input[type=radio]{accent-color:var(--blue-bright);}
+.quiz-submit{margin-top:16px;padding:9px 22px;background:var(--blue-bright);color:#fff;border:none;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;}
+.quiz-result{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;display:none;}
+.quiz-result.show{display:block;}
+.quiz-result.pass{background:#D1FAE5;color:#065f46;}
+.quiz-result.fail{background:#FEE2E2;color:#991b1b;}
+/* Sources */
+.sources{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 28px;margin-bottom:20px;}
+.sources h2{font-size:1rem;margin-bottom:10px;}
+.sources ol{padding-left:18px;}
+.sources li{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:4px;}
+.sources a{color:var(--blue-bright);}
+/* CTA */
+.cta-box{background:var(--blue-soft);border:1px solid var(--blue-bright);border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.cta-box p{font-size:0.88rem;color:var(--text);margin:0;}
+.cta-box a{background:var(--blue-bright);color:#fff;padding:9px 18px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;white-space:nowrap;}
+footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
+footer a:hover{color:var(--blue-bright);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
+    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
+    <a href="blog.html" style="color:var(--muted);text-decoration:none">Wissenswertes</a>
+  </nav>
+</header>
+<main>
+  <div class="breadcrumb"><a href="blog.html">← Wissenswertes</a> / Inflation verstehen: Kaufkraft, Warenkorb und reale Rendite</div>
+
+  <div class="article-header">
+    <span class="cat">Finanzen</span>
+    <h1>Inflation verstehen: Kaufkraft, Warenkorb und reale Rendite</h1>
+    <div class="meta">Lesezeit ca. 4 Min · Kategorie: Finanzen · Stand: 2026</div>
+  </div>
+  <div class="cta-box">
+    <p>Direkt zum Rechner: <strong>Inflationsrechner</strong></p>
+    <a href="universal-calculator.html#inflation">Rechner öffnen →</a>
+  </div>
+  <div class="prose">
+
+    <h2>Was ist Inflation?</h2>
+    <p><strong>Inflation</strong> bezeichnet den allgemeinen Anstieg des Preisniveaus über die Zeit. Wenn die Inflation 3 % beträgt, können Sie für 100 € in einem Jahr nur noch Waren kaufen, die heute 97 € kosten würden – Ihre Kaufkraft sinkt.</p>
+    <p>Das Gegenteil ist die <strong>Deflation</strong> (sinkende Preise), die wirtschaftlich oft gefährlicher ist, da sie Konsum und Investitionen hemmt.</p>
+    <div class="info-box">💡 Das Inflationsziel der Europäischen Zentralbank (EZB) liegt bei 2 % pro Jahr – ein Wert, der als optimal für eine gesunde Wirtschaft gilt.</div>
+    <h2>Wie wird Inflation gemessen?</h2>
+    <p>Das Statistische Bundesamt (Destatis) ermittelt monatlich den <strong>Verbraucherpreisindex (VPI)</strong>. Dabei werden die Preise eines repräsentativen Warenkorbs aus über 650 Gütern und Dienstleistungen erfasst: Wohnen, Energie, Nahrung, Verkehr, Freizeit und mehr.</p>
+    <h2>Auswirkungen auf Ersparnisse</h2>
+    <p>Liegt Ihr Tagesgeld-Zinssatz unter der Inflationsrate, verliert Ihr Erspartes realen Wert. Die <strong>reale Rendite</strong> errechnet sich näherungsweise als: Nominalzins − Inflationsrate. Bei 1,5 % Zinsen und 3 % Inflation: reale Rendite = −1,5 %.</p>
+    <h2>Historische Hochinflation</h2>
+    <p>Deutschland erlebte 1923 eine <strong>Hyperinflation</strong>, bei der Preise täglich stiegen. Ein Laib Brot kostete zeitweise Milliarden von Reichsmark. Diese Erfahrung prägt das deutsche Verhältnis zur Preisstabilität bis heute.</p>
+
+    <h2>Vergleichsübersicht</h2>
+<div class="table-wrap"><table><tr><th>Jahr</th><th>Inflationsrate DE</th><th>EZB-Leitzins</th><th>Realer Kaufkraftverlust (10 J.)</th></tr><tr><td>2019</td><td>1,4 %</td><td>0,0 %</td><td>−13,1 %</td></tr><tr><td>2020</td><td>0,5 %</td><td>0,0 %</td><td>−4,9 %</td></tr><tr><td>2021</td><td>3,1 %</td><td>0,0 %</td><td>−26,6 %</td></tr><tr><td>2022</td><td>7,9 %</td><td>2,5 %</td><td>−55,1 %</td></tr><tr><td>2023</td><td>5,9 %</td><td>4,5 %</td><td>−44,0 %</td></tr><tr><td>2024</td><td>2,2 %</td><td>3,4 %</td><td>−19,9 %</td></tr></table></div>
+  </div>
+<div class="quiz-card"><h2>🧠 Wissenstest</h2><form id="wiki-inflation-quiz"><div class="quiz-q"><p>Frage 1: Was bedeutet Inflation?</p><div class="quiz-opt"><label><input type="radio" name="q0" value="a"> Steigendes Wirtschaftswachstum</label><label><input type="radio" name="q0" value="b"> Allgemeiner Preisanstieg, der Kaufkraft senkt</label><label><input type="radio" name="q0" value="c"> Sinkende Arbeitslosigkeit</label><label><input type="radio" name="q0" value="d"> Steigender Außenwert einer Währung</label></div></div><div class="quiz-q"><p>Frage 2: Was ist das Inflationsziel der EZB?</p><div class="quiz-opt"><label><input type="radio" name="q1" value="a"> 0 %</label><label><input type="radio" name="q1" value="b"> 1 %</label><label><input type="radio" name="q1" value="c"> 2 %</label><label><input type="radio" name="q1" value="d"> 5 %</label></div></div><div class="quiz-q"><p>Frage 3: Wie berechnet sich die reale Rendite?</p><div class="quiz-opt"><label><input type="radio" name="q2" value="a"> Nominalzins + Inflation</label><label><input type="radio" name="q2" value="b"> Nominalzins × Inflation</label><label><input type="radio" name="q2" value="c"> Nominalzins − Inflation</label><label><input type="radio" name="q2" value="d"> Inflation ÷ Nominalzins</label></div></div><div class="quiz-q"><p>Frage 4: Was ist Deflation?</p><div class="quiz-opt"><label><input type="radio" name="q3" value="a"> Sehr hohe Inflation</label><label><input type="radio" name="q3" value="b"> Sinkende Preise</label><label><input type="radio" name="q3" value="c"> Gleichbleibende Preise</label><label><input type="radio" name="q3" value="d"> Währungsabwertung</label></div></div><div class="quiz-q"><p>Frage 5: Welche Institution erfasst in Deutschland den Verbraucherpreisindex?</p><div class="quiz-opt"><label><input type="radio" name="q4" value="a"> Bundesbank</label><label><input type="radio" name="q4" value="b"> EZB</label><label><input type="radio" name="q4" value="c"> Destatis (Statistisches Bundesamt)</label><label><input type="radio" name="q4" value="d"> Bundesfinanzministerium</label></div></div><button type="button" class="quiz-submit" onclick="checkQuiz('wiki-inflation-quiz', ['b', 'c', 'c', 'b', 'c'])">Auswerten</button><div class="quiz-result" id="wiki-inflation-quiz-result"></div></form></div>
+<script>
+function checkQuiz(quizId, answers) {
+  const form = document.getElementById(quizId);
+  let correct = 0;
+  const total = answers.length;
+  answers.forEach((ans, i) => {
+    const sel = form.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === ans) correct++;
+  });
+  const res = document.getElementById(quizId + '-result');
+  res.className = 'quiz-result show ' + (correct >= Math.ceil(total/2) ? 'pass' : 'fail');
+  res.innerHTML = `Sie haben <strong>${correct} von ${total}</strong> Fragen richtig beantwortet. ` +
+    (correct === total ? '🎉 Ausgezeichnet!' : correct >= Math.ceil(total/2) ? '👍 Gut gemacht!' : '📚 Lesen Sie den Artikel noch einmal.');
+}
+</script>
+<div class="sources"><h2>📚 Quellen</h2><ol><li>Statistisches Bundesamt (Destatis): Verbraucherpreise. destatis.de</li><li>Europäische Zentralbank: Preisstabilität. ecb.europa.eu</li><li>Deutsche Bundesbank: Inflation und Geldpolitik. bundesbank.de</li><li>Ferguson, N. (2009). Der Aufstieg des Geldes. DVA.</li></ol></div>
+</main>
+
+<footer>
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+</body>
+</html>

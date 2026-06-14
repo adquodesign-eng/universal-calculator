@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Das Ohmsche Gesetz: Grundlage der Elektrotechnik – Universal Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif;}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
+.logo span{color:var(--copper);}
+main{max-width:800px;margin:32px auto;padding:0 20px;}
+.breadcrumb{font-size:0.75rem;color:var(--muted);margin-bottom:20px;}
+.breadcrumb a{color:var(--blue-bright);text-decoration:none;}
+.article-header{margin-bottom:28px;}
+.article-header .cat{font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:10px;background:var(--blue-soft);color:var(--blue-bright);display:inline-block;margin-bottom:10px;}
+.article-header h1{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.article-header .meta{font-size:0.78rem;color:var(--muted);}
+.prose{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
+.prose h2{font-size:1.15rem;font-weight:700;margin:24px 0 10px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:6px;}
+.prose h3{font-size:0.98rem;font-weight:600;margin:16px 0 6px;color:var(--blue-bright);}
+.prose p{font-size:0.87rem;line-height:1.8;margin-bottom:12px;color:var(--text);}
+.prose ul,.prose ol{padding-left:20px;margin-bottom:12px;}
+.prose li{font-size:0.87rem;line-height:1.7;margin-bottom:4px;}
+.prose strong{color:var(--text);font-weight:600;}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+.warn-box{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;font-size:0.84rem;line-height:1.6;}
+/* Comparison table */
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+th{background:var(--blue-soft);color:var(--blue-bright);font-family:'Space Grotesk',sans-serif;font-weight:600;padding:9px 12px;text-align:left;border:1px solid var(--border);}
+td{padding:8px 12px;border:1px solid var(--border);line-height:1.5;}
+tr:nth-child(even) td{background:#F9FAFB;}
+/* Quiz */
+.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;}
+.quiz-card h2{font-size:1.1rem;margin-bottom:16px;}
+.quiz-q{margin-bottom:18px;}
+.quiz-q p{font-size:0.88rem;font-weight:600;margin-bottom:8px;}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt label{display:flex;align-items:center;gap:8px;font-size:0.84rem;cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:6px;transition:0.12s;}
+.quiz-opt label:hover{background:var(--blue-soft);}
+.quiz-opt input[type=radio]{accent-color:var(--blue-bright);}
+.quiz-submit{margin-top:16px;padding:9px 22px;background:var(--blue-bright);color:#fff;border:none;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;}
+.quiz-result{margin-top:14px;padding:12px 16px;border-radius:8px;font-size:0.85rem;display:none;}
+.quiz-result.show{display:block;}
+.quiz-result.pass{background:#D1FAE5;color:#065f46;}
+.quiz-result.fail{background:#FEE2E2;color:#991b1b;}
+/* Sources */
+.sources{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 28px;margin-bottom:20px;}
+.sources h2{font-size:1rem;margin-bottom:10px;}
+.sources ol{padding-left:18px;}
+.sources li{font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:4px;}
+.sources a{color:var(--blue-bright);}
+/* CTA */
+.cta-box{background:var(--blue-soft);border:1px solid var(--blue-bright);border-radius:10px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.cta-box p{font-size:0.88rem;color:var(--text);margin:0;}
+.cta-box a{background:var(--blue-bright);color:#fff;padding:9px 18px;border-radius:7px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;white-space:nowrap;}
+footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
+footer a:hover{color:var(--blue-bright);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
+    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
+    <a href="blog.html" style="color:var(--muted);text-decoration:none">Wissenswertes</a>
+  </nav>
+</header>
+<main>
+  <div class="breadcrumb"><a href="blog.html">← Wissenswertes</a> / Das Ohmsche Gesetz: Grundlage der Elektrotechnik</div>
+
+  <div class="article-header">
+    <span class="cat">Physik</span>
+    <h1>Das Ohmsche Gesetz: Grundlage der Elektrotechnik</h1>
+    <div class="meta">Lesezeit ca. 5 Min · Kategorie: Physik · Stand: 2026</div>
+  </div>
+  <div class="cta-box">
+    <p>Direkt zum Rechner: <strong>Ohmsches Gesetz Rechner</strong></p>
+    <a href="universal-calculator.html#ohm">Rechner öffnen →</a>
+  </div>
+  <div class="prose">
+
+    <h2>Georg Simon Ohm und seine Entdeckung</h2>
+    <p>Georg Simon Ohm (1789–1854) entdeckte 1826, dass der elektrische Strom durch einen Leiter proportional zur angelegten Spannung ist. Diesen Zusammenhang veröffentlichte er 1827 in seinem Werk „Die galvanische Kette, mathematisch bearbeitet".</p>
+    <h2>Das Gesetz</h2>
+    <p>Das Ohmsche Gesetz beschreibt vier elektrische Größen:</p>
+    <ul>
+      <li><strong>U</strong> – Spannung in Volt [V]: die elektrische „Triebkraft"</li>
+      <li><strong>I</strong> – Stromstärke in Ampere [A]: die Menge der fließenden Elektronen</li>
+      <li><strong>R</strong> – Widerstand in Ohm [Ω]: das Hemmnis für den Stromfluss</li>
+      <li><strong>P</strong> – Leistung in Watt [W]: umgesetzte Energie pro Sekunde</li>
+    </ul>
+    <p>Die Grundformeln: <strong>U = R × I</strong> · <strong>P = U × I</strong> · <strong>R = U / I</strong> · <strong>I = U / R</strong></p>
+    <div class="info-box">💡 Eselsbrücke: Stellen Sie sich Wasser in einem Rohr vor. Spannung = Wasserdruck, Stromstärke = Durchfluss, Widerstand = Rohrenge.</div>
+    <h2>Widerstand in Reihe und Parallel</h2>
+    <p>Werden Widerstände in <strong>Reihe</strong> geschaltet, addieren sich die Werte: R_ges = R₁ + R₂ + R₃. Bei <strong>Parallelschaltung</strong> gilt: 1/R_ges = 1/R₁ + 1/R₂ + 1/R₃. Der Gesamtwiderstand ist immer kleiner als der kleinste Einzelwiderstand.</p>
+    <h2>Praktische Anwendungen</h2>
+    <p>Das Ohmsche Gesetz wird täglich angewendet: beim Auslegungen von Sicherungen, beim Design von LED-Vorwiderständen, in Audioverstärkern und bei der Berechnung von Kabeln zur Vermeidung von Überhitzung.</p>
+    <div class="warn-box">⚠️ Das Ohmsche Gesetz gilt nur für <strong>ohmsche Widerstände</strong> (lineare Bauelemente). Dioden, Transistoren oder Kondensatoren verhalten sich nichtlinear und folgen anderen Gesetzen.</div>
+
+    <h2>Vergleichsübersicht</h2>
+<div class="table-wrap"><table><tr><th>Gesuchte Größe</th><th>Formel</th><th>Einheit</th><th>Beispiel</th></tr><tr><td>Spannung U</td><td>U = R × I</td><td>Volt [V]</td><td>R=100Ω, I=0,1A → U=10V</td></tr><tr><td>Strom I</td><td>I = U / R</td><td>Ampere [A]</td><td>U=12V, R=60Ω → I=0,2A</td></tr><tr><td>Widerstand R</td><td>R = U / I</td><td>Ohm [Ω]</td><td>U=230V, I=2A → R=115Ω</td></tr><tr><td>Leistung P</td><td>P = U × I</td><td>Watt [W]</td><td>U=12V, I=5A → P=60W</td></tr></table></div>
+  </div>
+<div class="quiz-card"><h2>🧠 Wissenstest</h2><form id="wiki-ohm-quiz"><div class="quiz-q"><p>Frage 1: Wie lautet das Ohmsche Gesetz (Grundformel)?</p><div class="quiz-opt"><label><input type="radio" name="q0" value="a"> U = R + I</label><label><input type="radio" name="q0" value="b"> U = R × I</label><label><input type="radio" name="q0" value="c"> U = R / I</label><label><input type="radio" name="q0" value="d"> U = I / R</label></div></div><div class="quiz-q"><p>Frage 2: In welcher Einheit wird der elektrische Widerstand gemessen?</p><div class="quiz-opt"><label><input type="radio" name="q1" value="a"> Volt</label><label><input type="radio" name="q1" value="b"> Ampere</label><label><input type="radio" name="q1" value="c"> Watt</label><label><input type="radio" name="q1" value="d"> Ohm</label></div></div><div class="quiz-q"><p>Frage 3: Wie groß ist der Gesamtwiderstand von R1=100Ω und R2=100Ω in Reihenschaltung?</p><div class="quiz-opt"><label><input type="radio" name="q2" value="a"> 50 Ω</label><label><input type="radio" name="q2" value="b"> 100 Ω</label><label><input type="radio" name="q2" value="c"> 150 Ω</label><label><input type="radio" name="q2" value="d"> 200 Ω</label></div></div><div class="quiz-q"><p>Frage 4: Was ist bei einer Parallelschaltung zweier gleicher Widerstände richtig?</p><div class="quiz-opt"><label><input type="radio" name="q3" value="a"> Gesamtwiderstand ist doppelt so groß</label><label><input type="radio" name="q3" value="b"> Gesamtwiderstand ist gleich groß</label><label><input type="radio" name="q3" value="c"> Gesamtwiderstand ist halb so groß</label><label><input type="radio" name="q3" value="d"> Gesamtwiderstand ist null</label></div></div><div class="quiz-q"><p>Frage 5: Wer entdeckte das Ohmsche Gesetz?</p><div class="quiz-opt"><label><input type="radio" name="q4" value="a"> André-Marie Ampère</label><label><input type="radio" name="q4" value="b"> Alessandro Volta</label><label><input type="radio" name="q4" value="c"> Georg Simon Ohm</label><label><input type="radio" name="q4" value="d"> Michael Faraday</label></div></div><button type="button" class="quiz-submit" onclick="checkQuiz('wiki-ohm-quiz', ['b', 'd', 'd', 'c', 'c'])">Auswerten</button><div class="quiz-result" id="wiki-ohm-quiz-result"></div></form></div>
+<script>
+function checkQuiz(quizId, answers) {
+  const form = document.getElementById(quizId);
+  let correct = 0;
+  const total = answers.length;
+  answers.forEach((ans, i) => {
+    const sel = form.querySelector(`input[name="q${i}"]:checked`);
+    if (sel && sel.value === ans) correct++;
+  });
+  const res = document.getElementById(quizId + '-result');
+  res.className = 'quiz-result show ' + (correct >= Math.ceil(total/2) ? 'pass' : 'fail');
+  res.innerHTML = `Sie haben <strong>${correct} von ${total}</strong> Fragen richtig beantwortet. ` +
+    (correct === total ? '🎉 Ausgezeichnet!' : correct >= Math.ceil(total/2) ? '👍 Gut gemacht!' : '📚 Lesen Sie den Artikel noch einmal.');
+}
+</script>
+<div class="sources"><h2>📚 Quellen</h2><ol><li>Ohm, G.S. (1827): Die galvanische Kette, mathematisch bearbeitet. T.H. Riemann, Berlin.</li><li>Moeller, F. et al. (2018): Grundlagen der Elektrotechnik. Springer Vieweg.</li><li>Harriehausen, T. & Schwarzenau, D. (2019): Moeller Grundlagen der Elektrotechnik. Springer.</li><li>IEEE: History of Electrical Engineering. ieee.org/about/history</li></ol></div>
+</main>
+
+<footer>
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Universal Calculator – Alle Rechner auf einen Blick</title>
+<meta name="description" content="Kostenlose Online-Rechner für Finanzen, Mathematik, Gesundheit, Datum & Zeit, Einheiten und mehr.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #F6F8FC;
+  --surface: #FFFFFF;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --blue-bright: #1BA6FF;
+  --blue-soft: #E8F4FF;
+  --copper: #C77A4A;
+  --copper-soft: #F3E3DA;
+  --border: #E5E7EB;
+  --sidebar-w: 260px;
+  --header-h: 56px;
+  --radius: 10px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--bg-deep);
+  background-image:
+    linear-gradient(rgba(27,166,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,166,255,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text);
+  min-height: 100vh;
+}
+h1,h2,h3,h4,h5,h6,button,.btn,.nav-label,.sidebar-cat { font-family: 'Space Grotesk', sans-serif; }
+
+/* ── HEADER ── */
+#site-header {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--header-h);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 max(16px, env(safe-area-inset-right, 16px));
+  gap: 12px; z-index: 200;
+  box-shadow: var(--shadow);
+}
+#burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px;
+}
+#burger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.25s; }
+#site-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 1.15rem;
+  color: var(--blue-bright); text-decoration: none;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+#site-logo span { color: var(--copper); }
+.header-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+#lang-select {
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  background: var(--surface); color: var(--text);
+  padding: 5px 8px; cursor: pointer;
+}
+.header-nav { display: flex; gap: 8px; }
+.header-nav a {
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem;
+  color: var(--muted); text-decoration: none; padding: 4px 8px;
+  border-radius: 5px; transition: 0.15s;
+}
+.header-nav a:hover { color: var(--blue-bright); background: var(--blue-soft); }
+
+/* ── LAYOUT ── */
+#layout { display: flex; padding-top: var(--header-h); min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+#sidebar {
+  width: var(--sidebar-w); flex-shrink: 0;
+  position: fixed; top: var(--header-h); left: 0; bottom: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto; overflow-x: hidden;
+  padding: 12px 0 60px;
+  -webkit-overflow-scrolling: touch;
+  z-index: 100;
+}
+.sidebar-cat {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+  padding: 14px 16px 4px; display: block;
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 16px; font-size: 0.82rem;
+  color: var(--text); cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: 0.15s; white-space: nowrap; overflow: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.sidebar-item:hover { background: var(--blue-soft); color: var(--blue-bright); }
+.sidebar-item.active {
+  border-left-color: var(--copper);
+  background: var(--copper-soft); color: var(--copper); font-weight: 600;
+}
+.sidebar-item .icon { font-size: 1rem; flex-shrink: 0; }
+
+/* ── MAIN ── */
+#main {
+  margin-left: var(--sidebar-w);
+  flex: 1; padding: 28px 24px 80px;
+  min-width: 0;
+}
+
+/* ── CALC CARD ── */
+.calc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 680px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.calc-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 6px;
+}
+.calc-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 20px; }
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.calc-grid.single { grid-template-columns: 1fr; }
+.field label {
+  display: block; font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 600; color: var(--muted);
+  margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.field input, .field select {
+  width: 100%; padding: 9px 12px;
+  border: 1px solid var(--border); border-radius: 7px;
+  background: var(--bg-deep); color: var(--text);
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;
+  transition: border 0.15s;
+  outline: none;
+}
+.field input:focus, .field select:focus { border-color: var(--blue-bright); }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 7px; border: none;
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: 0.15s;
+}
+.btn-primary { background: var(--blue-bright); color: #fff; }
+.btn-primary:hover { background: #0e8fd6; }
+.btn-copper { background: var(--copper); color: #fff; }
+.btn-copper:hover { background: #a8633a; }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg-deep); }
+.calc-actions { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+.result-box {
+  margin-top: 20px; padding: 16px 18px;
+  background: var(--blue-soft); border-radius: 8px;
+  border-left: 4px solid var(--blue-bright);
+}
+.result-label { font-size: 0.75rem; color: var(--muted); font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+.result-value { font-size: 1.5rem; font-weight: 700; color: var(--blue-bright); font-family: 'Space Grotesk', sans-serif; margin-top: 2px; }
+.result-sub { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.result-copper { border-left-color: var(--copper); background: var(--copper-soft); }
+.result-copper .result-value { color: var(--copper); }
+.calc-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.82rem; }
+.calc-table th { background: var(--bg-deep); font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+.calc-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+.calc-table tr:last-child td { border: none; }
+.error-msg { color: #e53e3e; font-size: 0.8rem; margin-top: 8px; }
+
+/* ── BASIC CALCULATOR (Taschenrechner) ── */
+.calc-display {
+  background: var(--text); color: #fff;
+  border-radius: 8px; padding: 14px 18px; margin-bottom: 12px;
+  text-align: right;
+}
+.calc-display .disp-expr { font-size: 0.78rem; color: #9ca3af; min-height: 18px; }
+.calc-display .disp-val { font-size: 2rem; font-family: 'IBM Plex Mono', monospace; font-weight: 500; word-break: break-all; }
+.calc-keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.k {
+  padding: 13px 6px; border: none; border-radius: 7px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: 0.12s; background: var(--bg-deep); color: var(--text);
+}
+.k:hover { filter: brightness(0.94); }
+.k.op { background: var(--blue-soft); color: var(--blue-bright); }
+.k.eq { background: var(--blue-bright); color: #fff; }
+.k.clear { background: var(--copper-soft); color: var(--copper); }
+.k.zero { grid-column: span 2; }
+
+/* ── OVERLAY ── */
+#overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35); z-index: 150;
+}
+#overlay.show { display: block; }
+
+/* ── COOKIE BANNER ── */
+#cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--text); color: #fff;
+  padding: 14px 20px; z-index: 500;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+#cookie-banner.hidden { display: none !important; }
+#cookie-banner p { font-size: 0.8rem; flex: 1 1 280px; }
+.cookie-btns { display: flex; gap: 8px; }
+.cbtn { padding: 7px 14px; border-radius: 6px; border: none; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; font-weight: 600; }
+.cbtn-accept { background: var(--blue-bright); color: #fff; }
+.cbtn-reject { background: transparent; color: #9ca3af; border: 1px solid #4b5563; }
+
+/* ── FOOTER ── */
+#site-footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 8px 16px; text-align: center; z-index: 90;
+  font-size: 0.73rem; color: var(--muted);
+}
+#site-footer a { color: var(--muted); text-decoration: none; margin: 0 6px; }
+#site-footer a:hover { color: var(--blue-bright); }
+.footer-copy { margin-top: 2px; font-size: 0.68rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  #burger { display: flex; }
+  #sidebar {
+    transform: translateX(-100%); transition: transform 0.25s;
+    z-index: 160;
+  }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; padding: 16px 14px 100px; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .header-nav { display: none; }
+}
+@media (max-width: 400px) {
+  .calc-keys { gap: 5px; }
+  .k { padding: 11px 4px; font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <button id="burger" aria-label="Menü" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="index.html" id="site-logo">Universal<span>Calculator</span></a>
+  <nav class="header-nav">
+    <a href="blog.html">Wissenswertes</a>
+    <a href="faq.html">FAQ</a>
+    <a href="hilfe.html">Hilfe</a>
+  </nav>
+  <div class="header-right">
+    <select id="lang-select" onchange="setLang(this.value)">
+      <option value="de">🇩🇪 DE</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="fr">🇫🇷 FR</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="it">🇮🇹 IT</option>
+      <option value="pt">🇵🇹 PT</option>
+      <option value="nl">🇳🇱 NL</option>
+      <option value="pl">🇵🇱 PL</option>
+      <option value="tr">🇹🇷 TR</option>
+      <option value="ar">🇸🇦 AR</option>
+      <option value="zh">🇨🇳 ZH</option>
+    </select>
+  </div>
+</header>
+
+<div id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- LAYOUT -->
+<div id="layout">
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+
+  <span class="sidebar-cat">⚙️ Allgemein</span>
+  <div class="sidebar-item active" onclick="show('taschenrechner')" data-id="taschenrechner"><span class="icon">🧮</span> Taschenrechner</div>
+
+  <span class="sidebar-cat">💰 Finanzen & Wirtschaft</span>
+  <div class="sidebar-item" onclick="show('zinsrechner')" data-id="zinsrechner"><span class="icon">📈</span> Zinsrechner</div>
+  <div class="sidebar-item" onclick="show('zinseszins')" data-id="zinseszins"><span class="icon">📊</span> Zinseszins</div>
+  <div class="sidebar-item" onclick="show('kredit')" data-id="kredit"><span class="icon">🏦</span> Kredit / Darlehen</div>
+  <div class="sidebar-item" onclick="show('tilgungsplan')" data-id="tilgungsplan"><span class="icon">📋</span> Tilgungsplan</div>
+  <div class="sidebar-item" onclick="show('rente')" data-id="rente"><span class="icon">🏖️</span> Rente / Altersvorsorge</div>
+  <div class="sidebar-item" onclick="show('mwst')" data-id="mwst"><span class="icon">🧾</span> Mehrwertsteuer</div>
+  <div class="sidebar-item" onclick="show('prozent')" data-id="prozent"><span class="icon">%</span> Prozentrechner</div>
+  <div class="sidebar-item" onclick="show('waehrung')" data-id="waehrung"><span class="icon">💱</span> Währungsumrechner</div>
+  <div class="sidebar-item" onclick="show('tagesgeld')" data-id="tagesgeld"><span class="icon">🏧</span> Tagesgeldrechner</div>
+  <div class="sidebar-item" onclick="show('inflation')" data-id="inflation"><span class="icon">📉</span> Inflationsrechner</div>
+  <div class="sidebar-item" onclick="show('rabatt')" data-id="rabatt"><span class="icon">🏷️</span> Rabatt / Skonto</div>
+  <div class="sidebar-item" onclick="show('gehalt')" data-id="gehalt"><span class="icon">💼</span> Gehaltsrechner</div>
+  <div class="sidebar-item" onclick="show('roi')" data-id="roi"><span class="icon">💹</span> ROI Rechner</div>
+
+  <span class="sidebar-cat">📐 Mathematik</span>
+  <div class="sidebar-item" onclick="show('potenz')" data-id="potenz"><span class="icon">xⁿ</span> Potenz / Wurzel</div>
+  <div class="sidebar-item" onclick="show('primzahl')" data-id="primzahl"><span class="icon">🔢</span> Primzahlencheck</div>
+  <div class="sidebar-item" onclick="show('teiler')" data-id="teiler"><span class="icon">➗</span> Teilerrechner</div>
+  <div class="sidebar-item" onclick="show('fakultaet')" data-id="fakultaet"><span class="icon">n!</span> Fakultät</div>
+  <div class="sidebar-item" onclick="show('fibonacci')" data-id="fibonacci"><span class="icon">🌀</span> Fibonacci</div>
+  <div class="sidebar-item" onclick="show('dreieck')" data-id="dreieck"><span class="icon">📐</span> Dreieck</div>
+  <div class="sidebar-item" onclick="show('kreis')" data-id="kreis"><span class="icon">⭕</span> Kreis</div>
+  <div class="sidebar-item" onclick="show('rechteck')" data-id="rechteck"><span class="icon">▭</span> Rechteck / Quadrat</div>
+  <div class="sidebar-item" onclick="show('trapez')" data-id="trapez"><span class="icon">⏢</span> Trapez</div>
+  <div class="sidebar-item" onclick="show('kugel')" data-id="kugel"><span class="icon">🔵</span> Kugel</div>
+  <div class="sidebar-item" onclick="show('quader')" data-id="quader"><span class="icon">📦</span> Quader / Würfel</div>
+  <div class="sidebar-item" onclick="show('zylinder')" data-id="zylinder"><span class="icon">🥫</span> Zylinder</div>
+  <div class="sidebar-item" onclick="show('kegel')" data-id="kegel"><span class="icon">🔺</span> Kegel</div>
+  <div class="sidebar-item" onclick="show('binomial')" data-id="binomial"><span class="icon">Cₙₖ</span> Binomialkoeffizient</div>
+  <div class="sidebar-item" onclick="show('zufall')" data-id="zufall"><span class="icon">🎲</span> Zufallszahl</div>
+
+  <span class="sidebar-cat">🏥 Gesundheit & Fitness</span>
+  <div class="sidebar-item" onclick="show('bmi')" data-id="bmi"><span class="icon">⚖️</span> BMI-Rechner</div>
+  <div class="sidebar-item" onclick="show('kalorien')" data-id="kalorien"><span class="icon">🔥</span> Kalorienverbrauch</div>
+  <div class="sidebar-item" onclick="show('idealgewicht')" data-id="idealgewicht"><span class="icon">🎯</span> Idealgewicht</div>
+  <div class="sidebar-item" onclick="show('wasser')" data-id="wasser"><span class="icon">💧</span> Wasserbedarf</div>
+  <div class="sidebar-item" onclick="show('herzfrequenz')" data-id="herzfrequenz"><span class="icon">❤️</span> Herzfrequenzzonen</div>
+  <div class="sidebar-item" onclick="show('schwangerschaft')" data-id="schwangerschaft"><span class="icon">🤰</span> Schwangerschaftskalender</div>
+  <div class="sidebar-item" onclick="show('koerperfett')" data-id="koerperfett"><span class="icon">📏</span> Körperfettanteil</div>
+  <div class="sidebar-item" onclick="show('tdee')" data-id="tdee"><span class="icon">🍽️</span> TDEE Kalorienbedarf</div>
+
+  <span class="sidebar-cat">📅 Datum & Zeit</span>
+  <div class="sidebar-item" onclick="show('datum')" data-id="datum"><span class="icon">📆</span> Datumsrechner</div>
+  <div class="sidebar-item" onclick="show('alter')" data-id="alter"><span class="icon">🎂</span> Alter berechnen</div>
+  <div class="sidebar-item" onclick="show('countdown')" data-id="countdown"><span class="icon">⏱️</span> Countdown</div>
+  <div class="sidebar-item" onclick="show('wochentag')" data-id="wochentag"><span class="icon">📅</span> Wochentag-Rechner</div>
+  <div class="sidebar-item" onclick="show('zeitzonen')" data-id="zeitzonen"><span class="icon">🌍</span> Zeitzonenrechner</div>
+  <div class="sidebar-item" onclick="show('arbeitsstunden')" data-id="arbeitsstunden"><span class="icon">⏰</span> Arbeitsstunden</div>
+  <div class="sidebar-item" onclick="show('urlaub')" data-id="urlaub"><span class="icon">🏖️</span> Urlaubstage</div>
+
+  <span class="sidebar-cat">📏 Einheitenumrechnung</span>
+  <div class="sidebar-item" onclick="show('laenge')" data-id="laenge"><span class="icon">📏</span> Länge</div>
+  <div class="sidebar-item" onclick="show('gewicht')" data-id="gewicht"><span class="icon">⚖️</span> Gewicht</div>
+  <div class="sidebar-item" onclick="show('temperatur')" data-id="temperatur"><span class="icon">🌡️</span> Temperatur</div>
+  <div class="sidebar-item" onclick="show('flaeche')" data-id="flaeche"><span class="icon">⬜</span> Fläche</div>
+  <div class="sidebar-item" onclick="show('volumen')" data-id="volumen"><span class="icon">🧊</span> Volumen</div>
+  <div class="sidebar-item" onclick="show('geschwindigkeit')" data-id="geschwindigkeit"><span class="icon">🚀</span> Geschwindigkeit</div>
+  <div class="sidebar-item" onclick="show('druck')" data-id="druck"><span class="icon">🌬️</span> Druck</div>
+  <div class="sidebar-item" onclick="show('energie')" data-id="energie"><span class="icon">⚡</span> Energie</div>
+  <div class="sidebar-item" onclick="show('leistung')" data-id="leistung"><span class="icon">💡</span> Leistung</div>
+  <div class="sidebar-item" onclick="show('daten')" data-id="daten"><span class="icon">💾</span> Datenmengen</div>
+  <div class="sidebar-item" onclick="show('winkel')" data-id="winkel"><span class="icon">📐</span> Winkel</div>
+  <div class="sidebar-item" onclick="show('frequenz')" data-id="frequenz"><span class="icon">〰️</span> Frequenz</div>
+
+  <span class="sidebar-cat">⚗️ Physik & Technik</span>
+  <div class="sidebar-item" onclick="show('ohm')" data-id="ohm"><span class="icon">⚡</span> Ohmsches Gesetz</div>
+  <div class="sidebar-item" onclick="show('widerstand')" data-id="widerstand"><span class="icon">🔌</span> Widerstand</div>
+  <div class="sidebar-item" onclick="show('kondensator')" data-id="kondensator"><span class="icon">🔋</span> Kondensator / Spule</div>
+  <div class="sidebar-item" onclick="show('dichte')" data-id="dichte"><span class="icon">🧪</span> Dichte</div>
+  <div class="sidebar-item" onclick="show('auftrieb')" data-id="auftrieb"><span class="icon">🚢</span> Auftrieb</div>
+  <div class="sidebar-item" onclick="show('freifall')" data-id="freifall"><span class="icon">🪂</span> Freier Fall</div>
+  <div class="sidebar-item" onclick="show('schall')" data-id="schall"><span class="icon">🔊</span> Schallgeschwindigkeit</div>
+  <div class="sidebar-item" onclick="show('brechung')" data-id="brechung"><span class="icon">🔭</span> Brechungsindex</div>
+
+  <span class="sidebar-cat">🛠️ Sonstiges</span>
+  <div class="sidebar-item" onclick="show('passwort')" data-id="passwort"><span class="icon">🔐</span> Passwortgenerator</div>
+  <div class="sidebar-item" onclick="show('farbe')" data-id="farbe"><span class="icon">🎨</span> Farbrechner</div>
+  <div class="sidebar-item" onclick="show('schrift')" data-id="schrift"><span class="icon">🖋️</span> Schriftgrößen</div>
+  <div class="sidebar-item" onclick="show('papier')" data-id="papier"><span class="icon">📄</span> Papierformat</div>
+  <div class="sidebar-item" onclick="show('konfektionsgroesse')" data-id="konfektionsgroesse"><span class="icon">👗</span> Konfektionsgröße</div>
+  <div class="sidebar-item" onclick="show('schuhgroesse')" data-id="schuhgroesse"><span class="icon">👟</span> Schuhgröße</div>
+  <div class="sidebar-item" onclick="show('reifengroesse')" data-id="reifengroesse"><span class="icon">🚗</span> Reifengröße</div>
+  <div class="sidebar-item" onclick="show('kraftstoff')" data-id="kraftstoff"><span class="icon">⛽</span> Kraftstoffverbrauch</div>
+  <div class="sidebar-item" onclick="show('co2')" data-id="co2"><span class="icon">🌱</span> CO₂-Rechner</div>
+
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+  <div id="calc-container"></div>
+</main>
+
+</div><!-- /layout -->
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div class="footer-copy">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots. Technisch notwendige Cookies sind immer aktiv.</p>
+  <div class="cookie-btns">
+    <button class="cbtn cbtn-accept" onclick="acceptCookies()">Alle akzeptieren</button>
+    <button class="cbtn cbtn-reject" onclick="rejectCookies()">Nur notwendige</button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+//  COOKIE CONSENT
+// ══════════════════════════════════════════════════
+const banner = document.getElementById('cookie-banner');
+if (!localStorage.getItem('cookie-consent')) {
+  banner.classList.remove('hidden');
+} else {
+  banner.classList.add('hidden');
+}
+function acceptCookies() {
+  localStorage.setItem('cookie-consent', 'all');
+  banner.classList.add('hidden');
+}
+function rejectCookies() {
+  localStorage.setItem('cookie-consent', 'necessary');
+  banner.classList.add('hidden');
+}
+
+// ══════════════════════════════════════════════════
+//  LANGUAGE
+// ══════════════════════════════════════════════════
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  const url = new URL(window.location.href);
+  url.searchParams.set('lang', lang);
+  window.location.href = url.toString();
+}
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get('lang') || localStorage.getItem('lang') || 'de';
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+  if (lang === 'ar') document.documentElement.dir = 'rtl';
+})();
+
+// ══════════════════════════════════════════════════
+//  SIDEBAR TOGGLE (Mobile)
+// ══════════════════════════════════════════════════
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('overlay');
+  sb.classList.toggle('open');
+  ov.classList.toggle('show');
+}
+
+// ══════════════════════════════════════════════════
+//  SHOW CALCULATOR
+// ══════════════════════════════════════════════════
+function show(id) {
+  document.querySelectorAll('.sidebar-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === id);
+  });
+  const container = document.getElementById('calc-container');
+  const fn = CALCS[id];
+  if (fn) container.innerHTML = fn();
+  else container.innerHTML = '<div class="calc-card"><p>Rechner wird geladen …</p></div>';
+  // Close sidebar on mobile
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  }
+  window.scrollTo(0, 0);
+  // URL hash
+  history.replaceState(null, '', '#' + id);
+}
+
+// ══════════════════════════════════════════════════
+//  HELPER
+// ══════════════════════════════════════════════════
+function fmt(n, dec = 2) {
+  if (isNaN(n) || !isFinite(n)) return '–';
+  return Number(n).toLocaleString('de-DE', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+}
+function fmtInt(n) {
+  return Number(n).toLocaleString('de-DE');
+}
+function card(title, desc, body) {
+  return `<div class="calc-card"><div class="calc-title">${title}</div><p class="calc-desc">${desc}</p>${body}</div>`;
+}
+function result(label, value, sub='', copper=false) {
+  return `<div class="result-box${copper?' result-copper':''}">
+    <div class="result-label">${label}</div>
+    <div class="result-value">${value}</div>
+    ${sub ? `<div class="result-sub">${sub}</div>` : ''}
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════
+//  ALL CALCULATORS
+// ══════════════════════════════════════════════════
+const CALCS = {
+
+// ─── TASCHENRECHNER ───
+taschenrechner: () => {
+  return card('🧮 Taschenrechner', 'Universeller Taschenrechner mit Grundrechenarten.', `
+    <div class="calc-display">
+      <div class="disp-expr" id="tc-expr"></div>
+      <div class="disp-val" id="tc-val">0</div>
+    </div>
+    <div class="calc-keys">
+      <button class="k clear" onclick="tcKey('AC')">AC</button>
+      <button class="k op" onclick="tcKey('+/-')">+/-</button>
+      <button class="k op" onclick="tcKey('%')">%</button>
+      <button class="k op" onclick="tcKey('/')">÷</button>
+      <button class="k" onclick="tcKey('7')">7</button>
+      <button class="k" onclick="tcKey('8')">8</button>
+      <button class="k" onclick="tcKey('9')">9</button>
+      <button class="k op" onclick="tcKey('*')">×</button>
+      <button class="k" onclick="tcKey('4')">4</button>
+      <button class="k" onclick="tcKey('5')">5</button>
+      <button class="k" onclick="tcKey('6')">6</button>
+      <button class="k op" onclick="tcKey('-')">−</button>
+      <button class="k" onclick="tcKey('1')">1</button>
+      <button class="k" onclick="tcKey('2')">2</button>
+      <button class="k" onclick="tcKey('3')">3</button>
+      <button class="k op" onclick="tcKey('+')">+</button>
+      <button class="k zero" onclick="tcKey('0')">0</button>
+      <button class="k" onclick="tcKey('.')">.</button>
+      <button class="k eq" onclick="tcKey('=')">=</button>
+    </div>
+  `);
+},
+
+// ─── ZINSRECHNER ───
+zinsrechner: () => card('📈 Zinsrechner (einfach)', 'Berechnet einfache Zinsen ohne Zinseszinseffekt.', `
+  <div class="calc-grid">
+    <div class="field"><label>Kapital (€)</label><input id="z-kap" type="number" value="10000" placeholder="10000"></div>
+    <div class="field"><label>Zinssatz (% p.a.)</label><input id="z-zins" type="number" value="3.5" step="0.01" placeholder="3.5"></div>
+    <div class="field"><label>Laufzeit (Jahre)</label><input id="z-jahre" type="number" value="5" placeholder="5"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="calcZins()">Berechnen</button>
+    <button class="btn btn-ghost" onclick="show('zinseszins')">→ Zinseszins</button>
+  </div>
+  <div id="z-result"></div>
+`),
+
+// ─── ZINSESZINS ───
+zinseszins: () => card('📊 Zinseszinsrechner', 'Berechnet den Zinseszinseffekt über mehrere Jahre.', `
+  <div class="calc-grid">
+    <div class="field"><label>Startkapital (€)</label><input id="ze-kap" type="number" value="10000"></div>
+    <div class="field"><label>Zinssatz (% p.a.)</label><input id="ze-zins" type="number" value="5" step="0.01"></div>
+    <div class="field"><label>Laufzeit (Jahre)</label><input id="ze-jahre" type="number" value="10"></div>
+    <div class="field"><label>Monatliche Einzahlung (€)</label><input id="ze-sparrate" type="number" value="100"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="calcZinseszins()">Berechnen</button>
+  </div>
+  <div id="ze-result"></div>
+`),
+
+// ─── KREDIT ───
+kredit: () => card('🏦 Kredit / Darlehen', 'Berechnet monatliche Rate, Gesamtkosten und Zinsen.', `
+  <div class="calc-grid">
+    <div class="field"><label>Darlehensbetrag (€)</label><input id="kr-betrag" type="number" value="150000"></div>
+    <div class="field"><label>Zinssatz (% p.a.)</label><input id="kr-zins" type="number" value="3.5" step="0.01"></div>
+    <div class="field"><label>Laufzeit (Jahre)</label><input id="kr-jahre" type="number" value="20"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="calcKredit()">Berechnen</button>
+    <button class="btn btn-ghost" onclick="show('tilgungsplan')">→ Tilgungsplan</button>
+  </div>
+  <div id="kr-result"></div>
+`),
+
+// ─── TILGUNGSPLAN ───
+tilgungsplan: () => card('📋 Tilgungsplan', 'Erstellt einen jährlichen Tilgungsplan für Ihr Darlehen.', `
+  <div class="calc-grid">
+    <div class="field"><label>Darlehensbetrag (€)</label><input id="tp-betrag" type="number" value="100000"></div>
+    <div class="field"><label>Zinssatz (% p.a.)</label><input id="tp-zins" type="number" value="3.5" step="0.01"></div>
+    <div class="field"><label>Monatliche Rate (€)</label><input id="tp-rate" type="number" value="600"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="calcTilgung()">Tilgungsplan erstellen</button>
+  </div>
+  <div id="tp-result"></div>
+`),
+
+// ─── RENTE ───
+rente: () => card('🏖️ Renten- / Altersvorsorgerechner', 'Schätzt Ihr Kapital bei der Rente.', `
+  <div class="calc-grid">
+    <div class="field"><label>Monatliche Sparrate (€)</label><input id="rn-rate" type="number" value="200"></div>
+    <div class="field"><label>Aktuelles Alter</label><input id="rn-alter" type="number" value="30"></div>
+    <div class="field"><label>Rentenalter</label><input id="rn-rente" type="number" value="67"></div>
+    <div class="field"><label>Erwartete Rendite (% p.a.)</label><input id="rn-rendite" type="number" value="5" step="0.1"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcRente()">Berechnen</button></div>
+  <div id="rn-result"></div>
+`),
+
+// ─── MEHRWERTSTEUER ───
+mwst: () => card('🧾 Mehrwertsteuerrechner', 'Berechnet Netto, Brutto und MwSt-Betrag.', `
+  <div class="calc-grid">
+    <div class="field"><label>Betrag (€)</label><input id="mw-betrag" type="number" value="100"></div>
+    <div class="field"><label>MwSt-Satz (%)</label><select id="mw-satz"><option value="19">19 % (Standard)</option><option value="7">7 % (Ermäßigt)</option><option value="0">0 %</option></select></div>
+    <div class="field"><label>Eingabe ist</label><select id="mw-typ"><option value="netto">Nettobetrag</option><option value="brutto">Bruttobetrag</option></select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcMwSt()">Berechnen</button></div>
+  <div id="mw-result"></div>
+`),
+
+// ─── PROZENT ───
+prozent: () => card('% Prozentrechner', 'Alle Arten von Prozentberechnungen.', `
+  <div class="field" style="margin-bottom:10px">
+    <label>Berechnung</label>
+    <select id="pr-typ" onchange="renderProzent()">
+      <option value="a">X % von Y</option>
+      <option value="b">Wieviel % ist X von Y?</option>
+      <option value="c">X um Y % erhöhen/verringern</option>
+      <option value="d">Prozentualer Unterschied A→B</option>
+    </select>
+  </div>
+  <div id="pr-fields"></div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcProzent()">Berechnen</button></div>
+  <div id="pr-result"></div>
+`),
+
+// ─── WÄHRUNG ───
+waehrung: () => card('💱 Währungsumrechner', 'Statische Kurse (Stand 2026, Basis EUR).', `
+  <div class="calc-grid">
+    <div class="field"><label>Betrag</label><input id="wr-betrag" type="number" value="100"></div>
+    <div class="field"><label>Von</label><select id="wr-von">${currencyOptions()}</select></div>
+    <div class="field"><label>Nach</label><select id="wr-nach">${currencyOptions('USD')}</select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcWaehrung()">Umrechnen</button></div>
+  <div id="wr-result"></div>
+  <p style="margin-top:10px;font-size:0.72rem;color:var(--muted)">* Statische Richtkurse 2026. Für aktuelle Kurse bitte Bank konsultieren.</p>
+`),
+
+// ─── TAGESGELD ───
+tagesgeld: () => card('🏧 Tagesgeldrechner', 'Berechnet Zinserträge auf Tagesgeldkonten.', `
+  <div class="calc-grid">
+    <div class="field"><label>Startkapital (€)</label><input id="tg-kap" type="number" value="10000"></div>
+    <div class="field"><label>Zinssatz (% p.a.)</label><input id="tg-zins" type="number" value="3.2" step="0.01"></div>
+    <div class="field"><label>Anlagedauer (Monate)</label><input id="tg-monate" type="number" value="12"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcTagesgeld()">Berechnen</button></div>
+  <div id="tg-result"></div>
+`),
+
+// ─── INFLATION ───
+inflation: () => card('📉 Inflationsrechner', 'Berechnet die Kaufkraft eines Betrages über die Zeit.', `
+  <div class="calc-grid">
+    <div class="field"><label>Betrag (€)</label><input id="inf-betrag" type="number" value="1000"></div>
+    <div class="field"><label>Inflationsrate (% p.a.)</label><input id="inf-rate" type="number" value="3" step="0.1"></div>
+    <div class="field"><label>Zeitraum (Jahre)</label><input id="inf-jahre" type="number" value="10"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcInflation()">Berechnen</button></div>
+  <div id="inf-result"></div>
+`),
+
+// ─── RABATT ───
+rabatt: () => card('🏷️ Rabatt / Skonto Rechner', 'Berechnet Preise nach Rabatt oder Skonto.', `
+  <div class="calc-grid">
+    <div class="field"><label>Originalpreis (€)</label><input id="rb-preis" type="number" value="199"></div>
+    <div class="field"><label>Rabatt (%)</label><input id="rb-rabatt" type="number" value="20"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcRabatt()">Berechnen</button></div>
+  <div id="rb-result"></div>
+`),
+
+// ─── GEHALT ───
+gehalt: () => card('💼 Gehaltsrechner (Näherung)', 'Schätzt Nettolohn aus Bruttogehalt (Deutschland, Näherungswert).', `
+  <div class="calc-grid">
+    <div class="field"><label>Bruttogehalt / Monat (€)</label><input id="gh-brutto" type="number" value="3500"></div>
+    <div class="field"><label>Steuerklasse</label><select id="gh-stkl">
+      <option value="1">I</option><option value="2">II</option><option value="3">III</option>
+      <option value="4">IV</option><option value="5">V</option><option value="6">VI</option>
+    </select></div>
+    <div class="field"><label>Kirchensteuer</label><select id="gh-kirche"><option value="0">Nein</option><option value="0.09">Ja (9 %)</option></select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcGehalt()">Berechnen</button></div>
+  <div id="gh-result"></div>
+  <p style="margin-top:8px;font-size:0.72rem;color:var(--muted)">* Näherungsrechnung. Für genaue Werte bitte Steuerberater konsultieren.</p>
+`),
+
+// ─── ROI ───
+roi: () => card('💹 ROI-Rechner (Return on Investment)', 'Berechnet den Return on Investment.', `
+  <div class="calc-grid">
+    <div class="field"><label>Investition (€)</label><input id="roi-inv" type="number" value="10000"></div>
+    <div class="field"><label>Ertrag / Gewinn (€)</label><input id="roi-ertrag" type="number" value="13500"></div>
+    <div class="field"><label>Zeitraum (Jahre, optional)</label><input id="roi-jahre" type="number" value="3" min="0"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcROI()">Berechnen</button></div>
+  <div id="roi-result"></div>
+`),
+
+// ─── POTENZ ───
+potenz: () => card('xⁿ Potenz & Wurzelrechner', 'Berechnet Potenzen und beliebige Wurzeln.', `
+  <div class="calc-grid">
+    <div class="field"><label>Basis (x)</label><input id="pw-basis" type="number" value="2"></div>
+    <div class="field"><label>Exponent (n)</label><input id="pw-exp" type="number" value="10" step="0.001"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="calcPotenz()">xⁿ berechnen</button>
+    <button class="btn btn-ghost" onclick="calcWurzel()">ⁿ√x berechnen</button>
+  </div>
+  <div id="pw-result"></div>
+`),
+
+// ─── PRIMZAHL ───
+primzahl: () => card('🔢 Primzahlencheck', 'Prüft ob eine Zahl eine Primzahl ist und listet Primzahlen auf.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Zahl prüfen</label><input id="pz-zahl" type="number" value="97"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="calcPrimzahl()">Prüfen</button>
+    <button class="btn btn-ghost" onclick="calcPrimzahlenListe()">Alle bis N</button>
+  </div>
+  <div id="pz-result"></div>
+`),
+
+// ─── TEILER ───
+teiler: () => card('➗ Teilerrechner', 'Findet alle Teiler einer Zahl sowie ggT und kgV.', `
+  <div class="calc-grid">
+    <div class="field"><label>Zahl 1</label><input id="te-a" type="number" value="48"></div>
+    <div class="field"><label>Zahl 2 (optional, für ggT/kgV)</label><input id="te-b" type="number" value="36"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcTeiler()">Berechnen</button></div>
+  <div id="te-result"></div>
+`),
+
+// ─── FAKULTÄT ───
+fakultaet: () => card('n! Fakultät & Permutationen', 'Berechnet Fakultät, Permutationen und Kombinationen.', `
+  <div class="calc-grid">
+    <div class="field"><label>n</label><input id="fak-n" type="number" value="10" min="0" max="170"></div>
+    <div class="field"><label>k (für nPk / nCk)</label><input id="fak-k" type="number" value="3" min="0"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcFakultaet()">Berechnen</button></div>
+  <div id="fak-result"></div>
+`),
+
+// ─── FIBONACCI ───
+fibonacci: () => card('🌀 Fibonacci-Folge', 'Zeigt die ersten n Fibonacci-Zahlen.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Anzahl Glieder (max. 50)</label><input id="fib-n" type="number" value="15" min="1" max="50"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcFib()">Generieren</button></div>
+  <div id="fib-result"></div>
+`),
+
+// ─── DREIECK ───
+dreieck: () => card('📐 Dreieckrechner', 'Berechnet Fläche, Umfang und Höhen eines Dreiecks.', `
+  <div class="calc-grid">
+    <div class="field"><label>Seite a</label><input id="dr-a" type="number" value="5"></div>
+    <div class="field"><label>Seite b</label><input id="dr-b" type="number" value="6"></div>
+    <div class="field"><label>Seite c</label><input id="dr-c" type="number" value="7"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcDreieck()">Berechnen</button></div>
+  <div id="dr-result"></div>
+`),
+
+// ─── KREIS ───
+kreis: () => card('⭕ Kreisrechner', 'Berechnet Fläche, Umfang und Durchmesser eines Kreises.', `
+  <div class="calc-grid">
+    <div class="field"><label>Radius (r)</label><input id="kr2-r" type="number" value="5"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKreis()">Berechnen</button></div>
+  <div id="kr2-result"></div>
+`),
+
+// ─── RECHTECK ───
+rechteck: () => card('▭ Rechteck & Quadrat', 'Berechnet Fläche, Umfang und Diagonale.', `
+  <div class="calc-grid">
+    <div class="field"><label>Länge (a)</label><input id="re-a" type="number" value="8"></div>
+    <div class="field"><label>Breite (b) – leer = Quadrat</label><input id="re-b" type="number" placeholder="= a"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcRechteck()">Berechnen</button></div>
+  <div id="re-result"></div>
+`),
+
+// ─── TRAPEZ ───
+trapez: () => card('⏢ Trapezrechner', 'Berechnet Fläche und Umfang eines Trapezes.', `
+  <div class="calc-grid">
+    <div class="field"><label>Seite a (parallel)</label><input id="trp-a" type="number" value="8"></div>
+    <div class="field"><label>Seite c (parallel)</label><input id="trp-c" type="number" value="5"></div>
+    <div class="field"><label>Höhe h</label><input id="trp-h" type="number" value="4"></div>
+    <div class="field"><label>Seite b</label><input id="trp-b" type="number" value="4.5"></div>
+    <div class="field"><label>Seite d</label><input id="trp-d" type="number" value="3.5"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcTrapez()">Berechnen</button></div>
+  <div id="trp-result"></div>
+`),
+
+// ─── KUGEL ───
+kugel: () => card('🔵 Kugelrechner', 'Berechnet Volumen und Oberfläche einer Kugel.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Radius (r)</label><input id="ku-r" type="number" value="5"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKugel()">Berechnen</button></div>
+  <div id="ku-result"></div>
+`),
+
+// ─── QUADER ───
+quader: () => card('📦 Quader & Würfel', 'Berechnet Volumen, Oberfläche und Raumdiagonale.', `
+  <div class="calc-grid">
+    <div class="field"><label>Länge (a)</label><input id="qd-a" type="number" value="4"></div>
+    <div class="field"><label>Breite (b) – leer = Würfel</label><input id="qd-b" type="number" placeholder="= a"></div>
+    <div class="field"><label>Höhe (c) – leer = Würfel</label><input id="qd-c" type="number" placeholder="= a"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcQuader()">Berechnen</button></div>
+  <div id="qd-result"></div>
+`),
+
+// ─── ZYLINDER ───
+zylinder: () => card('🥫 Zylinderrechner', 'Berechnet Volumen, Mantelfläche und Oberfläche.', `
+  <div class="calc-grid">
+    <div class="field"><label>Radius (r)</label><input id="zy-r" type="number" value="3"></div>
+    <div class="field"><label>Höhe (h)</label><input id="zy-h" type="number" value="8"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcZylinder()">Berechnen</button></div>
+  <div id="zy-result"></div>
+`),
+
+// ─── KEGEL ───
+kegel: () => card('🔺 Kegelrechner', 'Berechnet Volumen, Mantelfläche und Oberfläche.', `
+  <div class="calc-grid">
+    <div class="field"><label>Radius (r)</label><input id="ke-r" type="number" value="4"></div>
+    <div class="field"><label>Höhe (h)</label><input id="ke-h" type="number" value="9"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKegel()">Berechnen</button></div>
+  <div id="ke-result"></div>
+`),
+
+// ─── BINOMIAL ───
+binomial: () => card('Cₙₖ Binomialkoeffizient', 'Berechnet n über k ("n choose k").', `
+  <div class="calc-grid">
+    <div class="field"><label>n (Gesamtzahl)</label><input id="bn-n" type="number" value="10" min="0"></div>
+    <div class="field"><label>k (Auswahl)</label><input id="bn-k" type="number" value="3" min="0"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcBinom()">Berechnen</button></div>
+  <div id="bn-result"></div>
+`),
+
+// ─── ZUFALL ───
+zufall: () => card('🎲 Zufallszahlengenerator', 'Erzeugt Zufallszahlen in einem beliebigen Bereich.', `
+  <div class="calc-grid">
+    <div class="field"><label>Von</label><input id="rng-von" type="number" value="1"></div>
+    <div class="field"><label>Bis</label><input id="rng-bis" type="number" value="100"></div>
+    <div class="field"><label>Anzahl Zahlen</label><input id="rng-n" type="number" value="1" min="1" max="100"></div>
+    <div class="field"><label>Ganzzahlen</label><select id="rng-int"><option value="1">Ja</option><option value="0">Nein (2 Dezimalstellen)</option></select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcZufall()">Generieren</button></div>
+  <div id="rng-result"></div>
+`),
+
+// ─── BMI ───
+bmi: () => card('⚖️ BMI-Rechner', 'Berechnet den Body-Mass-Index (BMI).', `
+  <div class="calc-grid">
+    <div class="field"><label>Größe (cm)</label><input id="bm-groesse" type="number" value="175"></div>
+    <div class="field"><label>Gewicht (kg)</label><input id="bm-gewicht" type="number" value="75"></div>
+    <div class="field"><label>Alter</label><input id="bm-alter" type="number" value="30"></div>
+    <div class="field"><label>Geschlecht</label><select id="bm-sex"><option value="m">Männlich</option><option value="w">Weiblich</option></select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcBMI()">Berechnen</button></div>
+  <div id="bm-result"></div>
+`),
+
+// ─── KALORIEN ───
+kalorien: () => card('🔥 Kalorienverbrauch (Harris-Benedict)', 'Berechnet Grundumsatz und Gesamtenergieverbrauch.', `
+  <div class="calc-grid">
+    <div class="field"><label>Größe (cm)</label><input id="kal-g" type="number" value="175"></div>
+    <div class="field"><label>Gewicht (kg)</label><input id="kal-w" type="number" value="75"></div>
+    <div class="field"><label>Alter</label><input id="kal-a" type="number" value="30"></div>
+    <div class="field"><label>Geschlecht</label><select id="kal-sex"><option value="m">Männlich</option><option value="w">Weiblich</option></select></div>
+    <div class="field" style="grid-column:span 2"><label>Aktivitätslevel</label><select id="kal-akt">
+      <option value="1.2">Kaum Bewegung (Bürojob)</option>
+      <option value="1.375">Leicht aktiv (1–3× Sport/Wo)</option>
+      <option value="1.55" selected>Mäßig aktiv (3–5× Sport/Wo)</option>
+      <option value="1.725">Sehr aktiv (6–7× Sport/Wo)</option>
+      <option value="1.9">Extrem aktiv (Sportler)</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKalorien()">Berechnen</button></div>
+  <div id="kal-result"></div>
+`),
+
+// ─── IDEALGEWICHT ───
+idealgewicht: () => card('🎯 Idealgewicht', 'Berechnet das Idealgewicht nach mehreren Formeln.', `
+  <div class="calc-grid">
+    <div class="field"><label>Größe (cm)</label><input id="ig-g" type="number" value="175"></div>
+    <div class="field"><label>Geschlecht</label><select id="ig-sex"><option value="m">Männlich</option><option value="w">Weiblich</option></select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcIdeal()">Berechnen</button></div>
+  <div id="ig-result"></div>
+`),
+
+// ─── WASSER ───
+wasser: () => card('💧 Wasserbedarfsrechner', 'Ermittelt die empfohlene tägliche Trinkmenge.', `
+  <div class="calc-grid">
+    <div class="field"><label>Körpergewicht (kg)</label><input id="wa-kw" type="number" value="70"></div>
+    <div class="field"><label>Aktivität</label><select id="wa-akt">
+      <option value="0">Wenig aktiv</option>
+      <option value="0.5" selected>Mäßig aktiv</option>
+      <option value="1">Sport täglich</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcWasser()">Berechnen</button></div>
+  <div id="wa-result"></div>
+`),
+
+// ─── HERZFREQUENZ ───
+herzfrequenz: () => card('❤️ Herzfrequenzzonen', 'Berechnet Trainingszonen nach Alter.', `
+  <div class="calc-grid">
+    <div class="field"><label>Alter (Jahre)</label><input id="hf-alter" type="number" value="35"></div>
+    <div class="field"><label>Ruhepuls (bpm)</label><input id="hf-ruhe" type="number" value="65"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcHerzfrequenz()">Berechnen</button></div>
+  <div id="hf-result"></div>
+`),
+
+// ─── SCHWANGERSCHAFT ───
+schwangerschaft: () => card('🤰 Schwangerschaftskalender', 'Berechnet den voraussichtlichen Geburtstermin.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Erster Tag der letzten Regel</label><input id="sw-datum" type="date"></div>
+    <div class="field"><label>Zykluslänge (Tage, Standard 28)</label><input id="sw-zyklus" type="number" value="28" min="21" max="45"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcSchwangerschaft()">Berechnen</button></div>
+  <div id="sw-result"></div>
+`),
+
+// ─── KÖRPERFETT ───
+koerperfett: () => card('📏 Körperfettanteil (US-Navy-Methode)', 'Schätzt den Körperfettanteil durch Körpermaße.', `
+  <div class="calc-grid">
+    <div class="field"><label>Geschlecht</label><select id="kf-sex"><option value="m">Männlich</option><option value="w">Weiblich</option></select></div>
+    <div class="field"><label>Körpergröße (cm)</label><input id="kf-g" type="number" value="175"></div>
+    <div class="field"><label>Taillenumfang (cm)</label><input id="kf-t" type="number" value="85"></div>
+    <div class="field"><label>Halsumfang (cm)</label><input id="kf-h" type="number" value="38"></div>
+    <div class="field"><label>Hüftumfang (cm, nur Frauen)</label><input id="kf-hu" type="number" placeholder="nur Frauen"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKoerperfett()">Berechnen</button></div>
+  <div id="kf-result"></div>
+`),
+
+// ─── TDEE ───
+tdee: () => card('🍽️ TDEE – Tageskalorienbedarf', 'Total Daily Energy Expenditure inkl. Zieldefinition.', `
+  <div class="calc-grid">
+    <div class="field"><label>Größe (cm)</label><input id="td-g" type="number" value="175"></div>
+    <div class="field"><label>Gewicht (kg)</label><input id="td-w" type="number" value="75"></div>
+    <div class="field"><label>Alter</label><input id="td-a" type="number" value="30"></div>
+    <div class="field"><label>Geschlecht</label><select id="td-sex"><option value="m">Männlich</option><option value="w">Weiblich</option></select></div>
+    <div class="field"><label>Aktivitätsfaktor</label><select id="td-akt">
+      <option value="1.2">Sitzend</option>
+      <option value="1.375">Leicht aktiv</option>
+      <option value="1.55" selected>Mäßig aktiv</option>
+      <option value="1.725">Sehr aktiv</option>
+      <option value="1.9">Extrem aktiv</option>
+    </select></div>
+    <div class="field"><label>Ziel</label><select id="td-ziel">
+      <option value="-500">Abnehmen (−500 kcal)</option>
+      <option value="0" selected>Halten</option>
+      <option value="300">Zunehmen (+300 kcal)</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcTDEE()">Berechnen</button></div>
+  <div id="td-result"></div>
+`),
+
+// ─── DATUM ───
+datum: () => card('📆 Datumsrechner', 'Berechnet Differenz zwischen Daten oder addiert Tage.', `
+  <div class="calc-grid">
+    <div class="field"><label>Startdatum</label><input id="dt-a" type="date"></div>
+    <div class="field"><label>Enddatum (oder leer)</label><input id="dt-b" type="date"></div>
+    <div class="field"><label>Tage addieren/subtrahieren</label><input id="dt-tage" type="number" value="0"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcDatum()">Berechnen</button></div>
+  <div id="dt-result"></div>
+`),
+
+// ─── ALTER ───
+alter: () => card('🎂 Alter berechnen', 'Berechnet Ihr exaktes Alter in Jahren, Monaten und Tagen.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Geburtsdatum</label><input id="al-geb" type="date"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcAlter()">Berechnen</button></div>
+  <div id="al-result"></div>
+`),
+
+// ─── COUNTDOWN ───
+countdown: () => card('⏱️ Countdown', 'Zählt die Zeit bis zu einem Ereignis herunter.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Zieldatum & -uhrzeit</label><input id="cd-ziel" type="datetime-local"></div>
+    <div class="field"><label>Bezeichnung</label><input id="cd-name" type="text" placeholder="z.B. Urlaub, Geburtstag …" value="Mein Ereignis"></div>
+  </div>
+  <div class="calc-actions">
+    <button class="btn btn-primary" onclick="startCountdown()">Starten</button>
+    <button class="btn btn-ghost" onclick="stopCountdown()">Stoppen</button>
+  </div>
+  <div id="cd-result"></div>
+`),
+
+// ─── WOCHENTAG ───
+wochentag: () => card('📅 Wochentag-Rechner', 'Ermittelt den Wochentag zu einem beliebigen Datum.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Datum</label><input id="wt-datum" type="date"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcWochentag()">Berechnen</button></div>
+  <div id="wt-result"></div>
+`),
+
+// ─── ZEITZONEN ───
+zeitzonen: () => card('🌍 Zeitzonenrechner', 'Rechnet Uhrzeiten zwischen Zeitzonen um.', `
+  <div class="calc-grid">
+    <div class="field"><label>Datum & Uhrzeit</label><input id="tz-dt" type="datetime-local"></div>
+    <div class="field"><label>Von Zeitzone</label><select id="tz-von">${tzOptions()}</select></div>
+    <div class="field"><label>Nach Zeitzone</label><select id="tz-nach">${tzOptions('America/New_York')}</select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcZeitzonen()">Umrechnen</button></div>
+  <div id="tz-result"></div>
+`),
+
+// ─── ARBEITSSTUNDEN ───
+arbeitsstunden: () => card('⏰ Arbeitsstundenrechner', 'Berechnet geleistete Arbeitsstunden.', `
+  <div class="calc-grid">
+    <div class="field"><label>Arbeitsbeginn</label><input id="as-von" type="time" value="09:00"></div>
+    <div class="field"><label>Arbeitsende</label><input id="as-bis" type="time" value="17:30"></div>
+    <div class="field"><label>Pausenzeit (Minuten)</label><input id="as-pause" type="number" value="45"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcArbeit()">Berechnen</button></div>
+  <div id="as-result"></div>
+`),
+
+// ─── URLAUB ───
+urlaub: () => card('🏖️ Urlaubstagerechner', 'Berechnet Arbeitstage zwischen zwei Daten (Mo–Fr).', `
+  <div class="calc-grid">
+    <div class="field"><label>Urlaubsbeginn</label><input id="ul-von" type="date"></div>
+    <div class="field"><label>Urlaubsende</label><input id="ul-bis" type="date"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcUrlaub()">Berechnen</button></div>
+  <div id="ul-result"></div>
+`),
+
+// ─── LÄNGE ───
+laenge: () => unitCard('laenge', '📏 Länge umrechnen', UNITS.laenge),
+// ─── GEWICHT ───
+gewicht: () => unitCard('gewicht', '⚖️ Gewicht umrechnen', UNITS.gewicht),
+// ─── TEMPERATUR ───
+temperatur: () => card('🌡️ Temperatur umrechnen', 'Rechnet zwischen °C, °F, K und °R um.', `
+  <div class="calc-grid">
+    <div class="field"><label>Wert</label><input id="tmp-val" type="number" value="100"></div>
+    <div class="field"><label>Von</label><select id="tmp-von">
+      <option value="C">Celsius (°C)</option>
+      <option value="F">Fahrenheit (°F)</option>
+      <option value="K">Kelvin (K)</option>
+      <option value="R">Rankine (°R)</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcTemp()">Umrechnen</button></div>
+  <div id="tmp-result"></div>
+`),
+// ─── FLÄCHE ───
+flaeche: () => unitCard('flaeche', '⬜ Fläche umrechnen', UNITS.flaeche),
+// ─── VOLUMEN ───
+volumen: () => unitCard('volumen', '🧊 Volumen umrechnen', UNITS.volumen),
+// ─── GESCHWINDIGKEIT ───
+geschwindigkeit: () => unitCard('geschwindigkeit', '🚀 Geschwindigkeit umrechnen', UNITS.geschwindigkeit),
+// ─── DRUCK ───
+druck: () => unitCard('druck', '🌬️ Druck umrechnen', UNITS.druck),
+// ─── ENERGIE ───
+energie: () => unitCard('energie', '⚡ Energie umrechnen', UNITS.energie),
+// ─── LEISTUNG ───
+leistung: () => unitCard('leistung', '💡 Leistung umrechnen', UNITS.leistung),
+// ─── DATEN ───
+daten: () => unitCard('daten', '💾 Datenmengen umrechnen', UNITS.daten),
+// ─── WINKEL ───
+winkel: () => unitCard('winkel', '📐 Winkel umrechnen', UNITS.winkel),
+// ─── FREQUENZ ───
+frequenz: () => unitCard('frequenz', '〰️ Frequenz umrechnen', UNITS.frequenz),
+
+// ─── OHM ───
+ohm: () => card('⚡ Ohmsches Gesetz', 'U = R × I. Berechnet U, I, R oder P.', `
+  <p style="font-size:0.8rem;color:var(--muted);margin-bottom:14px">Drei Werte eingeben, einen frei lassen:</p>
+  <div class="calc-grid">
+    <div class="field"><label>Spannung U (V)</label><input id="ohm-u" type="number" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Stromstärke I (A)</label><input id="ohm-i" type="number" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Widerstand R (Ω)</label><input id="ohm-r" type="number" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Leistung P (W)</label><input id="ohm-p" type="number" placeholder="leer = berechnet"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcOhm()">Berechnen</button></div>
+  <div id="ohm-result"></div>
+`),
+
+// ─── WIDERSTAND ───
+widerstand: () => card('🔌 Widerstand in Reihe & Parallel', 'Berechnet Gesamtwiderstand mehrerer Widerstände.', `
+  <div class="calc-grid single">
+    <div class="field"><label>Widerstände (Ω, kommagetrennt)</label><input id="wd-werte" type="text" value="10, 20, 30" placeholder="z.B. 10, 20, 30"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcWiderstand()">Berechnen</button></div>
+  <div id="wd-result"></div>
+`),
+
+// ─── KONDENSATOR ───
+kondensator: () => card('🔋 Kondensator & Spule', 'Berechnet Kapazität/Induktivität in Reihe & Parallel.', `
+  <div class="calc-grid">
+    <div class="field"><label>Werte (kommagetrennt)</label><input id="kd-werte" type="text" value="10, 20, 30"></div>
+    <div class="field"><label>Typ</label><select id="kd-typ">
+      <option value="c">Kondensatoren (µF)</option>
+      <option value="l">Spulen (mH)</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKondensator()">Berechnen</button></div>
+  <div id="kd-result"></div>
+`),
+
+// ─── DICHTE ───
+dichte: () => card('🧪 Dichterechner', 'ρ = m / V. Berechnet Dichte, Masse oder Volumen.', `
+  <div class="calc-grid">
+    <div class="field"><label>Masse m (kg)</label><input id="di-m" type="number" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Volumen V (m³)</label><input id="di-v" type="number" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Dichte ρ (kg/m³)</label><input id="di-r" type="number" placeholder="leer = berechnet"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcDichte()">Berechnen</button></div>
+  <div id="di-result"></div>
+`),
+
+// ─── AUFTRIEB ───
+auftrieb: () => card('🚢 Auftriebsrechner', 'Berechnet Auftriebskraft nach dem Archimedischen Prinzip.', `
+  <div class="calc-grid">
+    <div class="field"><label>Volumen des Körpers (m³)</label><input id="au-v" type="number" value="0.001"></div>
+    <div class="field"><label>Dichte des Mediums (kg/m³)</label><input id="au-d" type="number" value="1000" placeholder="Wasser=1000"></div>
+    <div class="field"><label>g (m/s²)</label><input id="au-g" type="number" value="9.81"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcAuftrieb()">Berechnen</button></div>
+  <div id="au-result"></div>
+`),
+
+// ─── FREIFALL ───
+freifall: () => card('🪂 Freier Fall', 'Berechnet Fallzeit, Fallhöhe und Aufprallgeschwindigkeit.', `
+  <div class="calc-grid">
+    <div class="field"><label>Höhe h (m)</label><input id="ff-h" type="number" value="100" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Zeit t (s)</label><input id="ff-t" type="number" placeholder="leer = berechnet"></div>
+    <div class="field"><label>Erdbeschleunigung g (m/s²)</label><input id="ff-g" type="number" value="9.81"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcFreifall()">Berechnen</button></div>
+  <div id="ff-result"></div>
+`),
+
+// ─── SCHALL ───
+schall: () => card('🔊 Schallgeschwindigkeit', 'Berechnet die Schallgeschwindigkeit in verschiedenen Medien.', `
+  <div class="calc-grid">
+    <div class="field"><label>Medium</label><select id="sc-medium">
+      <option value="331">Luft (0°C)</option>
+      <option value="343">Luft (20°C)</option>
+      <option value="1484">Wasser (25°C)</option>
+      <option value="5100">Stahl</option>
+      <option value="custom">Eigene Eingabe</option>
+    </select></div>
+    <div class="field"><label>Temperatur (°C, nur Luft)</label><input id="sc-temp" type="number" value="20"></div>
+    <div class="field"><label>Entfernung (m)</label><input id="sc-dist" type="number" value="1000"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcSchall()">Berechnen</button></div>
+  <div id="sc-result"></div>
+`),
+
+// ─── BRECHUNG ───
+brechung: () => card('🔭 Brechungsindex (Snellsches Gesetz)', 'n₁·sin(α₁) = n₂·sin(α₂)', `
+  <div class="calc-grid">
+    <div class="field"><label>n₁ (Medium 1)</label><input id="br-n1" type="number" value="1" step="0.001"></div>
+    <div class="field"><label>Winkel α₁ (°)</label><input id="br-a1" type="number" value="30" step="0.1"></div>
+    <div class="field"><label>n₂ (Medium 2)</label><input id="br-n2" type="number" value="1.5" step="0.001"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcBrechung()">Berechnen</button></div>
+  <div id="br-result"></div>
+`),
+
+// ─── PASSWORT ───
+passwort: () => card('🔐 Passwortgenerator', 'Generiert sichere Zufallspasswörter.', `
+  <div class="calc-grid">
+    <div class="field"><label>Länge</label><input id="pw2-len" type="number" value="16" min="4" max="128"></div>
+    <div class="field"><label>Anzahl Passwörter</label><input id="pw2-n" type="number" value="3" min="1" max="20"></div>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+    <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem"><input type="checkbox" id="pw2-upper" checked> Großbuchstaben</label>
+    <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem"><input type="checkbox" id="pw2-lower" checked> Kleinbuchstaben</label>
+    <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem"><input type="checkbox" id="pw2-num" checked> Ziffern</label>
+    <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem"><input type="checkbox" id="pw2-sym" checked> Sonderzeichen</label>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcPasswort()">Generieren</button></div>
+  <div id="pw2-result"></div>
+`),
+
+// ─── FARBE ───
+farbe: () => card('🎨 Farbrechner', 'Konvertiert Farben zwischen HEX, RGB und HSL.', `
+  <div class="calc-grid single">
+    <div class="field"><label>HEX-Farbe</label><input id="fc-hex" type="text" value="#1BA6FF" placeholder="#RRGGBB"></div>
+    <div class="field"><label>Oder: Farbpicker</label><input id="fc-pick" type="color" value="#1BA6FF" oninput="document.getElementById('fc-hex').value=this.value"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcFarbe()">Konvertieren</button></div>
+  <div id="fc-result"></div>
+`),
+
+// ─── SCHRIFT ───
+schrift: () => card('🖋️ Schriftgrößenrechner', 'Rechnet zwischen px, pt, rem und em um.', `
+  <div class="calc-grid">
+    <div class="field"><label>Wert</label><input id="sz-val" type="number" value="16"></div>
+    <div class="field"><label>Von</label><select id="sz-von">
+      <option value="px">px</option>
+      <option value="pt">pt</option>
+      <option value="rem">rem</option>
+      <option value="em">em</option>
+    </select></div>
+    <div class="field"><label>Basis-Fontgröße (px, für rem/em)</label><input id="sz-base" type="number" value="16"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcSchrift()">Umrechnen</button></div>
+  <div id="sz-result"></div>
+`),
+
+// ─── PAPIER ───
+papier: () => card('📄 Papierformat-Rechner', 'Zeigt Abmessungen der ISO-Papierformate.', `
+  <div class="calc-grid">
+    <div class="field"><label>Format</label><select id="pap-fmt">
+      <option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option>
+      <option value="A3">A3</option><option value="A4" selected>A4</option><option value="A5">A5</option>
+      <option value="A6">A6</option><option value="B4">B4</option><option value="B5">B5</option>
+      <option value="Letter">Letter (US)</option><option value="Legal">Legal (US)</option>
+    </select></div>
+    <div class="field"><label>Einheit</label><select id="pap-unit">
+      <option value="mm">mm</option><option value="cm">cm</option><option value="in">Zoll</option><option value="px">px (96 dpi)</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcPapier()">Anzeigen</button></div>
+  <div id="pap-result"></div>
+`),
+
+// ─── KONFEKTIONSGRÖSSE ───
+konfektionsgroesse: () => card('👗 Konfektionsgrößen-Umrechner', 'Rechnet Kleidungsgrößen international um.', `
+  <div class="calc-grid">
+    <div class="field"><label>Größe / System</label><input id="kg-val" type="text" value="M"></div>
+    <div class="field"><label>Von System</label><select id="kg-von">
+      <option value="DE">DE/EU</option>
+      <option value="UK">UK</option>
+      <option value="US">US</option>
+      <option value="IT">IT</option>
+      <option value="FR">FR</option>
+    </select></div>
+    <div class="field"><label>Kategorie</label><select id="kg-kat">
+      <option value="damen">Damen Oberteil</option>
+      <option value="herren">Herren Oberteil</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKonfektions()">Umrechnen</button></div>
+  <div id="kg-result"></div>
+`),
+
+// ─── SCHUHGRÖSSE ───
+schuhgroesse: () => card('👟 Schuhgrößen-Umrechner', 'Rechnet Schuhgrößen zwischen EU, UK, US und CM um.', `
+  <div class="calc-grid">
+    <div class="field"><label>Größe</label><input id="sg-val" type="number" value="42" step="0.5"></div>
+    <div class="field"><label>Von System</label><select id="sg-von">
+      <option value="EU">EU</option>
+      <option value="UK">UK</option>
+      <option value="US-M">US Herren</option>
+      <option value="US-W">US Damen</option>
+      <option value="CM">Fußlänge (cm)</option>
+    </select></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcSchuh()">Umrechnen</button></div>
+  <div id="sg-result"></div>
+`),
+
+// ─── REIFENGRÖSSE ───
+reifengroesse: () => card('🚗 Reifengrößen-Rechner', 'Entschlüsselt Reifenbezeichnungen (z.B. 205/55 R16).', `
+  <div class="calc-grid">
+    <div class="field"><label>Breite (mm)</label><input id="rg-b" type="number" value="205"></div>
+    <div class="field"><label>Querschnitt (%)</label><input id="rg-q" type="number" value="55"></div>
+    <div class="field"><label>Felgengröße (Zoll)</label><input id="rg-f" type="number" value="16"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcReifen()">Berechnen</button></div>
+  <div id="rg-result"></div>
+`),
+
+// ─── KRAFTSTOFF ───
+kraftstoff: () => card('⛽ Kraftstoffverbrauch', 'Rechnet zwischen l/100km und MPG um.', `
+  <div class="calc-grid">
+    <div class="field"><label>Verbrauch (l/100km)</label><input id="kv-l" type="number" value="7" step="0.1"></div>
+    <div class="field"><label>Strecke (km)</label><input id="kv-km" type="number" value="500"></div>
+    <div class="field"><label>Kraftstoffpreis (€/L)</label><input id="kv-preis" type="number" value="1.75" step="0.01"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcKraftstoff()">Berechnen</button></div>
+  <div id="kv-result"></div>
+`),
+
+// ─── CO2 ───
+co2: () => card('🌱 CO₂-Rechner', 'Schätzt CO₂-Emissionen verschiedener Aktivitäten.', `
+  <div class="calc-grid">
+    <div class="field"><label>Aktivität</label><select id="co2-akt">
+      <option value="auto_benzin">Auto (Benzin, Durchschnitt)</option>
+      <option value="auto_diesel">Auto (Diesel, Durchschnitt)</option>
+      <option value="flug_kurz">Kurzstreckenflug</option>
+      <option value="flug_lang">Langstreckenflug</option>
+      <option value="zug">Zug (Bahn)</option>
+      <option value="bus">Bus</option>
+      <option value="strom_de">Strom (Deutschland)</option>
+      <option value="fleisch">Fleischkonsum (pro kg Rind)</option>
+    </select></div>
+    <div class="field"><label>Menge (km / kWh / kg je nach Typ)</label><input id="co2-menge" type="number" value="500"></div>
+  </div>
+  <div class="calc-actions"><button class="btn btn-primary" onclick="calcCO2()">Berechnen</button></div>
+  <div id="co2-result"></div>
+`),
+
+}; // end CALCS
+
+// ══════════════════════════════════════════════════
+//  UNIT CONVERSION TABLES
+// ══════════════════════════════════════════════════
+const UNITS = {
+  laenge: [
+    {n:'Kilometer',k:'km',f:1000},
+    {n:'Meter',k:'m',f:1},
+    {n:'Dezimeter',k:'dm',f:0.1},
+    {n:'Zentimeter',k:'cm',f:0.01},
+    {n:'Millimeter',k:'mm',f:0.001},
+    {n:'Mikrometer',k:'µm',f:1e-6},
+    {n:'Meile (mi)',k:'mi',f:1609.344},
+    {n:'Yard (yd)',k:'yd',f:0.9144},
+    {n:'Fuß (ft)',k:'ft',f:0.3048},
+    {n:'Zoll (in)',k:'in',f:0.0254},
+    {n:'Seemeile (nm)',k:'nm',f:1852},
+    {n:'Lichtjahr',k:'ly',f:9.461e15},
+  ],
+  gewicht: [
+    {n:'Tonne',k:'t',f:1000},
+    {n:'Kilogramm',k:'kg',f:1},
+    {n:'Gramm',k:'g',f:0.001},
+    {n:'Milligramm',k:'mg',f:1e-6},
+    {n:'Mikrogramm',k:'µg',f:1e-9},
+    {n:'Pfund (lb)',k:'lb',f:0.453592},
+    {n:'Unze (oz)',k:'oz',f:0.028350},
+    {n:'Karat (ct)',k:'ct',f:0.0002},
+    {n:'Zentner',k:'Ztr',f:50},
+  ],
+  flaeche: [
+    {n:'km²',k:'km²',f:1e6},
+    {n:'m²',k:'m²',f:1},
+    {n:'dm²',k:'dm²',f:0.01},
+    {n:'cm²',k:'cm²',f:1e-4},
+    {n:'mm²',k:'mm²',f:1e-6},
+    {n:'Hektar',k:'ha',f:1e4},
+    {n:'Ar',k:'a',f:100},
+    {n:'Meile² (mi²)',k:'mi²',f:2589988},
+    {n:'Yard² (yd²)',k:'yd²',f:0.836127},
+    {n:'Fuß² (ft²)',k:'ft²',f:0.092903},
+    {n:'Zoll² (in²)',k:'in²',f:0.000645},
+    {n:'Acre',k:'ac',f:4046.86},
+  ],
+  volumen: [
+    {n:'Kubikmeter',k:'m³',f:1000},
+    {n:'Liter',k:'L',f:1},
+    {n:'Deziliter',k:'dL',f:0.1},
+    {n:'Zentiliter',k:'cL',f:0.01},
+    {n:'Milliliter',k:'mL',f:0.001},
+    {n:'Kubikzentimeter',k:'cm³',f:0.001},
+    {n:'Gallone (US)',k:'gal',f:3.78541},
+    {n:'Quart (US)',k:'qt',f:0.946353},
+    {n:'Pint (US)',k:'pt',f:0.473176},
+    {n:'Fluid Ounce (US)',k:'fl oz',f:0.029574},
+    {n:'Tasse (US)',k:'cup',f:0.236588},
+    {n:'Esslöffel (US)',k:'tbsp',f:0.014787},
+    {n:'Teelöffel (US)',k:'tsp',f:0.004929},
+  ],
+  geschwindigkeit: [
+    {n:'m/s',k:'m/s',f:1},
+    {n:'km/h',k:'km/h',f:1/3.6},
+    {n:'Meilen/h (mph)',k:'mph',f:0.44704},
+    {n:'Knoten (kn)',k:'kn',f:0.514444},
+    {n:'Fuß/s (ft/s)',k:'ft/s',f:0.3048},
+    {n:'Mach (Luft, 20°C)',k:'Ma',f:343},
+  ],
+  druck: [
+    {n:'Pascal',k:'Pa',f:1},
+    {n:'Kilopascal',k:'kPa',f:1000},
+    {n:'Megapascal',k:'MPa',f:1e6},
+    {n:'Bar',k:'bar',f:1e5},
+    {n:'Millibar',k:'mbar',f:100},
+    {n:'Atmosphäre (atm)',k:'atm',f:101325},
+    {n:'mm Hg (Torr)',k:'mmHg',f:133.322},
+    {n:'psi (lb/in²)',k:'psi',f:6894.76},
+  ],
+  energie: [
+    {n:'Joule',k:'J',f:1},
+    {n:'Kilojoule',k:'kJ',f:1000},
+    {n:'Megajoule',k:'MJ',f:1e6},
+    {n:'Wattstunde',k:'Wh',f:3600},
+    {n:'Kilowattstunde',k:'kWh',f:3.6e6},
+    {n:'Kalorie (cal)',k:'cal',f:4.184},
+    {n:'Kilokalorie (kcal)',k:'kcal',f:4184},
+    {n:'Elektronenvolt',k:'eV',f:1.602e-19},
+    {n:'BTU',k:'BTU',f:1055.06},
+    {n:'Fußpfund (ft·lb)',k:'ft·lb',f:1.35582},
+  ],
+  leistung: [
+    {n:'Watt',k:'W',f:1},
+    {n:'Kilowatt',k:'kW',f:1000},
+    {n:'Megawatt',k:'MW',f:1e6},
+    {n:'PS (Pferdestärke)',k:'PS',f:735.499},
+    {n:'HP (horsepower)',k:'hp',f:745.7},
+    {n:'BTU/h',k:'BTU/h',f:0.29307},
+    {n:'kcal/h',k:'kcal/h',f:1.163},
+  ],
+  daten: [
+    {n:'Bit',k:'bit',f:1},
+    {n:'Byte',k:'B',f:8},
+    {n:'Kilobit',k:'kbit',f:1000},
+    {n:'Kilobyte',k:'KB',f:8000},
+    {n:'Megabit',k:'Mbit',f:1e6},
+    {n:'Megabyte',k:'MB',f:8e6},
+    {n:'Gigabit',k:'Gbit',f:1e9},
+    {n:'Gigabyte',k:'GB',f:8e9},
+    {n:'Terabyte',k:'TB',f:8e12},
+    {n:'Petabyte',k:'PB',f:8e15},
+    {n:'Kibibyte',k:'KiB',f:8192},
+    {n:'Mebibyte',k:'MiB',f:8388608},
+    {n:'Gibibyte',k:'GiB',f:8589934592},
+  ],
+  winkel: [
+    {n:'Grad (°)',k:'°',f:1},
+    {n:'Bogenmaß (rad)',k:'rad',f:180/Math.PI},
+    {n:'Gon (grd)',k:'gon',f:0.9},
+    {n:'Vollwinkel',k:'rev',f:360},
+    {n:'Strich (mil)',k:'mil',f:0.05625},
+    {n:'Bogenminute (\')',k:'\'',f:1/60},
+    {n:'Bogensekunde (\")',k:'"',f:1/3600},
+  ],
+  frequenz: [
+    {n:'Hertz',k:'Hz',f:1},
+    {n:'Kilohertz',k:'kHz',f:1000},
+    {n:'Megahertz',k:'MHz',f:1e6},
+    {n:'Gigahertz',k:'GHz',f:1e9},
+    {n:'Terahertz',k:'THz',f:1e12},
+    {n:'Umdrehungen/min',k:'rpm',f:1/60},
+  ],
+};
+
+function unitCard(id, title, units) {
+  const opts = units.map(u => `<option value="${u.k}">${u.n} (${u.k})</option>`).join('');
+  return card(title, 'Einheitenumrechner — Wert und Einheit eingeben.', `
+    <div class="calc-grid">
+      <div class="field"><label>Wert</label><input id="${id}-val" type="number" value="1"></div>
+      <div class="field"><label>Von</label><select id="${id}-von">${opts}</select></div>
+    </div>
+    <div class="calc-actions"><button class="btn btn-primary" onclick="calcUnit('${id}')">Umrechnen</button></div>
+    <div id="${id}-result"></div>
+  `);
+}
+
+function calcUnit(id) {
+  const val = parseFloat(document.getElementById(id+'-val').value);
+  const vonK = document.getElementById(id+'-von').value;
+  const units = UNITS[id];
+  const von = units.find(u => u.k === vonK);
+  if (!von || isNaN(val)) return;
+  const baseVal = val * von.f;
+  const rows = units.map(u => {
+    const converted = baseVal / u.f;
+    return `<tr><td>${u.n}</td><td><strong>${fmt(converted, 6)}</strong> ${u.k}</td></tr>`;
+  }).join('');
+  document.getElementById(id+'-result').innerHTML = `
+    <table class="calc-table" style="margin-top:16px">
+      <thead><tr><th>Einheit</th><th>Wert</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ══════════════════════════════════════════════════
+//  CALCULATOR FUNCTIONS
+// ══════════════════════════════════════════════════
+
+// --- Taschenrechner ---
+let tcExpr = '', tcVal = '0', tcNewNum = true;
+function tcKey(k) {
+  const disp = document.getElementById('tc-val');
+  const expr = document.getElementById('tc-expr');
+  if (!disp) return;
+  if (k === 'AC') { tcExpr=''; tcVal='0'; tcNewNum=true; }
+  else if (k === '+/-') { tcVal = String(-parseFloat(tcVal)||0); }
+  else if (k === '%') { tcVal = String(parseFloat(tcVal)/100); }
+  else if (['+','-','*','/'].includes(k)) {
+    tcExpr = tcVal + ' ' + (k==='*'?'×':k==='/'?'÷':k) + ' ';
+    tcExpr_raw = (tcExpr_raw||'') + tcVal + k;
+    tcVal = '0'; tcNewNum = true;
+    if (expr) expr.textContent = tcExpr;
+    if (disp) disp.textContent = tcVal;
+    return;
+  }
+  else if (k === '=') {
+    try {
+      const raw = (tcExpr_raw||'') + tcVal;
+      const res = Function('"use strict";return (' + raw + ')')();
+      if (expr) expr.textContent = raw.replace(/\*/g,'×').replace(/\//g,'÷') + ' =';
+      tcVal = String(+res.toFixed(10)); tcExpr=''; tcExpr_raw=''; tcNewNum=true;
+    } catch(e) { tcVal='Fehler'; tcNewNum=true; }
+  }
+  else if (k === '.') {
+    if (tcNewNum) { tcVal='0.'; tcNewNum=false; }
+    else if (!tcVal.includes('.')) tcVal += '.';
+  }
+  else {
+    if (tcNewNum || tcVal==='0') { tcVal=k; tcNewNum=false; }
+    else tcVal += k;
+  }
+  if (disp) disp.textContent = tcVal;
+}
+let tcExpr_raw = '';
+
+// --- Zinsrechner ---
+function calcZins() {
+  const k=parseFloat(document.getElementById('z-kap').value);
+  const p=parseFloat(document.getElementById('z-zins').value)/100;
+  const n=parseFloat(document.getElementById('z-jahre').value);
+  if ([k,p,n].some(isNaN)) return;
+  const zinsen=k*p*n;
+  const gesamt=k+zinsen;
+  document.getElementById('z-result').innerHTML=
+    result('Zinsen gesamt', fmt(zinsen)+' €') +
+    result('Endkapital', fmt(gesamt)+' €', `Kapital ${fmt(k)} € + Zinsen ${fmt(zinsen)} €`, true);
+}
+
+// --- Zinseszins ---
+function calcZinseszins() {
+  const k=parseFloat(document.getElementById('ze-kap').value);
+  const p=parseFloat(document.getElementById('ze-zins').value)/100;
+  const n=parseFloat(document.getElementById('ze-jahre').value);
+  const s=parseFloat(document.getElementById('ze-sparrate').value)||0;
+  if ([k,p,n].some(isNaN)) return;
+  let kapital=k;
+  let rows='';
+  for(let i=1;i<=n;i++){
+    const zinsen=kapital*p;
+    kapital=(kapital+zinsen+s*12);
+    rows+=`<tr><td>${i}</td><td>${fmt(zinsen)} €</td><td>${fmt(kapital)} €</td></tr>`;
+  }
+  const eingesetzt=k+s*12*n;
+  document.getElementById('ze-result').innerHTML=
+    result('Endkapital nach '+n+' Jahren', fmt(kapital)+' €',
+      `Eingesetzt: ${fmt(eingesetzt)} € · Zinsgewinn: ${fmt(kapital-eingesetzt)} €`) +
+    `<details style="margin-top:10px"><summary style="cursor:pointer;font-size:0.8rem;color:var(--muted)">Jahrestabelle anzeigen</summary>
+    <table class="calc-table"><thead><tr><th>Jahr</th><th>Zinsen</th><th>Kapital</th></tr></thead><tbody>${rows}</tbody></table></details>`;
+}
+
+// --- Kredit ---
+function calcKredit() {
+  const b=parseFloat(document.getElementById('kr-betrag').value);
+  const p=parseFloat(document.getElementById('kr-zins').value)/100/12;
+  const n=parseFloat(document.getElementById('kr-jahre').value)*12;
+  if([b,p,n].some(isNaN)||p===0) return;
+  const rate=b*p*Math.pow(1+p,n)/(Math.pow(1+p,n)-1);
+  const gesamt=rate*n;
+  const zinsen=gesamt-b;
+  document.getElementById('kr-result').innerHTML=
+    result('Monatliche Rate', fmt(rate)+' €') +
+    result('Gesamtkosten', fmt(gesamt)+' €', `Davon Zinsen: ${fmt(zinsen)} €`, true);
+}
+
+// --- Tilgungsplan ---
+function calcTilgung() {
+  const b=parseFloat(document.getElementById('tp-betrag').value);
+  const p=parseFloat(document.getElementById('tp-zins').value)/100/12;
+  const rate=parseFloat(document.getElementById('tp-rate').value);
+  if([b,p,rate].some(isNaN)||rate<=b*p) {
+    document.getElementById('tp-result').innerHTML='<p class="error-msg">Rate muss größer sein als die monatlichen Zinsen!</p>';
+    return;
+  }
+  let rest=b; let rows=''; let m=0;
+  while(rest>0.01 && m<600) {
+    m++;
+    const zinsen=rest*p;
+    const tilgung=Math.min(rate-zinsen,rest);
+    rest-=tilgung;
+    if(m%12===0||rest<=0) rows+=`<tr><td>${Math.ceil(m/12)}</td><td>${fmt(zinsen*12)} €</td><td>${fmt(tilgung*12)} €</td><td>${fmt(Math.max(rest,0))} €</td></tr>`;
+  }
+  document.getElementById('tp-result').innerHTML=
+    result('Laufzeit', Math.ceil(m/12)+' Jahre', `${m} Monate`)+
+    `<table class="calc-table" style="margin-top:12px"><thead><tr><th>Jahr</th><th>Zinsen</th><th>Tilgung</th><th>Restschuld</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// --- Rente ---
+function calcRente() {
+  const rate=parseFloat(document.getElementById('rn-rate').value);
+  const alter=parseFloat(document.getElementById('rn-alter').value);
+  const rente=parseFloat(document.getElementById('rn-rente').value);
+  const r=parseFloat(document.getElementById('rn-rendite').value)/100/12;
+  const n=(rente-alter)*12;
+  if([rate,alter,rente,r].some(isNaN)||n<=0) return;
+  const kapital=rate*((Math.pow(1+r,n)-1)/r);
+  document.getElementById('rn-result').innerHTML=
+    result('Kapital bei Rente', fmt(kapital)+' €',
+      `Eingezahlt: ${fmt(rate*n)} € · Zinsgewinn: ${fmt(kapital-rate*n)} €`);
+}
+
+// --- MwSt ---
+function calcMwSt() {
+  const betrag=parseFloat(document.getElementById('mw-betrag').value);
+  const satz=parseFloat(document.getElementById('mw-satz').value)/100;
+  const typ=document.getElementById('mw-typ').value;
+  let netto,brutto,mwstBetrag;
+  if(typ==='netto'){netto=betrag;mwstBetrag=netto*satz;brutto=netto+mwstBetrag;}
+  else{brutto=betrag;netto=brutto/(1+satz);mwstBetrag=brutto-netto;}
+  document.getElementById('mw-result').innerHTML=
+    result('Nettobetrag', fmt(netto)+' €')+
+    result('MwSt-Betrag', fmt(mwstBetrag)+' €', `${(satz*100).toFixed(0)} % auf Netto`, true)+
+    result('Bruttobetrag', fmt(brutto)+' €');
+}
+
+// --- Prozent ---
+function renderProzent() {
+  const typ=document.getElementById('pr-typ').value;
+  const map={
+    a:`<div class="calc-grid"><div class="field"><label>Prozentwert X</label><input id="pr-x" type="number" value="15"></div><div class="field"><label>Grundwert Y</label><input id="pr-y" type="number" value="200"></div></div>`,
+    b:`<div class="calc-grid"><div class="field"><label>Teilwert X</label><input id="pr-x" type="number" value="30"></div><div class="field"><label>Gesamtwert Y</label><input id="pr-y" type="number" value="200"></div></div>`,
+    c:`<div class="calc-grid"><div class="field"><label>Ausgangswert X</label><input id="pr-x" type="number" value="200"></div><div class="field"><label>Prozent Y (%)</label><input id="pr-y" type="number" value="20"></div></div>`,
+    d:`<div class="calc-grid"><div class="field"><label>Wert A</label><input id="pr-x" type="number" value="80"></div><div class="field"><label>Wert B</label><input id="pr-y" type="number" value="100"></div></div>`,
+  };
+  document.getElementById('pr-fields').innerHTML=map[typ]||'';
+}
+function calcProzent() {
+  const typ=document.getElementById('pr-typ').value;
+  const x=parseFloat(document.getElementById('pr-x')?.value);
+  const y=parseFloat(document.getElementById('pr-y')?.value);
+  if([x,y].some(isNaN)){document.getElementById('pr-result').innerHTML='<p class="error-msg">Bitte beide Felder ausfüllen.</p>';return;}
+  let res='';
+  if(typ==='a') res=result(`${x} % von ${y}`, fmt(x/100*y));
+  else if(typ==='b') res=result(`${x} ist … % von ${y}`, fmt(x/y*100)+' %');
+  else if(typ==='c') {
+    const plus=x*(1+y/100),minus=x*(1-y/100);
+    res=result(`${x} + ${y} %`, fmt(plus))+result(`${x} − ${y} %`, fmt(minus),'',true);
+  }
+  else if(typ==='d') res=result('Prozentuale Änderung A→B', fmt((y-x)/x*100)+' %', y>=x?'Steigerung':'Rückgang',y>=x);
+  document.getElementById('pr-result').innerHTML=res;
+}
+
+// --- Währung ---
+const RATES={EUR:1,USD:1.08,GBP:0.855,CHF:0.935,JPY:163.5,CNY:7.8,CAD:1.47,AUD:1.65,SEK:11.3,NOK:11.5,DKK:7.46,PLN:4.25,CZK:25.3,HUF:392,RON:4.97,TRY:35.8,RUB:98.5,BRL:5.7,INR:90.3,KRW:1450,MXN:18.9,SGD:1.45,HKD:8.45,NZD:1.78,ZAR:20.1,AED:3.97,SAR:4.05,THB:38.5,MYR:5.1,IDR:17000};
+function currencyOptions(def='EUR') {
+  return Object.keys(RATES).map(c=>`<option value="${c}"${c===def?' selected':''}>${c}</option>`).join('');
+}
+function calcWaehrung() {
+  const b=parseFloat(document.getElementById('wr-betrag').value);
+  const von=document.getElementById('wr-von').value;
+  const nach=document.getElementById('wr-nach').value;
+  const base=b/RATES[von];
+  const res=base*RATES[nach];
+  document.getElementById('wr-result').innerHTML=
+    result(`${fmt(b,2)} ${von} =`, `${fmt(res,4)} ${nach}`, `Kurs: 1 ${von} = ${fmt(RATES[nach]/RATES[von],4)} ${nach}`);
+}
+
+// --- Tagesgeld ---
+function calcTagesgeld() {
+  const k=parseFloat(document.getElementById('tg-kap').value);
+  const p=parseFloat(document.getElementById('tg-zins').value)/100;
+  const m=parseFloat(document.getElementById('tg-monate').value);
+  const z=k*p*(m/12);
+  document.getElementById('tg-result').innerHTML=
+    result('Zinsen', fmt(z)+' €')+result('Endkapital', fmt(k+z)+' €','',true);
+}
+
+// --- Inflation ---
+function calcInflation() {
+  const b=parseFloat(document.getElementById('inf-betrag').value);
+  const r=parseFloat(document.getElementById('inf-rate').value)/100;
+  const n=parseFloat(document.getElementById('inf-jahre').value);
+  const kaufkraft=b/Math.pow(1+r,n);
+  document.getElementById('inf-result').innerHTML=
+    result('Kaufkraft in '+n+' Jahren', fmt(kaufkraft)+' €',
+      `Wertverlust: ${fmt(b-kaufkraft)} € (${fmt((1-kaufkraft/b)*100)} %)`);
+}
+
+// --- Rabatt ---
+function calcRabatt() {
+  const p=parseFloat(document.getElementById('rb-preis').value);
+  const r=parseFloat(document.getElementById('rb-rabatt').value);
+  const ersparnis=p*r/100;
+  document.getElementById('rb-result').innerHTML=
+    result('Ersparnis', fmt(ersparnis)+' €')+
+    result('Endpreis', fmt(p-ersparnis)+' €', `${r} % Rabatt auf ${fmt(p)} €`, true);
+}
+
+// --- Gehalt ---
+function calcGehalt() {
+  const brutto=parseFloat(document.getElementById('gh-brutto').value);
+  const kl=parseInt(document.getElementById('gh-stkl').value);
+  const kirche=parseFloat(document.getElementById('gh-kirche').value);
+  // Näherungsformeln für Deutschland 2025
+  const rv=brutto*0.093;
+  const av=brutto*0.013;
+  const kv=brutto*0.073;
+  const pv=brutto*0.018;
+  const sg=rv+av+kv+pv;
+  // Steuertabelle Näherung
+  const stFakt=[0,0,0.18,0.09,0.18,0.28,0.40];
+  const lohnsteuer=brutto*stFakt[kl];
+  const soli=lohnsteuer>0?lohnsteuer*0.055:0;
+  const kst=lohnsteuer*kirche;
+  const netto=brutto-sg-lohnsteuer-soli-kst;
+  document.getElementById('gh-result').innerHTML=
+    result('Nettolohn / Monat', fmt(Math.max(netto,0))+' €',
+      `Sozialabgaben: ${fmt(sg)} € · Lohnsteuer: ${fmt(lohnsteuer)} €`)+
+    `<table class="calc-table" style="margin-top:12px">
+      <tr><td>Bruttolohn</td><td style="text-align:right">${fmt(brutto)} €</td></tr>
+      <tr><td>– Rentenversicherung</td><td style="text-align:right">−${fmt(rv)} €</td></tr>
+      <tr><td>– Arbeitslosenvers.</td><td style="text-align:right">−${fmt(av)} €</td></tr>
+      <tr><td>– Krankenversicherung</td><td style="text-align:right">−${fmt(kv)} €</td></tr>
+      <tr><td>– Pflegeversicherung</td><td style="text-align:right">−${fmt(pv)} €</td></tr>
+      <tr><td>– Lohnsteuer (StKl ${kl})</td><td style="text-align:right">−${fmt(lohnsteuer)} €</td></tr>
+      <tr><td>– Soli</td><td style="text-align:right">−${fmt(soli)} €</td></tr>
+      ${kirche>0?`<tr><td>– Kirchensteuer</td><td style="text-align:right">−${fmt(kst)} €</td></tr>`:''}
+      <tr style="font-weight:700"><td>= Nettolohn</td><td style="text-align:right">${fmt(Math.max(netto,0))} €</td></tr>
+    </table>`;
+}
+
+// --- ROI ---
+function calcROI() {
+  const inv=parseFloat(document.getElementById('roi-inv').value);
+  const ertrag=parseFloat(document.getElementById('roi-ertrag').value);
+  const j=parseFloat(document.getElementById('roi-jahre').value)||1;
+  const roi=(ertrag-inv)/inv*100;
+  const roiJ=roi/j;
+  document.getElementById('roi-result').innerHTML=
+    result('ROI gesamt', fmt(roi)+' %')+result('ROI p.a.', fmt(roiJ)+' %','',true);
+}
+
+// --- Potenz/Wurzel ---
+function calcPotenz() {
+  const b=parseFloat(document.getElementById('pw-basis').value);
+  const e=parseFloat(document.getElementById('pw-exp').value);
+  document.getElementById('pw-result').innerHTML=result(`${b}^${e}`, fmt(Math.pow(b,e),6));
+}
+function calcWurzel() {
+  const b=parseFloat(document.getElementById('pw-basis').value);
+  const e=parseFloat(document.getElementById('pw-exp').value)||2;
+  document.getElementById('pw-result').innerHTML=result(`${e}√${b}`, fmt(Math.pow(b,1/e),6));
+}
+
+// --- Primzahl ---
+function isPrim(n){if(n<2)return false;if(n<4)return true;if(n%2===0||n%3===0)return false;for(let i=5;i*i<=n;i+=6)if(n%i===0||n%(i+2)===0)return false;return true;}
+function calcPrimzahl() {
+  const n=parseInt(document.getElementById('pz-zahl').value);
+  const p=isPrim(n);
+  document.getElementById('pz-result').innerHTML=
+    result(n+' ist …', p?'✅ eine Primzahl':'❌ keine Primzahl',
+      p?'Teilbar nur durch 1 und sich selbst.':'Prüfe die Teiler unten.', p);
+}
+function calcPrimzahlenListe() {
+  const n=parseInt(document.getElementById('pz-zahl').value);
+  const prims=[];
+  for(let i=2;i<=Math.min(n,10000);i++) if(isPrim(i)) prims.push(i);
+  document.getElementById('pz-result').innerHTML=
+    `<div class="result-box"><div class="result-label">Primzahlen bis ${n} (${prims.length} Stück)</div>
+    <div style="font-size:0.8rem;word-wrap:break-word;margin-top:6px">${prims.join(', ')}</div></div>`;
+}
+
+// --- Teiler ---
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function calcTeiler() {
+  const a=parseInt(document.getElementById('te-a').value);
+  const b=parseInt(document.getElementById('te-b').value)||0;
+  const teiler=[];
+  for(let i=1;i<=a;i++) if(a%i===0) teiler.push(i);
+  let extra='';
+  if(b>0){
+    const g=gcd(a,b),k=a*b/g;
+    extra=result('ggT ('+a+', '+b+')', fmtInt(g))+result('kgV ('+a+', '+b+')', fmtInt(k),'',true);
+  }
+  document.getElementById('te-result').innerHTML=
+    `<div class="result-box"><div class="result-label">Teiler von ${a}</div>
+    <div style="font-size:0.85rem;margin-top:4px">${teiler.join(', ')}</div></div>`+extra;
+}
+
+// --- Fakultät ---
+function factorial(n){if(n<=1)return 1;let r=1;for(let i=2;i<=n;i++)r*=i;return r;}
+function calcFakultaet() {
+  const n=parseInt(document.getElementById('fak-n').value);
+  const k=parseInt(document.getElementById('fak-k').value)||0;
+  const fn=n>170?'> 1e308 (zu groß)':fmtInt(factorial(n));
+  const perm=n>=k?fmtInt(factorial(n)/factorial(n-k)):'–';
+  const comb=n>=k?fmtInt(factorial(n)/(factorial(k)*factorial(n-k))):'–';
+  document.getElementById('fak-result').innerHTML=
+    result(`${n}!`, fn)+result(`P(${n},${k})`, perm,'Permutationen',true)+result(`C(${n},${k})`, comb,'Kombinationen');
+}
+
+// --- Fibonacci ---
+function calcFib() {
+  const n=Math.min(parseInt(document.getElementById('fib-n').value)||10,50);
+  let a=0,b=1,seq=[0,1];
+  for(let i=2;i<n;i++){let c=a+b;seq.push(c);a=b;b=c;}
+  seq=seq.slice(0,n);
+  document.getElementById('fib-result').innerHTML=
+    `<div class="result-box"><div class="result-label">Fibonacci-Folge (${n} Glieder)</div>
+    <div style="font-size:0.82rem;margin-top:4px;word-wrap:break-word">${seq.join(', ')}</div>
+    <div class="result-sub">F(${n}) = ${fmtInt(seq[n-1])}</div></div>`;
+}
+
+// --- Dreieck ---
+function calcDreieck() {
+  const a=parseFloat(document.getElementById('dr-a').value);
+  const b=parseFloat(document.getElementById('dr-b').value);
+  const c=parseFloat(document.getElementById('dr-c').value);
+  if(a+b<=c||a+c<=b||b+c<=a){document.getElementById('dr-result').innerHTML='<p class="error-msg">Ungültiges Dreieck (Dreiecksungleichung verletzt).</p>';return;}
+  const s=(a+b+c)/2;
+  const A=Math.sqrt(s*(s-a)*(s-b)*(s-c));
+  const U=a+b+c;
+  const cosCa=(a*a+b*b-c*c)/(2*a*b);
+  const angleC=Math.acos(cosCa)*180/Math.PI;
+  document.getElementById('dr-result').innerHTML=
+    result('Fläche', fmt(A)+' Einheiten²')+
+    result('Umfang', fmt(U)+' Einheiten','',true)+
+    result('Winkel γ (zwischen a und b)', fmt(angleC)+'°');
+}
+
+// --- Kreis ---
+function calcKreis() {
+  const r=parseFloat(document.getElementById('kr2-r').value);
+  document.getElementById('kr2-result').innerHTML=
+    result('Fläche', fmt(Math.PI*r*r)+' Einheiten²')+
+    result('Umfang', fmt(2*Math.PI*r)+' Einheiten','',true)+
+    result('Durchmesser', fmt(2*r)+' Einheiten');
+}
+
+// --- Rechteck ---
+function calcRechteck() {
+  const a=parseFloat(document.getElementById('re-a').value);
+  const b=parseFloat(document.getElementById('re-b').value)||a;
+  document.getElementById('re-result').innerHTML=
+    result(a===b?'Quadrat':'Rechteck', a===b?`Seite: ${fmt(a)}`:`${fmt(a)} × ${fmt(b)}`)+
+    result('Fläche', fmt(a*b)+' Einheiten²')+
+    result('Umfang', fmt(2*(a+b))+' Einheiten','',true)+
+    result('Diagonale', fmt(Math.sqrt(a*a+b*b))+' Einheiten');
+}
+
+// --- Trapez ---
+function calcTrapez() {
+  const a=parseFloat(document.getElementById('trp-a').value);
+  const c=parseFloat(document.getElementById('trp-c').value);
+  const h=parseFloat(document.getElementById('trp-h').value);
+  const b=parseFloat(document.getElementById('trp-b').value)||0;
+  const d=parseFloat(document.getElementById('trp-d').value)||0;
+  const A=(a+c)/2*h;
+  const U=a+b+c+d;
+  document.getElementById('trp-result').innerHTML=
+    result('Fläche', fmt(A)+' Einheiten²')+result('Umfang', fmt(U)+' Einheiten','',true);
+}
+
+// --- Kugel ---
+function calcKugel() {
+  const r=parseFloat(document.getElementById('ku-r').value);
+  document.getElementById('ku-result').innerHTML=
+    result('Volumen', fmt(4/3*Math.PI*r**3)+' Einheiten³')+
+    result('Oberfläche', fmt(4*Math.PI*r*r)+' Einheiten²','',true);
+}
+
+// --- Quader ---
+function calcQuader() {
+  const a=parseFloat(document.getElementById('qd-a').value);
+  const b=parseFloat(document.getElementById('qd-b').value)||a;
+  const c=parseFloat(document.getElementById('qd-c').value)||a;
+  const V=a*b*c;
+  const O=2*(a*b+b*c+a*c);
+  const D=Math.sqrt(a*a+b*b+c*c);
+  document.getElementById('qd-result').innerHTML=
+    result(a===b&&b===c?'Würfel':'Quader', `${fmt(a)} × ${fmt(b)} × ${fmt(c)}`)+
+    result('Volumen', fmt(V)+' Einheiten³')+
+    result('Oberfläche', fmt(O)+' Einheiten²','',true)+
+    result('Raumdiagonale', fmt(D)+' Einheiten');
+}
+
+// --- Zylinder ---
+function calcZylinder() {
+  const r=parseFloat(document.getElementById('zy-r').value);
+  const h=parseFloat(document.getElementById('zy-h').value);
+  const V=Math.PI*r*r*h;
+  const M=2*Math.PI*r*h;
+  const O=M+2*Math.PI*r*r;
+  document.getElementById('zy-result').innerHTML=
+    result('Volumen', fmt(V)+' Einheiten³')+
+    result('Mantelfläche', fmt(M)+' Einheiten²','',true)+
+    result('Gesamtoberfläche', fmt(O)+' Einheiten²');
+}
+
+// --- Kegel ---
+function calcKegel() {
+  const r=parseFloat(document.getElementById('ke-r').value);
+  const h=parseFloat(document.getElementById('ke-h').value);
+  const s=Math.sqrt(r*r+h*h);
+  const V=1/3*Math.PI*r*r*h;
+  const M=Math.PI*r*s;
+  const O=M+Math.PI*r*r;
+  document.getElementById('ke-result').innerHTML=
+    result('Volumen', fmt(V)+' Einheiten³')+
+    result('Mantelfläche', fmt(M)+' Einheiten²','',true)+
+    result('Gesamtoberfläche', fmt(O)+' Einheiten²')+
+    result('Schräghöhe (s)', fmt(s)+' Einheiten');
+}
+
+// --- Binomial ---
+function calcBinom() {
+  const n=parseInt(document.getElementById('bn-n').value);
+  const k=parseInt(document.getElementById('bn-k').value);
+  if(k>n||k<0||n<0){document.getElementById('bn-result').innerHTML='<p class="error-msg">k muss ≤ n und ≥ 0 sein.</p>';return;}
+  const val=factorial(n)/(factorial(k)*factorial(n-k));
+  document.getElementById('bn-result').innerHTML=result(`C(${n}, ${k}) =`, fmtInt(val), `Anzahl der Möglichkeiten, ${k} aus ${n} auszuwählen`);
+}
+
+// --- Zufall ---
+function calcZufall() {
+  const von=parseFloat(document.getElementById('rng-von').value);
+  const bis=parseFloat(document.getElementById('rng-bis').value);
+  const n=Math.min(parseInt(document.getElementById('rng-n').value)||1,100);
+  const isInt=document.getElementById('rng-int').value==='1';
+  const nums=[];
+  for(let i=0;i<n;i++){
+    const r=Math.random()*(bis-von)+von;
+    nums.push(isInt?Math.round(r):+r.toFixed(2));
+  }
+  document.getElementById('rng-result').innerHTML=
+    `<div class="result-box"><div class="result-label">${n} Zufallszahl(en) [${von} – ${bis}]</div>
+    <div class="result-value">${nums.join(' · ')}</div></div>`;
+}
+
+// --- BMI ---
+function calcBMI() {
+  const h=parseFloat(document.getElementById('bm-groesse').value)/100;
+  const w=parseFloat(document.getElementById('bm-gewicht').value);
+  const bmi=w/(h*h);
+  const cats=[
+    [0,18.5,'Untergewicht','⚠️'],
+    [18.5,25,'Normalgewicht','✅'],
+    [25,30,'Übergewicht','⚠️'],
+    [30,35,'Adipositas Grad I','❌'],
+    [35,40,'Adipositas Grad II','❌'],
+    [40,999,'Adipositas Grad III','❌'],
+  ];
+  const cat=cats.find(([min,max])=>bmi>=min&&bmi<max)||cats[cats.length-1];
+  document.getElementById('bm-result').innerHTML=
+    result('BMI', fmt(bmi,1), `${cat[2]} ${cat[3]} · Grenzwert: 18,5 – 24,9`);
+}
+
+// --- Kalorien ---
+function calcKalorien() {
+  const g=parseFloat(document.getElementById('kal-g').value);
+  const w=parseFloat(document.getElementById('kal-w').value);
+  const a=parseFloat(document.getElementById('kal-a').value);
+  const sex=document.getElementById('kal-sex').value;
+  const akt=parseFloat(document.getElementById('kal-akt').value);
+  const bmr=sex==='m'?
+    88.362+(13.397*w)+(4.799*g)-(5.677*a):
+    447.593+(9.247*w)+(3.098*g)-(4.330*a);
+  const tdee=bmr*akt;
+  document.getElementById('kal-result').innerHTML=
+    result('Grundumsatz (BMR)', fmt(bmr,0)+' kcal/Tag')+
+    result('Gesamtumsatz (TDEE)', fmt(tdee,0)+' kcal/Tag','Inkl. Aktivität',true);
+}
+
+// --- Idealgewicht ---
+function calcIdeal() {
+  const h=parseFloat(document.getElementById('ig-g').value);
+  const sex=document.getElementById('ig-sex').value;
+  const broca=sex==='m'?h-100-(h-100)*0.1:h-100-(h-100)*0.15;
+  const bmi22=22*(h/100)**2;
+  const bmi23=23*(h/100)**2;
+  document.getElementById('ig-result').innerHTML=
+    result('Idealgewicht (Broca)', fmt(broca,1)+' kg')+
+    result('Idealgewicht (BMI 22–23)', `${fmt(bmi22,1)} – ${fmt(bmi23,1)} kg`,'',true);
+}
+
+// --- Wasser ---
+function calcWasser() {
+  const kw=parseFloat(document.getElementById('wa-kw').value);
+  const akt=parseFloat(document.getElementById('wa-akt').value);
+  const ml=kw*35+akt*500;
+  document.getElementById('wa-result').innerHTML=
+    result('Empfohlene Trinkmenge', fmt(ml/1000,1)+' L / Tag',
+      `≈ ${Math.round(ml/250)} Gläser à 250 ml`);
+}
+
+// --- Herzfrequenz ---
+function calcHerzfrequenz() {
+  const alter=parseFloat(document.getElementById('hf-alter').value);
+  const ruhe=parseFloat(document.getElementById('hf-ruhe').value);
+  const max=220-alter;
+  const hf=max-ruhe;
+  const zonen=[
+    ['Zone 1 – Regeneration', 0.5, 0.6],
+    ['Zone 2 – Fettverbrennung', 0.6, 0.7],
+    ['Zone 3 – Aerob', 0.7, 0.8],
+    ['Zone 4 – Anaerob', 0.8, 0.9],
+    ['Zone 5 – Maximal', 0.9, 1.0],
+  ];
+  const rows=zonen.map(([n,lo,hi])=>`<tr><td>${n}</td><td>${Math.round(ruhe+hf*lo)} – ${Math.round(ruhe+hf*hi)} bpm</td></tr>`).join('');
+  document.getElementById('hf-result').innerHTML=
+    result('Max. Herzfrequenz', max+' bpm', `(220 − Alter)`)+
+    `<table class="calc-table" style="margin-top:12px">
+      <thead><tr><th>Zone</th><th>Herzfrequenz</th></tr></thead>
+      <tbody>${rows}</tbody></table>`;
+}
+
+// --- Schwangerschaft ---
+function calcSchwangerschaft() {
+  const el=document.getElementById('sw-datum');
+  if(!el.value){document.getElementById('sw-result').innerHTML='<p class="error-msg">Bitte Datum eingeben.</p>';return;}
+  const lmp=new Date(el.value);
+  const zyklus=parseInt(document.getElementById('sw-zyklus').value)||28;
+  const geburt=new Date(lmp.getTime()+(280+(zyklus-28))*86400000);
+  const heute=new Date();
+  const sswMs=heute-lmp;
+  const ssw=Math.floor(sswMs/86400000/7);
+  document.getElementById('sw-result').innerHTML=
+    result('Voraussichtlicher Geburtstermin', geburt.toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'}))+
+    result('Aktuell in Schwangerschaftswoche', ssw>0&&ssw<=42?ssw+'. SSW':'–','',true);
+}
+
+// --- Körperfett ---
+function calcKoerperfett() {
+  const sex=document.getElementById('kf-sex').value;
+  const g=parseFloat(document.getElementById('kf-g').value);
+  const t=parseFloat(document.getElementById('kf-t').value);
+  const h=parseFloat(document.getElementById('kf-h').value);
+  const hu=parseFloat(document.getElementById('kf-hu').value)||0;
+  let kf;
+  if(sex==='m'){kf=495/(1.0324-0.19077*Math.log10(t-h)+0.15456*Math.log10(g))-450;}
+  else{kf=495/(1.29579-0.35004*Math.log10(t+hu-h)+0.22100*Math.log10(g))-450;}
+  document.getElementById('kf-result').innerHTML=
+    result('Körperfettanteil', fmt(kf,1)+' %',
+      sex==='m'?'Optimal: 14–17 % (Männer)':'Optimal: 21–24 % (Frauen)');
+}
+
+// --- TDEE ---
+function calcTDEE() {
+  const g=parseFloat(document.getElementById('td-g').value);
+  const w=parseFloat(document.getElementById('td-w').value);
+  const a=parseFloat(document.getElementById('td-a').value);
+  const sex=document.getElementById('td-sex').value;
+  const akt=parseFloat(document.getElementById('td-akt').value);
+  const ziel=parseInt(document.getElementById('td-ziel').value);
+  const bmr=sex==='m'?88.362+(13.397*w)+(4.799*g)-(5.677*a):447.593+(9.247*w)+(3.098*g)-(4.330*a);
+  const tdee=bmr*akt;
+  const zielKcal=tdee+ziel;
+  document.getElementById('td-result').innerHTML=
+    result('TDEE (Erhaltungsbedarf)', fmt(tdee,0)+' kcal/Tag')+
+    result('Kalorienbudget (Ziel)', fmt(zielKcal,0)+' kcal/Tag', ziel<0?'Defizit: Abnehmen':ziel>0?'Überschuss: Zunehmen':'Halten',true);
+}
+
+// --- Datum ---
+function calcDatum() {
+  const a=document.getElementById('dt-a').value;
+  const b=document.getElementById('dt-b').value;
+  const tage=parseInt(document.getElementById('dt-tage').value)||0;
+  const el=document.getElementById('dt-result');
+  if(!a){el.innerHTML='<p class="error-msg">Bitte Startdatum eingeben.</p>';return;}
+  const dA=new Date(a);
+  let html='';
+  if(b){
+    const dB=new Date(b);
+    const diff=Math.round((dB-dA)/86400000);
+    const wochen=Math.floor(Math.abs(diff)/7);
+    html+=result('Differenz', Math.abs(diff)+' Tage', `${wochen} Wochen und ${Math.abs(diff)%7} Tage`);
+  }
+  if(tage!==0){
+    const res=new Date(dA.getTime()+tage*86400000);
+    html+=result((tage>0?'+ ':'')+(tage)+' Tage', res.toLocaleDateString('de-DE',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}),'',true);
+  }
+  el.innerHTML=html||'<p class="error-msg">Bitte Enddatum oder Anzahl Tage eingeben.</p>';
+}
+
+// --- Alter ---
+function calcAlter() {
+  const el=document.getElementById('al-geb');
+  if(!el.value){document.getElementById('al-result').innerHTML='<p class="error-msg">Bitte Geburtsdatum eingeben.</p>';return;}
+  const geb=new Date(el.value);
+  const heute=new Date();
+  let jahre=heute.getFullYear()-geb.getFullYear();
+  let monate=heute.getMonth()-geb.getMonth();
+  let tage=heute.getDate()-geb.getDate();
+  if(tage<0){monate--;tage+=new Date(heute.getFullYear(),heute.getMonth(),0).getDate();}
+  if(monate<0){jahre--;monate+=12;}
+  const gesTage=Math.floor((heute-geb)/86400000);
+  document.getElementById('al-result').innerHTML=
+    result('Alter', `${jahre} Jahre, ${monate} Monate, ${tage} Tage`,
+      `${fmtInt(gesTage)} Tage gelebt · ${fmtInt(Math.floor(gesTage/7))} Wochen`);
+}
+
+// --- Countdown ---
+let cdInterval=null;
+function startCountdown() {
+  stopCountdown();
+  const ziel=document.getElementById('cd-ziel').value;
+  const name=document.getElementById('cd-name').value||'Countdown';
+  if(!ziel){document.getElementById('cd-result').innerHTML='<p class="error-msg">Bitte Zieldatum eingeben.</p>';return;}
+  const zielD=new Date(ziel);
+  function update(){
+    const now=new Date();
+    const diff=zielD-now;
+    if(diff<=0){stopCountdown();document.getElementById('cd-result').innerHTML=result('🎉 '+name, 'Zieldatum erreicht!');return;}
+    const t=Math.floor(diff/1000);
+    const s=t%60,m=Math.floor(t/60)%60,h=Math.floor(t/3600)%24,d=Math.floor(t/86400);
+    document.getElementById('cd-result').innerHTML=
+      result(name, `${d}d ${h}h ${m}m ${s}s`, zielD.toLocaleString('de-DE'));
+  }
+  update();
+  cdInterval=setInterval(update,1000);
+}
+function stopCountdown(){if(cdInterval){clearInterval(cdInterval);cdInterval=null;}}
+
+// --- Wochentag ---
+const WOCHENTAGE=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+function calcWochentag() {
+  const el=document.getElementById('wt-datum');
+  if(!el.value){document.getElementById('wt-result').innerHTML='<p class="error-msg">Bitte Datum eingeben.</p>';return;}
+  const d=new Date(el.value+'T12:00:00');
+  document.getElementById('wt-result').innerHTML=
+    result('Wochentag', WOCHENTAGE[d.getDay()], d.toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'}));
+}
+
+// --- Zeitzonen ---
+function tzOptions(def='Europe/Berlin') {
+  const tzs=['Europe/Berlin','Europe/London','Europe/Paris','Europe/Madrid','Europe/Rome','Europe/Warsaw','Europe/Istanbul','America/New_York','America/Chicago','America/Denver','America/Los_Angeles','America/Toronto','America/Sao_Paulo','America/Buenos_Aires','Asia/Tokyo','Asia/Shanghai','Asia/Seoul','Asia/Dubai','Asia/Kolkata','Asia/Singapore','Asia/Hong_Kong','Australia/Sydney','Pacific/Auckland','Africa/Cairo','Africa/Johannesburg'];
+  return tzs.map(tz=>`<option value="${tz}"${tz===def?' selected':''}>${tz.replace('_',' ')}</option>`).join('');
+}
+function calcZeitzonen() {
+  const dtEl=document.getElementById('tz-dt');
+  const von=document.getElementById('tz-von').value;
+  const nach=document.getElementById('tz-nach').value;
+  if(!dtEl.value){document.getElementById('tz-result').innerHTML='<p class="error-msg">Bitte Datum und Uhrzeit eingeben.</p>';return;}
+  try{
+    const src=new Date(dtEl.value);
+    const fmtOpts={dateStyle:'medium',timeStyle:'short'};
+    const vonStr=src.toLocaleString('de-DE',{...fmtOpts,timeZone:von});
+    const nachStr=src.toLocaleString('de-DE',{...fmtOpts,timeZone:nach});
+    document.getElementById('tz-result').innerHTML=
+      result(von, vonStr)+result(nach, nachStr,'',true);
+  }catch(e){document.getElementById('tz-result').innerHTML='<p class="error-msg">Fehler bei Zeitzonenberechnung.</p>';}
+}
+
+// --- Arbeitsstunden ---
+function calcArbeit() {
+  const von=document.getElementById('as-von').value;
+  const bis=document.getElementById('as-bis').value;
+  const pause=parseFloat(document.getElementById('as-pause').value)||0;
+  const [vh,vm]=von.split(':').map(Number);
+  const [bh,bm]=bis.split(':').map(Number);
+  let min=(bh*60+bm)-(vh*60+vm)-pause;
+  if(min<0)min+=24*60;
+  const h=Math.floor(min/60),m=min%60;
+  document.getElementById('as-result').innerHTML=
+    result('Arbeitszeit', `${h}h ${m}min`, `(${fmt(min/60,2)} Stunden)`);
+}
+
+// --- Urlaub ---
+function calcUrlaub() {
+  const vonEl=document.getElementById('ul-von');
+  const bisEl=document.getElementById('ul-bis');
+  if(!vonEl.value||!bisEl.value){document.getElementById('ul-result').innerHTML='<p class="error-msg">Bitte beide Daten eingeben.</p>';return;}
+  const von=new Date(vonEl.value);
+  const bis=new Date(bisEl.value);
+  let arbeitstage=0;
+  const d=new Date(von);
+  while(d<=bis){const w=d.getDay();if(w!==0&&w!==6)arbeitstage++;d.setDate(d.getDate()+1);}
+  const kalender=Math.round((bis-von)/86400000)+1;
+  document.getElementById('ul-result').innerHTML=
+    result('Arbeitstage (Mo–Fr)', arbeitstage)+
+    result('Kalendertage', kalender,'',true);
+}
+
+// --- Temperatur ---
+function calcTemp() {
+  const val=parseFloat(document.getElementById('tmp-val').value);
+  const von=document.getElementById('tmp-von').value;
+  let c;
+  if(von==='C')c=val;
+  else if(von==='F')c=(val-32)*5/9;
+  else if(von==='K')c=val-273.15;
+  else if(von==='R')c=(val-491.67)*5/9;
+  const res=[
+    ['°C', c],
+    ['°F', c*9/5+32],
+    ['K', c+273.15],
+    ['°R', (c+273.15)*9/5],
+  ];
+  document.getElementById('tmp-result').innerHTML=`
+    <table class="calc-table" style="margin-top:14px">
+      <thead><tr><th>Einheit</th><th>Wert</th></tr></thead>
+      <tbody>${res.map(([u,v])=>`<tr><td>${u}</td><td><strong>${fmt(v,4)}</strong> ${u}</td></tr>`).join('')}</tbody>
+    </table>`;
+}
+
+// --- Ohm ---
+function calcOhm() {
+  const get=id=>{const v=document.getElementById(id).value;return v===''?null:parseFloat(v);};
+  let U=get('ohm-u'),I=get('ohm-i'),R=get('ohm-r'),P=get('ohm-p');
+  const known=[U,I,R,P].filter(v=>v!==null).length;
+  if(known<2){document.getElementById('ohm-result').innerHTML='<p class="error-msg">Bitte mindestens 2 Werte eingeben.</p>';return;}
+  if(U!==null&&I!==null){R=U/I;P=U*I;}
+  else if(U!==null&&R!==null){I=U/R;P=U*I;}
+  else if(I!==null&&R!==null){U=I*R;P=U*I;}
+  else if(P!==null&&U!==null){I=P/U;R=U/I;}
+  else if(P!==null&&I!==null){U=P/I;R=U/I;}
+  else if(P!==null&&R!==null){U=Math.sqrt(P*R);I=U/R;}
+  document.getElementById('ohm-result').innerHTML=
+    result('U (Spannung)', fmt(U,4)+' V')+result('I (Strom)', fmt(I,4)+' A','',true)+
+    result('R (Widerstand)', fmt(R,4)+' Ω')+result('P (Leistung)', fmt(P,4)+' W','',true);
+}
+
+// --- Widerstand ---
+function calcWiderstand() {
+  const vals=document.getElementById('wd-werte').value.split(',').map(v=>parseFloat(v.trim())).filter(v=>!isNaN(v));
+  if(vals.length<1){document.getElementById('wd-result').innerHTML='<p class="error-msg">Bitte Widerstände eingeben.</p>';return;}
+  const reihe=vals.reduce((a,b)=>a+b,0);
+  const parallel=1/vals.reduce((a,b)=>a+1/b,0);
+  document.getElementById('wd-result').innerHTML=
+    result('Reihenschaltung', fmt(reihe,4)+' Ω')+
+    result('Parallelschaltung', fmt(parallel,4)+' Ω','',true);
+}
+
+// --- Kondensator ---
+function calcKondensator() {
+  const vals=document.getElementById('kd-werte').value.split(',').map(v=>parseFloat(v.trim())).filter(v=>!isNaN(v));
+  const typ=document.getElementById('kd-typ').value;
+  const einheit=typ==='c'?'µF':'mH';
+  // Kondensatoren: Parallel = Summe, Reihe = 1/Σ(1/C)
+  // Spulen: Reihe = Summe, Parallel = 1/Σ(1/L)
+  const reihe=typ==='c'?1/vals.reduce((a,b)=>a+1/b,0):vals.reduce((a,b)=>a+b,0);
+  const parallel=typ==='c'?vals.reduce((a,b)=>a+b,0):1/vals.reduce((a,b)=>a+1/b,0);
+  document.getElementById('kd-result').innerHTML=
+    result('Reihenschaltung', fmt(reihe,4)+' '+einheit)+
+    result('Parallelschaltung', fmt(parallel,4)+' '+einheit,'',true);
+}
+
+// --- Dichte ---
+function calcDichte() {
+  const m=parseFloat(document.getElementById('di-m').value||'');
+  const v=parseFloat(document.getElementById('di-v').value||'');
+  const r=parseFloat(document.getElementById('di-r').value||'');
+  let res='';
+  if(!isNaN(m)&&!isNaN(v))res=result('Dichte ρ', fmt(m/v,4)+' kg/m³');
+  else if(!isNaN(r)&&!isNaN(v))res=result('Masse m', fmt(r*v,4)+' kg');
+  else if(!isNaN(r)&&!isNaN(m))res=result('Volumen V', fmt(m/r,4)+' m³');
+  else res='<p class="error-msg">Bitte zwei Werte eingeben.</p>';
+  document.getElementById('di-result').innerHTML=res;
+}
+
+// --- Auftrieb ---
+function calcAuftrieb() {
+  const v=parseFloat(document.getElementById('au-v').value);
+  const d=parseFloat(document.getElementById('au-d').value);
+  const g=parseFloat(document.getElementById('au-g').value);
+  const fa=d*v*g;
+  document.getElementById('au-result').innerHTML=result('Auftriebskraft Fₐ', fmt(fa,4)+' N', `= ρ × V × g = ${d} × ${v} × ${g}`);
+}
+
+// --- Freifall ---
+function calcFreifall() {
+  const h=parseFloat(document.getElementById('ff-h').value||'');
+  const t=parseFloat(document.getElementById('ff-t').value||'');
+  const g=parseFloat(document.getElementById('ff-g').value)||9.81;
+  let res='';
+  if(!isNaN(h)){
+    const tFall=Math.sqrt(2*h/g);
+    const v=g*tFall;
+    res=result('Fallzeit', fmt(tFall,3)+' s')+result('Aufprallgeschwindigkeit', fmt(v,2)+' m/s ≈ '+fmt(v*3.6,1)+' km/h','',true);
+  } else if(!isNaN(t)){
+    const hFall=0.5*g*t*t;
+    const v=g*t;
+    res=result('Fallhöhe', fmt(hFall,2)+' m')+result('Aufprallgeschwindigkeit', fmt(v,2)+' m/s','',true);
+  } else res='<p class="error-msg">Bitte Höhe oder Zeit eingeben.</p>';
+  document.getElementById('ff-result').innerHTML=res;
+}
+
+// --- Schall ---
+function calcSchall() {
+  const medium=document.getElementById('sc-medium').value;
+  const temp=parseFloat(document.getElementById('sc-temp').value)||20;
+  const dist=parseFloat(document.getElementById('sc-dist').value)||1000;
+  let v=medium==='custom'?343:parseFloat(medium);
+  if(medium==='331') v=331.3*Math.sqrt(1+temp/273.15);
+  if(medium==='343') v=331.3*Math.sqrt(1+temp/273.15);
+  const zeit=dist/v;
+  document.getElementById('sc-result').innerHTML=
+    result('Schallgeschwindigkeit', fmt(v,1)+' m/s')+
+    result('Zeit für '+dist+' m', fmt(zeit,3)+' s','',true);
+}
+
+// --- Brechung ---
+function calcBrechung() {
+  const n1=parseFloat(document.getElementById('br-n1').value);
+  const a1=parseFloat(document.getElementById('br-a1').value)*Math.PI/180;
+  const n2=parseFloat(document.getElementById('br-n2').value);
+  const sinA2=n1*Math.sin(a1)/n2;
+  if(Math.abs(sinA2)>1){document.getElementById('br-result').innerHTML='<p class="error-msg">Totalreflexion! Kein Brechungswinkel möglich.</p>';return;}
+  const a2=Math.asin(sinA2)*180/Math.PI;
+  document.getElementById('br-result').innerHTML=
+    result('Brechungswinkel α₂', fmt(a2,2)+'°', `n₁·sin(α₁) = n₂·sin(α₂)`);
+}
+
+// --- Passwort ---
+function calcPasswort() {
+  const len=parseInt(document.getElementById('pw2-len').value)||16;
+  const n=parseInt(document.getElementById('pw2-n').value)||3;
+  const upper=document.getElementById('pw2-upper').checked;
+  const lower=document.getElementById('pw2-lower').checked;
+  const num=document.getElementById('pw2-num').checked;
+  const sym=document.getElementById('pw2-sym').checked;
+  let chars='';
+  if(upper) chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if(lower) chars+='abcdefghijklmnopqrstuvwxyz';
+  if(num) chars+='0123456789';
+  if(sym) chars+='!@#$%^&*()_+-=[]{}|;:,.<>?';
+  if(!chars){document.getElementById('pw2-result').innerHTML='<p class="error-msg">Bitte mindestens eine Option wählen.</p>';return;}
+  const pws=[];
+  for(let i=0;i<n;i++){
+    let pw='';
+    const arr=new Uint8Array(len);
+    crypto.getRandomValues(arr);
+    for(const b of arr) pw+=chars[b%chars.length];
+    pws.push(pw);
+  }
+  document.getElementById('pw2-result').innerHTML=
+    `<div class="result-box"><div class="result-label">${n} Passwort(e) – Länge ${len}</div>
+    ${pws.map(p=>`<div style="font-family:'IBM Plex Mono',monospace;font-size:0.95rem;padding:6px 0;border-bottom:1px solid var(--border);word-break:break-all">${p}</div>`).join('')}
+    </div>`;
+}
+
+// --- Farbe ---
+function calcFarbe() {
+  let hex=document.getElementById('fc-hex').value.trim().replace('#','');
+  if(hex.length===3) hex=hex.split('').map(c=>c+c).join('');
+  if(!/^[0-9A-Fa-f]{6}$/.test(hex)){document.getElementById('fc-result').innerHTML='<p class="error-msg">Ungültiger HEX-Wert.</p>';return;}
+  const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
+  const r1=r/255,g1=g/255,b1=b/255;
+  const max=Math.max(r1,g1,b1),min=Math.min(r1,g1,b1),d=max-min;
+  let h=0;
+  if(d!==0){if(max===r1)h=(g1-b1)/d%6;else if(max===g1)h=(b1-r1)/d+2;else h=(r1-g1)/d+4;h=h*60;if(h<0)h+=360;}
+  const s=max===0?0:d/max;
+  const v=max;
+  document.getElementById('fc-result').innerHTML=
+    `<div class="result-box">
+      <div style="width:100%;height:60px;background:#${hex};border-radius:6px;margin-bottom:10px"></div>
+      <div><strong>HEX:</strong> #${hex.toUpperCase()}</div>
+      <div><strong>RGB:</strong> rgb(${r}, ${g}, ${b})</div>
+      <div><strong>HSL:</strong> hsl(${Math.round(h)}°, ${Math.round(s*100)}%, ${Math.round((max+min)/2*100)}%)</div>
+      <div><strong>HSV:</strong> hsv(${Math.round(h)}°, ${Math.round(s*100)}%, ${Math.round(v*100)}%)</div>
+    </div>`;
+}
+
+// --- Schrift ---
+function calcSchrift() {
+  const val=parseFloat(document.getElementById('sz-val').value);
+  const von=document.getElementById('sz-von').value;
+  const base=parseFloat(document.getElementById('sz-base').value)||16;
+  let px;
+  if(von==='px')px=val;
+  else if(von==='pt')px=val*4/3;
+  else if(von==='rem'||von==='em')px=val*base;
+  const res=[
+    ['px', px],
+    ['pt', px*0.75],
+    ['rem', px/base],
+    ['em', px/base],
+  ];
+  document.getElementById('sz-result').innerHTML=`
+    <table class="calc-table" style="margin-top:14px">
+      <thead><tr><th>Einheit</th><th>Wert</th></tr></thead>
+      <tbody>${res.map(([u,v])=>`<tr><td>${u}</td><td>${fmt(v,4)} ${u}</td></tr>`).join('')}</tbody>
+    </table>`;
+}
+
+// --- Papier ---
+const PAPIER={A0:[841,1189],A1:[594,841],A2:[420,594],A3:[297,420],A4:[210,297],A5:[148,210],A6:[105,148],B4:[250,353],B5:[176,250],Letter:[215.9,279.4],Legal:[215.9,355.6]};
+function calcPapier() {
+  const fmt2=document.getElementById('pap-fmt').value;
+  const unit=document.getElementById('pap-unit').value;
+  const [w,h]=PAPIER[fmt2];
+  let uw=w,uh=h;
+  if(unit==='cm'){uw=w/10;uh=h/10;}
+  else if(unit==='in'){uw=w/25.4;uh=h/25.4;}
+  else if(unit==='px'){uw=Math.round(w/25.4*96);uh=Math.round(h/25.4*96);}
+  document.getElementById('pap-result').innerHTML=
+    result(fmt2, `${fmt(uw,1)} × ${fmt(uh,1)} ${unit}`, 'Breite × Höhe (Hochformat)');
+}
+
+// --- Konfektionsgröße ---
+const KONFEKTIONS={
+  damen:{DE:['32','34','36','38','40','42','44','46','48'],UK:['4','6','8','10','12','14','16','18','20'],US:['0','2','4','6','8','10','12','14','16'],IT:['34','36','38','40','42','44','46','48','50'],FR:['34','36','38','40','42','44','46','48','50']},
+  herren:{DE:['XS','S','M','L','XL','XXL','3XL'],UK:['XS','S','M','L','XL','XXL','3XL'],US:['XS','S','M','L','XL','XXL','3XL'],IT:['XS','S','M','L','XL','XXL','3XL'],FR:['XS','S','M','L','XL','XXL','3XL']}
+};
+function calcKonfektions() {
+  const val=document.getElementById('kg-val').value.trim();
+  const von=document.getElementById('kg-von').value;
+  const kat=document.getElementById('kg-kat').value;
+  const tbl=KONFEKTIONS[kat];
+  const idx=tbl[von]?.findIndex(v=>v.toUpperCase()===val.toUpperCase());
+  if(idx===-1||idx===undefined){document.getElementById('kg-result').innerHTML='<p class="error-msg">Größe nicht gefunden.</p>';return;}
+  const rows=Object.entries(tbl).map(([sys,sizes])=>`<tr><td>${sys}</td><td>${sizes[idx]||'–'}</td></tr>`).join('');
+  document.getElementById('kg-result').innerHTML=
+    `<table class="calc-table" style="margin-top:14px"><thead><tr><th>System</th><th>Größe</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// --- Schuhgröße ---
+function calcSchuh() {
+  const val=parseFloat(document.getElementById('sg-val').value);
+  const von=document.getElementById('sg-von').value;
+  let cm;
+  if(von==='EU')cm=(val-2)/1.5*0.667+21.5*(val-2)/40;
+  if(von==='EU')cm=val*0.667-0.333;// EU → cm: EU/1.5
+  if(von==='CM')cm=val;
+  if(von==='UK')cm=(val+1.5)*0.667+1;
+  if(von==='US-M')cm=(val)*0.667+0.333;
+  if(von==='US-W')cm=(val-0.5)*0.667+0.333;
+  // Einfache Näherung
+  const eu_from_cm=n=>Math.round(n*1.5+2)/0.5*0.5;
+  const eu=Math.round(cm*1.5);
+  const uk=Math.round(eu-33);
+  const usm=Math.round(eu-32+0.5*2)/2;
+  const usw=Math.round((eu-32+1)*2)/2;
+  document.getElementById('sg-result').innerHTML=`
+    <table class="calc-table" style="margin-top:14px">
+      <thead><tr><th>System</th><th>Größe</th></tr></thead>
+      <tbody>
+        <tr><td>EU</td><td>${eu}</td></tr>
+        <tr><td>UK</td><td>${uk}</td></tr>
+        <tr><td>US Herren</td><td>${usm}</td></tr>
+        <tr><td>US Damen</td><td>${usw}</td></tr>
+        <tr><td>Fußlänge (cm)</td><td>≈${fmt(cm,1)}</td></tr>
+      </tbody>
+    </table>`;
+}
+
+// --- Reifengröße ---
+function calcReifen() {
+  const b=parseFloat(document.getElementById('rg-b').value);
+  const q=parseFloat(document.getElementById('rg-q').value);
+  const f=parseFloat(document.getElementById('rg-f').value);
+  const seitenwand=b*q/100;
+  const gesamt_d=f*25.4+2*seitenwand;
+  const gesamt_r=gesamt_d/2;
+  const umfang=Math.PI*gesamt_d;
+  document.getElementById('rg-result').innerHTML=
+    `<div class="result-box">
+      <div class="result-label">Reifenbezeichnung: ${b}//${q} R${f}</div>
+      <div style="margin-top:8px;font-size:0.85rem">
+        <div>Seitenwandhöhe: <strong>${fmt(seitenwand,1)} mm</strong></div>
+        <div>Gesamtdurchmesser: <strong>${fmt(gesamt_d,1)} mm = ${fmt(gesamt_d/10,1)} cm</strong></div>
+        <div>Abrollumfang: <strong>${fmt(umfang/1000,3)} m = ${fmt(umfang,0)} mm</strong></div>
+        <div>km/Umdrehung: <strong>${fmt(umfang/1000000,4)} km</strong></div>
+      </div>
+    </div>`;
+}
+
+// --- Kraftstoff ---
+function calcKraftstoff() {
+  const l=parseFloat(document.getElementById('kv-l').value);
+  const km=parseFloat(document.getElementById('kv-km').value);
+  const preis=parseFloat(document.getElementById('kv-preis').value);
+  const mpgUK=282.48/l;
+  const mpgUS=235.21/l;
+  const liter=km*l/100;
+  const kosten=liter*preis;
+  document.getElementById('kv-result').innerHTML=
+    result('Kraftstoffbedarf für '+km+' km', fmt(liter,2)+' Liter')+
+    result('Kosten', fmt(kosten,2)+' €','Bei '+fmt(preis,2)+' €/L',true)+
+    result('Umrechnung', `${fmt(mpgUS,1)} mpg (US) · ${fmt(mpgUK,1)} mpg (UK)`);
+}
+
+// --- CO₂ ---
+const CO2_FAKTOREN={
+  auto_benzin:0.21,auto_diesel:0.164,flug_kurz:0.255,flug_lang:0.195,
+  zug:0.032,bus:0.089,strom_de:0.366,fleisch:27.0
+};
+const CO2_EINHEITEN={auto_benzin:'km',auto_diesel:'km',flug_kurz:'km',flug_lang:'km',zug:'km',bus:'km',strom_de:'kWh',fleisch:'kg Fleisch'};
+function calcCO2() {
+  const akt=document.getElementById('co2-akt').value;
+  const menge=parseFloat(document.getElementById('co2-menge').value);
+  const kg=CO2_FAKTOREN[akt]*menge;
+  const einheit=CO2_EINHEITEN[akt];
+  document.getElementById('co2-result').innerHTML=
+    result('CO₂-Emissionen', fmt(kg,1)+' kg CO₂', `für ${menge} ${einheit}`)+
+    result('Entspricht', fmt(kg/21,1)+' km Autofahrt (Benzin)','Vergleichswert',true);
+}
+
+// ══════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════
+(function init() {
+  // Activate from hash
+  const hash = window.location.hash.slice(1);
+  const startId = (hash && CALCS[hash]) ? hash : 'taschenrechner';
+  show(startId);
+  // Init prozent fields
+  if (startId === 'prozent') renderProzent();
+  // Set today as default for date inputs
+  const today = new Date().toISOString().slice(0,10);
+  ['dt-a','al-geb','sw-datum','wt-datum','ul-von','ul-bis'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.value) el.value = today;
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Universal Calculator – Kostenlose Online-Rechner</title>
+<meta name="description" content="Über 60 kostenlose Online-Rechner für Finanzen, Mathematik, Gesundheit, Datum & Zeit und mehr. Alle Berechnungen lokal im Browser.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;
+  --blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:15px;}
+body{
+  font-family:'IBM Plex Mono',monospace;background-color:var(--bg-deep);
+  background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);
+  background-size:40px 40px;color:var(--text);min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px 16px 80px;
+}
+h1,h2,h3,button,.btn{font-family:'Space Grotesk',sans-serif;}
+.hero{text-align:center;max-width:680px;margin-bottom:48px;}
+.logo{font-size:2.2rem;font-weight:700;color:var(--blue-bright);letter-spacing:-1px;margin-bottom:12px;}
+.logo span{color:var(--copper);}
+.tagline{font-size:1.1rem;color:var(--muted);margin-bottom:6px;}
+.sub{font-size:0.82rem;color:var(--muted);}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:680px;width:100%;margin-bottom:32px;}
+.tile{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:24px 20px;text-decoration:none;color:var(--text);
+  transition:box-shadow 0.2s,transform 0.15s;cursor:pointer;
+  display:flex;flex-direction:column;gap:8px;
+}
+.tile:hover{box-shadow:0 8px 24px rgba(27,166,255,0.12);transform:translateY(-2px);}
+.tile .icon{font-size:2rem;}
+.tile .title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;}
+.tile .desc{font-size:0.78rem;color:var(--muted);}
+.tile.featured{border-left:4px solid var(--blue-bright);}
+.tile.copper{border-left:4px solid var(--copper);}
+.btn-all{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-bright);color:#fff;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;
+  padding:14px 32px;border-radius:10px;text-decoration:none;
+  transition:background 0.15s;
+}
+.btn-all:hover{background:#0e8fd6;}
+.countdown{font-size:0.75rem;color:var(--muted);margin-top:10px;}
+footer{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);
+}
+footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
+footer a:hover{color:var(--blue-bright);}
+#cookie-banner{
+  display:none;position:fixed;bottom:0;left:0;right:0;
+  background:var(--text);color:#fff;padding:12px 20px;z-index:500;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+}
+#cookie-banner.hidden{display:none!important;}
+#cookie-banner p{font-size:0.78rem;flex:1 1 250px;}
+.cbtn{padding:6px 12px;border-radius:5px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:600;}
+.cbtn-a{background:var(--blue-bright);color:#fff;}
+.cbtn-r{background:transparent;color:#9ca3af;border:1px solid #4b5563;}
+@media(max-width:520px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo">Universal<span>Calculator</span></div>
+  <p class="tagline">Über 60 kostenlose Online-Rechner</p>
+  <p class="sub">Finanzen · Mathematik · Gesundheit · Datum & Zeit · Einheiten · Physik</p>
+</div>
+
+<div class="grid">
+  <a class="tile featured" href="universal-calculator.html#zinsrechner">
+    <div class="icon">📈</div>
+    <div class="title">Zinsrechner</div>
+    <div class="desc">Einfache Zinsen, Zinseszins und Sparplan berechnen</div>
+  </a>
+  <a class="tile featured" href="universal-calculator.html#bmi">
+    <div class="icon">⚖️</div>
+    <div class="title">BMI-Rechner</div>
+    <div class="desc">Body-Mass-Index und Gewichtsklassifikation ermitteln</div>
+  </a>
+  <a class="tile copper" href="universal-calculator.html#datum">
+    <div class="icon">📆</div>
+    <div class="title">Datumsrechner</div>
+    <div class="desc">Differenz zwischen Daten berechnen, Tage addieren</div>
+  </a>
+  <a class="tile copper" href="universal-calculator.html#waehrung">
+    <div class="icon">💱</div>
+    <div class="title">Währungsumrechner</div>
+    <div class="desc">30+ Währungen mit aktuellen Richtkursen (2026)</div>
+  </a>
+</div>
+
+<a class="btn-all" href="universal-calculator.html">Alle Rechner öffnen →</a>
+<p class="countdown" id="countdown-txt">Weiterleitung in 10 Sekunden …</p>
+
+<footer>
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+
+<div id="cookie-banner">
+  <p>🍪 Wir nutzen Cookies für Werbung (Google AdSense). Technisch notwendige Cookies sind immer aktiv.</p>
+  <div style="display:flex;gap:8px">
+    <button class="cbtn cbtn-a" onclick="acceptC()">Akzeptieren</button>
+    <button class="cbtn cbtn-r" onclick="rejectC()">Ablehnen</button>
+  </div>
+</div>
+
+<script>
+// Cookie
+const banner=document.getElementById('cookie-banner');
+if(!localStorage.getItem('cookie-consent'))banner.classList.remove('hidden');
+else banner.classList.add('hidden');
+function acceptC(){localStorage.setItem('cookie-consent','all');banner.classList.add('hidden');}
+function rejectC(){localStorage.setItem('cookie-consent','necessary');banner.classList.add('hidden');}
+
+// Countdown auto-redirect
+let secs=10;
+const txt=document.getElementById('countdown-txt');
+const iv=setInterval(()=>{
+  secs--;
+  if(secs<=0){clearInterval(iv);window.location.href='universal-calculator.html';}
+  else txt.textContent=`Weiterleitung in ${secs} Sekunden …`;
+},1000);
+</script>
+</body>
+</html>

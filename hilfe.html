@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hilfe – Universal Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
+h1,h2,h3,button,.btn{font-family:'Space Grotesk',sans-serif;}
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
+.logo span{color:var(--copper);}
+main{max-width:860px;margin:32px auto;padding:0 20px;}
+.page-title{font-size:1.8rem;font-weight:700;margin-bottom:6px;}
+.page-sub{color:var(--muted);font-size:0.85rem;margin-bottom:28px;}
+
+/* Topic tiles */
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:36px;}
+.topic-tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;cursor:pointer;transition:0.15s;text-decoration:none;display:block;}
+.topic-tile:hover{border-color:var(--blue-bright);box-shadow:0 2px 10px rgba(27,166,255,0.12);}
+.topic-tile .icon{font-size:1.8rem;margin-bottom:8px;}
+.topic-tile h3{font-size:0.95rem;font-weight:600;color:var(--text);margin-bottom:4px;}
+.topic-tile p{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+
+/* Sections */
+.help-section{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden;}
+.help-section-header{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:1rem;}
+.help-section-header:hover{background:var(--blue-soft);}
+.help-section-body{display:none;padding:4px 20px 20px;}
+.help-section.open .help-section-body{display:block;}
+.help-section-arrow{transition:transform 0.2s;font-size:0.8rem;}
+.help-section.open .help-section-arrow{transform:rotate(180deg);}
+
+/* Steps */
+.steps{counter-reset:step;margin-top:12px;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step-num{counter-increment:step;background:var(--blue-bright);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.8rem;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-num::before{content:counter(step);}
+.step-body h4{font-size:0.9rem;font-weight:600;margin-bottom:4px;}
+.step-body p{font-size:0.83rem;line-height:1.7;color:var(--muted);}
+
+/* Tip box */
+.tip{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 6px 6px 0;padding:10px 14px;margin:12px 0;font-size:0.82rem;line-height:1.6;}
+.tip strong{color:var(--blue-bright);}
+
+/* Warning */
+.warn{background:var(--copper-soft);border-left:3px solid var(--copper);border-radius:0 6px 6px 0;padding:10px 14px;margin:12px 0;font-size:0.82rem;line-height:1.6;color:var(--text);}
+.warn strong{color:var(--copper);}
+
+footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
+footer a:hover{color:var(--blue-bright);}
+@media(max-width:600px){.topic-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <nav style="margin-left:auto;display:flex;gap:12px;font-size:0.8rem">
+    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
+    <a href="faq.html" style="color:var(--muted);text-decoration:none">FAQ</a>
+  </nav>
+</header>
+
+<main>
+  <h1 class="page-title">Hilfe &amp; Anleitungen</h1>
+  <p class="page-sub">Schritt-für-Schritt-Anleitungen für alle Rechner auf Universal-Calculator.</p>
+
+  <div class="topic-grid">
+    <a class="topic-tile" href="#finanzen" onclick="openSection('sec-finanzen')">
+      <div class="icon">💰</div>
+      <h3>Finanzen</h3>
+      <p>Zinsrechner, Kredit, Währung, Gehalt &amp; mehr</p>
+    </a>
+    <a class="topic-tile" href="#mathe" onclick="openSection('sec-mathe')">
+      <div class="icon">📐</div>
+      <h3>Mathematik</h3>
+      <p>Geometrie, Primzahlen, Fakultät, Fibonacci</p>
+    </a>
+    <a class="topic-tile" href="#gesundheit" onclick="openSection('sec-gesundheit')">
+      <div class="icon">🏃</div>
+      <h3>Gesundheit</h3>
+      <p>BMI, Kalorien, TDEE, Körperfett</p>
+    </a>
+    <a class="topic-tile" href="#datum" onclick="openSection('sec-datum')">
+      <div class="icon">📅</div>
+      <h3>Datum &amp; Zeit</h3>
+      <p>Datumsrechner, Countdown, Zeitzonen</p>
+    </a>
+    <a class="topic-tile" href="#einheiten" onclick="openSection('sec-einheiten')">
+      <div class="icon">📏</div>
+      <h3>Einheiten</h3>
+      <p>Länge, Gewicht, Temperatur, Energie</p>
+    </a>
+    <a class="topic-tile" href="#physik" onclick="openSection('sec-physik')">
+      <div class="icon">⚡</div>
+      <h3>Physik &amp; Technik</h3>
+      <p>Ohmsches Gesetz, Freifall, Brechung</p>
+    </a>
+    <a class="topic-tile" href="#sonstiges" onclick="openSection('sec-sonstiges')">
+      <div class="icon">🔧</div>
+      <h3>Sonstiges</h3>
+      <p>Passwort, Farbe, Reifen, CO₂</p>
+    </a>
+    <a class="topic-tile" href="#allgemein" onclick="openSection('sec-allgemein')">
+      <div class="icon">ℹ️</div>
+      <h3>Allgemein</h3>
+      <p>Navigation, Sprache, Mobile, Datenschutz</p>
+    </a>
+  </div>
+
+  <!-- Allgemein -->
+  <div class="help-section" id="sec-allgemein">
+    <div class="help-section-header" onclick="toggleSection('sec-allgemein')">
+      <span>ℹ️ Allgemeine Bedienung</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Rechner aufrufen</h4><p>Klicken Sie in der linken Seitenleiste auf eine Kategorie, dann auf den gewünschten Rechner. Der Inhalt erscheint sofort im Hauptbereich — ohne Seitenneuladen.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Mobile Nutzung</h4><p>Auf Smartphones erscheint oben links ein ☰-Burger-Symbol. Tippen Sie darauf, um die Seitenleiste zu öffnen. Ein Tippen außerhalb schließt sie wieder.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Sprache ändern</h4><p>Klicken Sie im Header auf das Flaggen-Dropdown und wählen Sie Ihre Sprache. Die Seite lädt mit dem URL-Parameter <code>?lang=XX</code> neu. Die Auswahl wird für künftige Besuche gespeichert.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Ergebnisse verwenden</h4><p>Alle Ergebnisse können per Kopieren-Funktion Ihres Browsers in andere Programme übertragen werden. Nutzen Sie Strg+C (Windows) oder Cmd+C (Mac).</p></div></div>
+      </div>
+      <div class="tip"><strong>Tipp:</strong> Lesezeichen auf <code>universal-calculator.html#zinseszins</code> — der Rechner öffnet direkt beim Laden der Seite.</div>
+    </div>
+  </div>
+
+  <!-- Finanzen -->
+  <div class="help-section" id="sec-finanzen">
+    <div class="help-section-header" onclick="toggleSection('sec-finanzen')">
+      <span>💰 Finanzrechner</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <h3 style="margin:12px 0 8px;font-size:0.95rem">Zinseszinsrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Startkapital eingeben</h4><p>Tragen Sie den Anfangsbetrag in Euro ein, z. B. <code>10000</code> für 10.000 €. Kommazahlen sind möglich.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zinssatz und Laufzeit</h4><p>Geben Sie den jährlichen Zinssatz (z. B. <code>4</code> für 4 %) und die Laufzeit in Jahren an.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Optionale Sparrate</h4><p>Falls Sie monatlich zusätzlich sparen, tragen Sie diesen Betrag im Feld „Monatliche Sparrate" ein. Lassen Sie das Feld leer für eine reine Einmalanlage.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Ergebnis lesen</h4><p>Das Endkapital, der Zinsgewinn und eine Jahrestabelle werden angezeigt. Kupferfarben markierte Werte sind besonders relevante Kennzahlen.</p></div></div>
+      </div>
+      <div class="warn"><strong>Hinweis:</strong> Die Berechnung berücksichtigt keine Abgeltungssteuer, Inflation oder Kontoführungsgebühren. Für Anlageentscheidungen konsultieren Sie einen Finanzberater.</div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Kreditrechner &amp; Tilgungsplan</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Darlehensbetrag</h4><p>Geben Sie den Kreditbetrag ein (ohne Punkte als Tausendertrenner, nur Ziffern oder Komma).</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zinssatz und Laufzeit</h4><p>Effektiver Jahreszins in Prozent und Laufzeit in Monaten oder Jahren eintragen.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Tilgungsplan anzeigen</h4><p>Der Tilgungsplan zeigt für jede Rate: Zinsen, Tilgung und Restschuld. Scrollbar bei langen Laufzeiten.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Währungsrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Betrag eingeben</h4><p>Tragen Sie den Betrag in der Ausgangswährung ein.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Währungspaar wählen</h4><p>Wählen Sie Quell- und Zielwährung aus den Dropdown-Menüs. Über 30 Währungen stehen zur Verfügung.</p></div></div>
+      </div>
+      <div class="tip"><strong>Tipp:</strong> Die Kurse sind Richtkurse Stand 2026. Für Transaktionen prüfen Sie stets den aktuellen Kurs Ihrer Bank.</div>
+    </div>
+  </div>
+
+  <!-- Mathematik -->
+  <div class="help-section" id="sec-mathe">
+    <div class="help-section-header" onclick="toggleSection('sec-mathe')">
+      <span>📐 Mathematikrechner</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <h3 style="margin:12px 0 8px;font-size:0.95rem">Taschenrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zahlen eingeben</h4><p>Klicken Sie auf die Zifferntasten oder nutzen Sie die Tastatur. Der Rechner unterstützt Dezimalzahlen und negative Zahlen (±-Taste).</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Operatoren</h4><p>+, −, ×, ÷ für Grundrechenarten. Die Berechnung erfolgt sofort nach dem Drücken von =. CE löscht die aktuelle Eingabe, C setzt alles zurück.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Geometrierechner (Dreieck, Kreis, etc.)</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Bekannte Größen eingeben</h4><p>Geben Sie die bekannten Werte ein (z. B. zwei Seiten eines Dreiecks). Felder, die berechnet werden sollen, leer lassen.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Einheit beachten</h4><p>Alle Maße werden in der eingegebenen Einheit verarbeitet. Das Ergebnis erscheint in der gleichen Einheit (Fläche in Einheit², Volumen in Einheit³).</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Primzahlenrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zahl eingeben</h4><p>Geben Sie eine ganze Zahl ein. Der Rechner prüft sofort, ob sie eine Primzahl ist, und listet alle Primzahlen bis zu dieser Zahl auf.</p></div></div>
+      </div>
+      <div class="tip"><strong>Tipp:</strong> Für sehr große Zahlen (> 10.000.000) kann die Berechnung einige Sekunden dauern.</div>
+    </div>
+  </div>
+
+  <!-- Gesundheit -->
+  <div class="help-section" id="sec-gesundheit">
+    <div class="help-section-header" onclick="toggleSection('sec-gesundheit')">
+      <span>🏃 Gesundheitsrechner</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <h3 style="margin:12px 0 8px;font-size:0.95rem">BMI-Rechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Gewicht und Größe eingeben</h4><p>Geben Sie Ihr Körpergewicht in Kilogramm und Ihre Körpergröße in Zentimetern ein.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Ergebnis interpretieren</h4><p>BMI unter 18,5: Untergewicht · 18,5–24,9: Normalgewicht · 25–29,9: Übergewicht · ab 30: Adipositas. Die Klassifikation folgt der WHO-Definition.</p></div></div>
+      </div>
+      <div class="warn"><strong>Wichtig:</strong> Der BMI ist ein statistisches Maß und berücksichtigt nicht Muskelmasse, Alter, Geschlecht oder Körperbau. Er ersetzt keine ärztliche Beratung.</div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Kalorienbedarfsrechner (TDEE)</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Körperdaten eingeben</h4><p>Alter, Geschlecht, Gewicht (kg), Größe (cm) eintragen.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Aktivitätslevel wählen</h4><p>Wählen Sie Ihr durchschnittliches Aktivitätsniveau: kaum aktiv, leicht aktiv, mäßig aktiv, sehr aktiv, extrem aktiv.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Grundumsatz und TDEE lesen</h4><p>Der Grundumsatz (BMR) zeigt den Kalorienbedarf ohne jede Aktivität. Der TDEE ist Ihr tatsächlicher Tagesbedarf inklusive Aktivität.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Schwangerschaftskalender</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Letzter Menstruationsbeginn eingeben</h4><p>Wählen Sie den ersten Tag Ihrer letzten Regelblutung im Datumsfeld aus.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zykluslänge anpassen</h4><p>Standardmäßig 28 Tage. Falls Ihr Zyklus abweicht, passen Sie die Zykluslänge an — der Rechner korrigiert den Termin automatisch.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Datum & Zeit -->
+  <div class="help-section" id="sec-datum">
+    <div class="help-section-header" onclick="toggleSection('sec-datum')">
+      <span>📅 Datum &amp; Zeit</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <h3 style="margin:12px 0 8px;font-size:0.95rem">Datumsrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zwei Daten eingeben</h4><p>Wählen Sie Start- und Enddatum über die Datumsfelder. Der Rechner zeigt Differenz in Tagen, Wochen, Monaten und Jahren.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Tage addieren oder subtrahieren</h4><p>Alternativ: Geben Sie ein Startdatum und eine Anzahl Tage ein, um ein zukünftiges oder vergangenes Datum zu berechnen.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Countdown-Timer</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zieldatum und -uhrzeit wählen</h4><p>Wählen Sie Datum und Uhrzeit des Ereignisses (z. B. Geburtstag, Meeting, Projektabgabe).</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Countdown läuft automatisch</h4><p>Die verbleibende Zeit in Tagen, Stunden, Minuten und Sekunden wird sekündlich aktualisiert — solange der Tab geöffnet ist.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Zeitzonenrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Quellzeit eingeben</h4><p>Geben Sie eine lokale Uhrzeit und Datum ein und wählen Sie die Ausgangszeitzone.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zielzeitzone wählen</h4><p>Wählen Sie die gewünschte Zielzeitzone. Die Umrechnung erfolgt automatisch und berücksichtigt Sommer-/Winterzeit (via Intl.DateTimeFormat).</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Einheiten -->
+  <div class="help-section" id="sec-einheiten">
+    <div class="help-section-header" onclick="toggleSection('sec-einheiten')">
+      <span>📏 Einheitenumrechnung</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Kategorie öffnen</h4><p>Wählen Sie in der Seitenleiste die gewünschte Einheitenkategorie: Länge, Gewicht, Fläche, Volumen, Geschwindigkeit, Druck, Energie, Leistung, Daten, Winkel oder Frequenz.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Wert und Quelleinheit eingeben</h4><p>Tragen Sie den Zahlenwert in das Eingabefeld ein und wählen Sie die Ausgangseinheit aus dem linken Dropdown.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Zieleinheit wählen</h4><p>Wählen Sie die gewünschte Zieleinheit aus dem rechten Dropdown. Das Ergebnis erscheint sofort.</p></div></div>
+      </div>
+      <div class="tip"><strong>Tipp:</strong> Temperaturumrechnung (°C / °F / K / R) finden Sie im separaten Temperaturrechner, da diese keine lineare Umrechnung ist.</div>
+    </div>
+  </div>
+
+  <!-- Physik -->
+  <div class="help-section" id="sec-physik">
+    <div class="help-section-header" onclick="toggleSection('sec-physik')">
+      <span>⚡ Physik &amp; Technik</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <h3 style="margin:12px 0 8px;font-size:0.95rem">Ohmsches Gesetz</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Drei der vier Größen eingeben</h4><p>Spannung U (V), Stromstärke I (A), Widerstand R (Ω) und Leistung P (W). Geben Sie genau drei Werte ein — der vierte wird berechnet.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Gesuchtes Feld freilassen</h4><p>Lassen Sie das Feld leer, das Sie berechnen möchten. Der Rechner erkennt automatisch, welche Größe gesucht wird.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Widerstand Reihe/Parallel</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Widerstände eingeben</h4><p>Tragen Sie die einzelnen Widerstandswerte in Ohm (Ω) ein, kommagetrennt, z. B. <code>100, 220, 470</code>.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Schaltungsart wählen</h4><p>Wählen Sie „Reihenschaltung" (Summe aller Widerstände) oder „Parallelschaltung" (Kehrwert der Kehrwertsumme).</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Freier Fall</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Fallhöhe oder -dauer eingeben</h4><p>Geben Sie entweder die Höhe in Metern oder die Fallzeit in Sekunden an. Der Rechner berechnet die jeweils andere Größe sowie die Aufprallgeschwindigkeit.</p></div></div>
+      </div>
+      <div class="warn"><strong>Hinweis:</strong> Der Luftwiderstand wird bei allen Freifall-Berechnungen vernachlässigt. Die Ergebnisse gelten nur im Vakuum bzw. als Näherung für kurze Fallstrecken.</div>
+    </div>
+  </div>
+
+  <!-- Sonstiges -->
+  <div class="help-section" id="sec-sonstiges">
+    <div class="help-section-header" onclick="toggleSection('sec-sonstiges')">
+      <span>🔧 Sonstige Rechner</span>
+      <span class="help-section-arrow">▼</span>
+    </div>
+    <div class="help-section-body">
+      <h3 style="margin:12px 0 8px;font-size:0.95rem">Passwortgenerator</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Länge und Zeichensatz wählen</h4><p>Stellen Sie die gewünschte Passwortlänge (8–64 Zeichen) und die erlaubten Zeichentypen ein: Großbuchstaben, Kleinbuchstaben, Ziffern, Sonderzeichen.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Generieren klicken</h4><p>Klicken Sie auf „Generieren". Das Passwort wird kryptografisch sicher erzeugt und angezeigt. Klicken Sie erneut für ein neues Passwort.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Passwort kopieren</h4><p>Klicken Sie auf „Kopieren" um das Passwort in die Zwischenablage zu übertragen. Das Passwort wird nirgendwo gespeichert oder übertragen.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Farbrechner (HEX / RGB / HSL)</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Eingabeformat wählen</h4><p>Geben Sie einen HEX-Code (z. B. <code>#1BA6FF</code>), RGB-Werte (z. B. <code>27, 166, 255</code>) oder HSL-Werte ein.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Alle Formate werden angezeigt</h4><p>Der Rechner konvertiert automatisch in alle anderen Formate und zeigt eine Farbvorschau.</p></div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px;font-size:0.95rem">Reifengrößenrechner</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Reifenbezeichnung eingeben</h4><p>Geben Sie Breite (mm), Querschnitt (%) und Felgendurchmesser (Zoll) ein, z. B. <code>205 / 55 / 16</code>.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h4>Ergebnisse lesen</h4><p>Der Rechner zeigt Seitenwandhöhe, Außendurchmesser und Abrollumfang in mm und Zoll.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div>
+    <a href="universal-calculator.html">Rechner</a> |
+    <a href="blog.html">Wissenswertes</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="hilfe.html">Hilfe</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+
+<script>
+function toggleSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+function openSection(id) {
+  const el = document.getElementById(id);
+  if (el) { el.classList.add('open'); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+}
+// Open section from URL hash
+window.addEventListener('load', () => {
+  const hash = location.hash.replace('#','');
+  if (hash) openSection('sec-' + hash);
+});
+</script>
+</body>
+</html>
