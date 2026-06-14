@@ -73,6 +73,20 @@ footer a:hover{color:var(--blue-bright);}
     <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">Alle Rechner</a>
     <a href="blog.html" style="color:var(--muted);text-decoration:none">Wissenswertes</a>
   </nav>
+  <div style="margin-left:auto"><select id="lang-select" onchange="setLang(this.value)" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;">
+      <option value="de">🇩🇪 DE</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="fr">🇫🇷 FR</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="it">🇮🇹 IT</option>
+      <option value="pt">🇵🇹 PT</option>
+      <option value="nl">🇳🇱 NL</option>
+      <option value="pl">🇵🇱 PL</option>
+      <option value="tr">🇹🇷 TR</option>
+      <option value="ar">🇸🇦 AR</option>
+      <option value="zh">🇨🇳 ZH</option>
+    </select>
+  </div>
 </header>
 <main>
   <div class="breadcrumb"><a href="blog.html">← Wissenswertes</a> / CO₂-Fußabdruck: Was Ihre alltäglichen Entscheidungen wirklich kosten</div>
@@ -126,16 +140,128 @@ function checkQuiz(quizId, answers) {
 <div class="sources"><h2>📚 Quellen</h2><ol><li>Umweltbundesamt: Treibhausgasemissionen in Deutschland. umweltbundesamt.de</li><li>Wynes, S. & Nicholas, K.A. (2017): The climate mitigation gap. Environmental Research Letters.</li><li>Poore, J. & Nemecek, T. (2018): Reducing food's environmental impacts. Science, 360(6392).</li><li>Europäische Umweltagentur: CO₂ emissions from aviation. eea.europa.eu</li></ol></div>
 </main>
 
-<footer>
+<footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
   <div>
-    <a href="universal-calculator.html">Rechner</a> |
-    <a href="blog.html">Wissenswertes</a> |
-    <a href="faq.html">FAQ</a> |
-    <a href="hilfe.html">Hilfe</a> |
-    <a href="impressum.html">Impressum</a> |
-    <a href="datenschutz.html">Datenschutz</a>
+    <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
+    <a href="blog.html" data-i18n="nav_blog" style="color:#6B7280;text-decoration:none;margin:0 5px">Wissenswertes</a> |
+    <a href="faq.html" data-i18n="nav_faq" style="color:#6B7280;text-decoration:none;margin:0 5px">FAQ</a> |
+    <a href="hilfe.html" data-i18n="nav_help" style="color:#6B7280;text-decoration:none;margin:0 5px">Hilfe</a> |
+    <a href="impressum.html" data-i18n="nav_imprint" style="color:#6B7280;text-decoration:none;margin:0 5px">Impressum</a> |
+    <a href="datenschutz.html" data-i18n="nav_privacy" style="color:#6B7280;text-decoration:none;margin:0 5px">Datenschutz</a>
   </div>
-  <div style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+  <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
 </footer>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:14px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+<p data-i18n="cookie_text" style="font-size:0.8rem;flex:1 1 280px;margin:0">🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+<div style="display:flex;gap:8px;">
+<button onclick="(function(){localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_accept" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+<button onclick="(function(){localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_reject" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
+</div>
+</div>
+<script>if(!localStorage.getItem('cookie-consent')){document.getElementById('cookie-banner').style.display='flex';}</script>
+
+
+<script>
+// ── i18n ──
+const I18N_PAGES = {
+de:{
+  nav_calc:'Rechner',nav_blog:'Wissenswertes',nav_faq:'FAQ',nav_help:'Hilfe',
+  nav_imprint:'Impressum',nav_privacy:'Datenschutz',
+  footer_copy:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit',
+  cookie_text:'🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.',
+  cookie_accept:'Alle akzeptieren',cookie_reject:'Nur notwendige',
+},
+en:{
+  nav_calc:'Calculator',nav_blog:'Knowledge',nav_faq:'FAQ',nav_help:'Help',
+  nav_imprint:'Imprint',nav_privacy:'Privacy',
+  footer_copy:'© 2026 Universal-Calculator · All calculations run locally in your browser · No guarantee of accuracy',
+  cookie_text:'🍪 We use cookies for advertising (Google AdSense) and to improve our service.',
+  cookie_accept:'Accept all',cookie_reject:'Necessary only',
+},
+fr:{
+  nav_calc:'Calculateurs',nav_blog:'Savoir',nav_faq:'FAQ',nav_help:'Aide',
+  nav_imprint:'Mentions légales',nav_privacy:'Confidentialité',
+  footer_copy:'© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude',
+  cookie_text:'🍪 Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.',
+  cookie_accept:'Tout accepter',cookie_reject:'Nécessaires seulement',
+},
+es:{
+  nav_calc:'Calculadoras',nav_blog:'Conocimiento',nav_faq:'FAQ',nav_help:'Ayuda',
+  nav_imprint:'Aviso legal',nav_privacy:'Privacidad',
+  footer_copy:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud',
+  cookie_text:'🍪 Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.',
+  cookie_accept:'Aceptar todo',cookie_reject:'Solo necesarias',
+},
+it:{
+  nav_calc:'Calcolatori',nav_blog:'Conoscenza',nav_faq:'FAQ',nav_help:'Aiuto',
+  nav_imprint:'Note legali',nav_privacy:'Privacy',
+  footer_copy:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia di precisione',
+  cookie_text:'🍪 Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.',
+  cookie_accept:'Accetta tutto',cookie_reject:'Solo necessari',
+},
+pt:{
+  nav_calc:'Calculadoras',nav_blog:'Conhecimento',nav_faq:'FAQ',nav_help:'Ajuda',
+  nav_imprint:'Aviso legal',nav_privacy:'Privacidade',
+  footer_copy:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia de precisão',
+  cookie_text:'🍪 Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.',
+  cookie_accept:'Aceitar tudo',cookie_reject:'Somente necessários',
+},
+nl:{
+  nav_calc:'Rekenmachines',nav_blog:'Kennis',nav_faq:'FAQ',nav_help:'Hulp',
+  nav_imprint:'Impressum',nav_privacy:'Privacy',
+  footer_copy:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie op juistheid',
+  cookie_text:'🍪 We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.',
+  cookie_accept:'Alles accepteren',cookie_reject:'Alleen noodzakelijk',
+},
+pl:{
+  nav_calc:'Kalkulatory',nav_blog:'Wiedza',nav_faq:'FAQ',nav_help:'Pomoc',
+  nav_imprint:'Informacje prawne',nav_privacy:'Prywatność',
+  footer_copy:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane są lokalnie · Bez gwarancji dokładności',
+  cookie_text:'🍪 Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.',
+  cookie_accept:'Akceptuj wszystkie',cookie_reject:'Tylko niezbędne',
+},
+tr:{
+  nav_calc:'Hesap Makineleri',nav_blog:'Bilgi',nav_faq:'SSS',nav_help:'Yardım',
+  nav_imprint:'Künye',nav_privacy:'Gizlilik',
+  footer_copy:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Doğruluk garantisi yoktur',
+  cookie_text:'🍪 Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.',
+  cookie_accept:'Tümünü kabul et',cookie_reject:'Yalnızca gerekli',
+},
+ar:{
+  nav_calc:'الآلات الحاسبة',nav_blog:'المعرفة',nav_faq:'الأسئلة الشائعة',nav_help:'المساعدة',
+  nav_imprint:'بيانات المشغّل',nav_privacy:'الخصوصية',
+  footer_copy:'© 2026 Universal-Calculator · تتم جميع العمليات الحسابية محلياً · لا ضمان على الدقة',
+  cookie_text:'🍪 نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.',
+  cookie_accept:'قبول الكل',cookie_reject:'الضرورية فقط',
+},
+zh:{
+  nav_calc:'计算器',nav_blog:'知识库',nav_faq:'常见问题',nav_help:'帮助',
+  nav_imprint:'版权信息',nav_privacy:'隐私政策',
+  footer_copy:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性',
+  cookie_text:'🍪 我们使用Cookie用于广告（Google AdSense）和改善服务。',
+  cookie_accept:'全部接受',cookie_reject:'仅必要',
+},
+};
+function setLang(l){
+  localStorage.setItem('lang',l);
+  const u=new URL(window.location.href);
+  u.searchParams.set('lang',l);
+  window.location.href=u.toString();
+}
+(function(){
+  const p=new URLSearchParams(window.location.search);
+  const l=p.get('lang')||localStorage.getItem('lang')||'de';
+  const t=I18N_PAGES[l]||I18N_PAGES['de'];
+  const root=document.documentElement;
+  root.lang=l; root.dir=(l==='ar')?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(t[k]!==undefined) el.textContent=t[k];
+  });
+  const sel=document.getElementById('lang-select');
+  if(sel) sel.value=l;
+})();
+</script>
+
 </body>
 </html>
