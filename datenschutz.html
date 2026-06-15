@@ -2,110 +2,58 @@
 <html lang="de" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Datenschutzerklärung – Universal Calculator</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Datenschutz – Universal Calculator</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--copper:#C77A4A;--border:#E5E7EB;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
-h1,h2,h3{font-family:'Space Grotesk',sans-serif;}
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
-.logo span{color:var(--copper);}
-main{max-width:780px;margin:32px auto;padding:0 20px;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
-h1{font-size:1.5rem;margin-bottom:6px;}
-h2{font-size:1.05rem;margin:20px 0 8px;border-bottom:1px solid var(--border);padding-bottom:4px;}
-h3{font-size:0.92rem;margin:14px 0 5px;color:var(--blue-bright);}
-p,li{font-size:0.87rem;line-height:1.75;margin-bottom:6px;}
-ul{padding-left:18px;margin-bottom:8px;}
-a{color:var(--blue-bright);}
-footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
-footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
-footer a:hover{color:var(--blue-bright);}
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 90px}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none}
+.logo span{color:var(--copper)}
+main{max-width:760px;margin:32px auto;padding:0 20px}
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px}
+h1{font-size:1.6rem;font-weight:700;margin-bottom:6px}
+h2{font-size:1.05rem;font-weight:600;margin:20px 0 8px;color:var(--blue-bright)}
+p{font-size:.86rem;line-height:1.8;margin-bottom:10px;color:var(--muted)}
+p strong{color:var(--text)}
+a{color:var(--blue-bright);text-decoration:none}
+.meta{font-size:.75rem;color:var(--muted);margin-bottom:20px}
+ul{padding-left:18px;margin-bottom:10px}
+li{font-size:.86rem;line-height:1.7;color:var(--muted)}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 6px 6px 0;padding:10px 14px;margin:12px 0;font-size:.83rem;line-height:1.6}
 </style>
 </head>
 <body>
 <header>
   <a href="index.html" class="logo">Universal<span>Calculator</span></a>
-  <nav style="margin-left:auto;font-size:0.8rem">
-    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">← Alle Rechner</a>
-  </nav>
-  <div style="margin-left:auto"><select id="lang-select" onchange="setLang(this.value)" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;">
-      <option value="de">🇩🇪 DE</option>
-      <option value="en">🇬🇧 EN</option>
-      <option value="fr">🇫🇷 FR</option>
-      <option value="es">🇪🇸 ES</option>
-      <option value="it">🇮🇹 IT</option>
-      <option value="pt">🇵🇹 PT</option>
-      <option value="nl">🇳🇱 NL</option>
-      <option value="pl">🇵🇱 PL</option>
-      <option value="tr">🇹🇷 TR</option>
-      <option value="ar">🇸🇦 AR</option>
-      <option value="zh">🇨🇳 ZH</option>
-    </select>
-  </div>
+  <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;margin-left:auto">
+    <option value="de">🇩🇪 DE</option>
+    <option value="en">🇬🇧 EN</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option>
+    <option value="pt">🇵🇹 PT</option>
+    <option value="nl">🇳🇱 NL</option>
+    <option value="pl">🇵🇱 PL</option>
+    <option value="tr">🇹🇷 TR</option>
+    <option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
 </header>
-<main>
-  <div class="card">
-    <h1>Datenschutzerklärung</h1>
-    <p style="color:var(--muted);font-size:0.78rem">Stand: Januar 2026 · Gültig für universal-calculator.io</p>
-
-    <h2>1. Verantwortlicher</h2>
-    <p>Christina Baus / adquo design<br>
-    Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf<br>
-    E-Mail: <a href="mailto:info@adquo-design.de">info@adquo-design.de</a></p>
-
-    <h2>2. Allgemeine Hinweise</h2>
-    <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzerklärung informiert Sie darüber, welche Daten wir erheben, wie wir sie verwenden und welche Rechte Sie haben. Alle Rechenoperationen auf dieser Website werden <strong>ausschließlich lokal in Ihrem Browser</strong> durchgeführt. Eingabedaten werden nicht an unsere Server übertragen.</p>
-
-    <h2>3. Hosting: Cloudflare Pages</h2>
-    <p>Diese Website wird über <strong>Cloudflare Pages</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) gehostet. Beim Besuch unserer Website verarbeitet Cloudflare Verbindungsdaten (IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene URL, übertragene Datenmenge, HTTP-Statuscode) zur Bereitstellung des Dienstes und zum Schutz vor Missbrauch (DDoS-Schutz). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigte Interessen). Datenübermittlung in die USA auf Basis von Standardvertragsklauseln. Datenschutzerklärung Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
-
-    <h2>4. Google AdSense</h2>
-    <p>Wir nutzen auf dieser Website <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) zur Einblendung von Werbeanzeigen.</p>
-    <h3>Was Google AdSense tut</h3>
-    <p>Google AdSense verwendet Cookies und ähnliche Technologien, um personalisierte oder nicht personalisierte Werbung anzuzeigen. Dabei werden möglicherweise Nutzungsdaten (IP-Adresse, Browser-Informationen, besuchte Seiten) erfasst und zur Auslieferung relevanter Anzeigen verwendet.</p>
-    <h3>Rechtsgrundlage</h3>
-    <p>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie können Ihre Einwilligung jederzeit über unseren Cookie-Banner widerrufen. Ohne Einwilligung werden nur nicht personalisierte Anzeigen geschaltet.</p>
-    <h3>Opt-out</h3>
-    <p>Sie können personalisierte Werbung deaktivieren unter: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">google.com/settings/ads</a> oder über das NAI-Opt-out-Tool: <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener">optout.networkadvertising.org</a></p>
-    <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
-
-    <h2>5. Google Fonts</h2>
-    <p>Diese Website lädt Schriftarten über Google Fonts (Google Ireland Limited). Beim Laden der Seite wird eine Verbindung zu Google-Servern hergestellt, wobei Ihre IP-Adresse übertragen werden kann. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Datenschutzerklärung Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
-
-    <h2>6. Cookies und lokaler Speicher (localStorage)</h2>
-    <p>Wir setzen folgende Cookies bzw. localStorage-Einträge:</p>
-    <ul>
-      <li><strong>cookie-consent</strong> (localStorage): Speichert Ihre Cookie-Einwilligung. Technisch notwendig. Kein Ablauf.</li>
-      <li><strong>lang</strong> (localStorage): Speichert Ihre bevorzugte Spracheinstellung. Technisch notwendig.</li>
-      <li><strong>Google AdSense Cookies</strong>: Werden nur nach Ihrer Einwilligung gesetzt. Laufzeit: bis zu 13 Monate.</li>
-    </ul>
-
-    <h2>7. Ihre Rechte (DSGVO)</h2>
-    <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
-    <ul>
-      <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
-      <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
-      <li>Recht auf Löschung (Art. 17 DSGVO)</li>
-      <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-      <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
-      <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
-      <li>Recht auf Widerruf erteilter Einwilligungen (Art. 7 Abs. 3 DSGVO)</li>
-    </ul>
-    <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:info@adquo-design.de">info@adquo-design.de</a></p>
-
-    <h2>8. Beschwerderecht</h2>
-    <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die zuständige Behörde in Hessen ist der <strong>Hessische Beauftragte für Datenschutz und Informationsfreiheit</strong>, Gustav-Stresemann-Ring 1, 65189 Wiesbaden. <a href="https://datenschutz.hessen.de" target="_blank" rel="noopener">datenschutz.hessen.de</a></p>
-
-    <h2>9. Änderungen dieser Datenschutzerklärung</h2>
-    <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu aktualisieren, um sie an geänderte rechtliche Anforderungen oder neue Funktionen anzupassen. Die jeweils aktuelle Version ist auf dieser Seite verfügbar.</p>
+<main id="page-main"></main>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:12px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+  <p id="ck-text" style="font-size:0.8rem;flex:1 1 260px;margin:0">Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="ck-accept" onclick="localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+    <button id="ck-reject" onclick="localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
   </div>
-</main>
+</div>
+<script>if(!localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='flex';</script>
 <footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
   <div>
     <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
@@ -117,116 +65,84 @@ footer a:hover{color:var(--blue-bright);}
   </div>
   <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
 </footer>
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:14px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
-<p data-i18n="cookie_text" style="font-size:0.8rem;flex:1 1 280px;margin:0">🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
-<div style="display:flex;gap:8px;">
-<button onclick="(function(){localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_accept" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
-<button onclick="(function(){localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_reject" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
-</div>
-</div>
-<script>if(!localStorage.getItem('cookie-consent')){document.getElementById('cookie-banner').style.display='flex';}</script>
+<script>
+window.PAGE_TITLES = {"de": "Datenschutzerklärung – Universal Calculator", "en": "Privacy Policy – Universal Calculator", "fr": "Politique de confidentialité – Universal Calculator", "es": "Política de privacidad – Universal Calculator", "it": "Informativa sulla privacy – Universal Calculator", "pt": "Política de privacidade – Universal Calculator", "nl": "Privacybeleid – Universal Calculator", "pl": "Polityka prywatności – Universal Calculator", "tr": "Gizlilik Politikası – Universal Calculator", "ar": "سياسة الخصوصية – Universal Calculator", "zh": "隐私政策 – Universal Calculator"};
+const PAGE_DATA = {"de": {"title": "Datenschutzerklärung", "subtitle": "Zuletzt aktualisiert: Januar 2026", "sections": [{"h": "1. Verantwortliche Stelle", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf · E-Mail: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Berechnungen & lokale Verarbeitung", "body": "<p>Alle Berechnungen auf Universal-Calculator werden <strong>ausschließlich lokal in Ihrem Browser</strong> ausgeführt. Ihre Eingaben werden niemals an unsere Server übertragen oder gespeichert. Es findet keine serverseitige Verarbeitung Ihrer Berechnungsdaten statt.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>Wir verwenden <strong>localStorage</strong> des Browsers ausschließlich zur Speicherung Ihrer Spracheinstellung und Ihrer Cookie-Zustimmung. Diese Daten verlassen Ihr Gerät nicht und werden nicht mit uns oder Dritten geteilt.</p>"}, {"h": "4. Google AdSense", "body": "<p>Diese Seite nutzt <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) zur Anzeige von Werbung. Google AdSense verwendet Cookies und ähnliche Technologien, um personalisierte Werbung zu schalten. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p><p>Sie können der personalisierten Werbung unter <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a> widersprechen. Datenschutzerklärung von Google: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>Wir laden Schriftarten von <strong>Google Fonts</strong> (fonts.googleapis.com). Dabei wird Ihre IP-Adresse an Google übertragen. Wir haben in den Google-Einstellungen die Protokollierung auf Basis des Einwilligungsmodells deaktiviert. Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO).</p>"}, {"h": "6. Cloudflare", "body": "<p>Unsere Website nutzt <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) als CDN und DDoS-Schutz. Cloudflare verarbeitet dabei technische Daten (IP-Adresse, Anfrage-Metadaten) zur Bereitstellung des Dienstes. Datenschutzerklärung: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Ihre Rechte", "body": "<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gemäß DSGVO. Beschwerden richten Sie an die zuständige Datenschutzaufsichtsbehörde (Hessen: <a href='https://datenschutz.hessen.de' target='_blank'>datenschutz.hessen.de</a>).</p>"}, {"h": "8. Kontakt Datenschutz", "body": "<p>Für Datenschutzanfragen wenden Sie sich an: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "en": {"title": "Privacy Policy", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "fr": {"title": "Politique de confidentialité", "subtitle": "Dernière mise à jour : janvier 2026", "sections": [{"h": "1. Responsable du traitement", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Allemagne · E-mail : <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculs & traitement local", "body": "<p>Tous les calculs sur Universal-Calculator sont effectués <strong>exclusivement dans votre navigateur</strong>. Vos saisies ne sont jamais transmises à nos serveurs ni stockées.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>Nous utilisons le <strong>localStorage</strong> du navigateur uniquement pour stocker votre préférence de langue et votre consentement aux cookies. Ces données ne quittent pas votre appareil.</p>"}, {"h": "4. Google AdSense", "body": "<p>Ce site utilise <strong>Google AdSense</strong> pour afficher des publicités. Google AdSense utilise des cookies pour diffuser des annonces personnalisées. Base légale : votre consentement (art. 6(1)(a) RGPD).</p><p>Vous pouvez refuser la publicité personnalisée sur <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>.</p>"}, {"h": "5. Google Fonts", "body": "<p>Nous chargeons des polices depuis <strong>Google Fonts</strong>. Votre adresse IP est transmise à Google. Base légale : intérêt légitime (art. 6(1)(f) RGPD).</p>"}, {"h": "6. Cloudflare", "body": "<p>Notre site utilise <strong>Cloudflare</strong> comme CDN et protection DDoS. Cloudflare traite des données techniques (adresse IP, métadonnées) pour fournir le service.</p>"}, {"h": "7. Vos droits", "body": "<p>Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition au titre du RGPD.</p>"}, {"h": "8. Contact confidentialité", "body": "<p>Pour les demandes relatives à la protection des données : <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "es": {"title": "Política de privacidad", "subtitle": "Última actualización: enero de 2026", "sections": [{"h": "1. Responsable del tratamiento", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Alemania · Correo: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Cálculos y procesamiento local", "body": "<p>Todos los cálculos en Universal-Calculator se realizan <strong>exclusivamente en su navegador</strong>. Sus datos nunca se transmiten ni se almacenan en nuestros servidores.</p>"}, {"h": "3. Cookies y localStorage", "body": "<p>Usamos el <strong>localStorage</strong> del navegador únicamente para guardar su preferencia de idioma y su consentimiento de cookies. Estos datos no abandonan su dispositivo.</p>"}, {"h": "4. Google AdSense", "body": "<p>Este sitio usa <strong>Google AdSense</strong> para mostrar publicidad. Google AdSense usa cookies para mostrar anuncios personalizados. Base legal: su consentimiento (art. 6(1)(a) RGPD).</p>"}, {"h": "5. Google Fonts", "body": "<p>Cargamos fuentes desde <strong>Google Fonts</strong>. Su dirección IP se transmite a Google. Base legal: interés legítimo (art. 6(1)(f) RGPD).</p>"}, {"h": "6. Cloudflare", "body": "<p>Nuestro sitio usa <strong>Cloudflare</strong> como CDN y protección DDoS. Cloudflare procesa datos técnicos para prestar el servicio.</p>"}, {"h": "7. Sus derechos", "body": "<p>Tiene derecho de acceso, rectificación, supresión, limitación, portabilidad y oposición conforme al RGPD.</p>"}, {"h": "8. Contacto privacidad", "body": "<p>Para consultas de privacidad: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "it": {"title": "Informativa sulla privacy", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "pt": {"title": "Política de privacidade", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "nl": {"title": "Privacybeleid", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "pl": {"title": "Polityka prywatności", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "tr": {"title": "Gizlilik Politikası", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "ar": {"title": "سياسة الخصوصية", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}, "zh": {"title": "隐私政策", "subtitle": "Last updated: January 2026", "sections": [{"h": "1. Data Controller", "body": "<p>Christina Baus, adquo design, Kelsterbacherstraße 72–76, 64546 Mörfelden-Walldorf, Germany · Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}, {"h": "2. Calculations & Local Processing", "body": "<p>All calculations on Universal-Calculator are performed <strong>exclusively in your browser</strong>. Your inputs are never transmitted to our servers or stored. No server-side processing of your calculation data takes place.</p>"}, {"h": "3. Cookies & localStorage", "body": "<p>We use the browser's <strong>localStorage</strong> exclusively to store your language preference and cookie consent. This data does not leave your device and is not shared with us or third parties.</p>"}, {"h": "4. Google AdSense", "body": "<p>This site uses <strong>Google AdSense</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display advertising. Google AdSense uses cookies and similar technologies to show personalised ads. Legal basis: your consent (Art. 6(1)(a) GDPR).</p><p>You can opt out of personalised advertising at <a href='https://adssettings.google.com' target='_blank'>adssettings.google.com</a>. Google's privacy policy: <a href='https://policies.google.com/privacy' target='_blank'>policies.google.com/privacy</a></p>"}, {"h": "5. Google Fonts", "body": "<p>We load fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). Your IP address is transmitted to Google in the process. Legal basis: legitimate interest (Art. 6(1)(f) GDPR).</p>"}, {"h": "6. Cloudflare", "body": "<p>Our website uses <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as CDN and DDoS protection. Cloudflare processes technical data (IP address, request metadata) to provide the service. Privacy policy: <a href='https://www.cloudflare.com/privacypolicy/' target='_blank'>cloudflare.com/privacypolicy</a></p>"}, {"h": "7. Your Rights", "body": "<p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection under the GDPR. Complaints can be directed to the competent data protection supervisory authority.</p>"}, {"h": "8. Privacy Contact", "body": "<p>For privacy enquiries contact: <a href='mailto:hello@adquo.de'>hello@adquo.de</a></p>"}]}};
 
+function renderPage(lang) {
+  const d = PAGE_DATA[lang] || PAGE_DATA['en'];
+  const sectionsHtml = d.sections.map(function(s) {
+    return `<h2>${s.h}</h2>${s.body}`;
+  }).join('');
+  document.getElementById('page-main').innerHTML =
+    `<div class="card"><h1>${d.title}</h1><p class="meta">${d.subtitle}</p>${sectionsHtml}</div>`;
+}
+</script>
 
 <script>
-// ── i18n ──
-const I18N_PAGES = {
-de:{
-  nav_calc:'Rechner',nav_blog:'Wissenswertes',nav_faq:'FAQ',nav_help:'Hilfe',
-  nav_imprint:'Impressum',nav_privacy:'Datenschutz',
-  footer_copy:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit',
-  cookie_text:'🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.',
-  cookie_accept:'Alle akzeptieren',cookie_reject:'Nur notwendige',
-},
-en:{
-  nav_calc:'Calculator',nav_blog:'Knowledge',nav_faq:'FAQ',nav_help:'Help',
-  nav_imprint:'Imprint',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · All calculations run locally in your browser · No guarantee of accuracy',
-  cookie_text:'🍪 We use cookies for advertising (Google AdSense) and to improve our service.',
-  cookie_accept:'Accept all',cookie_reject:'Necessary only',
-},
-fr:{
-  nav_calc:'Calculateurs',nav_blog:'Savoir',nav_faq:'FAQ',nav_help:'Aide',
-  nav_imprint:'Mentions légales',nav_privacy:'Confidentialité',
-  footer_copy:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude",
-  cookie_text:"🍪 Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",
-  cookie_accept:'Tout accepter',cookie_reject:'Nécessaires seulement',
-},
-es:{
-  nav_calc:'Calculadoras',nav_blog:'Conocimiento',nav_faq:'FAQ',nav_help:'Ayuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidad',
-  footer_copy:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud',
-  cookie_text:'🍪 Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.',
-  cookie_accept:'Aceptar todo',cookie_reject:'Solo necesarias',
-},
-it:{
-  nav_calc:'Calcolatori',nav_blog:'Conoscenza',nav_faq:'FAQ',nav_help:'Aiuto',
-  nav_imprint:'Note legali',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia di precisione',
-  cookie_text:'🍪 Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.',
-  cookie_accept:'Accetta tutto',cookie_reject:'Solo necessari',
-},
-pt:{
-  nav_calc:'Calculadoras',nav_blog:'Conhecimento',nav_faq:'FAQ',nav_help:'Ajuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidade',
-  footer_copy:"© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia de precisão",
-  cookie_text:'🍪 Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.',
-  cookie_accept:'Aceitar tudo',cookie_reject:'Somente necessários',
-},
-nl:{
-  nav_calc:'Rekenmachines',nav_blog:'Kennis',nav_faq:'FAQ',nav_help:'Hulp',
-  nav_imprint:'Impressum',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie op juistheid',
-  cookie_text:'🍪 We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.',
-  cookie_accept:'Alles accepteren',cookie_reject:'Alleen noodzakelijk',
-},
-pl:{
-  nav_calc:'Kalkulatory',nav_blog:'Wiedza',nav_faq:'FAQ',nav_help:'Pomoc',
-  nav_imprint:'Informacje prawne',nav_privacy:'Prywatność',
-  footer_copy:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane są lokalnie · Bez gwarancji dokładności',
-  cookie_text:'🍪 Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.',
-  cookie_accept:'Akceptuj wszystkie',cookie_reject:'Tylko niezbędne',
-},
-tr:{
-  nav_calc:'Hesap Makineleri',nav_blog:'Bilgi',nav_faq:'SSS',nav_help:'Yardım',
-  nav_imprint:'Künye',nav_privacy:'Gizlilik',
-  footer_copy:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Doğruluk garantisi yoktur',
-  cookie_text:'🍪 Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.',
-  cookie_accept:'Tümünü kabul et',cookie_reject:'Yalnızca gerekli',
-},
-ar:{
-  nav_calc:'الآلات الحاسبة',nav_blog:'المعرفة',nav_faq:'الأسئلة الشائعة',nav_help:'المساعدة',
-  nav_imprint:'بيانات المشغّل',nav_privacy:'الخصوصية',
-  footer_copy:'© 2026 Universal-Calculator · تتم جميع العمليات الحسابية محلياً · لا ضمان على الدقة',
-  cookie_text:'🍪 نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.',
-  cookie_accept:'قبول الكل',cookie_reject:'الضرورية فقط',
-},
-zh:{
-  nav_calc:'计算器',nav_blog:'知识库',nav_faq:'常见问题',nav_help:'帮助',
-  nav_imprint:'版权信息',nav_privacy:'隐私政策',
-  footer_copy:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性',
-  cookie_text:'🍪 我们使用Cookie用于广告（Google AdSense）和改善服务。',
-  cookie_accept:'全部接受',cookie_reject:'仅必要',
-},
+// ── Core i18n engine ──────────────────────────────────────────
+const NAV_I18N = {
+  de:{calc:'Rechner',blog:'Wissenswertes',faq:'FAQ',help:'Hilfe',imprint:'Impressum',privacy:'Datenschutz',footer:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit'},
+  en:{calc:'Calculator',blog:'Knowledge',faq:'FAQ',help:'Help',imprint:'Imprint',privacy:'Privacy',footer:'© 2026 Universal-Calculator · All calculations run locally · No guarantee of accuracy'},
+  fr:{calc:'Calculateurs',blog:'Savoir',faq:'FAQ',help:'Aide',imprint:'Mentions légales',privacy:'Confidentialité',footer:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude"},
+  es:{calc:'Calculadoras',blog:'Conocimiento',faq:'FAQ',help:'Ayuda',imprint:'Aviso legal',privacy:'Privacidad',footer:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud'},
+  it:{calc:'Calcolatori',blog:'Conoscenza',faq:'FAQ',help:'Aiuto',imprint:'Note legali',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia'},
+  pt:{calc:'Calculadoras',blog:'Conhecimento',faq:'FAQ',help:'Ajuda',imprint:'Aviso legal',privacy:'Privacidade',footer:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia'},
+  nl:{calc:'Rekenmachines',blog:'Kennis',faq:'FAQ',help:'Hulp',imprint:'Impressum',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie'},
+  pl:{calc:'Kalkulatory',blog:'Wiedza',faq:'FAQ',help:'Pomoc',imprint:'Informacje prawne',privacy:'Prywatność',footer:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane lokalnie · Bez gwarancji'},
+  tr:{calc:'Hesap Makineleri',blog:'Bilgi',faq:'SSS',help:'Yardım',imprint:'Künye',privacy:'Gizlilik',footer:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Garanti yoktur'},
+  ar:{calc:'الآلات الحاسبة',blog:'المعرفة',faq:'الأسئلة الشائعة',help:'المساعدة',imprint:'بيانات المشغّل',privacy:'الخصوصية',footer:'© 2026 Universal-Calculator · تتم العمليات الحسابية محلياً · لا ضمان على الدقة'},
+  zh:{calc:'计算器',blog:'知识库',faq:'常见问题',help:'帮助',imprint:'版权信息',privacy:'隐私政策',footer:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性'},
 };
-function setLang(l){
-  localStorage.setItem('lang',l);
-  const u=new URL(window.location.href);
-  u.searchParams.set('lang',l);
-  window.location.href=u.toString();
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', l);
+    history.replaceState(null, '', u.toString());
+  } catch(e) {}
+  applyNav(l);
+  if (typeof renderPage === 'function') renderPage(l);
 }
-(function(){
-  const p=new URLSearchParams(window.location.search);
-  const l=p.get('lang')||localStorage.getItem('lang')||'de';
-  const t=I18N_PAGES[l]||I18N_PAGES['de'];
-  const root=document.documentElement;
-  root.lang=l; root.dir=(l==='ar')?'rtl':'ltr';
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(t[k]!==undefined) el.textContent=t[k];
+
+function getLang() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('lang')) return p.get('lang');
+  } catch(e) {}
+  return localStorage.getItem('lang') || 'de';
+}
+
+function applyNav(lang) {
+  const t = NAV_I18N[lang] || NAV_I18N.de;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // nav links
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+  // footer nav links via data-i18n
+  const map = {nav_calc:'calc',nav_blog:'blog',nav_faq:'faq',nav_help:'help',nav_imprint:'imprint',nav_privacy:'privacy',footer_copy:'footer'};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (map[key] && t[map[key]]) el.textContent = t[map[key]];
   });
-  const sel=document.getElementById('lang-select');
-  if(sel) sel.value=l;
-})();
+  // cookie banner
+  const ck = {de:['Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.','Alle akzeptieren','Nur notwendige'],en:['We use cookies for advertising (Google AdSense) and to improve our service.','Accept all','Necessary only'],fr:["Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",'Tout accepter','Nécessaires seulement'],es:['Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.','Aceptar todo','Solo necesarias'],it:['Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.','Accetta tutto','Solo necessari'],pt:['Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.','Aceitar tudo','Somente necessários'],nl:['We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.','Alles accepteren','Alleen noodzakelijk'],pl:['Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.','Akceptuj wszystkie','Tylko niezbędne'],tr:['Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.','Tümünü kabul et','Yalnızca gerekli'],ar:['نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.','قبول الكل','الضرورية فقط'],zh:['我们使用Cookie用于广告（Google AdSense）和改善服务。','全部接受','仅必要']};
+  const c = ck[lang] || ck.de;
+  const ct = document.getElementById('ck-text'); if(ct) ct.textContent = c[0];
+  const ca = document.getElementById('ck-accept'); if(ca) ca.textContent = c[1];
+  const cr = document.getElementById('ck-reject'); if(cr) cr.textContent = c[2];
+  // page title
+  if (window.PAGE_TITLES && window.PAGE_TITLES[lang]) document.title = window.PAGE_TITLES[lang];
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', function() {
+  const lang = getLang();
+  applyNav(lang);
+  if (typeof renderPage === 'function') renderPage(lang);
+});
 </script>
 
 </body>

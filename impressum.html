@@ -2,83 +2,58 @@
 <html lang="de" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Impressum – Universal Calculator</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--border:#E5E7EB;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,0.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 80px;}
-h1,h2,h3,a.btn{font-family:'Space Grotesk',sans-serif;}
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:12px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none;}
-.logo span{color:var(--copper);}
-main{max-width:780px;margin:32px auto;padding:0 20px;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px;}
-h1{font-size:1.5rem;margin-bottom:6px;color:var(--text);}
-h2{font-size:1.05rem;margin:20px 0 8px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:4px;}
-p,li{font-size:0.88rem;line-height:1.7;color:var(--text);margin-bottom:6px;}
-a{color:var(--blue-bright);}
-footer{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px;text-align:center;font-size:0.72rem;color:var(--muted);}
-footer a{color:var(--muted);text-decoration:none;margin:0 5px;}
-footer a:hover{color:var(--blue-bright);}
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 90px}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none}
+.logo span{color:var(--copper)}
+main{max-width:760px;margin:32px auto;padding:0 20px}
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px}
+h1{font-size:1.6rem;font-weight:700;margin-bottom:6px}
+h2{font-size:1.05rem;font-weight:600;margin:20px 0 8px;color:var(--blue-bright)}
+p{font-size:.86rem;line-height:1.8;margin-bottom:10px;color:var(--muted)}
+p strong{color:var(--text)}
+a{color:var(--blue-bright);text-decoration:none}
+.meta{font-size:.75rem;color:var(--muted);margin-bottom:20px}
+ul{padding-left:18px;margin-bottom:10px}
+li{font-size:.86rem;line-height:1.7;color:var(--muted)}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 6px 6px 0;padding:10px 14px;margin:12px 0;font-size:.83rem;line-height:1.6}
 </style>
 </head>
 <body>
 <header>
   <a href="index.html" class="logo">Universal<span>Calculator</span></a>
-  <nav style="margin-left:auto;display:flex;gap:10px;font-size:0.8rem">
-    <a href="universal-calculator.html" style="color:var(--muted);text-decoration:none">← Alle Rechner</a>
-  </nav>
-  <div style="margin-left:auto"><select id="lang-select" onchange="setLang(this.value)" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;">
-      <option value="de">🇩🇪 DE</option>
-      <option value="en">🇬🇧 EN</option>
-      <option value="fr">🇫🇷 FR</option>
-      <option value="es">🇪🇸 ES</option>
-      <option value="it">🇮🇹 IT</option>
-      <option value="pt">🇵🇹 PT</option>
-      <option value="nl">🇳🇱 NL</option>
-      <option value="pl">🇵🇱 PL</option>
-      <option value="tr">🇹🇷 TR</option>
-      <option value="ar">🇸🇦 AR</option>
-      <option value="zh">🇨🇳 ZH</option>
-    </select>
-  </div>
+  <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;margin-left:auto">
+    <option value="de">🇩🇪 DE</option>
+    <option value="en">🇬🇧 EN</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option>
+    <option value="pt">🇵🇹 PT</option>
+    <option value="nl">🇳🇱 NL</option>
+    <option value="pl">🇵🇱 PL</option>
+    <option value="tr">🇹🇷 TR</option>
+    <option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
 </header>
-<main>
-  <div class="card">
-    <h1>Impressum</h1>
-    <p style="color:var(--muted);font-size:0.78rem">Angaben gemäß § 5 TMG und § 18 Abs. 2 MStV</p>
-
-    <h2>Verantwortlich</h2>
-    <p>Christina Baus<br>
-    adquo design<br>
-    Kelsterbacherstraße 72–76<br>
-    64546 Mörfelden-Walldorf<br>
-    Deutschland</p>
-
-    <h2>Kontakt</h2>
-    <p>Telefon: <a href="tel:+4915141302285">015141302285</a><br>
-    E-Mail: <a href="mailto:info@adquo-design.de">info@adquo-design.de</a><br>
-    Website: <a href="https://universal-calculator.io" target="_blank" rel="noopener">https://universal-calculator.io</a></p>
-
-    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-    <p>Christina Baus<br>
-    Kelsterbacherstraße 72–76<br>
-    64546 Mörfelden-Walldorf</p>
-
-    <h2>Haftungsausschluss</h2>
-    <p>Alle Berechnungen auf dieser Website erfolgen lokal im Browser des Nutzers und dienen ausschließlich der allgemeinen Information. Für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Berechnungen und Informationen wird keine Haftung übernommen. Die Ergebnisse ersetzen keine fachkundige Beratung (z. B. durch Steuerberater, Ärzte oder Finanzberater).</p>
-
-    <h2>Urheberrecht</h2>
-    <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
-
-    <h2>Streitschlichtung</h2>
-    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>. Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+<main id="page-main"></main>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:12px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+  <p id="ck-text" style="font-size:0.8rem;flex:1 1 260px;margin:0">Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="ck-accept" onclick="localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+    <button id="ck-reject" onclick="localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
   </div>
-</main>
+</div>
+<script>if(!localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='flex';</script>
 <footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
   <div>
     <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
@@ -90,116 +65,84 @@ footer a:hover{color:var(--blue-bright);}
   </div>
   <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
 </footer>
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:14px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
-<p data-i18n="cookie_text" style="font-size:0.8rem;flex:1 1 280px;margin:0">🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
-<div style="display:flex;gap:8px;">
-<button onclick="(function(){localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_accept" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
-<button onclick="(function(){localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none';})()" data-i18n="cookie_reject" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
-</div>
-</div>
-<script>if(!localStorage.getItem('cookie-consent')){document.getElementById('cookie-banner').style.display='flex';}</script>
+<script>
+window.PAGE_TITLES = {"de": "Impressum – Universal Calculator", "en": "Legal Notice – Universal Calculator", "fr": "Mentions légales – Universal Calculator", "es": "Aviso legal – Universal Calculator", "it": "Note legali – Universal Calculator", "pt": "Aviso legal – Universal Calculator", "nl": "Impressum – Universal Calculator", "pl": "Informacje prawne – Universal Calculator", "tr": "Künye – Universal Calculator", "ar": "بيانات المشغّل – Universal Calculator", "zh": "版权信息 – Universal Calculator"};
+const PAGE_DATA = {"de": {"title": "Impressum", "subtitle": "Angaben gemäß § 5 TMG und § 18 Abs. 2 MStV", "sections": [{"h": "Verantwortlich", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Deutschland</p>"}, {"h": "Kontakt", "body": "<p>E-Mail: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "Umsatzsteuer", "body": "<p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (wird nachgetragen)</p>"}, {"h": "Haftungsausschluss", "body": "<p>Alle Berechnungen auf Universal-Calculator werden lokal im Browser des Nutzers ausgeführt und dienen ausschließlich zur unverbindlichen Orientierung. Trotz sorgfältiger Erstellung übernehmen wir keine Haftung für die Richtigkeit, Vollständigkeit oder Aktualität der bereitgestellten Informationen und Ergebnisse.</p><p>Für Finanz-, Steuer- oder Gesundheitsentscheidungen empfehlen wir die Konsultation qualifizierter Fachleute.</p>"}, {"h": "Urheberrecht", "body": "<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</p>"}, {"h": "Streitschlichtung", "body": "<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>"}]}, "en": {"title": "Legal Notice", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "fr": {"title": "Mentions légales", "subtitle": "Informations conformément au § 5 TMG et § 18 al. 2 MStV (droit des médias allemand)", "sections": [{"h": "Responsable", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Allemagne</p>"}, {"h": "Contact", "body": "<p>E-mail : <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web : <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "TVA", "body": "<p>Numéro d'identification TVA : <strong>DE XXX XXX XXX</strong> (à compléter)</p>"}, {"h": "Avertissement", "body": "<p>Tous les calculs sur Universal-Calculator sont effectués localement dans le navigateur de l'utilisateur et servent uniquement à titre indicatif. Malgré la préparation soigneuse, nous déclinons toute responsabilité quant à l'exactitude, l'exhaustivité ou l'actualité des informations et résultats fournis.</p><p>Pour les décisions financières, fiscales ou de santé, nous recommandons de consulter des professionnels qualifiés.</p>"}, {"h": "Droit d'auteur", "body": "<p>Les contenus et œuvres créés par les opérateurs du site sur ces pages sont soumis au droit d'auteur allemand. La reproduction, l'édition, la distribution et tout type d'utilisation en dehors des limites du droit d'auteur nécessitent le consentement écrit de l'auteur respectif.</p>"}, {"h": "Règlement des litiges", "body": "<p>La Commission européenne fournit une plateforme pour le règlement des litiges en ligne (RLL) : <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>.</p>"}]}, "es": {"title": "Aviso legal", "subtitle": "Información conforme al § 5 TMG y § 18 párr. 2 MStV (derecho de medios alemán)", "sections": [{"h": "Responsable", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Alemania</p>"}, {"h": "Contacto", "body": "<p>Correo electrónico: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "IVA", "body": "<p>Número de identificación fiscal IVA: <strong>DE XXX XXX XXX</strong> (pendiente de añadir)</p>"}, {"h": "Descargo de responsabilidad", "body": "<p>Todos los cálculos en Universal-Calculator se realizan localmente en el navegador del usuario y sirven únicamente como orientación no vinculante. A pesar de la cuidadosa elaboración, no asumimos ninguna responsabilidad por la exactitud, integridad o actualidad de la información y los resultados proporcionados.</p>"}, {"h": "Derechos de autor", "body": "<p>Los contenidos y obras creados por los operadores del sitio en estas páginas están sujetos a la ley de derechos de autor alemana. La reproducción, edición, distribución y cualquier tipo de uso fuera de los límites del derecho de autor requieren el consentimiento escrito del respectivo autor.</p>"}, {"h": "Resolución de disputas", "body": "<p>La Comisión Europea proporciona una plataforma para la resolución de disputas en línea (RDL): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>.</p>"}]}, "it": {"title": "Note legali", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "pt": {"title": "Aviso legal", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "nl": {"title": "Impressum", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "pl": {"title": "Informacje prawne", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "tr": {"title": "Künye", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "ar": {"title": "بيانات المشغّل", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}, "zh": {"title": "版权信息", "subtitle": "Information pursuant to § 5 TMG and § 18 Para. 2 MStV (German media law)", "sections": [{"h": "Responsible", "body": "<p><strong>Christina Baus</strong><br>adquo design<br>Kelsterbacherstraße 72–76<br>64546 Mörfelden-Walldorf<br>Germany</p>"}, {"h": "Contact", "body": "<p>Email: <a href='mailto:hello@adquo.de'>hello@adquo.de</a><br>Web: <a href='https://adquo.de' target='_blank'>adquo.de</a></p>"}, {"h": "VAT", "body": "<p>VAT identification number pursuant to § 27a UStG:<br><strong>DE XXX XXX XXX</strong> (to be added)</p>"}, {"h": "Disclaimer", "body": "<p>All calculations on Universal-Calculator are performed locally in the user's browser and serve solely as non-binding guidance. Despite careful preparation, we accept no liability for the accuracy, completeness or up-to-dateness of the information and results provided.</p><p>For financial, tax or health decisions we recommend consulting qualified professionals.</p>"}, {"h": "Copyright", "body": "<p>The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author.</p>"}, {"h": "Dispute Resolution", "body": "<p>The European Commission provides a platform for online dispute resolution (ODR): <a href='https://ec.europa.eu/consumers/odr' target='_blank'>ec.europa.eu/consumers/odr</a>. We are not obligated or willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>"}]}};
 
+function renderPage(lang) {
+  const d = PAGE_DATA[lang] || PAGE_DATA['en'];
+  const sectionsHtml = d.sections.map(function(s) {
+    return `<h2>${s.h}</h2>${s.body}`;
+  }).join('');
+  document.getElementById('page-main').innerHTML =
+    `<div class="card"><h1>${d.title}</h1><p class="meta">${d.subtitle}</p>${sectionsHtml}</div>`;
+}
+</script>
 
 <script>
-// ── i18n ──
-const I18N_PAGES = {
-de:{
-  nav_calc:'Rechner',nav_blog:'Wissenswertes',nav_faq:'FAQ',nav_help:'Hilfe',
-  nav_imprint:'Impressum',nav_privacy:'Datenschutz',
-  footer_copy:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit',
-  cookie_text:'🍪 Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.',
-  cookie_accept:'Alle akzeptieren',cookie_reject:'Nur notwendige',
-},
-en:{
-  nav_calc:'Calculator',nav_blog:'Knowledge',nav_faq:'FAQ',nav_help:'Help',
-  nav_imprint:'Imprint',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · All calculations run locally in your browser · No guarantee of accuracy',
-  cookie_text:'🍪 We use cookies for advertising (Google AdSense) and to improve our service.',
-  cookie_accept:'Accept all',cookie_reject:'Necessary only',
-},
-fr:{
-  nav_calc:'Calculateurs',nav_blog:'Savoir',nav_faq:'FAQ',nav_help:'Aide',
-  nav_imprint:'Mentions légales',nav_privacy:'Confidentialité',
-  footer_copy:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude",
-  cookie_text:"🍪 Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",
-  cookie_accept:'Tout accepter',cookie_reject:'Nécessaires seulement',
-},
-es:{
-  nav_calc:'Calculadoras',nav_blog:'Conocimiento',nav_faq:'FAQ',nav_help:'Ayuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidad',
-  footer_copy:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud',
-  cookie_text:'🍪 Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.',
-  cookie_accept:'Aceptar todo',cookie_reject:'Solo necesarias',
-},
-it:{
-  nav_calc:'Calcolatori',nav_blog:'Conoscenza',nav_faq:'FAQ',nav_help:'Aiuto',
-  nav_imprint:'Note legali',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia di precisione',
-  cookie_text:'🍪 Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.',
-  cookie_accept:'Accetta tutto',cookie_reject:'Solo necessari',
-},
-pt:{
-  nav_calc:'Calculadoras',nav_blog:'Conhecimento',nav_faq:'FAQ',nav_help:'Ajuda',
-  nav_imprint:'Aviso legal',nav_privacy:'Privacidade',
-  footer_copy:"© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia de precisão",
-  cookie_text:'🍪 Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.',
-  cookie_accept:'Aceitar tudo',cookie_reject:'Somente necessários',
-},
-nl:{
-  nav_calc:'Rekenmachines',nav_blog:'Kennis',nav_faq:'FAQ',nav_help:'Hulp',
-  nav_imprint:'Impressum',nav_privacy:'Privacy',
-  footer_copy:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie op juistheid',
-  cookie_text:'🍪 We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.',
-  cookie_accept:'Alles accepteren',cookie_reject:'Alleen noodzakelijk',
-},
-pl:{
-  nav_calc:'Kalkulatory',nav_blog:'Wiedza',nav_faq:'FAQ',nav_help:'Pomoc',
-  nav_imprint:'Informacje prawne',nav_privacy:'Prywatność',
-  footer_copy:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane są lokalnie · Bez gwarancji dokładności',
-  cookie_text:'🍪 Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.',
-  cookie_accept:'Akceptuj wszystkie',cookie_reject:'Tylko niezbędne',
-},
-tr:{
-  nav_calc:'Hesap Makineleri',nav_blog:'Bilgi',nav_faq:'SSS',nav_help:'Yardım',
-  nav_imprint:'Künye',nav_privacy:'Gizlilik',
-  footer_copy:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Doğruluk garantisi yoktur',
-  cookie_text:'🍪 Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.',
-  cookie_accept:'Tümünü kabul et',cookie_reject:'Yalnızca gerekli',
-},
-ar:{
-  nav_calc:'الآلات الحاسبة',nav_blog:'المعرفة',nav_faq:'الأسئلة الشائعة',nav_help:'المساعدة',
-  nav_imprint:'بيانات المشغّل',nav_privacy:'الخصوصية',
-  footer_copy:'© 2026 Universal-Calculator · تتم جميع العمليات الحسابية محلياً · لا ضمان على الدقة',
-  cookie_text:'🍪 نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.',
-  cookie_accept:'قبول الكل',cookie_reject:'الضرورية فقط',
-},
-zh:{
-  nav_calc:'计算器',nav_blog:'知识库',nav_faq:'常见问题',nav_help:'帮助',
-  nav_imprint:'版权信息',nav_privacy:'隐私政策',
-  footer_copy:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性',
-  cookie_text:'🍪 我们使用Cookie用于广告（Google AdSense）和改善服务。',
-  cookie_accept:'全部接受',cookie_reject:'仅必要',
-},
+// ── Core i18n engine ──────────────────────────────────────────
+const NAV_I18N = {
+  de:{calc:'Rechner',blog:'Wissenswertes',faq:'FAQ',help:'Hilfe',imprint:'Impressum',privacy:'Datenschutz',footer:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit'},
+  en:{calc:'Calculator',blog:'Knowledge',faq:'FAQ',help:'Help',imprint:'Imprint',privacy:'Privacy',footer:'© 2026 Universal-Calculator · All calculations run locally · No guarantee of accuracy'},
+  fr:{calc:'Calculateurs',blog:'Savoir',faq:'FAQ',help:'Aide',imprint:'Mentions légales',privacy:'Confidentialité',footer:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude"},
+  es:{calc:'Calculadoras',blog:'Conocimiento',faq:'FAQ',help:'Ayuda',imprint:'Aviso legal',privacy:'Privacidad',footer:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud'},
+  it:{calc:'Calcolatori',blog:'Conoscenza',faq:'FAQ',help:'Aiuto',imprint:'Note legali',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia'},
+  pt:{calc:'Calculadoras',blog:'Conhecimento',faq:'FAQ',help:'Ajuda',imprint:'Aviso legal',privacy:'Privacidade',footer:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia'},
+  nl:{calc:'Rekenmachines',blog:'Kennis',faq:'FAQ',help:'Hulp',imprint:'Impressum',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie'},
+  pl:{calc:'Kalkulatory',blog:'Wiedza',faq:'FAQ',help:'Pomoc',imprint:'Informacje prawne',privacy:'Prywatność',footer:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane lokalnie · Bez gwarancji'},
+  tr:{calc:'Hesap Makineleri',blog:'Bilgi',faq:'SSS',help:'Yardım',imprint:'Künye',privacy:'Gizlilik',footer:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Garanti yoktur'},
+  ar:{calc:'الآلات الحاسبة',blog:'المعرفة',faq:'الأسئلة الشائعة',help:'المساعدة',imprint:'بيانات المشغّل',privacy:'الخصوصية',footer:'© 2026 Universal-Calculator · تتم العمليات الحسابية محلياً · لا ضمان على الدقة'},
+  zh:{calc:'计算器',blog:'知识库',faq:'常见问题',help:'帮助',imprint:'版权信息',privacy:'隐私政策',footer:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性'},
 };
-function setLang(l){
-  localStorage.setItem('lang',l);
-  const u=new URL(window.location.href);
-  u.searchParams.set('lang',l);
-  window.location.href=u.toString();
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', l);
+    history.replaceState(null, '', u.toString());
+  } catch(e) {}
+  applyNav(l);
+  if (typeof renderPage === 'function') renderPage(l);
 }
-(function(){
-  const p=new URLSearchParams(window.location.search);
-  const l=p.get('lang')||localStorage.getItem('lang')||'de';
-  const t=I18N_PAGES[l]||I18N_PAGES['de'];
-  const root=document.documentElement;
-  root.lang=l; root.dir=(l==='ar')?'rtl':'ltr';
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(t[k]!==undefined) el.textContent=t[k];
+
+function getLang() {
+  try {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('lang')) return p.get('lang');
+  } catch(e) {}
+  return localStorage.getItem('lang') || 'de';
+}
+
+function applyNav(lang) {
+  const t = NAV_I18N[lang] || NAV_I18N.de;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // nav links
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+  // footer nav links via data-i18n
+  const map = {nav_calc:'calc',nav_blog:'blog',nav_faq:'faq',nav_help:'help',nav_imprint:'imprint',nav_privacy:'privacy',footer_copy:'footer'};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (map[key] && t[map[key]]) el.textContent = t[map[key]];
   });
-  const sel=document.getElementById('lang-select');
-  if(sel) sel.value=l;
-})();
+  // cookie banner
+  const ck = {de:['Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.','Alle akzeptieren','Nur notwendige'],en:['We use cookies for advertising (Google AdSense) and to improve our service.','Accept all','Necessary only'],fr:["Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",'Tout accepter','Nécessaires seulement'],es:['Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.','Aceptar todo','Solo necesarias'],it:['Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.','Accetta tutto','Solo necessari'],pt:['Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.','Aceitar tudo','Somente necessários'],nl:['We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.','Alles accepteren','Alleen noodzakelijk'],pl:['Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.','Akceptuj wszystkie','Tylko niezbędne'],tr:['Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.','Tümünü kabul et','Yalnızca gerekli'],ar:['نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.','قبول الكل','الضرورية فقط'],zh:['我们使用Cookie用于广告（Google AdSense）和改善服务。','全部接受','仅必要']};
+  const c = ck[lang] || ck.de;
+  const ct = document.getElementById('ck-text'); if(ct) ct.textContent = c[0];
+  const ca = document.getElementById('ck-accept'); if(ca) ca.textContent = c[1];
+  const cr = document.getElementById('ck-reject'); if(cr) cr.textContent = c[2];
+  // page title
+  if (window.PAGE_TITLES && window.PAGE_TITLES[lang]) document.title = window.PAGE_TITLES[lang];
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', function() {
+  const lang = getLang();
+  applyNav(lang);
+  if (typeof renderPage === 'function') renderPage(lang);
+});
 </script>
 
 </body>
