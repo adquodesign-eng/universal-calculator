@@ -194,19 +194,24 @@ h1,h2,h3,h4,h5,h6,button,.btn,.nav-label,.sidebar-cat { font-family: 'Space Grot
 .calc-mode-toggle button { padding: 5px 14px; border: none; background: var(--bg-deep); font-family: 'Space Grotesk', sans-serif; font-size: .78rem; font-weight: 600; cursor: pointer; color: var(--muted); transition: .12s; }
 .calc-mode-toggle button.active { background: var(--blue-bright); color: #fff; }
 /* sci keys are slightly smaller */
-.k.sci { font-size: .78rem; padding: 11px 4px; background: #2a2a2a; color: #e5e7eb; border-radius: 7px; }
-.k.sci:hover { background: #3a3a3a; }
-.k.sci.fn-orange { background: var(--copper); color: #fff; }
-.k.sci.fn-orange:hover { background: #b86a3a; }
-/* dark numpad in extended mode */
-.calc-keys.extended .k { background: #3a3a3a; color: #fff; }
-.calc-keys.extended .k.op { background: var(--copper); color: #fff; }
-.calc-keys.extended .k.eq { background: var(--copper); color: #fff; }
-.calc-keys.extended .k.clear { background: #555; color: #fff; }
-.calc-keys.extended .k.fn-gray { background: #555; color: #fff; }
-.calc-display { background: #1a1a1a; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; }
-.disp-expr { font-size: .75rem; color: #6B7280; min-height: 16px; text-align: right; }
-.disp-val { font-size: 1.9rem; font-weight: 300; color: #fff; text-align: right; font-family: 'Space Grotesk', sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.k.sci { font-size: .78rem; padding: 11px 4px; background: #0d2a42; color: #bfdbfe; border-radius: 7px; }
+.k.sci:hover { background: #0f3354; }
+.k.sci.fn-orange { background: var(--blue-bright); color: #fff; }
+.k.sci.fn-orange:hover { background: #0095ee; }
+/* blue numpad in scientific mode */
+.calc-keys.extended .k { background: #0f2235; color: #e0f0ff; }
+.calc-keys.extended .k:hover { background: #163045; }
+.calc-keys.extended .k.op { background: var(--blue-bright); color: #fff; }
+.calc-keys.extended .k.op:hover { background: #0095ee; }
+.calc-keys.extended .k.eq { background: var(--blue-bright); color: #fff; }
+.calc-keys.extended .k.eq:hover { background: #0095ee; }
+.calc-keys.extended .k.clear { background: #1e3a5f; color: #93c5fd; }
+.calc-keys.extended .k.clear:hover { background: #254d7a; }
+.calc-keys.extended .k.fn-gray { background: #1a3352; color: #93c5fd; }
+.calc-keys.extended .k.fn-gray:hover { background: #214166; }
+.calc-display { background: #071828; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; }
+.disp-expr { font-size: .75rem; color: #60a5fa; min-height: 16px; text-align: right; }
+.disp-val { font-size: 1.9rem; font-weight: 300; color: #e0f0ff; text-align: right; font-family: 'Space Grotesk', sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .k {
   padding: 13px 6px; border: none; border-radius: 7px;
   font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600;
@@ -597,7 +602,7 @@ taschenrechner: () => {
     <div class="calc-wrap">
       <div class="calc-mode-toggle">
         <button id="tc-mode-basic" class="active" onclick="tcSetMode('basic')">Standard</button>
-        <button id="tc-mode-sci" onclick="tcSetMode('sci')">Erweitert</button>
+        <button id="tc-mode-sci" onclick="tcSetMode('sci')">Wissenschaftlich</button>
       </div>
       <div class="calc-display">
         <div class="disp-expr" id="tc-expr"></div>
