@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kontakt – Universal Calculator</title>
+<meta name="description" content="Kontaktiere das Team von Universal-Calculator. Feedback, Fehlermeldungen und Verbesserungsvorschläge willkommen.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 90px}
+h1,h2,h3,h4,button{font-family:'Space Grotesk',sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none}
+.logo span{color:var(--copper)}
+main{max-width:760px;margin:32px auto;padding:0 20px}
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px}
+h1{font-size:1.6rem;font-weight:700;margin-bottom:6px}
+h2{font-size:1.05rem;font-weight:600;margin:20px 0 8px;color:var(--blue-bright)}
+h2:first-child{margin-top:0}
+p{font-size:.86rem;line-height:1.8;margin-bottom:10px;color:var(--muted)}
+p:last-child{margin-bottom:0}
+p strong{color:var(--text)}
+a{color:var(--blue-bright);text-decoration:none}
+.meta{font-size:.75rem;color:var(--muted);margin-bottom:20px}
+/* contact cards grid */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+@media(max-width:520px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{display:flex;align-items:flex-start;gap:14px;background:var(--bg-deep);border:1px solid var(--border);border-radius:10px;padding:18px 20px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+.contact-card:hover{border-color:var(--blue-bright);box-shadow:0 2px 12px rgba(27,166,255,.1)}
+.contact-card.highlight{border-color:rgba(27,166,255,.3);background:var(--blue-soft)}
+.cc-icon{width:40px;height:40px;border-radius:8px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-card.highlight .cc-icon{background:var(--blue-bright);border-color:var(--blue-bright)}
+.cc-body{}
+.cc-title{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.cc-value{font-size:.82rem;color:var(--blue-bright);margin-bottom:4px}
+.cc-note{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:#1F2937;padding:5px 8px;cursor:pointer;margin-left:auto">
+    <option value="de">🇩🇪 DE</option><option value="en">🇬🇧 EN</option>
+    <option value="fr">🇫🇷 FR</option><option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option><option value="pt">🇵🇹 PT</option>
+    <option value="nl">🇳🇱 NL</option><option value="pl">🇵🇱 PL</option>
+    <option value="tr">🇹🇷 TR</option><option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
+</header>
+
+<main id="page-main"></main>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:12px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+  <p id="ck-text" style="font-size:0.8rem;flex:1 1 260px;margin:0">Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="ck-accept" onclick="localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+    <button id="ck-reject" onclick="localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
+  </div>
+</div>
+<script>if(!localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='flex';</script>
+
+<footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
+  <div>
+    <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
+    <a href="blog.html" data-i18n="nav_blog" style="color:#6B7280;text-decoration:none;margin:0 5px">Wissenswertes</a> |
+    <a href="faq.html" data-i18n="nav_faq" style="color:#6B7280;text-decoration:none;margin:0 5px">FAQ</a> |
+    <a href="hilfe.html" data-i18n="nav_help" style="color:#6B7280;text-decoration:none;margin:0 5px">Hilfe</a> |
+    <a href="kontakt.html" data-i18n="nav_contact" style="color:#6B7280;text-decoration:none;margin:0 5px">Kontakt</a> |
+    <a href="ueber-uns.html" data-i18n="nav_about" style="color:#6B7280;text-decoration:none;margin:0 5px">Über uns</a> |
+    <a href="impressum.html" data-i18n="nav_imprint" style="color:#6B7280;text-decoration:none;margin:0 5px">Impressum</a> |
+    <a href="datenschutz.html" data-i18n="nav_privacy" style="color:#6B7280;text-decoration:none;margin:0 5px">Datenschutz</a>
+  </div>
+  <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+
+<script>
+window.PAGE_TITLES = {
+  de:"Kontakt – Universal Calculator",en:"Contact – Universal Calculator",
+  fr:"Contact – Universal Calculator",es:"Contacto – Universal Calculator",
+  it:"Contatto – Universal Calculator",pt:"Contacto – Universal Calculator",
+  nl:"Contact – Universal Calculator",pl:"Kontakt – Universal Calculator",
+  tr:"İletişim – Universal Calculator",ar:"اتصل بنا – Universal Calculator",
+  zh:"联系我们 – Universal Calculator"
+};
+
+var PD = {
+  de:{
+    title:"Kontakt",
+    subtitle:"Wir freuen uns über dein Feedback, Fehlermeldungen und Verbesserungsvorschläge.",
+    cards:[
+      {icon:"✉️",title:"E-Mail",value:"info@adquo-design.de",note:"Antwort meist innerhalb von 48 Std.",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Häufige Fragen",note:"Rund um die Uhr verfügbar",href:"faq.html"},
+      {icon:"🛟",title:"Hilfe",value:"Schritt-für-Schritt Anleitungen",note:"Rund um die Uhr verfügbar",href:"hilfe.html"},
+      {icon:"🛡",title:"Datenschutz",value:"Datenschutzanfragen",note:"Auskunft, Löschung & mehr",href:"datenschutz.html"}
+    ],
+    infoTitle:"Hinweis",
+    infoBody:"Universal-Calculator ist ein kostenloses Angebot. Für technische Fragen schau bitte zuerst in die <a href='faq.html'>FAQ</a> und die <a href='hilfe.html'>Hilfe</a> – viele Fragen sind dort bereits beantwortet. Rechtliche Angaben findest du im <a href='impressum.html'>Impressum</a>."
+  },
+  en:{
+    title:"Contact",
+    subtitle:"We welcome your feedback, bug reports and suggestions for improvement.",
+    cards:[
+      {icon:"✉️",title:"Email",value:"info@adquo-design.de",note:"Reply usually within 48 hrs",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Frequently asked questions",note:"Available around the clock",href:"faq.html"},
+      {icon:"🛟",title:"Help",value:"Step-by-step guides",note:"Available around the clock",href:"hilfe.html"},
+      {icon:"🛡",title:"Privacy",value:"Data protection enquiries",note:"Access, deletion & more",href:"datenschutz.html"}
+    ],
+    infoTitle:"Note",
+    infoBody:"Universal-Calculator is a free service. For technical questions please check the <a href='faq.html'>FAQ</a> and <a href='hilfe.html'>Help</a> pages first. Legal information can be found in the <a href='impressum.html'>Imprint</a>."
+  },
+  fr:{
+    title:"Contact",
+    subtitle:"Nous accueillons vos commentaires, rapports de bugs et suggestions d'amélioration.",
+    cards:[
+      {icon:"✉️",title:"E-mail",value:"info@adquo-design.de",note:"Réponse généralement sous 48 h",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Questions fréquentes",note:"Disponible 24h/24",href:"faq.html"},
+      {icon:"🛟",title:"Aide",value:"Guides étape par étape",note:"Disponible 24h/24",href:"hilfe.html"},
+      {icon:"🛡",title:"Confidentialité",value:"Demandes de protection des données",note:"Accès, suppression & plus",href:"datenschutz.html"}
+    ],
+    infoTitle:"Remarque",
+    infoBody:"Universal-Calculator est un service gratuit. Pour les questions techniques, consultez d'abord la <a href='faq.html'>FAQ</a> et l'<a href='hilfe.html'>aide</a>. Les mentions légales se trouvent dans les <a href='impressum.html'>mentions légales</a>."
+  },
+  es:{
+    title:"Contacto",
+    subtitle:"Agradecemos tus comentarios, informes de errores y sugerencias de mejora.",
+    cards:[
+      {icon:"✉️",title:"Correo electrónico",value:"info@adquo-design.de",note:"Respuesta generalmente en 48 h",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Preguntas frecuentes",note:"Disponible las 24 horas",href:"faq.html"},
+      {icon:"🛟",title:"Ayuda",value:"Guías paso a paso",note:"Disponible las 24 horas",href:"hilfe.html"},
+      {icon:"🛡",title:"Privacidad",value:"Consultas de protección de datos",note:"Acceso, eliminación y más",href:"datenschutz.html"}
+    ],
+    infoTitle:"Nota",
+    infoBody:"Universal-Calculator es un servicio gratuito. Para preguntas técnicas consulta primero las <a href='faq.html'>FAQ</a> y la <a href='hilfe.html'>Ayuda</a>. La información legal se encuentra en el <a href='impressum.html'>aviso legal</a>."
+  },
+  it:{
+    title:"Contatto",
+    subtitle:"Siamo lieti di ricevere feedback, segnalazioni di bug e suggerimenti di miglioramento.",
+    cards:[
+      {icon:"✉️",title:"E-mail",value:"info@adquo-design.de",note:"Risposta solitamente entro 48 ore",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Domande frequenti",note:"Disponibile 24 ore su 24",href:"faq.html"},
+      {icon:"🛟",title:"Aiuto",value:"Guide passo dopo passo",note:"Disponibile 24 ore su 24",href:"hilfe.html"},
+      {icon:"🛡",title:"Privacy",value:"Richieste di protezione dei dati",note:"Accesso, cancellazione e altro",href:"datenschutz.html"}
+    ],
+    infoTitle:"Nota",
+    infoBody:"Universal-Calculator è un servizio gratuito. Per domande tecniche consulta prima le <a href='faq.html'>FAQ</a> e l'<a href='hilfe.html'>aiuto</a>. Le informazioni legali si trovano nelle <a href='impressum.html'>note legali</a>."
+  },
+  pt:{
+    title:"Contacto",
+    subtitle:"Agradecemos o seu feedback, relatórios de erros e sugestões de melhoria.",
+    cards:[
+      {icon:"✉️",title:"E-mail",value:"info@adquo-design.de",note:"Resposta geralmente em 48 h",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Perguntas frequentes",note:"Disponível 24 horas por dia",href:"faq.html"},
+      {icon:"🛟",title:"Ajuda",value:"Guias passo a passo",note:"Disponível 24 horas por dia",href:"hilfe.html"},
+      {icon:"🛡",title:"Privacidade",value:"Pedidos de proteção de dados",note:"Acesso, eliminação e mais",href:"datenschutz.html"}
+    ],
+    infoTitle:"Nota",
+    infoBody:"Universal-Calculator é um serviço gratuito. Para questões técnicas consulte primeiro as <a href='faq.html'>FAQ</a> e a <a href='hilfe.html'>ajuda</a>. As informações legais encontram-se no <a href='impressum.html'>aviso legal</a>."
+  },
+  nl:{
+    title:"Contact",
+    subtitle:"We verwelkomen uw feedback, bugrapporten en verbeteringsvoorstellen.",
+    cards:[
+      {icon:"✉️",title:"E-mail",value:"info@adquo-design.de",note:"Antwoord meestal binnen 48 uur",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Veelgestelde vragen",note:"Altijd beschikbaar",href:"faq.html"},
+      {icon:"🛟",title:"Hulp",value:"Stap-voor-stap handleidingen",note:"Altijd beschikbaar",href:"hilfe.html"},
+      {icon:"🛡",title:"Privacy",value:"Gegevensbeschermingsverzoeken",note:"Inzage, verwijdering en meer",href:"datenschutz.html"}
+    ],
+    infoTitle:"Opmerking",
+    infoBody:"Universal-Calculator is een gratis dienst. Voor technische vragen raadpleeg eerst de <a href='faq.html'>FAQ</a> en <a href='hilfe.html'>hulp</a>. Juridische informatie vindt u in het <a href='impressum.html'>impressum</a>."
+  },
+  pl:{
+    title:"Kontakt",
+    subtitle:"Chętnie przyjmujemy opinie, zgłoszenia błędów i sugestie ulepszeń.",
+    cards:[
+      {icon:"✉️",title:"E-mail",value:"info@adquo-design.de",note:"Odpowiedź zwykle w ciągu 48 godz.",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"FAQ",value:"Często zadawane pytania",note:"Dostępne przez całą dobę",href:"faq.html"},
+      {icon:"🛟",title:"Pomoc",value:"Przewodniki krok po kroku",note:"Dostępne przez całą dobę",href:"hilfe.html"},
+      {icon:"🛡",title:"Prywatność",value:"Zapytania o ochronę danych",note:"Dostęp, usunięcie i więcej",href:"datenschutz.html"}
+    ],
+    infoTitle:"Uwaga",
+    infoBody:"Universal-Calculator jest darmową usługą. W przypadku pytań technicznych sprawdź najpierw <a href='faq.html'>FAQ</a> i <a href='hilfe.html'>pomoc</a>. Informacje prawne znajdziesz w <a href='impressum.html'>informacjach prawnych</a>."
+  },
+  tr:{
+    title:"İletişim",
+    subtitle:"Geri bildiriminizi, hata raporlarınızı ve iyileştirme önerilerinizi bekliyoruz.",
+    cards:[
+      {icon:"✉️",title:"E-posta",value:"info@adquo-design.de",note:"Genellikle 48 saat içinde yanıt",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"SSS",value:"Sık sorulan sorular",note:"7/24 erişilebilir",href:"faq.html"},
+      {icon:"🛟",title:"Yardım",value:"Adım adım kılavuzlar",note:"7/24 erişilebilir",href:"hilfe.html"},
+      {icon:"🛡",title:"Gizlilik",value:"Veri koruma talepleri",note:"Erişim, silme ve daha fazlası",href:"datenschutz.html"}
+    ],
+    infoTitle:"Not",
+    infoBody:"Universal-Calculator ücretsiz bir hizmettir. Teknik sorular için lütfen önce <a href='faq.html'>SSS</a> ve <a href='hilfe.html'>yardım</a> sayfalarına bakın. Yasal bilgiler <a href='impressum.html'>künye</a> sayfasında bulunabilir."
+  },
+  ar:{
+    title:"اتصل بنا",
+    subtitle:"نرحب بملاحظاتك وتقارير الأخطاء ومقترحات التحسين.",
+    cards:[
+      {icon:"✉️",title:"البريد الإلكتروني",value:"info@adquo-design.de",note:"رد في غضون 48 ساعة عادةً",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"الأسئلة الشائعة",value:"أسئلة متكررة",note:"متاح على مدار الساعة",href:"faq.html"},
+      {icon:"🛟",title:"المساعدة",value:"أدلة خطوة بخطوة",note:"متاح على مدار الساعة",href:"hilfe.html"},
+      {icon:"🛡",title:"الخصوصية",value:"طلبات حماية البيانات",note:"الاطلاع والحذف والمزيد",href:"datenschutz.html"}
+    ],
+    infoTitle:"ملاحظة",
+    infoBody:"Universal-Calculator خدمة مجانية. للأسئلة التقنية يرجى مراجعة <a href='faq.html'>الأسئلة الشائعة</a> و<a href='hilfe.html'>المساعدة</a> أولاً. المعلومات القانونية في <a href='impressum.html'>بيانات المشغّل</a>."
+  },
+  zh:{
+    title:"联系我们",
+    subtitle:"欢迎您的反馈、错误报告和改进建议。",
+    cards:[
+      {icon:"✉️",title:"电子邮件",value:"info@adquo-design.de",note:"通常在 48 小时内回复",href:"mailto:info@adquo-design.de",highlight:true},
+      {icon:"❓",title:"常见问题",value:"常见问题解答",note:"全天候可用",href:"faq.html"},
+      {icon:"🛟",title:"帮助",value:"分步指南",note:"全天候可用",href:"hilfe.html"},
+      {icon:"🛡",title:"隐私",value:"数据保护请求",note:"访问、删除等",href:"datenschutz.html"}
+    ],
+    infoTitle:"注意",
+    infoBody:"Universal-Calculator 是免费服务。技术问题请先查看 <a href='faq.html'>常见问题</a> 和 <a href='hilfe.html'>帮助</a>。法律信息请参阅 <a href='impressum.html'>版权信息</a>。"
+  }
+};
+
+function renderPage(lang) {
+  var d = PD[lang] || PD.de;
+  var cardsHtml = d.cards.map(function(c) {
+    return '<a href="' + c.href + '" class="contact-card' + (c.highlight ? ' highlight' : '') + '">' +
+      '<div class="cc-icon">' + c.icon + '</div>' +
+      '<div class="cc-body">' +
+        '<div class="cc-title">' + c.title + '</div>' +
+        '<div class="cc-value">' + c.value + '</div>' +
+        '<div class="cc-note">' + c.note + '</div>' +
+      '</div>' +
+    '</a>';
+  }).join('');
+
+  document.getElementById('page-main').innerHTML =
+    '<div class="card">' +
+      '<h1>' + d.title + '</h1>' +
+      '<p class="meta">' + d.subtitle + '</p>' +
+      '<div class="contact-grid">' + cardsHtml + '</div>' +
+    '</div>' +
+    '<div class="card">' +
+      '<h2>' + d.infoTitle + '</h2>' +
+      '<p>' + d.infoBody + '</p>' +
+    '</div>';
+}
+
+var NAV_I18N = {
+  de:{calc:'Rechner',blog:'Wissenswertes',faq:'FAQ',help:'Hilfe',imprint:'Impressum',privacy:'Datenschutz',contact:'Kontakt',about:'Über uns',footer:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit'},
+  en:{calc:'Calculator',blog:'Knowledge',faq:'FAQ',help:'Help',imprint:'Imprint',privacy:'Privacy',contact:'Contact',about:'About',footer:'© 2026 Universal-Calculator · All calculations run locally · No guarantee of accuracy'},
+  fr:{calc:'Calculateurs',blog:'Savoir',faq:'FAQ',help:'Aide',imprint:'Mentions légales',privacy:'Confidentialité',contact:'Contact',about:'À propos',footer:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude"},
+  es:{calc:'Calculadoras',blog:'Conocimiento',faq:'FAQ',help:'Ayuda',imprint:'Aviso legal',privacy:'Privacidad',contact:'Contacto',about:'Sobre nosotros',footer:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud'},
+  it:{calc:'Calcolatori',blog:'Conoscenza',faq:'FAQ',help:'Aiuto',imprint:'Note legali',privacy:'Privacy',contact:'Contatto',about:'Chi siamo',footer:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia'},
+  pt:{calc:'Calculadoras',blog:'Conhecimento',faq:'FAQ',help:'Ajuda',imprint:'Aviso legal',privacy:'Privacidade',contact:'Contacto',about:'Sobre nós',footer:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia'},
+  nl:{calc:'Rekenmachines',blog:'Kennis',faq:'FAQ',help:'Hulp',imprint:'Impressum',privacy:'Privacy',contact:'Contact',about:'Over ons',footer:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie'},
+  pl:{calc:'Kalkulatory',blog:'Wiedza',faq:'FAQ',help:'Pomoc',imprint:'Informacje prawne',privacy:'Prywatność',contact:'Kontakt',about:'O nas',footer:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane lokalnie · Bez gwarancji'},
+  tr:{calc:'Hesap Makineleri',blog:'Bilgi',faq:'SSS',help:'Yardım',imprint:'Künye',privacy:'Gizlilik',contact:'İletişim',about:'Hakkımızda',footer:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Garanti yoktur'},
+  ar:{calc:'الآلات الحاسبة',blog:'المعرفة',faq:'الأسئلة الشائعة',help:'المساعدة',imprint:'بيانات المشغّل',privacy:'الخصوصية',contact:'اتصل بنا',about:'من نحن',footer:'© 2026 Universal-Calculator · تتم العمليات الحسابية محلياً · لا ضمان على الدقة'},
+  zh:{calc:'计算器',blog:'知识库',faq:'常见问题',help:'帮助',imprint:'版权信息',privacy:'隐私政策',contact:'联系我们',about:'关于我们',footer:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性'}
+};
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  try { var u=new URL(window.location.href);u.searchParams.set('lang',l);history.replaceState(null,'',u.toString()); } catch(e){}
+  applyNav(l); renderPage(l);
+}
+function getLang() {
+  try { var p=new URLSearchParams(window.location.search);if(p.get('lang'))return p.get('lang'); } catch(e){}
+  return localStorage.getItem('lang')||'de';
+}
+function applyNav(lang) {
+  var t = NAV_I18N[lang]||NAV_I18N.de;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==='ar'?'rtl':'ltr';
+  var sel=document.getElementById('lang-select'); if(sel) sel.value=lang;
+  var map={nav_calc:'calc',nav_blog:'blog',nav_faq:'faq',nav_help:'help',nav_imprint:'imprint',nav_privacy:'privacy',nav_contact:'contact',nav_about:'about',footer_copy:'footer'};
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key=el.getAttribute('data-i18n'); if(map[key]&&t[map[key]]) el.textContent=t[map[key]];
+  });
+  var ck={de:['Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.','Alle akzeptieren','Nur notwendige'],en:['We use cookies for advertising (Google AdSense) and to improve our service.','Accept all','Necessary only'],fr:["Nous utilisons des cookies pour la publicité et l'amélioration du service.",'Tout accepter','Nécessaires seulement'],es:['Utilizamos cookies para publicidad y mejorar el servicio.','Aceptar todo','Solo necesarias'],it:['Utilizziamo cookie per la pubblicità e migliorare il servizio.','Accetta tutto','Solo necessari'],pt:['Usamos cookies para publicidade e melhorar o serviço.','Aceitar tudo','Somente necessários'],nl:['We gebruiken cookies voor advertenties en verbetering van de dienst.','Alles accepteren','Alleen noodzakelijk'],pl:['Używamy plików cookie do reklam i ulepszania serwisu.','Akceptuj wszystkie','Tylko niezbędne'],tr:['Reklam ve hizmet iyileştirmesi için çerezler kullanıyoruz.','Tümünü kabul et','Yalnızca gerekli'],ar:['نستخدم ملفات تعريف الارتباط للإعلانات وتحسين الخدمة.','قبول الكل','الضرورية فقط'],zh:['我们使用Cookie用于广告和改善服务。','全部接受','仅必要']};
+  var c=ck[lang]||ck.de;
+  var ct=document.getElementById('ck-text'); if(ct) ct.textContent=c[0];
+  var ca=document.getElementById('ck-accept'); if(ca) ca.textContent=c[1];
+  var cr=document.getElementById('ck-reject'); if(cr) cr.textContent=c[2];
+  if(window.PAGE_TITLES&&window.PAGE_TITLES[lang]) document.title=window.PAGE_TITLES[lang];
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var l=getLang(); applyNav(l); renderPage(l);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Über uns – Universal Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1921537428828630" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-deep:#F6F8FC;--surface:#FFFFFF;--text:#1F2937;--muted:#6B7280;--blue-bright:#1BA6FF;--blue-soft:#E8F4FF;--copper:#C77A4A;--copper-soft:#F3E3DA;--border:#E5E7EB}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg-deep);background-image:linear-gradient(rgba(27,166,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,166,255,.06) 1px,transparent 1px);background-size:40px 40px;color:var(--text);min-height:100vh;padding:0 0 90px}
+h1,h2,h3,h4,button,label{font-family:'Space Grotesk',sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-bright);text-decoration:none}
+.logo span{color:var(--copper)}
+main{max-width:800px;margin:32px auto;padding:0 20px}
+
+/* ── Cards ── */
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:20px}
+.card h2{font-size:1.05rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+/* ── Page header ── */
+.page-title{font-size:1.8rem;font-weight:700;margin-bottom:6px}
+.page-sub{color:var(--muted);font-size:.85rem;margin-bottom:28px;line-height:1.7}
+
+/* ── Contact form ── */
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}
+.form-input{width:100%;padding:9px 13px;border:1px solid var(--border);border-radius:7px;background:var(--bg-deep);font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:var(--text);outline:none;transition:border-color .15s}
+.form-input:focus{border-color:var(--blue-bright);background:#fff}
+textarea.form-input{resize:vertical;min-height:120px}
+.btn-submit{width:100%;padding:11px;border:none;border-radius:7px;background:var(--blue-bright);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .15s;margin-top:4px}
+.btn-submit:hover{background:#0095ee}
+.success-msg{display:none;background:#F0FDF4;border:1px solid #86EFAC;border-radius:7px;padding:14px;text-align:center;color:#16A34A;font-weight:600;font-family:'Space Grotesk',sans-serif;margin-top:14px}
+.info-box{background:var(--blue-soft);border-left:3px solid var(--blue-bright);border-radius:0 8px 8px 0;padding:12px 16px;font-size:.83rem;line-height:1.7}
+.info-box a{color:var(--blue-bright);text-decoration:none;font-weight:600}
+
+/* ── About page ── */
+.hero{text-align:center;padding:40px 0 36px}
+.hero h1{font-size:clamp(1.6rem,5vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+.hero h1 em{color:var(--blue-bright);font-style:normal}
+.hero p{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:540px;margin:0 auto}
+.quote-box{background:linear-gradient(135deg,var(--blue-soft),var(--copper-soft));border:1px solid rgba(27,166,255,.18);border-radius:10px;padding:28px 32px;text-align:center;margin:0 0 20px}
+.quote-text{font-size:1.05rem;font-weight:700;line-height:1.5;margin-bottom:8px;font-family:'Space Grotesk',sans-serif}
+.quote-text em{color:var(--blue-bright);font-style:normal}
+.quote-sub{font-size:.78rem;color:var(--muted)}
+.section-h{font-size:1.05rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif}
+.prose{font-size:.86rem;color:var(--muted);line-height:1.8;margin-bottom:10px}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:16px}
+.value-card{background:var(--bg-deep);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.value-icon{font-size:1.5rem;margin-bottom:8px}
+.value-title{font-size:.85rem;font-weight:700;margin-bottom:4px;font-family:'Space Grotesk',sans-serif}
+.value-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.timeline{display:flex;flex-direction:column;gap:14px}
+.tl-item{display:flex;gap:16px;align-items:flex-start}
+.tl-year{font-size:.72rem;font-weight:700;color:var(--blue-bright);min-width:38px;margin-top:3px;font-family:'Space Grotesk',sans-serif}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--blue-bright);margin-top:5px;flex-shrink:0}
+.tl-body h3{font-size:.88rem;font-weight:700;margin-bottom:3px;font-family:'Space Grotesk',sans-serif}
+.tl-body p{font-size:.8rem;color:var(--muted);line-height:1.6}
+.copper-tag{display:inline-block;background:var(--copper-soft);color:var(--copper);font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:10px;font-family:'Space Grotesk',sans-serif}
+@media(max-width:600px){.values-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Universal<span>Calculator</span></a>
+  <select id="lang-select" onchange="setLang(this.value)" aria-label="Language" style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text);padding:5px 8px;cursor:pointer;margin-left:auto">
+    <option value="de">🇩🇪 DE</option>
+    <option value="en">🇬🇧 EN</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option>
+    <option value="pt">🇵🇹 PT</option>
+    <option value="nl">🇳🇱 NL</option>
+    <option value="pl">🇵🇱 PL</option>
+    <option value="tr">🇹🇷 TR</option>
+    <option value="ar">🇸🇦 AR</option>
+    <option value="zh">🇨🇳 ZH</option>
+  </select>
+</header>
+<main id="page-main"></main>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1F2937;color:#fff;padding:12px 20px;z-index:500;align-items:center;flex-wrap:wrap;gap:12px;">
+  <p id="ck-text" style="font-size:0.8rem;flex:1 1 260px;margin:0">Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.</p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="ck-accept" onclick="localStorage.setItem('cookie-consent','all');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:#1BA6FF;color:#fff">Alle akzeptieren</button>
+    <button id="ck-reject" onclick="localStorage.setItem('cookie-consent','necessary');document.getElementById('cookie-banner').style.display='none'" style="padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-size:0.82rem;font-weight:600;background:transparent;color:#9ca3af;border:1px solid #4b5563">Nur notwendige</button>
+  </div>
+</div>
+<script>if(!localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='flex';</script>
+<footer style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E5E7EB;padding:8px 16px;text-align:center;font-size:0.72rem;color:#6B7280;z-index:90">
+  <div>
+    <a href="universal-calculator.html" data-i18n="nav_calc" style="color:#6B7280;text-decoration:none;margin:0 5px">Rechner</a> |
+    <a href="blog.html" data-i18n="nav_blog" style="color:#6B7280;text-decoration:none;margin:0 5px">Wissenswertes</a> |
+    <a href="faq.html" data-i18n="nav_faq" style="color:#6B7280;text-decoration:none;margin:0 5px">FAQ</a> |
+    <a href="hilfe.html" data-i18n="nav_help" style="color:#6B7280;text-decoration:none;margin:0 5px">Hilfe</a> |
+    <a href="kontakt.html" data-i18n="nav_contact" style="color:#6B7280;text-decoration:none;margin:0 5px">Kontakt</a> |
+    <a href="ueber-uns.html" data-i18n="nav_about" style="color:#6B7280;text-decoration:none;margin:0 5px">Über uns</a> |
+    <a href="impressum.html" data-i18n="nav_imprint" style="color:#6B7280;text-decoration:none;margin:0 5px">Impressum</a> |
+    <a href="datenschutz.html" data-i18n="nav_privacy" style="color:#6B7280;text-decoration:none;margin:0 5px">Datenschutz</a>
+  </div>
+  <div data-i18n="footer_copy" style="margin-top:2px">© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit</div>
+</footer>
+<script>
+window.PAGE_TITLES = {"de": "Über uns – Universal Calculator", "en": "About Us – Universal Calculator", "fr": "À propos – Universal Calculator", "es": "Sobre nosotros – Universal Calculator", "it": "Chi siamo – Universal Calculator", "pt": "Sobre nós – Universal Calculator", "nl": "Over ons – Universal Calculator", "pl": "O nas – Universal Calculator", "tr": "Hakkımızda – Universal Calculator", "ar": "من نحن – Universal Calculator", "zh": "关于我们 – Universal Calculator"};
+const UEBER_DATA = {"de": {"title": "Über uns", "subtitle": "Wir helfen dir, Zahlen besser zu verstehen.", "quote": "„Jede Berechnung, die du online machst, sollte <em>schnell, sicher und kostenlos</em> sein — ohne Tricks, ohne Abos, ohne Kompromisse.“", "quote_sub": "— Das Leitbild von Universal-Calculator", "mission_h": "🎯 Unsere Mission", "mission": ["Zahlen sind überall: Finanzen, Gesundheit, Physik, Alltag. Doch die meisten Online-Rechner sind überladen, voller Werbung oder verlangen sogar Registrierung. Universal-Calculator ist anders.", "Wir bauen Rechner, die sofort funktionieren — direkt im Browser, ohne Anmeldung, ohne dass deine Daten unsere Server berühren. Über 60 Rechner in einem einzigen, blitzschnellen Interface."], "vision_h": "💡 Unsere Vision", "vision": ["Wir glauben: Ein guter Rechner erklärt, nicht nur rechnet. Deshalb verbinden wir jeden Rechner mit Hintergrundwissen — im Wissensbereich gibt es Artikel zu Zinseszins, BMI, Primzahlen und vielem mehr.", "In Zukunft planen wir weitere Sprachen, noch mehr Rechner und Wiki-Artikel in allen 11 unterstützten Sprachen."], "values_h": "⭐ Unsere Werte", "values": [{"icon": "⚡", "title": "Performance", "desc": "Reines HTML/CSS/JS, kein Framework, kein Build-Tool. Sofort ladend auf jedem Gerät."}, {"icon": "🔒", "title": "Datenschutz", "desc": "Alle Berechnungen laufen lokal im Browser. Keine Eingaben verlassen dein Gerät."}, {"icon": "🆓", "title": "Kostenlos", "desc": "Alle 60+ Rechner ohne Paywall, ohne Abo, ohne Registrierung. Immer."}, {"icon": "🌍", "title": "Mehrsprachig", "desc": "11 Sprachen: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — vollständig übersetzt."}, {"icon": "📚", "title": "Wissen", "desc": "Zu jedem Thema gibt es verständliche Hintergrundartikeln — Rechnen und Verstehen."}, {"icon": "🎨", "title": "Design", "desc": "Klares, minimalistisches Interface. Kein Lärm, keine Ablenkung — nur das Wesentliche."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch von Universal-Calculator", "p": "Start mit 60+ Rechnern, 11 Wiki-Artikeln, FAQ und Hilfe in 11 Sprachen."}, {"year": "2026", "h": "Vollständige Wiki-Übersetzungen", "p": "Alle Wiki-Artikel in allen 11 Sprachen — verständliches Hintergrundwissen für alle."}, {"year": "2026", "h": "Neue Rechner-Kategorien", "p": "Chemie, Statistik, Astronomie und weitere Fachgebiete werden ergänzt."}, {"year": "2027", "h": "Erweiterte Barrierefreiheit & Mobile App", "p": "WCAG 2.2-Zertifizierung, Progressive Web App und offline-fähige Nutzung."}]}, "en": {"title": "About Us", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "fr": {"title": "À propos", "subtitle": "Nous vous aidons à mieux comprendre les chiffres.", "quote": "« Chaque calcul que vous faites en ligne devrait être <em>rapide, sécurisé et gratuit</em> — sans astuces, sans abonnements, sans compromis. »", "quote_sub": "— La mission d'Universal-Calculator", "mission_h": "🎯 Notre Mission", "mission": ["Les chiffres sont partout : finance, santé, physique, quotidien. Pourtant la plupart des calculatrices en ligne sont surchargées, pleines de publicités ou requièrent même une inscription. Universal-Calculator est différent.", "Nous construisons des calculatrices qui fonctionnent instantanément — directement dans le navigateur, sans connexion requise, sans que vos données ne touchent nos serveurs. Plus de 60 calculatrices dans une interface unique et ultra-rapide."], "vision_h": "💡 Notre Vision", "vision": ["Nous croyons qu'une bonne calculatrice explique, pas seulement calcule. C'est pourquoi nous associons chaque outil à des connaissances de fond — la section Savoir contient des articles sur les intérêts composés, l'IMC, les nombres premiers et bien plus.", "Nous prévoyons d'ajouter d'autres langues, calculatrices et articles wiki dans les 11 langues supportées."], "values_h": "⭐ Nos Valeurs", "values": [{"icon": "⚡", "title": "Performance", "desc": "HTML/CSS/JS pur, aucun framework. Se charge instantanément sur tous les appareils."}, {"icon": "🔒", "title": "Confidentialité", "desc": "Tous les calculs s'exécutent localement. Aucune donnée ne quitte votre appareil."}, {"icon": "🆓", "title": "Gratuit", "desc": "Plus de 60 calculatrices sans paywall, sans abonnement ni inscription. Toujours."}, {"icon": "🌍", "title": "Multilingue", "desc": "11 langues : DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — entièrement traduit."}, {"icon": "📚", "title": "Connaissance", "desc": "Chaque sujet a des articles de fond clairs — calculez et comprenez."}, {"icon": "🎨", "title": "Design", "desc": "Interface claire et minimaliste. Pas de bruit, pas de distraction — l'essentiel seulement."}], "roadmap_h": "🗺 Feuille de route", "roadmap": [{"year": "2025", "h": "Lancement d'Universal-Calculator", "p": "Démarrage avec 60+ calculatrices, 11 articles wiki, FAQ et aide en 11 langues."}, {"year": "2026", "h": "Traductions wiki complètes", "p": "Tous les articles wiki dans les 11 langues — des connaissances claires pour tous."}, {"year": "2026", "h": "Nouvelles catégories de calculatrices", "p": "Chimie, statistiques, astronomie et d'autres domaines seront ajoutés."}, {"year": "2027", "h": "Accessibilité améliorée & application mobile", "p": "Certification WCAG 2.2, Progressive Web App et utilisation hors ligne."}]}, "es": {"title": "Sobre nosotros", "subtitle": "Te ayudamos a entender mejor los números.", "quote": "\"Cada cálculo que hagas en línea debería ser <em>rápido, seguro y gratuito</em> — sin trucos, sin suscripciones, sin compromisos.\"", "quote_sub": "— La misión de Universal-Calculator", "mission_h": "🎯 Nuestra Misión", "mission": ["Los números están en todas partes: finanzas, salud, física, vida cotidiana. Pero la mayoría de las calculadoras en línea están sobrecargadas, llenas de publicidad o incluso requieren registro. Universal-Calculator es diferente.", "Construimos calculadoras que funcionan al instante — directamente en el navegador, sin inicio de sesión, sin que tus datos toquen nuestros servidores. Más de 60 calculadoras en una interfaz única y ultrarrápida."], "vision_h": "💡 Nuestra Visión", "vision": ["Creemos que una buena calculadora explica, no solo calcula. Por eso vinculamos cada herramienta con conocimientos de fondo — la sección de Conocimiento tiene artículos sobre interés compuesto, IMC, números primos y mucho más.", "En el futuro planeamos más idiomas, más calculadoras y artículos wiki en los 11 idiomas admitidos."], "values_h": "⭐ Nuestros Valores", "values": [{"icon": "⚡", "title": "Rendimiento", "desc": "HTML/CSS/JS puro, sin framework. Carga instantánea en cualquier dispositivo."}, {"icon": "🔒", "title": "Privacidad", "desc": "Todos los cálculos se ejecutan localmente. Ningún dato sale de tu dispositivo."}, {"icon": "🆓", "title": "Gratuito", "desc": "Más de 60 calculadoras sin paywall, suscripción ni registro. Siempre."}, {"icon": "🌍", "title": "Multilingüe", "desc": "11 idiomas: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — totalmente traducido."}, {"icon": "📚", "title": "Conocimiento", "desc": "Cada tema tiene artículos de fondo claros — calcula y comprende."}, {"icon": "🎨", "title": "Diseño", "desc": "Interfaz limpia y minimalista. Sin ruido, sin distracciones — solo lo esencial."}], "roadmap_h": "🗺 Hoja de ruta", "roadmap": [{"year": "2025", "h": "Lanzamiento de Universal-Calculator", "p": "Inicio con 60+ calculadoras, 11 artículos wiki, FAQ y ayuda en 11 idiomas."}, {"year": "2026", "h": "Traducciones wiki completas", "p": "Todos los artículos wiki en los 11 idiomas — conocimiento claro para todos."}, {"year": "2026", "h": "Nuevas categorías de calculadoras", "p": "Química, estadística, astronomía y más áreas serán añadidas."}, {"year": "2027", "h": "Accesibilidad mejorada & app móvil", "p": "Certificación WCAG 2.2, Progressive Web App y uso sin conexión."}]}, "it": {"title": "Chi siamo", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "pt": {"title": "Sobre nós", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "nl": {"title": "Over ons", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "pl": {"title": "O nas", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "tr": {"title": "Hakkımızda", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "ar": {"title": "من نحن", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}, "zh": {"title": "关于我们", "subtitle": "We help you understand numbers better.", "quote": "\"Every calculation you do online should be <em>fast, secure and free</em> — no tricks, no subscriptions, no compromises.\"", "quote_sub": "— The mission of Universal-Calculator", "mission_h": "🎯 Our Mission", "mission": ["Numbers are everywhere: finance, health, physics, everyday life. But most online calculators are cluttered, full of ads, or even require registration. Universal-Calculator is different.", "We build calculators that work instantly — directly in the browser, no login required, without your data ever touching our servers. Over 60 calculators in a single, lightning-fast interface."], "vision_h": "💡 Our Vision", "vision": ["We believe: a good calculator explains, not just calculates. That's why we pair each calculator with background knowledge — the Knowledge section has articles on compound interest, BMI, prime numbers and much more.", "In the future we plan more languages, even more calculators and wiki articles in all 11 supported languages."], "values_h": "⭐ Our Values", "values": [{"icon": "⚡", "title": "Performance", "desc": "Pure HTML/CSS/JS, no framework, no build tool. Loads instantly on any device."}, {"icon": "🔒", "title": "Privacy", "desc": "All calculations run locally in the browser. No inputs ever leave your device."}, {"icon": "🆓", "title": "Free", "desc": "All 60+ calculators without paywall, subscription or registration. Always."}, {"icon": "🌍", "title": "Multilingual", "desc": "11 languages: DE, EN, FR, ES, IT, PT, NL, PL, TR, AR, ZH — fully translated."}, {"icon": "📚", "title": "Knowledge", "desc": "Every topic has clear background articles — calculate and understand."}, {"icon": "🎨", "title": "Design", "desc": "Clean, minimalist interface. No noise, no distraction — just what matters."}], "roadmap_h": "🗺 Roadmap", "roadmap": [{"year": "2025", "h": "Launch of Universal-Calculator", "p": "Start with 60+ calculators, 11 wiki articles, FAQ and help in 11 languages."}, {"year": "2026", "h": "Full Wiki Translations", "p": "All wiki articles in all 11 languages — clear background knowledge for everyone."}, {"year": "2026", "h": "New Calculator Categories", "p": "Chemistry, statistics, astronomy and more fields will be added."}, {"year": "2027", "h": "Enhanced Accessibility & Mobile App", "p": "WCAG 2.2 certification, Progressive Web App and offline-capable use."}]}};
+function renderPage(lang) {
+  const d = UEBER_DATA[lang] || UEBER_DATA.en;
+
+  const valuesHtml = d.values.map(function(v) {
+    return `<div class="value-card">
+      <div class="value-icon">${v.icon}</div>
+      <div class="value-title">${v.title}</div>
+      <div class="value-desc">${v.desc}</div>
+    </div>`;
+  }).join('');
+
+  const roadmapHtml = d.roadmap.map(function(r) {
+    return `<div class="tl-item">
+      <div class="tl-year">${r.year}</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h3>${r.h}</h3><p>${r.p}</p></div>
+    </div>`;
+  }).join('');
+
+  const missionHtml = d.mission.map(function(p) { return `<p class="prose">${p}</p>`; }).join('');
+  const visionHtml  = d.vision.map(function(p)  { return `<p class="prose">${p}</p>`; }).join('');
+
+  document.getElementById('page-main').innerHTML = `
+    <div class="hero">
+      <h1>${d.subtitle}</h1>
+    </div>
+
+    <div class="quote-box">
+      <div class="quote-text">${d.quote}</div>
+      <div class="quote-sub">${d.quote_sub}</div>
+    </div>
+
+    <div class="card">
+      <div class="section-h">${d.mission_h}</div>
+      ${missionHtml}
+    </div>
+
+    <div class="card">
+      <div class="section-h">${d.vision_h}</div>
+      ${visionHtml}
+    </div>
+
+    <div class="card">
+      <div class="section-h">${d.values_h}</div>
+      <div class="values-grid">${valuesHtml}</div>
+    </div>
+
+    <div class="card">
+      <div class="section-h">${d.roadmap_h}</div>
+      <div class="timeline">${roadmapHtml}</div>
+    </div>
+
+      `;
+}
+</script>
+
+<script>
+// ── Core i18n engine ──────────────────────────────────────────
+const NAV_I18N = {
+  de:{calc:'Rechner',blog:'Wissenswertes',faq:'FAQ',help:'Hilfe',imprint:'Impressum',privacy:'Datenschutz',footer:'© 2026 Universal-Calculator · Alle Berechnungen erfolgen lokal im Browser · Keine Garantie auf Richtigkeit'},
+  en:{calc:'Calculator',blog:'Knowledge',faq:'FAQ',help:'Help',imprint:'Imprint',privacy:'Privacy',footer:'© 2026 Universal-Calculator · All calculations run locally · No guarantee of accuracy'},
+  fr:{calc:'Calculateurs',blog:'Savoir',faq:'FAQ',help:'Aide',imprint:'Mentions légales',privacy:'Confidentialité',footer:"© 2026 Universal-Calculator · Tous les calculs s'effectuent localement · Aucune garantie d'exactitude"},
+  es:{calc:'Calculadoras',blog:'Conocimiento',faq:'FAQ',help:'Ayuda',imprint:'Aviso legal',privacy:'Privacidad',footer:'© 2026 Universal-Calculator · Todos los cálculos se realizan localmente · Sin garantía de exactitud'},
+  it:{calc:'Calcolatori',blog:'Conoscenza',faq:'FAQ',help:'Aiuto',imprint:'Note legali',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Tutti i calcoli vengono eseguiti localmente · Nessuna garanzia'},
+  pt:{calc:'Calculadoras',blog:'Conhecimento',faq:'FAQ',help:'Ajuda',imprint:'Aviso legal',privacy:'Privacidade',footer:'© 2026 Universal-Calculator · Todos os cálculos são executados localmente · Sem garantia'},
+  nl:{calc:'Rekenmachines',blog:'Kennis',faq:'FAQ',help:'Hulp',imprint:'Impressum',privacy:'Privacy',footer:'© 2026 Universal-Calculator · Alle berekeningen vinden lokaal plaats · Geen garantie'},
+  pl:{calc:'Kalkulatory',blog:'Wiedza',faq:'FAQ',help:'Pomoc',imprint:'Informacje prawne',privacy:'Prywatność',footer:'© 2026 Universal-Calculator · Wszystkie obliczenia wykonywane lokalnie · Bez gwarancji'},
+  tr:{calc:'Hesap Makineleri',blog:'Bilgi',faq:'SSS',help:'Yardım',imprint:'Künye',privacy:'Gizlilik',footer:'© 2026 Universal-Calculator · Tüm hesaplamalar tarayıcınızda yapılır · Garanti yoktur'},
+  ar:{calc:'الآلات الحاسبة',blog:'المعرفة',faq:'الأسئلة الشائعة',help:'المساعدة',imprint:'بيانات المشغّل',privacy:'الخصوصية',footer:'© 2026 Universal-Calculator · تتم العمليات الحسابية محلياً · لا ضمان على الدقة'},
+  zh:{calc:'计算器',blog:'知识库',faq:'常见问题',help:'帮助',imprint:'版权信息',privacy:'隐私政策',footer:'© 2026 Universal-Calculator · 所有计算在浏览器本地进行 · 不保证准确性'},
+};
+
+function setLang(l) {
+  localStorage.setItem('lang', l);
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', l);
+    history.replaceState(null, '', u.toString());
+  } catch(e) {}
+  applyNav(l);
+  if (typeof renderPage === 'function') renderPage(l);
+}
+
+function getLang() {
+  const p = new URLSearchParams(window.location.search);
+  return p.get('lang') || localStorage.getItem('lang') || 'de';
+}
+
+function applyNav(lang) {
+  const t = NAV_I18N[lang] || NAV_I18N.de;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  // nav links
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+  // footer nav links via data-i18n
+  const map = {nav_calc:'calc',nav_blog:'blog',nav_faq:'faq',nav_help:'help',nav_imprint:'imprint',nav_privacy:'privacy',footer_copy:'footer',nav_contact:'contact',nav_about:'about'};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (map[key] && t[map[key]]) el.textContent = t[map[key]];
+  });
+  // cookie banner
+  const ck = {de:['Wir nutzen Cookies für Werbung (Google AdSense) und zur Verbesserung des Angebots.','Alle akzeptieren','Nur notwendige'],en:['We use cookies for advertising (Google AdSense) and to improve our service.','Accept all','Necessary only'],fr:["Nous utilisons des cookies pour la publicité (Google AdSense) et l'amélioration du service.",'Tout accepter','Nécessaires seulement'],es:['Utilizamos cookies para publicidad (Google AdSense) y para mejorar el servicio.','Aceptar todo','Solo necesarias'],it:['Utilizziamo cookie per la pubblicità (Google AdSense) e per migliorare il servizio.','Accetta tutto','Solo necessari'],pt:['Usamos cookies para publicidade (Google AdSense) e para melhorar o serviço.','Aceitar tudo','Somente necessários'],nl:['We gebruiken cookies voor advertenties (Google AdSense) en verbetering van de dienst.','Alles accepteren','Alleen noodzakelijk'],pl:['Używamy plików cookie do reklam (Google AdSense) i ulepszania serwisu.','Akceptuj wszystkie','Tylko niezbędne'],tr:['Reklam (Google AdSense) ve hizmet iyileştirmesi için çerezler kullanıyoruz.','Tümünü kabul et','Yalnızca gerekli'],ar:['نستخدم ملفات تعريف الارتباط للإعلانات (Google AdSense) وتحسين الخدمة.','قبول الكل','الضرورية فقط'],zh:['我们使用Cookie用于广告（Google AdSense）和改善服务。','全部接受','仅必要']};
+  const c = ck[lang] || ck.de;
+  const ct = document.getElementById('ck-text'); if(ct) ct.textContent = c[0];
+  const ca = document.getElementById('ck-accept'); if(ca) ca.textContent = c[1];
+  const cr = document.getElementById('ck-reject'); if(cr) cr.textContent = c[2];
+  // page title
+  if (window.PAGE_TITLES && window.PAGE_TITLES[lang]) document.title = window.PAGE_TITLES[lang];
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', function() {
+  const lang = getLang();
+  applyNav(lang);
+  if (typeof renderPage === 'function') renderPage(lang);
+});
+</script>
+
+</body>
+</html>
