@@ -187,6 +187,26 @@ h1,h2,h3,h4,h5,h6,button,.btn,.nav-label,.sidebar-cat { font-family: 'Space Grot
 .calc-display .disp-expr { font-size: 0.78rem; color: #9ca3af; min-height: 18px; }
 .calc-display .disp-val { font-size: 2rem; font-family: 'IBM Plex Mono', monospace; font-weight: 500; word-break: break-all; }
 .calc-keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.calc-keys.extended { grid-template-columns: repeat(5, 1fr) repeat(4, 1fr); }
+/* scientific panel sits left of numpad — 5 cols sci + 4 cols num */
+.calc-wrap { display: flex; flex-direction: column; gap: 8px; }
+.calc-mode-toggle { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; width: fit-content; margin-bottom: 4px; }
+.calc-mode-toggle button { padding: 5px 14px; border: none; background: var(--bg-deep); font-family: 'Space Grotesk', sans-serif; font-size: .78rem; font-weight: 600; cursor: pointer; color: var(--muted); transition: .12s; }
+.calc-mode-toggle button.active { background: var(--blue-bright); color: #fff; }
+/* sci keys are slightly smaller */
+.k.sci { font-size: .78rem; padding: 11px 4px; background: #2a2a2a; color: #e5e7eb; border-radius: 7px; }
+.k.sci:hover { background: #3a3a3a; }
+.k.sci.fn-orange { background: var(--copper); color: #fff; }
+.k.sci.fn-orange:hover { background: #b86a3a; }
+/* dark numpad in extended mode */
+.calc-keys.extended .k { background: #3a3a3a; color: #fff; }
+.calc-keys.extended .k.op { background: var(--copper); color: #fff; }
+.calc-keys.extended .k.eq { background: var(--copper); color: #fff; }
+.calc-keys.extended .k.clear { background: #555; color: #fff; }
+.calc-keys.extended .k.fn-gray { background: #555; color: #fff; }
+.calc-display { background: #1a1a1a; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; }
+.disp-expr { font-size: .75rem; color: #6B7280; min-height: 16px; text-align: right; }
+.disp-val { font-size: 1.9rem; font-weight: 300; color: #fff; text-align: right; font-family: 'Space Grotesk', sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .k {
   padding: 13px 6px; border: none; border-radius: 7px;
   font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600;
@@ -572,30 +592,89 @@ const CALCS = {
 // ─── TASCHENRECHNER ───
 taschenrechner: () => {
   return card('🧮 Taschenrechner', 'Universeller Taschenrechner mit Grundrechenarten.', `
-    <div class="calc-display">
-      <div class="disp-expr" id="tc-expr"></div>
-      <div class="disp-val" id="tc-val">0</div>
-    </div>
-    <div class="calc-keys">
-      <button class="k clear" onclick="tcKey('AC')">AC</button>
-      <button class="k op" onclick="tcKey('+/-')">+/-</button>
-      <button class="k op" onclick="tcKey('%')">%</button>
-      <button class="k op" onclick="tcKey('/')">÷</button>
-      <button class="k" onclick="tcKey('7')">7</button>
-      <button class="k" onclick="tcKey('8')">8</button>
-      <button class="k" onclick="tcKey('9')">9</button>
-      <button class="k op" onclick="tcKey('*')">×</button>
-      <button class="k" onclick="tcKey('4')">4</button>
-      <button class="k" onclick="tcKey('5')">5</button>
-      <button class="k" onclick="tcKey('6')">6</button>
-      <button class="k op" onclick="tcKey('-')">−</button>
-      <button class="k" onclick="tcKey('1')">1</button>
-      <button class="k" onclick="tcKey('2')">2</button>
-      <button class="k" onclick="tcKey('3')">3</button>
-      <button class="k op" onclick="tcKey('+')">+</button>
-      <button class="k zero" onclick="tcKey('0')">0</button>
-      <button class="k" onclick="tcKey('.')">.</button>
-      <button class="k eq" onclick="tcKey('=')">=</button>
+    <div class="calc-wrap">
+      <div class="calc-mode-toggle">
+        <button id="tc-mode-basic" class="active" onclick="tcSetMode('basic')">Standard</button>
+        <button id="tc-mode-sci" onclick="tcSetMode('sci')">Erweitert</button>
+      </div>
+      <div class="calc-display">
+        <div class="disp-expr" id="tc-expr"></div>
+        <div class="disp-val" id="tc-val">0</div>
+      </div>
+      <!-- STANDARD KEYS (4 cols) -->
+      <div class="calc-keys" id="tc-keys-basic">
+        <button class="k clear" onclick="tcKey('AC')">AC</button>
+        <button class="k fn-gray" onclick="tcKey('+/-')">+/-</button>
+        <button class="k fn-gray" onclick="tcKey('%')">%</button>
+        <button class="k op" onclick="tcKey('/')">÷</button>
+        <button class="k" onclick="tcKey('7')">7</button>
+        <button class="k" onclick="tcKey('8')">8</button>
+        <button class="k" onclick="tcKey('9')">9</button>
+        <button class="k op" onclick="tcKey('*')">×</button>
+        <button class="k" onclick="tcKey('4')">4</button>
+        <button class="k" onclick="tcKey('5')">5</button>
+        <button class="k" onclick="tcKey('6')">6</button>
+        <button class="k op" onclick="tcKey('-')">−</button>
+        <button class="k" onclick="tcKey('1')">1</button>
+        <button class="k" onclick="tcKey('2')">2</button>
+        <button class="k" onclick="tcKey('3')">3</button>
+        <button class="k op" onclick="tcKey('+')">+</button>
+        <button class="k zero" onclick="tcKey('0')">0</button>
+        <button class="k" onclick="tcKey('.')">.</button>
+        <button class="k eq" onclick="tcKey('=')">═</button>
+      </div>
+      <!-- EXTENDED KEYS (5 sci cols + 4 num cols = 9 col grid) -->
+      <div class="calc-keys extended" id="tc-keys-sci" style="display:none;grid-template-columns:repeat(5,1fr) repeat(4,1fr)">
+        <!-- Row 1: 2nd / x² / x³ / xʸ / eˣ  |  ⌫ C % ÷ -->
+        <button class="k sci fn-orange" onclick="tcSci('2nd')" id="tc-2nd">2nd</button>
+        <button class="k sci" onclick="tcSci('x2')">x²</button>
+        <button class="k sci" onclick="tcSci('x3')">x³</button>
+        <button class="k sci" onclick="tcSci('xy')">xʸ</button>
+        <button class="k sci" onclick="tcSci('ex')">eˣ</button>
+        <button class="k clear" onclick="tcKey('AC')">AC</button>
+        <button class="k fn-gray" onclick="tcKey('+/-')">+/-</button>
+        <button class="k fn-gray" onclick="tcKey('%')">%</button>
+        <button class="k op" onclick="tcKey('/')">÷</button>
+        <!-- Row 2: 1/x / ²√x / ³√x / ʸ√x / ln  |  7 8 9 × -->
+        <button class="k sci" onclick="tcSci('inv')" id="tc-inv">¹/x</button>
+        <button class="k sci" onclick="tcSci('sqrt2')" id="tc-sqrt2">²√x</button>
+        <button class="k sci" onclick="tcSci('sqrt3')" id="tc-sqrt3">³√x</button>
+        <button class="k sci" onclick="tcSci('sqrty')" id="tc-sqrty">ʸ√x</button>
+        <button class="k sci" onclick="tcSci('ln')" id="tc-ln">ln</button>
+        <button class="k" onclick="tcKey('7')">7</button>
+        <button class="k" onclick="tcKey('8')">8</button>
+        <button class="k" onclick="tcKey('9')">9</button>
+        <button class="k op" onclick="tcKey('*')">×</button>
+        <!-- Row 3: x! / sin / cos / tan / log₁₀  |  4 5 6 − -->
+        <button class="k sci" onclick="tcSci('fact')">x!</button>
+        <button class="k sci" onclick="tcSci('sin')" id="tc-sin">sin</button>
+        <button class="k sci" onclick="tcSci('cos')" id="tc-cos">cos</button>
+        <button class="k sci" onclick="tcSci('tan')" id="tc-tan">tan</button>
+        <button class="k sci" onclick="tcSci('log10')" id="tc-log10">log₁₀</button>
+        <button class="k" onclick="tcKey('4')">4</button>
+        <button class="k" onclick="tcKey('5')">5</button>
+        <button class="k" onclick="tcKey('6')">6</button>
+        <button class="k op" onclick="tcKey('-')">−</button>
+        <!-- Row 4: Rand / sinh / cosh / tanh / π  |  1 2 3 + -->
+        <button class="k sci" onclick="tcSci('rand')">Rand</button>
+        <button class="k sci" onclick="tcSci('sinh')" id="tc-sinh">sinh</button>
+        <button class="k sci" onclick="tcSci('cosh')" id="tc-cosh">cosh</button>
+        <button class="k sci" onclick="tcSci('tanh')" id="tc-tanh">tanh</button>
+        <button class="k sci" onclick="tcSci('pi')">π</button>
+        <button class="k" onclick="tcKey('1')">1</button>
+        <button class="k" onclick="tcKey('2')">2</button>
+        <button class="k" onclick="tcKey('3')">3</button>
+        <button class="k op" onclick="tcKey('+')">+</button>
+        <!-- Row 5: ( / ) / mc / m+ / m-  |  0(span2) . = -->
+        <button class="k sci" onclick="tcKey('(')">(</button>
+        <button class="k sci" onclick="tcKey(')')">)</button>
+        <button class="k sci" onclick="tcSci('mc')">mc</button>
+        <button class="k sci" onclick="tcSci('mplus')">m+</button>
+        <button class="k sci" onclick="tcSci('mminus')">m-</button>
+        <button class="k" style="grid-column:span 2" onclick="tcKey('0')">0</button>
+        <button class="k" onclick="tcKey('.')">.</button>
+        <button class="k eq" onclick="tcKey('=')">═</button>
+      </div>
     </div>
   `);
 },
@@ -1546,29 +1625,87 @@ function calcUnit(id) {
 // ══════════════════════════════════════════════════
 
 // --- Taschenrechner ---
-let tcExpr = '', tcVal = '0', tcNewNum = true;
-function tcKey(k) {
+// ── Taschenrechner State ──
+let tcExpr_raw = '';
+let tcVal = '0';
+let tcNewNum = true;
+let tcExpr = '';
+let tcMemory = 0;
+let tc2nd = false;
+let tcWaitPow = false;
+let tcWaitRoot = false;
+let tcMode = 'basic'; // 'basic' | 'sci'
+
+function tcSetMode(m) {
+  tcMode = m;
+  const basic = document.getElementById('tc-keys-basic');
+  const sci   = document.getElementById('tc-keys-sci');
+  const btnB  = document.getElementById('tc-mode-basic');
+  const btnS  = document.getElementById('tc-mode-sci');
+  if (!basic || !sci) return;
+  if (m === 'sci') {
+    basic.style.display = 'none';
+    sci.style.display   = '';
+    btnB.classList.remove('active'); btnS.classList.add('active');
+  } else {
+    sci.style.display   = 'none';
+    basic.style.display = '';
+    btnB.classList.add('active'); btnS.classList.remove('active');
+  }
+}
+
+function tcUpdate() {
   const disp = document.getElementById('tc-val');
   const expr = document.getElementById('tc-expr');
-  if (!disp) return;
-  if (k === 'AC') { tcExpr=''; tcVal='0'; tcNewNum=true; }
+  if (disp) disp.textContent = tcVal;
+  if (expr) expr.textContent = tcExpr;
+}
+
+function tcKey(k) {
+  if (!document.getElementById('tc-val')) return;
+  if (k === 'AC') {
+    tcExpr=''; tcExpr_raw=''; tcVal='0'; tcNewNum=true;
+    tcWaitPow=false; tcWaitRoot=false;
+  }
   else if (k === '+/-') { tcVal = String(-parseFloat(tcVal)||0); }
   else if (k === '%') { tcVal = String(parseFloat(tcVal)/100); }
+  else if (k === '(') {
+    tcExpr_raw = (tcExpr_raw||'') + '(';
+    tcExpr += '('; tcNewNum = true;
+    tcUpdate(); return;
+  }
+  else if (k === ')') {
+    tcExpr_raw = (tcExpr_raw||'') + tcVal + ')';
+    tcExpr += tcVal + ')'; tcVal = '0'; tcNewNum = true;
+    tcUpdate(); return;
+  }
   else if (['+','-','*','/'].includes(k)) {
+    if (tcWaitPow) {
+      // user typed exponent value, now apply
+      const base = parseFloat(tcExpr_raw_base||tcVal);
+      const exp  = parseFloat(tcVal);
+      tcVal = String(+Math.pow(base, exp).toFixed(10));
+      tcExpr = ''; tcExpr_raw = ''; tcWaitPow = false;
+    }
+    if (tcWaitRoot) {
+      const n    = parseFloat(tcVal);
+      const base = parseFloat(tcExpr_raw_base||n);
+      tcVal = String(+Math.pow(base, 1/n).toFixed(10));
+      tcExpr = ''; tcExpr_raw = ''; tcWaitRoot = false;
+    }
     tcExpr = tcVal + ' ' + (k==='*'?'×':k==='/'?'÷':k) + ' ';
     tcExpr_raw = (tcExpr_raw||'') + tcVal + k;
     tcVal = '0'; tcNewNum = true;
-    if (expr) expr.textContent = tcExpr;
-    if (disp) disp.textContent = tcVal;
-    return;
+    tcUpdate(); return;
   }
   else if (k === '=') {
     try {
-      const raw = (tcExpr_raw||'') + tcVal;
+      let raw = (tcExpr_raw||'') + tcVal;
       const res = Function('"use strict";return (' + raw + ')')();
-      if (expr) expr.textContent = raw.replace(/\*/g,'×').replace(/\//g,'÷') + ' =';
-      tcVal = String(+res.toFixed(10)); tcExpr=''; tcExpr_raw=''; tcNewNum=true;
-    } catch(e) { tcVal='Fehler'; tcNewNum=true; }
+      tcExpr = raw.replace(/\*/g,'×').replace(/\//g,'÷') + ' =';
+      tcVal = String(+res.toFixed(10));
+      tcExpr_raw = ''; tcNewNum = true;
+    } catch(e) { tcVal = 'Error'; tcNewNum = true; }
   }
   else if (k === '.') {
     if (tcNewNum) { tcVal='0.'; tcNewNum=false; }
@@ -1578,9 +1715,118 @@ function tcKey(k) {
     if (tcNewNum || tcVal==='0') { tcVal=k; tcNewNum=false; }
     else tcVal += k;
   }
-  if (disp) disp.textContent = tcVal;
+  tcUpdate();
 }
-let tcExpr_raw = '';
+
+let tcExpr_raw_base = '';
+
+function tcSci(fn) {
+  const v = parseFloat(tcVal);
+  const DEG = Math.PI / 180;
+
+  // 2nd toggle — flips sin↔sin⁻¹ etc.
+  if (fn === '2nd') {
+    tc2nd = !tc2nd;
+    const btn = document.getElementById('tc-2nd');
+    if (btn) btn.style.background = tc2nd ? 'var(--blue-bright)' : '';
+    // Swap labels
+    const swap = {
+      'tc-sin':   [['sin','sin⁻¹'],['cos','cos⁻¹'],['tan','tan⁻¹']],
+      'tc-sinh':  [['sinh','sinh⁻¹'],['cosh','cosh⁻¹'],['tanh','tanh⁻¹']],
+      'tc-ln':    ['ln','log₂'],
+      'tc-log10': ['log₁₀','10ˣ'],
+      'tc-sqrt2': ['²√x','x²'],
+      'tc-sqrt3': ['³√x','x³'],
+      'tc-sqrty': ['ʸ√x','xʸ'],
+      'tc-inv':   ['¹/x','eˣ'],
+    };
+    [['tc-sin','sin','asin'],['tc-cos','cos','acos'],['tc-tan','tan','atan']].forEach(function(r){
+      const el=document.getElementById(r[0]); if(el) el.textContent=tc2nd?(r[2]+'⁻¹'):r[1];
+    });
+    [['tc-sinh','sinh','asinh'],['tc-cosh','cosh','acosh'],['tc-tanh','tanh','atanh']].forEach(function(r){
+      const el=document.getElementById(r[0]); if(el) el.textContent=tc2nd?(r[2]+'⁻¹'):r[1];
+    });
+    const lnEl=document.getElementById('tc-ln'); if(lnEl) lnEl.textContent=tc2nd?'log₂':'ln';
+    const lgEl=document.getElementById('tc-log10'); if(lgEl) lgEl.textContent=tc2nd?'10ˣ':'log₁₀';
+    const s2El=document.getElementById('tc-sqrt2'); if(s2El) s2El.textContent=tc2nd?'x²':'²√x';
+    const s3El=document.getElementById('tc-sqrt3'); if(s3El) s3El.textContent=tc2nd?'x³':'³√x';
+    const syEl=document.getElementById('tc-sqrty'); if(syEl) syEl.textContent=tc2nd?'xʸ':'ʸ√x';
+    const ivEl=document.getElementById('tc-inv');   if(ivEl) ivEl.textContent=tc2nd?'eˣ':'¹/x';
+    return;
+  }
+
+  // Apply 2nd to function names
+  const is2 = tc2nd;
+
+  switch(fn) {
+    case 'x2':    tcVal = String(+( v*v ).toFixed(10)); tcNewNum=true; break;
+    case 'x3':    tcVal = String(+( v*v*v ).toFixed(10)); tcNewNum=true; break;
+    case 'xy':
+      if (is2) { // ʸ√x mode: wait for y
+        tcExpr = tcVal + ' ʸ√'; tcExpr_raw_base = tcVal; tcExpr_raw = ''; tcVal='0'; tcNewNum=true; tcWaitRoot=true;
+      } else {
+        tcExpr = tcVal + ' ^ '; tcExpr_raw_base = tcVal; tcExpr_raw = ''; tcVal='0'; tcNewNum=true; tcWaitPow=true;
+      }
+      tcUpdate(); return;
+    case 'ex':    tcVal = String(+Math.exp(v).toFixed(10)); tcNewNum=true; break;
+    case 'inv':
+      if (is2) tcVal = String(+Math.exp(v).toFixed(10));
+      else tcVal = v!==0 ? String(+(1/v).toFixed(10)) : 'Error';
+      tcNewNum=true; break;
+    case 'sqrt2':
+      if (is2) tcVal = String(+(v*v).toFixed(10));
+      else tcVal = v>=0 ? String(+Math.sqrt(v).toFixed(10)) : 'Error';
+      tcNewNum=true; break;
+    case 'sqrt3':
+      if (is2) tcVal = String(+(v*v*v).toFixed(10));
+      else tcVal = String(+Math.cbrt(v).toFixed(10));
+      tcNewNum=true; break;
+    case 'sqrty':
+      if (is2) {
+        tcExpr = tcVal + ' ^ '; tcExpr_raw_base = tcVal; tcExpr_raw=''; tcVal='0'; tcNewNum=true; tcWaitPow=true;
+      } else {
+        tcExpr = tcVal + ' ʸ√'; tcExpr_raw_base = tcVal; tcExpr_raw=''; tcVal='0'; tcNewNum=true; tcWaitRoot=true;
+      }
+      tcUpdate(); return;
+    case 'ln':
+      if (is2) tcVal = String(+( Math.log(v)/Math.log(2) ).toFixed(10));
+      else tcVal = v>0 ? String(+Math.log(v).toFixed(10)) : 'Error';
+      tcNewNum=true; break;
+    case 'fact':
+      if (v<0||!Number.isInteger(v)||v>170) { tcVal='Error'; }
+      else { let r=1; for(let i=2;i<=v;i++) r*=i; tcVal=String(r); }
+      tcNewNum=true; break;
+    case 'sin':
+      tcVal = is2 ? String(+(Math.asin(v)/DEG).toFixed(10)) : String(+Math.sin(v*DEG).toFixed(10));
+      tcNewNum=true; break;
+    case 'cos':
+      tcVal = is2 ? String(+(Math.acos(v)/DEG).toFixed(10)) : String(+Math.cos(v*DEG).toFixed(10));
+      tcNewNum=true; break;
+    case 'tan':
+      tcVal = is2 ? String(+(Math.atan(v)/DEG).toFixed(10)) : String(+Math.tan(v*DEG).toFixed(10));
+      tcNewNum=true; break;
+    case 'log10':
+      if (is2) tcVal = String(+Math.pow(10,v).toFixed(10));
+      else tcVal = v>0 ? String(+Math.log10(v).toFixed(10)) : 'Error';
+      tcNewNum=true; break;
+    case 'rand': tcVal = String(+Math.random().toFixed(10)); tcNewNum=true; break;
+    case 'sinh':
+      tcVal = is2 ? String(+Math.asinh(v).toFixed(10)) : String(+Math.sinh(v).toFixed(10));
+      tcNewNum=true; break;
+    case 'cosh':
+      tcVal = is2 ? String(+Math.acosh(v).toFixed(10)) : String(+Math.cosh(v).toFixed(10));
+      tcNewNum=true; break;
+    case 'tanh':
+      tcVal = is2 ? String(+Math.atanh(v).toFixed(10)) : String(+Math.tanh(v).toFixed(10));
+      tcNewNum=true; break;
+    case 'pi':  tcVal = String(Math.PI); tcNewNum=true; break;
+    case 'mc':    tcMemory=0; break;
+    case 'mplus': tcMemory+=v; break;
+    case 'mminus':tcMemory-=v; break;
+    case 'mr':    tcVal=String(tcMemory); tcNewNum=true; break;
+  }
+  tcUpdate();
+}
 
 // --- Zinsrechner ---
 function calcZins() {
